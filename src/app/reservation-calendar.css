@@ -45,14 +45,49 @@
 @media(max-width:650px){.reservation-platforms{gap:5px;margin-bottom:16px}.reservation-platforms button{padding:6px 7px;font-size:8px}.reservation-platforms .platform-mark{width:14px;height:14px;font-size:8px}.reservation-booking{height:34px;gap:3px;padding:0 4px;margin-bottom:10px}.reservation-booking-name{font-size:8px}.reservation-booking-platform{font-size:7px}.reservation-booking .reservation-avatar{display:none}.reservation-clean-badge{width:27px;height:28px;bottom:12px}.reservation-channel{top:37px}.reservation-housekeeping{padding:17px}.reservation-housekeeping strong{font-size:12px}.reservation-housekeeping p{font-size:11px}.reservation-housekeeping div>span{font-size:10px}.reservation-detail:before{display:none}}
 @media(prefers-reduced-motion:reduce){.reservation-stage:before,.reservation-booking.selected:after,.reservation-detail,.reservation-housekeeping,.reservation-progress>span,.reservation-grid,.reservation-clean-badge svg{animation:none!important}.reservation-platforms button,.reservation-clean-badge{transition:none}.reservation-progress{display:none}}
 
-/* Each booking draws across its dates, then receives a subtle moving highlight. */
-.reservation-stage[data-visible=true] .reservation-booking{animation:reservation-bar-draw 1.1s cubic-bezier(.22,1,.36,1) both}
-.reservation-stage[data-visible=true] .reservation-booking.selected{animation-name:reservation-bar-focus}
-.reservation-booking:before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,#ffffff55 50%,transparent 80%);transform:translateX(-160%);animation:reservation-bar-glow 8s ease-in-out infinite;animation-delay:inherit;animation-play-state:paused;pointer-events:none}
-.reservation-stage[data-playing=true] .reservation-booking:before{animation-play-state:running}
-.reservation-stage[data-playing=false] .reservation-booking{animation:none;clip-path:inset(0 round 7px)}
+
+/* Compact calendar: one guest and their turnover are shown at a time. */
+.reservation-section{padding-block:64px}
+.reservation-section>.container{max-width:980px}
+.reservation-heading{margin-bottom:28px;max-width:660px}
+.reservation-heading h2{font-size:clamp(29px,3vw,40px);max-width:620px}
+.reservation-heading>p{font-size:12px;margin-top:15px}
+.reservation-stage{padding:22px;gap:24px;grid-template-columns:minmax(0,1.65fr) minmax(230px,1fr);border-radius:20px}
+.reservation-calendar{padding:18px;border-radius:13px}
+.reservation-month{margin:15px 0 13px}.reservation-month strong{font-size:16px}
+.reservation-platforms{margin-bottom:14px;gap:5px}.reservation-platforms button{padding:6px 7px;font-size:8px}
+.reservation-weekdays{padding-bottom:9px;font-size:9px}
+.reservation-grid{--reservation-row-height:64px}
+.reservation-day{padding:5px;font-size:9px}
+.reservation-booking{height:32px;margin-bottom:8px;gap:4px;padding-inline:5px}
+.reservation-booking-name{font-size:8px}.reservation-booking-platform{font-size:7px}
+.reservation-avatar{width:18px;height:18px;font-size:7px}
+.reservation-platform-initial{display:none}
+.reservation-clean-badge{width:26px;height:26px;bottom:9px}
+.reservation-detail{padding:21px;border-radius:13px}
+.reservation-detail-avatar{width:38px;height:38px;margin-bottom:16px;font-size:12px}
+.reservation-channel{top:27px;inset-inline-end:18px;font-size:9px;padding:5px 6px}
+.reservation-detail h3{font-size:19px}.reservation-detail-label{font-size:9px}
+.reservation-detail dl{margin:16px 0;font-size:10px}.reservation-ready{font-size:9px;padding-top:13px}
+.reservation-housekeeping{padding:14px;gap:9px;margin-top:12px;border-radius:12px}
+.reservation-housekeeping-icon{width:33px;height:37px}
+.reservation-housekeeping strong{font-size:10px}.reservation-housekeeping p{font-size:9px}.reservation-housekeeping div>span{font-size:8px}
+.reservation-channel-note{padding:14px 5px 6px}.reservation-channel-note p{font-size:10px}
+.reservation-process{margin-top:20px;gap:14px}.reservation-process span{font-size:10px;gap:8px}
+.reservation-demo{margin-top:17px}
+/* The complete stay draws in, holds, then fades before the next guest appears. */
+.reservation-stage[data-visible=true] .reservation-booking.selected{animation:reservation-single-stay 6s cubic-bezier(.22,1,.36,1) both;animation-play-state:paused}
+.reservation-stage[data-playing=true] .reservation-booking.selected{animation-play-state:running}
 .reservation-booking.selected:after{display:none}
-@keyframes reservation-bar-draw{from{clip-path:inset(0 100% 0 0 round 7px)}to{clip-path:inset(0 0 0 0 round 7px)}}
-@keyframes reservation-bar-focus{from{clip-path:inset(0 100% 0 0 round 7px)}to{clip-path:inset(0 0 0 0 round 7px)}}
-@keyframes reservation-bar-glow{0%,15%{transform:translateX(-160%)}45%,100%{transform:translateX(160%)}}
-@media(prefers-reduced-motion:reduce){.reservation-stage[data-visible=true] .reservation-booking,.reservation-booking:before{animation:none!important;clip-path:none}.reservation-booking:before{display:none}}
+.reservation-booking:before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,#ffffff55 50%,transparent 80%);transform:translateX(-160%);animation:reservation-single-glow 6s ease-in-out both;animation-delay:inherit;animation-play-state:paused;pointer-events:none}
+.reservation-stage[data-playing=true] .reservation-booking:before{animation-play-state:running}
+.reservation-stage[data-playing=false] .reservation-booking.selected{animation:none;clip-path:inset(0 round 7px);opacity:1}
+.reservation-stage[data-visible=true] .reservation-clean-badge{animation:reservation-turnover-reveal 6s ease both;animation-play-state:paused}
+.reservation-stage[data-playing=true] .reservation-clean-badge{animation-play-state:running}
+.reservation-stage[data-playing=false] .reservation-clean-badge{animation:none;opacity:1}
+@keyframes reservation-single-stay{0%{clip-path:inset(0 100% 0 0 round 7px);opacity:0}7%{opacity:1}20%,90%{clip-path:inset(0 round 7px);opacity:1}100%{clip-path:inset(0 round 7px);opacity:0}}
+@keyframes reservation-single-glow{0%,24%{transform:translateX(-160%)}70%,100%{transform:translateX(160%)}}
+@keyframes reservation-turnover-reveal{0%,18%{opacity:0}32%,90%{opacity:1}100%{opacity:0}}
+@media(max-width:900px){.reservation-stage{grid-template-columns:minmax(0,1.5fr) minmax(210px,1fr);gap:18px;padding:18px}.reservation-calendar{padding:14px}.reservation-booking .reservation-avatar{display:none}}
+@media(max-width:650px){.reservation-section{padding-block:45px}.reservation-stage{grid-template-columns:minmax(0,1fr);gap:14px;padding:12px}.reservation-heading h2{font-size:30px}.reservation-grid{--reservation-row-height:58px}.reservation-calendar{padding:12px}.reservation-booking{height:29px;margin-bottom:7px;padding-inline:4px}.reservation-detail{padding:19px}.reservation-detail-avatar{margin-bottom:12px}.reservation-channel{top:25px}.reservation-detail dl{margin:13px 0}.reservation-housekeeping{padding:13px}.reservation-process{gap:10px}.reservation-legend{margin-top:13px}}
+@media(prefers-reduced-motion:reduce){.reservation-stage[data-visible=true] .reservation-booking.selected,.reservation-booking:before,.reservation-stage[data-visible=true] .reservation-clean-badge{animation:none!important;clip-path:none;opacity:1}.reservation-booking:before{display:none}}
