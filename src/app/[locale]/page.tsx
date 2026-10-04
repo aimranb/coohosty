@@ -5,6 +5,7 @@ import { localizedMetadata } from '@/lib/metadata';
 import { Hero } from '@/components/sections/hero';
 import { Destinations } from '@/components/sections/destinations';
 import { Services } from '@/components/sections/services';
+import { ReservationCalendar } from '@/components/sections/reservation-calendar';
 import { Workflow } from '@/components/sections/workflow';
 import { Revenue } from '@/components/sections/revenue';
 import { Plans } from '@/components/sections/plans';
@@ -23,5 +24,5 @@ export default async function MarketingPage({ params }: { params: Promise<{ loca
   setRequestLocale(locale);
   const t = await getTranslations('revenue');
   const structuredData = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: site.brand, url: site.url, telephone: site.tel, email: site.email, areaServed: { '@type': 'Country', name: 'Morocco' } };
-  return <main id="main-content"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}/><Hero/><Destinations/><Services/><Workflow/><Revenue/><Showcase/><Plans locale={locale}/><AuditSection locale={locale}/><ServiceProof locale={locale}/><Faq/><p className="brand-disclaimer container">{t('disclaimer')}</p></main>;
+  return <main id="main-content"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}/><Hero/><Destinations/><Services/><Workflow/><ReservationCalendar locale={locale}/><Revenue/><Showcase/><Plans locale={locale}/><AuditSection locale={locale}/><ServiceProof locale={locale}/><Faq/><p className="brand-disclaimer container">{t('disclaimer')}</p></main>;
 }
