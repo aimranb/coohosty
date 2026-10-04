@@ -282,7 +282,7 @@
       "photos": "Photos du bien",
       "isRental": "Votre bien est-il déjà loué en courte durée ?",
       "listingUrl": "Lien de l’annonce",
-      "platforms": "Plateformes utilisées",
+      "platforms": "Votre présence sur Airbnb",
       "nightlyRate": "Prix moyen par nuit (MAD)",
       "occupancy": "Taux d’occupation approximatif (%)",
       "rating": "Note moyenne des voyageurs (sur 10)",
@@ -378,7 +378,7 @@
     "contentTitle": "Services et contenu",
     "content": "Ce site présente des services de co-hosting et d’optimisation des revenus. Le périmètre et les tarifs sont confirmés par un accord individuel. Aucun résultat de revenus ou d’occupation n’est garanti.",
     "brandsTitle": "Marques tierces",
-    "brands": "Airbnb, Booking.com, Vrbo et PriceLabs sont mentionnés uniquement à titre de compatibilité et d’information sur les outils. COOHOSTY ne revendique aucune affiliation ni approbation."
+    "brands": "Airbnb et PriceLabs sont mentionnés uniquement à titre de compatibilité et d’information sur les outils. COOHOSTY ne revendique aucune affiliation ni approbation."
   },
   "privacy": {
     "title": "Politique de confidentialité",
@@ -408,8 +408,8 @@
     "title": "Des villes de caractère.",
     "accent": "Un potentiel à révéler.",
     "subtitle": "De la médina à l’océan, une approche adaptée à votre propriété.",
-    "platforms": "Vos annonces, sur les plateformes que vous connaissez",
-    "independent": "Service indépendant. Aucune affiliation avec ces plateformes.",
+    "platforms": "Vos annonces Airbnb, notre expertise",
+    "independent": "Service indépendant. Aucune affiliation avec Airbnb.",
     "label": "Explorez le Maroc",
     "caption": "Votre propriété, notre regard",
     "pause": "Mettre le défilement en pause",
@@ -518,8 +518,8 @@
         "answer": "Oui. Le formulaire et nos échanges permettent d’étudier votre bien à distance. L’offre et l’organisation sont définies selon vos besoins et la situation de votre propriété."
       },
       "platforms": {
-        "question": "Avec quelles plateformes travaillez-vous ?",
-        "answer": "Nous pouvons étudier vos annonces sur Airbnb, Booking.com et Vrbo. COOHOSTY est un service indépendant, sans affiliation avec ces plateformes. Les outils nécessaires sont précisés dans votre proposition."
+        "question": "Comment accompagnez-vous les propriétaires Airbnb ?",
+        "answer": "Nous étudions et optimisons vos annonces Airbnb, puis coordonnons les réservations, les voyageurs et le ménage selon votre offre. COOHOSTY est un service indépendant, sans affiliation avec Airbnb."
       },
       "onSite": {
         "question": "Le ménage, les photos et l’accueil sur place sont-ils inclus ?",

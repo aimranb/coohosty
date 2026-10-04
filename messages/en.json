@@ -282,7 +282,7 @@
       "photos": "Property photos",
       "isRental": "Currently used as a short-term rental?",
       "listingUrl": "Listing URL",
-      "platforms": "Platforms used",
+      "platforms": "Your Airbnb presence",
       "nightlyRate": "Average nightly rate (MAD)",
       "occupancy": "Approximate occupancy (%)",
       "rating": "Average guest rating (out of 10)",
@@ -378,7 +378,7 @@
     "contentTitle": "Services and content",
     "content": "Information on this site describes co-hosting and revenue optimization services. Scope and fees are confirmed in an individual agreement. No revenue or occupancy outcome is guaranteed.",
     "brandsTitle": "Third-party names",
-    "brands": "Airbnb, Booking.com, Vrbo and PriceLabs are mentioned for compatibility and tool information only. COOHOSTY does not claim affiliation or endorsement."
+    "brands": "Airbnb and PriceLabs are mentioned for compatibility and tool information only. COOHOSTY does not claim affiliation or endorsement."
   },
   "privacy": {
     "title": "Privacy policy",
@@ -408,8 +408,8 @@
     "title": "Remarkable cities.",
     "accent": "Exceptional possibilities.",
     "subtitle": "From the medina to the ocean, an approach tailored to your property.",
-    "platforms": "Your listings, on the platforms you know",
-    "independent": "Independent service. No affiliation with these platforms.",
+    "platforms": "Your Airbnb listings, our expertise",
+    "independent": "Independent service. No affiliation with Airbnb.",
     "label": "Explore Morocco",
     "caption": "Your property, our perspective",
     "pause": "Pause slideshow",
@@ -518,8 +518,8 @@
         "answer": "Yes. The form and our conversations allow us to assess your property remotely. The scope and arrangements are defined according to your needs and your property’s situation."
       },
       "platforms": {
-        "question": "Which platforms can you work with?",
-        "answer": "We can assess listings on Airbnb, Booking.com and Vrbo. COOHOSTY is an independent service with no affiliation to these platforms. Any required tools are specified in your proposal."
+        "question": "How do you support Airbnb hosts?",
+        "answer": "We assess and optimize your Airbnb listings, then coordinate reservations, guests and cleaning according to your plan. COOHOSTY is an independent service with no affiliation to Airbnb."
       },
       "onSite": {
         "question": "Are cleaning, photography and on-site check-in included?",

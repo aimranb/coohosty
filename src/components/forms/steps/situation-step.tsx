@@ -1,7 +1,7 @@
 'use client';
 import { useWatch } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
-import { platforms, propertyStatuses } from '@/validations/audit';
+import { propertyStatuses } from '@/validations/audit';
 import { TextInput, SelectInput, NumberInput, CheckboxGroup, useAuditContext } from '../audit-fields';
 export function SituationStep() {
   const t = useTranslations('form');
@@ -19,7 +19,7 @@ export function SituationStep() {
     </div></fieldset>
     {isRental ? <>
       <TextInput name="listingUrl" type="url" full/>
-      <CheckboxGroup name="platforms" options={platforms}/>
+      <CheckboxGroup name="platforms" options={['airbnb']}/>
       <NumberInput name="nightlyRate" max={1000000} optional/>
       <NumberInput name="occupancy" max={100} optional/>
       <NumberInput name="rating" max={10} optional/>
