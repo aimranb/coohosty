@@ -1,6 +1,6 @@
 
-/* Final public palette. Airbnb coral is confined to reservation branding. */
-:root{--purple:#bc5200;--lavender:#fff;--ink:#111;--muted:#111111a6;--line:#1111111f;--gold:#ffac4d;--reference-paper:#fff;--reference-dark:#111;--accent-plum:#bc5200;--accent-rose:#bc5200;--surface-warm:#fff;--airbnb-coral:#ff385c}
+/* Final public palette: orange, black and white. */
+:root{--purple:#bc5200;--lavender:#fff;--ink:#111;--muted:#111111a6;--line:#1111111f;--gold:#ffac4d;--reference-paper:#fff;--reference-dark:#111;--accent-plum:#bc5200;--accent-rose:#bc5200;--surface-warm:#fff}
 body{background:#fff;color:#111}::selection{background:#bc5200;color:white}
 .site-header{background:#fffffff5;border-color:#11111114}
 .site-header .desktop-nav,.site-header .mobile-menu{background:var(--purple);border-color:var(--purple);box-shadow:0 5px 15px #bc520018}
@@ -31,12 +31,12 @@ body{background:#fff;color:#111}::selection{background:#bc5200;color:white}
 .reservation-detail-label,.reservation-nights,.reservation-detail dt{color:#ffffffe6}
 .reservation-detail-avatar{background:#ffffff18;border-color:#ffffff55;color:white}
 .reservation-ready{border-color:#ffffff40}.reservation-progress{background:#ffffff20}.reservation-progress>span{background:white}
-.reservation-channel{padding:5px 7px;top:24px;inset-inline-end:18px;background:var(--airbnb-coral);border-radius:6px;color:#111}
+.reservation-channel{padding:5px 7px;top:24px;inset-inline-end:18px;background:var(--purple);border-radius:6px;color:white}
 .reservation-channel .platform-mark{background:#ffffffb3;color:#111}
-/* The calendar’s Airbnb stays use coral; cleaning and controls retain orange. */
-.reservation-airbnb-badge{background:var(--airbnb-coral);color:#111;border-color:var(--airbnb-coral)}
+/* Reservation branding uses the site orange. */
+.reservation-airbnb-badge{background:var(--purple);color:white;border-color:var(--purple)}
 .reservation-airbnb-badge>span{background:#ffffffd9;color:#111}
-.reservation-booking{background:var(--airbnb-coral);color:#111;box-shadow:0 3px 9px #ff385c18}
+.reservation-booking{background:var(--purple);color:white;box-shadow:0 3px 9px #bc520018}
 .reservation-avatar{background:#fffffff0;color:#111}
 .reservation-clean-badge,.reservation-housekeeping-icon{background:#bc52000c;border-color:#bc520030;color:var(--purple)}
 .reservation-grid,.reservation-day{border-color:#11111114}.reservation-day{color:#11111180}
