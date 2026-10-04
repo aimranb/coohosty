@@ -1,0 +1,1 @@
+export default function AdminLoading() { return <div aria-busy="true"><div className="stats-grid">{[1, 2, 3, 4].map(id => <div key={id} className="skeleton"/>)}</div><div className="skeleton" style={{ height: 320 }}/></div>; }

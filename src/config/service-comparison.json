@@ -1,0 +1,5 @@
+[
+  {"id":"audit","availableFrom":"AUDIT","features":["listing","title","photos","amenities","competitors","pricing","occupancy","opportunities","action"]},
+  {"id":"optimization","availableFrom":"OPTIMIZE","features":["dynamic","monitoring","market","pricelabs","calendar","minimum","weekday","seasonal","revenue","report"]},
+  {"id":"management","availableFrom":"COHOST","features":["communication","bookings","calendarManagement","pricingManagement","checkin","support","listingOptimization","performance","review"]}
+]

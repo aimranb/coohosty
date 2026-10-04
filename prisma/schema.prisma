@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+enum Plan {
+  AUDIT
+  OPTIMIZE
+  COHOST
+  UNDECIDED
+}
+enum RequestStatus {
+  NEW
+  IN_PROGRESS
+  AUDIT_SENT
+}
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  passwordHash String
+  createdAt DateTime @default(now())
+  sessions Session[]
+  activities ActivityLog[]
+}
+model Session {
+  id String @id @default(cuid())
+  tokenHash String @unique
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@index([expiresAt])
+}
+model AuditRequest {
+  id String @id @default(cuid())
+  submissionKey String @unique
+  payloadHash String
+  fullName String
+  phone String
+  email String
+  country String
+  plan Plan
+  status RequestStatus @default(NEW)
+  locale String
+  source String @default("website")
+  authorization String
+  objective String
+  availability String
+  comments String?
+  consent Boolean
+  consentVersion String @default("2026-10")
+  consentAt DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  property Property?
+  activities ActivityLog[]
+  emails EmailOutbox[]
+  @@index([plan])
+  @@index([status])
+  @@index([createdAt])
+  @@index([email])
+}
+model Property {
+  id String @id @default(cuid())
+  requestId String @unique
+  request AuditRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  city String
+  neighborhood String
+  type String
+  surface Float
+  bedrooms Int
+  beds Int
+  bathrooms Int
+  capacity Int
+  amenities String[]
+  finish String
+  isRental Boolean
+  listingUrl String?
+  platforms String[]
+  nightlyRate Float?
+  occupancy Float?
+  rating Float?
+  management String?
+  propertyStatus String?
+  photos UploadedPhoto[]
+  @@index([city])
+}
+model UploadedPhoto {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  url String
+  publicId String @unique
+  mimeType String
+  size Int
+  createdAt DateTime @default(now())
+}
+model ActivityLog {
+  id String @id @default(cuid())
+  requestId String
+  request AuditRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  action String
+  createdAt DateTime @default(now())
+  @@index([requestId, createdAt])
+}
+model RateLimit {
+  key String @id
+  count Int @default(1)
+  expiresAt DateTime
+  @@index([expiresAt])
+}
+model EmailOutbox {
+  id String @id @default(cuid())
+  requestId String
+  request AuditRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  kind String
+  sentAt DateTime?
+  attempts Int @default(0)
+  lockedUntil DateTime?
+  createdAt DateTime @default(now())
+  @@unique([requestId, kind])
+  @@index([sentAt, lockedUntil])
+}

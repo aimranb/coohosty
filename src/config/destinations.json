@@ -1,0 +1,15 @@
+{
+  "cities": [
+    {"id":"casablanca","image":"https://images.pexels.com/photos/32880203/pexels-photo-32880203.jpeg?auto=compress&cs=tinysrgb&w=3840","source":"https://www.pexels.com/photo/hassan-ii-mosque-in-casablanca-morocco-32880203/"},
+    {"id":"fes","image":"https://images.pexels.com/photos/35036526/pexels-photo-35036526.jpeg?auto=compress&cs=tinysrgb&w=3840","source":"https://www.pexels.com/fr-fr/photo/la-porte-bleue-emblematique-de-la-medina-de-fes-au-maroc-35036526/"},
+    {"id":"meknes","image":"https://upload.wikimedia.org/wikipedia/commons/6/63/Bab_mansour_DSCF5776.jpg","source":"https://commons.wikimedia.org/wiki/File:Bab_mansour_DSCF5776.jpg","author":"Robert Prazeres / Wikimedia Commons","licenseUrl":"https://creativecommons.org/licenses/by-sa/4.0/","licenseName":"CC BY-SA 4.0"},
+    {"id":"agadir","image":"https://images.pexels.com/photos/35627666/pexels-photo-35627666.jpeg?auto=compress&cs=tinysrgb&w=3840","source":"https://www.pexels.com/fr-fr/photo/vue-aerienne-de-la-ville-et-de-la-plage-d-agadir-35627666/"},
+    {"id":"tanger","image":"https://images.pexels.com/photos/20890428/pexels-photo-20890428.jpeg?auto=compress&cs=tinysrgb&w=3840","source":"https://www.pexels.com/photo/cityscape-of-tangier-morocco-20890428/"},
+    {"id":"rabat","image":"https://images.pexels.com/photos/31741321/pexels-photo-31741321.jpeg?auto=compress&cs=tinysrgb&w=3840","source":"https://www.pexels.com/photo/charming-moroccan-street-scene-in-rabat-31741321/"}
+  ],
+  "platforms": [
+    {"name":"Airbnb","image":"https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg","source":"https://commons.wikimedia.org/wiki/File:Airbnb_Logo_B%C3%A9lo.svg"},
+    {"name":"Booking.com","image":"https://upload.wikimedia.org/wikipedia/commons/d/dd/Booking.com_Logo.svg","source":"https://commons.wikimedia.org/wiki/File:Booking.com_Logo.svg"},
+    {"name":"Vrbo","image":"https://upload.wikimedia.org/wikipedia/commons/5/51/Vrbo.svg","source":"https://commons.wikimedia.org/wiki/File:Vrbo.svg"}
+  ]
+}

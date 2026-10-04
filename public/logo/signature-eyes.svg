@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="signature-eyes" width="190" height="112" viewBox="0 0 164 92" fill="none" aria-hidden="true" focusable="false">
+  <g class="signature-eye signature-eye-0">
+    <ellipse cx="50" cy="43" rx="26" ry="32" fill="#fffefa" stroke="currentColor" stroke-width="2.5"/>
+    <g class="signature-pupil"><circle cx="50" cy="44" r="11" fill="currentColor"/><circle cx="53" cy="40" r="3" fill="white"/><circle cx="47" cy="48" r="1.5" fill="#c9a96e"/></g>
+  </g>
+  <g class="signature-eye signature-eye-1">
+    <ellipse cx="114" cy="43" rx="26" ry="32" fill="#fffefa" stroke="currentColor" stroke-width="2.5"/>
+    <g class="signature-pupil"><circle cx="114" cy="44" r="11" fill="currentColor"/><circle cx="117" cy="40" r="3" fill="white"/><circle cx="111" cy="48" r="1.5" fill="#c9a96e"/></g>
+  </g>
+  <path class="signature-smile" d="M68 79Q82 94 96 79" stroke="#c9a96e" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M23 60q5 3 10 0m98 0q5 3 10 0" stroke="#c9a96e" stroke-width="1.5" opacity=".5" stroke-linecap="round"/>
+</svg>

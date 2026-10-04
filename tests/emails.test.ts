@@ -1,0 +1,9 @@
+import { describe, it, expect } from 'vitest';
+import { customerEmail, internalEmail } from '@/emails/templates';
+import type { FullRequest } from '@/lib/request-data';
+const date = new Date('2026-10-02T12:00:00Z');
+const request: FullRequest = { id: 'test-request', submissionKey: '123e4567-e89b-42d3-a456-426614174000', payloadHash: 'test', fullName: '<script>Test</script>', phone: '+212600000000', email: 'owner@example.com', country: 'Morocco', plan: 'COHOST', status: 'NEW', locale: 'fr', source: 'website', authorization: 'unknown', objective: 'revenue', availability: 'All year', comments: 'Test comment', consent: true, consentAt: date, consentVersion: '2026-10', createdAt: date, updatedAt: date, property: { id: 'test-property', requestId: 'test-request', city: 'Marrakech', neighborhood: 'Gueliz', type: 'apartment', surface: 60, bedrooms: 1, beds: 1, bathrooms: 1, capacity: 2, amenities: ['wifi'], finish: 'good', isRental: false, listingUrl: null, platforms: [], nightlyRate: null, occupancy: null, rating: null, management: null, propertyStatus: 'empty', photos: [] } };
+describe('transactional email content', () => {
+  it('includes complete organized internal sections and escapes customer content', () => { const email = internalEmail(request); expect(email.subject).toContain('Marrakech — COHOST'); expect(email.html).toContain('Objectifs'); expect(email.html).toContain('Conformité'); expect(email.html).toContain('/admin/requests/test-request'); expect(email.html).toContain('&lt;script&gt;'); expect(email.html).not.toContain('<script>Test'); });
+  it.each(['fr', 'en', 'ar'])('localizes customer confirmation in %s', locale => { const email = customerEmail({ ...request, locale }); expect(email.html).toContain('COOHOSTY'); expect(email.html).toContain('212663448785'); if (locale === 'ar') expect(email.html).toContain('dir="rtl"'); if (locale === 'en') expect(email.subject).toContain('Thank you'); });
+});

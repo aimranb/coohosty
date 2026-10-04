@@ -1,0 +1,33 @@
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import { headers } from 'next/headers';
+import { isLocale, site } from '@/config/site';
+import './globals.css';
+import './home-polish.css';
+import './destinations.css';
+import './monochrome.css';
+import './compact.css';
+import './premium-details.css';
+import './elegant-accents.css';
+import './city-media.css';
+import './gallery-refresh.css';
+import './workflow-icons.css';
+import './eye-signature.css';
+import './header-clarity.css';
+import './navigation-listing.css';
+import './city-transitions.css';
+import './analysis-tools.css';
+import './phone-cinema.css';
+import './logo-city-refinement.css';
+import './editor-contact.css';
+import './gallery-arrows.css';
+import './service-proof.css';
+import './reference-theme.css';
+import './reference-essentials.css';
+const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
+export const metadata: Metadata = { metadataBase: new URL(site.url), icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' } };
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const requested = (await headers()).get('x-cohosty-locale') || 'fr';
+  const locale = isLocale(requested) ? requested : 'fr';
+  return <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}><body className={inter.variable}>{children}</body></html>;
+}
