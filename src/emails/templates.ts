@@ -10,10 +10,17 @@ function frame(content: string, locale: 'fr' | 'en' | 'ar' = 'fr') {
 }
 export function customerEmail(request: FullRequest) {
   const locale = request.locale === 'en' || request.locale === 'ar' ? request.locale : 'fr';
+  if (request.source === 'hero-estimate') {
+    const t = copy[locale].estimate;
+    return { subject: `COOHOSTY — ${t.success}`, html: frame(`<p>${escapeHtml(request.fullName)},</p><h2>${escapeHtml(t.success)}</h2><p style="font-size:14px;line-height:1.8">${escapeHtml(t.customerText)}</p>`, locale) };
+  }
   const t = copy[locale].form;
   return { subject: `COOHOSTY — ${t.success}`, html: frame(`<p style="font-size:15px">${escapeHtml(request.fullName)},</p><h2 style="font-size:22px;font-weight:500">${escapeHtml(t.success)}</h2><p style="font-size:14px;line-height:1.8;color:#73717f">${escapeHtml(t.successText)}</p>`, locale) };
 }
 export function internalEmail(request: FullRequest) {
+  if (request.source === 'hero-estimate') {
+    return { subject: `COOHOSTY — New income estimate request — ${request.fullName}`, html: frame(`<h2 style="font-size:22px;color:#bc5200">New property income estimate</h2><p><strong>Name:</strong> ${escapeHtml(request.fullName)}<br><strong>Email:</strong> ${escapeHtml(request.email)}<br><strong>Phone:</strong> ${escapeHtml(request.phone || 'Not provided')}</p><div style="white-space:pre-wrap;font-size:14px;line-height:1.8">${escapeHtml(request.comments || '')}</div><p><a href="${site.url}/admin/requests/${request.id}" style="color:#bc5200">Open enquiry in administration</a></p>`) };
+  }
   const sections = requestSections(request);
   const html = sections.map(section => `<h2 style="font-size:16px;color:#8b5cf6;margin-top:25px">${escapeHtml(section.title)}</h2><table width="100%" cellpadding="0" cellspacing="0">${section.rows.map(row => `<tr><td style="width:40%;padding:8px 0;border-bottom:1px solid #f0ecf6;font-size:12px;color:#73717f;vertical-align:top">${escapeHtml(row.label)}</td><td style="padding:8px;border-bottom:1px solid #f0ecf6;font-size:12px;word-break:break-word;white-space:pre-wrap">${escapeHtml(row.value)}</td></tr>`).join('')}</table>`).join('');
   const photoLinks = request.property?.photos.map((photo, i) => `<li><a href="${site.url}/admin/requests/${request.id}#photos">Photo ${i + 1} — accès administrateur</a></li>`).join('') || '<li>Aucune photo</li>';
