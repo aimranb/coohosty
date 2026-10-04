@@ -82,6 +82,9 @@
     "skip": "Skip to content"
   },
   "hero": {
+    "photoLabel": "AIRBNB MANAGEMENT",
+    "photoTitle": "Your home. Our care.",
+    "photoDisclosure": "Illustrative photo",
     "collection": "COOHOSTY COLLECTION",
     "photoLocation": "01 — MOROCCO",
     "eyebrow": "",
@@ -91,7 +94,7 @@
     "subtitle": "Professional co-hosting & revenue optimization for property owners in Morocco.",
     "primary": "Get your free property audit",
     "secondary": "View our plans",
-    "imageAlt": "Premium villa with a pool and generous outdoor living space",
+    "imageAlt": "Bright living room with a cognac sofa, natural wood and large windows",
     "caption": "YOUR PROPERTY, IN GOOD HANDS",
     "location": "Made for Morocco.",
     "tag": "One subscription. One team.",

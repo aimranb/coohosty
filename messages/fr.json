@@ -82,6 +82,9 @@
     "skip": "Aller au contenu"
   },
   "hero": {
+    "photoLabel": "GESTION AIRBNB",
+    "photoTitle": "Votre logement. Notre attention.",
+    "photoDisclosure": "Photo illustrative",
     "collection": "COLLECTION COOHOSTY",
     "photoLocation": "01 — MAROC",
     "eyebrow": "",
@@ -91,7 +94,7 @@
     "subtitle": "Co-hosting professionnel et optimisation des revenus pour les propriétaires au Maroc.",
     "primary": "Obtenir mon audit gratuit",
     "secondary": "Découvrir nos offres",
-    "imageAlt": "Villa premium avec piscine et espace extérieur accueillant",
+    "imageAlt": "Salon lumineux avec canapé cognac, bois naturel et grandes fenêtres",
     "caption": "VOTRE BIEN, ENTRE DE BONNES MAINS",
     "location": "Pensé pour le Maroc.",
     "tag": "Un abonnement. Une équipe.",

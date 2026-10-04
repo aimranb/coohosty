@@ -79,3 +79,15 @@ body{background:#fff;color:#111}::selection{background:#bc5200;color:white}
 #main-content .hero-buttons .button:not(.button-outline):hover{background:#ee6508;border-color:#ee6508}
 .hero-buttons .button-outline{background:transparent;color:#15120f;border-color:#ded8d1}
 .hero-buttons .button-outline:hover{background:white;border-color:#15120f}
+
+/* A single, immediately recognizable rental interior in the hero. */
+.hero-photo.hero-property{margin:0;min-height:410px;width:100%;max-width:500px;align-self:center;isolation:isolate;background:#faf7f2;border-radius:24px;overflow:hidden}
+.hero-property>img{object-fit:cover;object-position:58% 52%}
+.hero-property-shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#111111c9 100%);pointer-events:none}
+.hero-property .hero-photo-label{display:flex;align-items:center;gap:8px;background:white;color:#111;font-size:10px;font-weight:650;z-index:1}
+.hero-property .hero-photo-label svg{color:var(--purple)}
+.hero-property-caption{position:absolute;inset-inline:26px;bottom:25px;display:flex;flex-direction:column;gap:8px;color:white}
+.hero-property-caption strong{font-size:clamp(22px,2.5vw,32px);line-height:1.2;letter-spacing:-.6px;max-width:330px}
+.hero-property-caption span{font-size:10px;letter-spacing:.6px}
+.hero-property-caption small{font-size:9px;color:#ffffffbd}
+@media(max-width:760px){.hero-photo.hero-property{max-width:100%;min-height:330px}.hero-property-caption{inset-inline:20px;bottom:21px}.hero-property-caption strong{font-size:26px}.hero-property>img{object-position:56% 52%}}
