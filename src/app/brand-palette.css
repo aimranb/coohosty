@@ -48,13 +48,34 @@ body{background:#fff;color:#111}::selection{background:#bc5200;color:white}
 /* Override the legacy WhatsApp accent, which used forced green backgrounds. */
 .floating-whatsapp{background:#111!important;box-shadow:0 7px 24px #11111125}.floating-whatsapp:hover,.floating-whatsapp:focus-visible{background:var(--purple)!important;box-shadow:0 10px 28px #bc520025}.floating-whatsapp:before{border-color:var(--purple)}
 
-/* One continuous surface using the site's lighter orange accent. */
-.site-header{background:var(--gold,#ffac4d);border-color:var(--gold);color:#111;backdrop-filter:none}
-.site-header .desktop-nav{background:transparent;border-color:transparent;box-shadow:none}
-.site-header .logo,.site-header .logo .logo-gaze-art,.site-header .language-select,.site-header .call-link,.site-header .mobile-toggle,.site-header .desktop-nav a,.site-header .mobile-menu a{color:#111}
-.site-header .language-select option{background:var(--gold);color:#111}
-.site-header .header-button,.site-header .header-button:hover{background:transparent;border-color:#11111180;color:#111;box-shadow:none}
-.site-header .header-button:hover{border-color:#111}
-.site-header .desktop-nav a:hover,.site-header .desktop-nav a:focus-visible,.site-header .mobile-menu a:hover{background:transparent;color:#111;text-decoration:underline;text-underline-offset:5px}
-.site-header .mobile-menu{background:var(--gold);border-color:#11111130;color:#111;box-shadow:none}
-.site-header :focus-visible{outline-color:#111}
+/* Navbar layout and colors matched to the supplied screenshot. */
+.site-header{top:12px;width:calc(100% - 28px);margin:12px auto 0;background:#faf7f2f5;border:1px solid #ded8d1;border-radius:22px;color:#15120f;backdrop-filter:blur(16px);box-shadow:0 8px 24px #15120f06}
+.site-header.compact{box-shadow:0 8px 24px #15120f09}
+.site-header .header-inner{width:100%;height:76px;padding:0 25px;display:grid;grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr);gap:24px}
+.site-header.compact .header-inner{height:68px}
+.site-header .desktop-nav{background:transparent;border:0;box-shadow:none;padding:0;gap:12px;border-radius:0}
+.site-header .desktop-nav a{color:#45413c;font-size:14px;font-weight:500;padding:9px 10px}
+.site-header .desktop-nav a:hover,.site-header .desktop-nav a:focus-visible{background:transparent;color:#15120f;text-decoration:underline;text-underline-offset:6px}
+.site-header .logo,.site-header .logo .logo-gaze-art,.site-header .language-select,.site-header .call-link,.site-header .mobile-toggle{color:#15120f}
+.site-header .header-actions{justify-content:flex-end;gap:13px}
+.site-header .navbar-language-icon{color:#45413c;flex-shrink:0}
+.site-header .language-select option{background:#faf7f2;color:#15120f}
+.site-header .header-button{background:#ff7415;border-color:#ff7415;color:white;padding:12px 20px;min-height:43px;border-radius:12px;font-size:13px;font-weight:650;box-shadow:0 4px 10px #15120f0d}
+.site-header .header-button:hover{background:#ee6508;border-color:#ee6508;color:white;box-shadow:0 6px 16px #15120f12}
+.site-header .mobile-menu{background:#faf7f2;border-color:#ded8d1;color:#15120f;border-radius:0 0 22px 22px;overflow:hidden;box-shadow:0 12px 24px #15120f0a}
+.site-header .mobile-menu a{color:#45413c;border-color:#ded8d1}
+.site-header .mobile-menu a:hover{background:#ffffff80;color:#15120f}
+.site-header :focus-visible{outline-color:#15120f}
+@media(max-width:1050px){.site-header .header-inner{gap:13px;padding-inline:18px;grid-template-columns:minmax(145px,1fr) auto minmax(145px,1fr)}.site-header .desktop-nav{gap:3px}.site-header .desktop-nav a{font-size:12px;padding-inline:7px}.site-header .header-actions{gap:8px}.site-header .navbar-language-icon{display:none}.site-header .header-button{padding-inline:14px;font-size:11px}}
+@media(max-width:760px){.site-header{top:8px;width:calc(100% - 16px);margin-top:8px;border-radius:17px}.site-header .header-inner,.site-header.compact .header-inner{height:63px;display:flex;justify-content:space-between;padding-inline:13px;gap:10px}.site-header .desktop-nav{display:none}.site-header .logo svg{width:142px;height:36px}.site-header .header-actions{gap:8px}.site-header .header-button{min-height:32px;padding:8px 11px;font-size:9px;border-radius:9px}.site-header .mobile-menu{border-radius:0 0 17px 17px}.site-header .language-select{font-size:9px}.site-header .call-link{display:none}}
+
+/* Matching cream surfaces and orange accents for the navbar and hero. */
+:root{--navigation-surface:#faf7f2;--navigation-accent:#ff7415}
+.site-header,.site-header .mobile-menu{background:var(--navigation-surface)}
+.site-header .header-button{background:var(--navigation-accent);border-color:var(--navigation-accent)}
+.hero-surface,.hero{background:var(--navigation-surface)}
+.hero-copy h1 em{color:var(--navigation-accent)}
+#main-content .hero-buttons .button:not(.button-outline){background:var(--navigation-accent);border-color:var(--navigation-accent);color:white}
+#main-content .hero-buttons .button:not(.button-outline):hover{background:#ee6508;border-color:#ee6508}
+.hero-buttons .button-outline{background:transparent;color:#15120f;border-color:#ded8d1}
+.hero-buttons .button-outline:hover{background:white;border-color:#15120f}
