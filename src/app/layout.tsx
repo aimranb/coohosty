@@ -25,6 +25,7 @@ import './service-proof.css';
 import './reference-theme.css';
 import './reference-essentials.css';
 import './reservation-calendar.css';
+import './brand-palette.css';
 const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
 export const metadata: Metadata = { metadataBase: new URL(site.url), icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' } };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

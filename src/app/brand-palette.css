@@ -1,0 +1,49 @@
+
+/* Final public palette. Airbnb coral is confined to reservation branding. */
+:root{--purple:#bc5200;--lavender:#fff;--ink:#111;--muted:#111111a6;--line:#1111111f;--gold:#ffac4d;--reference-paper:#fff;--reference-dark:#111;--accent-plum:#bc5200;--accent-rose:#bc5200;--surface-warm:#fff;--airbnb-coral:#ff385c}
+body{background:#fff;color:#111}::selection{background:#bc5200;color:white}
+.site-header{background:#fffffff5;border-color:#11111114}
+.site-header .desktop-nav,.site-header .mobile-menu{background:var(--purple);border-color:var(--purple);box-shadow:0 5px 15px #bc520018}
+.site-header .desktop-nav a,.site-header .mobile-menu a{color:white}
+.site-header .desktop-nav a:hover,.site-header .desktop-nav a:focus-visible,.site-header .mobile-menu a:hover{background:#ffffff20;color:white}
+.site-header .header-button{background:#111;border-color:#111;color:white}.site-header .header-button:hover{background:var(--purple);border-color:var(--purple);color:white}
+.hero-buttons .button,.audit-shell .form-actions .button{background:#111;border-color:#111;color:white}
+.hero-buttons .button-outline{background:white;color:#111;border-color:#11111140}
+.workflow,.plans-section,.audit-section,.showcase-section,.faq-section{background:#fff;border-color:#1111111f}
+.service-card,.plan-card.comparison-card,.eye-signature,.workflow-icon,.revenue-feature,.analysis-tool,.cohosty-gallery-bar,.audit-contacts a,.audit-shell,.service-proof-bar,.service-proof-empty,.service-review-card,.faq-item,.faq-item[open],.phone-editor,.editor-card{background:white;border-color:#1111111f}
+.service-card:last-child,.plan-card.comparison-card.featured{background:#111;border-color:#111;color:white}
+.plan-card.featured .package-cta{background:var(--purple);border-color:var(--purple);color:white}.plan-card.featured .package-cta:hover{background:#a34700;border-color:#a34700;color:white}
+.comparison-group h4{background:#bc52000c;border-color:#bc52002e;color:var(--purple)}.comparison-group h4:before{background:var(--purple)}
+.comparison-card.featured .comparison-group h4{background:#bc520018;border-color:#bc520050;color:var(--gold)}.comparison-card.featured .comparison-group h4:before{background:var(--gold)}
+.service-top>svg,.tool-chip,.signature-focus,.workflow .workflow-steps li.is-watched .workflow-icon,.property-listing-tags>span,.service-review-avatar,.phone-host-avatar{background:#bc52000c;color:var(--purple);border-color:#bc52002e}
+.phone-listing-cta,.listing-switch button[aria-pressed=true],.floating-whatsapp{background:#111;color:white}
+.floating-whatsapp:hover{background:var(--purple)}
+.listing-review,.listing-topline,.browser-chrome,.editor-tabs,.editor-tabs>.is-selected{background:white;border-color:#1111111f}
+.demo-stars,.listing-review-stars,.phone-review-panel .listing-review-stars,.signature-wordmark,.signature-focus,.analysis-tools>h3,.city-motion-control,.faq-number,.package-help{color:var(--purple)}
+.signature-smile{stroke:var(--purple)}.signature-focus-dot,.signature-orbit:after,.reading-progress,.audit-shell .progress-bars .active{background:var(--purple)}
+.signature-orbit{border-color:#bc520040}.eye-signature,.signature-copy h3,.faq-intro h2,.faq-item h3,.property-listing-info h3{color:#111}
+.audit-section input:not([type=checkbox]):not([type=radio]),.audit-section select,.audit-section textarea{background:white;border-color:#11111130;color:#111}
+.footer,.platform-section,.phone-review-panel,.phone-listing-amenity,.phone-listing-booking{border-color:#1111111f}
+/* Orange guest card, with high-contrast white details. */
+.reservation-section{background:white}.reservation-stage{background:white;border-color:#11111120}
+.reservation-detail{background:var(--purple);border-color:var(--purple);box-shadow:0 12px 30px #bc520015}
+.reservation-detail h3,.reservation-detail dd,.reservation-ready{color:white}
+.reservation-detail-label,.reservation-nights,.reservation-detail dt{color:#ffffffe6}
+.reservation-detail-avatar{background:#ffffff18;border-color:#ffffff55;color:white}
+.reservation-ready{border-color:#ffffff40}.reservation-progress{background:#ffffff20}.reservation-progress>span{background:white}
+.reservation-channel{padding:5px 7px;top:24px;inset-inline-end:18px;background:var(--airbnb-coral);border-radius:6px;color:#111}
+.reservation-channel .platform-mark{background:#ffffffb3;color:#111}
+/* The calendar’s Airbnb stays use coral; cleaning and controls retain orange. */
+.reservation-airbnb-badge{background:var(--airbnb-coral);color:#111;border-color:var(--airbnb-coral)}
+.reservation-airbnb-badge>span{background:#ffffffd9;color:#111}
+.reservation-booking{background:var(--airbnb-coral);color:#111;box-shadow:0 3px 9px #ff385c18}
+.reservation-avatar{background:#fffffff0;color:#111}
+.reservation-clean-badge,.reservation-housekeeping-icon{background:#bc52000c;border-color:#bc520030;color:var(--purple)}
+.reservation-grid,.reservation-day{border-color:#11111114}.reservation-day{color:#11111180}
+.reservation-toolbar button:hover,.reservation-month button:hover{background:#bc52000c;border-color:var(--purple)}
+.reservation-housekeeping{background:white}.reservation-housekeeping strong{color:#111}
+.reservation-dots button:before{background:#11111135}.reservation-dots button.active:before{background:var(--purple)}
+@media(max-width:650px){.reservation-channel{top:23px;inset-inline-end:16px}}
+
+/* Override the legacy WhatsApp accent, which used forced green backgrounds. */
+.floating-whatsapp{background:#111!important;box-shadow:0 7px 24px #11111125}.floating-whatsapp:hover,.floating-whatsapp:focus-visible{background:var(--purple)!important;box-shadow:0 10px 28px #bc520025}.floating-whatsapp:before{border-color:var(--purple)}
