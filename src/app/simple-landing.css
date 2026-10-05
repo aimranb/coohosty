@@ -40,3 +40,11 @@ html,body{background:#fff}
 @media(min-width:1051px){.site-header .header-inner{grid-template-columns:auto minmax(0,1fr) auto;gap:14px;padding-inline:18px}.site-header .desktop-nav{justify-content:center;gap:4px}.site-header .desktop-nav a{padding-inline:7px;font-size:13px}.site-header .header-actions{gap:9px}.site-header .logo svg{width:180px}.site-header .header-button{padding-inline:14px}}
 @media(max-width:1050px) and (min-width:761px){.site-header{width:calc(100% - 48px)}.site-header .header-inner{grid-template-columns:auto minmax(0,1fr) auto;gap:8px;padding-inline:12px}.site-header .logo svg{width:145px}.site-header .desktop-nav{justify-content:center;gap:0}.site-header .desktop-nav a{padding-inline:5px;font-size:11px}.site-header .header-button{padding-inline:10px}.site-header .call-link{display:none}}
 @media(max-width:760px){.site-header{width:calc(100% - 32px)}}
+
+/* Slimmer navigation with balanced vertical space around its controls. */
+.site-header{border-radius:18px}
+.site-header .header-inner{height:60px;min-height:60px}
+.site-header.compact .header-inner{height:56px;min-height:56px}
+.site-header .logo svg{height:42px}
+.site-header .header-button{min-height:38px;padding-block:9px;border-radius:10px}
+@media(max-width:760px){.site-header{border-radius:15px}.site-header .header-inner,.site-header.compact .header-inner{height:56px;min-height:56px}.site-header .logo svg{height:34px}.site-header .header-button{min-height:44px;padding-block:8px}}
