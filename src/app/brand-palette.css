@@ -24,12 +24,13 @@ body{background:#fff;color:#111}::selection{background:#bc5200;color:white}
 .signature-orbit{border-color:#bc520040}.eye-signature,.signature-copy h3,.faq-intro h2,.faq-item h3,.property-listing-info h3{color:#111}
 .audit-section input:not([type=checkbox]):not([type=radio]),.audit-section select,.audit-section textarea{background:white;border-color:#11111130;color:#111}
 .footer,.platform-section,.phone-review-panel,.phone-listing-amenity,.phone-listing-booking{border-color:#1111111f}
-/* Orange guest card, with high-contrast white details. */
+/* Transparent guest card on the white calendar surface. */
 .reservation-section{background:white}.reservation-stage{background:white;border-color:#11111120}
-.reservation-detail{background:var(--purple);border-color:var(--purple);box-shadow:0 12px 30px #bc520015}
-.reservation-detail h3,.reservation-detail dd,.reservation-ready{color:white}
-.reservation-detail-label,.reservation-nights,.reservation-detail dt{color:#ffffffe6}
-.reservation-detail-avatar{background:#ffffff18;border-color:#ffffff55;color:white}
+.reservation-detail{background:transparent;border-color:#11111120;color:#222;box-shadow:none}
+.reservation-detail h3,.reservation-detail dd,.reservation-detail .reservation-ready{color:#222}
+.reservation-detail-label,.reservation-nights,.reservation-detail dt{color:#666}
+.reservation-detail-avatar{background:white;border-color:#11111120;color:#222}
+.reservation-detail .reservation-channel{background:transparent;color:#222}.reservation-detail .platform-mark{background:#f5f5f5;color:#222}.reservation-detail .reservation-ready{border-top-color:#11111115}.reservation-detail .reservation-progress{background:#11111108}.reservation-detail .reservation-progress>span{background:#11111130}
 .reservation-ready{border-color:#ffffff40}.reservation-progress{background:#ffffff20}.reservation-progress>span{background:white}
 .reservation-channel{padding:5px 7px;top:24px;inset-inline-end:18px;background:var(--purple);border-radius:6px;color:white}
 .reservation-channel .platform-mark{background:#ffffffb3;color:#111}
