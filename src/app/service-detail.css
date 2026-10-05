@@ -1,5 +1,9 @@
-.plans-section .comparison-card .plan-more-link{display:flex;justify-content:center;gap:8px;margin-block:16px 12px;padding:12px 16px;min-height:44px;background:#ff7415;color:#111;border:1px solid #ff7415;border-radius:10px;font-size:14px;font-weight:600}
-#main-content .plan-more-link:hover,#main-content .service-detail-form:hover{background:#e9660c;border-color:#e9660c}
+.plans-section .comparison-card .plan-more-link{display:flex;justify-content:center;gap:8px;margin-block:16px 12px;padding:12px 16px;min-height:44px;background:var(--more-background);color:white;border:1px solid var(--more-background);border-radius:10px;font-size:14px;font-weight:600}
+#main-content .comparison-card{--more-background:#111;--more-hover:#222}
+#main-content .comparison-card.featured{--more-background:#bc5200;--more-hover:#a34700}
+#main-content .comparison-card .plan-more-link{background:var(--more-background);border-color:var(--more-background);color:white}
+#main-content .comparison-card .plan-more-link:hover{background:var(--more-hover);border-color:var(--more-hover);color:white}
+#main-content .service-detail-form:hover{background:#e9660c;border-color:#e9660c}
 .service-detail-page{max-width:1080px;padding-block:36px 72px}
 .service-detail-back{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#666;font-size:14px;margin-bottom:30px}
 [dir=rtl] .service-detail-back svg{transform:rotate(180deg)}
