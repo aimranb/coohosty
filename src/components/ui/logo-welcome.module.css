@@ -1,20 +1,20 @@
-/* One welcome sequence; the existing pointer gaze resumes afterwards. */
+/* Welcome sequence repeats every twelve seconds; the existing pointer gaze resumes afterwards. */
 .welcome { --welcome-orange: #eb783d; }
 .welcome > svg { overflow: visible; }
 .route, .roof { fill: none; stroke: var(--welcome-orange); stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
-.route { stroke-width: 1; stroke-dasharray: 90; stroke-dashoffset: 90; opacity: 0; animation: journey 3.4s ease-in-out both; }
-.traveler { fill: var(--welcome-orange); offset-path: path('M2 45C-2 12 21 1 34 22'); opacity: 0; animation: arrival 3.4s ease-in-out both; pointer-events: none; }
-.roof { stroke-width: 1.5; stroke-dasharray: 70; stroke-dashoffset: 70; opacity: 0; animation: shelter 3.4s ease-in-out both; }
-.welcome :global(.signature-pupil) { animation: greeting-gaze 3.4s ease-in-out; }
-.welcome :global(.signature-eye-1) { animation: greeting-wink 3.4s ease-in-out; }
-.welcome :global(.signature-smile) { animation: greeting-smile 3.4s ease-in-out; }
+.route { stroke-width: 1; stroke-dasharray: 90; stroke-dashoffset: 90; opacity: 0; animation: journey 12s ease-in-out infinite both; }
+.traveler { fill: var(--welcome-orange); offset-path: path('M2 45C-2 12 21 1 34 22'); opacity: 0; animation: arrival 12s ease-in-out infinite both; pointer-events: none; }
+.roof { stroke-width: 1.5; stroke-dasharray: 70; stroke-dashoffset: 70; opacity: 0; animation: shelter 12s ease-in-out infinite both; }
+.welcome :global(.signature-pupil) { animation: greeting-gaze 12s ease-in-out infinite; }
+.welcome :global(.signature-eye-1) { animation: greeting-wink 12s ease-in-out infinite; }
+.welcome :global(.signature-smile) { animation: greeting-smile 12s ease-in-out infinite; }
 .welcome:hover :global(.signature-eye-0), .welcome:focus-visible :global(.signature-eye-0) { animation: hover-wink .45s ease-in-out; }
-@keyframes journey { 0%, 8% { stroke-dashoffset: 90; opacity: 0; } 15% { opacity: .55; } 40%, 55% { stroke-dashoffset: 0; opacity: .55; } 72%, 100% { stroke-dashoffset: 0; opacity: 0; } }
-@keyframes arrival { 0%, 8% { offset-distance: 0%; opacity: 0; } 15% { opacity: 1; } 40%, 47% { offset-distance: 100%; opacity: 1; } 57%, 100% { offset-distance: 100%; opacity: 0; } }
-@keyframes shelter { 0%, 44% { stroke-dashoffset: 70; opacity: 0; } 49% { opacity: 1; } 67%, 80% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
-@keyframes greeting-gaze { 0%, 8% { transform: translate(0, 0); } 20% { transform: translate(-5px, -4px); } 40%, 48% { transform: translate(4px, 0); } 65%, 100% { transform: translate(var(--gaze-x, 0px), var(--gaze-y, 0px)); } }
-@keyframes greeting-wink { 0%, 43%, 54%, 100% { transform: scaleY(1); } 48% { transform: scaleY(.08); } }
-@keyframes greeting-smile { 0%, 45% { opacity: .35; } 65%, 85% { opacity: 1; stroke: var(--welcome-orange); } 100% { opacity: 1; } }
+@keyframes journey { 0.0000%, 2.2667% { stroke-dashoffset: 90; opacity: 0; } 4.2500% { opacity: .55; } 11.3333%, 15.5833% { stroke-dashoffset: 0; opacity: .55; } 20.4000%, 28.3333%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes arrival { 0.0000%, 2.2667% { offset-distance: 0.0000%; opacity: 0; } 4.2500% { opacity: 1; } 11.3333%, 13.3167% { offset-distance: 100%; opacity: 1; } 16.1500%, 28.3333%, 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes shelter { 0.0000%, 12.4667% { stroke-dashoffset: 70; opacity: 0; } 13.8833% { opacity: 1; } 18.9833%, 22.6667% { stroke-dashoffset: 0; opacity: 1; } 28.3333%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes greeting-gaze { 0.0000%, 2.2667% { transform: translate(0, 0); } 5.6667% { transform: translate(-5px, -4px); } 11.3333%, 13.6000% { transform: translate(4px, 0); } 18.4167%, 28.3333%, 100% { transform: translate(var(--gaze-x, 0px), var(--gaze-y, 0px)); } }
+@keyframes greeting-wink { 0.0000%, 12.1833%, 15.3000%, 28.3333%, 100% { transform: scaleY(1); } 13.6000% { transform: scaleY(.08); } }
+@keyframes greeting-smile { 0.0000%, 12.7500% { opacity: .35; } 18.4167%, 24.0833% { opacity: 1; stroke: var(--welcome-orange); } 28.3333%, 100% { opacity: 1; } }
 @keyframes hover-wink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.08); } }
 @media (prefers-reduced-motion: reduce) {
   .welcome *, .welcome:hover :global(.signature-eye-0), .welcome:focus-visible :global(.signature-eye-0) { animation: none !important; }
