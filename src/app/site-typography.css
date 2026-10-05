@@ -14,3 +14,10 @@
 .hero-surface .hero .estimate-bar .estimate-heading,.hero-surface .hero .estimate-bar .estimate-progress li,.hero-surface .hero .estimate-bar .estimate-location-note,.hero-surface .hero .estimate-bar .estimate-footer,#main-content .analytics-bar>p,#main-content .analytics-bar .analysis-tool>small{font-size:var(--type-caption);line-height:1.6}
 .hero-surface .hero .estimate-bar .estimate-next{font-size:var(--type-body)}
 @media(max-width:760px){:root{--type-section:30px;--type-body:14px;--type-lead:16px;--type-card:18px;--type-label:13px}#main-content .income-intro-copy h2,#main-content .section-heading h2,#main-content .reservation-heading h2,#main-content #revenue .revenue-layout h2,#main-content .destination-heading h2,#main-content #faq .faq-intro h2,#main-content .service-proof-heading h2,#main-content .audit-intro h2,.legal-page h1{letter-spacing:-.8px}.hero-surface .hero .estimate-bar h2,.estimate-completion-card .estimate-bar h2{font-size:25px}}
+
+
+/* Supporting text beneath page and section headings. */
+:root{--type-subtitle:20px;--type-compact-subtitle:16px}
+#main-content .income-intro-copy>p,#main-content .income-intro-copy .income-intro-lead,#main-content .section-heading>p,#main-content .section-description,#main-content .reservation-heading>p,#main-content .destination-heading>p,#main-content .service-proof-heading p,#main-content .audit-intro>p,#main-content .owner-support-copy>p,#main-content .showcase-heading>p,#main-content .workflow-heading>p{font-size:var(--type-subtitle);line-height:1.7}
+.hero-surface .hero .estimate-bar .estimate-intro,.estimate-completion-card .estimate-bar .estimate-intro,#main-content .plans-section .comparison-card .plan-subtitle,#main-content .plan-services-panel-heading p{font-size:var(--type-compact-subtitle);line-height:1.7}
+@media(max-width:760px){:root{--type-subtitle:18px;--type-compact-subtitle:16px}}
