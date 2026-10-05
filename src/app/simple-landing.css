@@ -42,9 +42,9 @@ html,body{background:#fff}
 @media(max-width:760px){.site-header{width:calc(100% - 32px)}}
 
 /* Slimmer navigation with balanced vertical space around its controls. */
-.site-header{border-radius:18px}
-.site-header .header-inner{height:60px;min-height:60px}
-.site-header.compact .header-inner{height:56px;min-height:56px}
-.site-header .logo svg{height:42px}
-.site-header .header-button{min-height:38px;padding-block:9px;border-radius:10px}
-@media(max-width:760px){.site-header{border-radius:15px}.site-header .header-inner,.site-header.compact .header-inner{height:56px;min-height:56px}.site-header .logo svg{height:34px}.site-header .header-button{min-height:44px;padding-block:8px}}
+.site-header{border-radius:28px}
+.site-header .header-inner{height:52px;min-height:52px}
+.site-header.compact .header-inner{height:52px;min-height:52px}
+.site-header .logo svg{height:38px}
+.site-header .header-button{min-height:36px;padding-block:8px;border-radius:18px}
+@media(max-width:760px){.site-header{border-radius:28px}.site-header .header-inner,.site-header.compact .header-inner{height:52px;min-height:52px}.site-header .logo svg{height:34px}.site-header .header-button{min-height:44px;padding-block:8px}}
