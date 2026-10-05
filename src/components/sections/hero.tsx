@@ -1,7 +1,6 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { ArrowDown, House } from 'lucide-react';
+import { House } from 'lucide-react';
 import Image from 'next/image';
-import { Eyes } from '@/components/ui/logo';
 import { EstimateBar } from '@/components/forms/estimate-bar';
 import { isLocale } from '@/config/site';
 
@@ -15,7 +14,6 @@ export async function Hero() {
       <p className="hero-intro">{t('subtitle')}</p>
       <div className="hero-copy">
         <EstimateBar locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)}/>
-        <div className="hero-note"><Eyes/><div><strong>{t('tag')}</strong><span>{t('location')}</span></div></div>
       </div>
       <figure className="hero-photo hero-property">
         <Image src="/images/hero-airbnb.webp" alt={t('imageAlt')} fill preload sizes="(max-width: 760px) 100vw, 50vw"/>
@@ -23,7 +21,6 @@ export async function Hero() {
         <div className="hero-photo-label"><House size={15}/>{t('photoLabel')}</div>
         <figcaption className="hero-property-caption"><strong>{t('photoTitle')}</strong><span>{t('caption')}</span></figcaption>
       </figure>
-      <a className="hero-scroll" href="#services"><ArrowDown size={14}/>{t('scroll')}</a>
     </section>
   </div>;
 }
