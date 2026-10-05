@@ -37,8 +37,9 @@ globalThis.document = new Element();
 document.hidden = false;
 globalThis.window = new Element();
 let observer;
+function captureObserver(instance) { observer = instance; }
 window.IntersectionObserver = globalThis.IntersectionObserver = class {
-  constructor(callback) { this.callback = callback; observer = this; }
+  constructor(callback) { this.callback = callback; captureObserver(this); }
   observe() {}
   disconnect() { this.disconnected = true; }
   show(visible) { this.callback([{ isIntersecting: visible }]); }

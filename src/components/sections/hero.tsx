@@ -5,6 +5,7 @@ import { isLocale } from '@/config/site';
 
 export async function Hero() {
   const t = await getTranslations('hero');
+  const estimateTitle = await getTranslations('estimate');
   const showcase = await getTranslations('showcase');
   const destinations = await getTranslations('destinations');
   const alts = showcase.raw('photoAlts') as string[];
@@ -19,6 +20,7 @@ export async function Hero() {
   const locale = isLocale(requestedLocale) ? requestedLocale : 'fr';
   return <div className="hero-surface">
     <section className="hero container">
+      <h1 className="sr-only">{estimateTitle('title')}</h1>
       <div className="hero-copy">
         <EstimateBar locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)}/>
       </div>

@@ -60,3 +60,9 @@ html,body{background:#fff}
 @media(min-width:761px) and (max-width:1050px){.site-header .desktop-nav a{font-size:14px}.site-header .logo svg{width:166px;height:44px}.site-header .header-button{font-size:13px}}
 @media(max-width:760px){.site-header{border-radius:30px}.site-header .header-inner,.site-header.compact .header-inner{height:60px;min-height:60px}.site-header .logo svg{width:140px;height:40px}.site-header .header-button{font-size:12px;padding-inline:10px}.site-header .language-select{font-size:12px}}
 @media(max-width:360px){.site-header .logo svg{width:120px}.site-header .header-button{font-size:11px;padding-inline:8px}}
+
+/* Crisp official vector wordmarks, balanced by their visible proportions. */
+.analytics-bar .analysis-tool-brand{min-height:48px}
+.analytics-bar .analysis-tool-brand .analytics-tool-logo{width:170px;height:48px;object-fit:contain}
+.analytics-bar .analysis-tool:nth-child(2) .analytics-tool-logo{height:32px}
+@media(max-width:760px){.analytics-bar .analysis-tool{flex-basis:210px}.analytics-bar .analysis-tool-brand .analytics-tool-logo{width:160px;height:44px}.analytics-bar .analysis-tool:nth-child(2) .analytics-tool-logo{height:30px}}

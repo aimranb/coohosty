@@ -29,7 +29,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
   const heading = useRef<HTMLHeadingElement>(null);
   const locked = useRef(false);
   const previousPayload = useRef('');
-  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onBlur', defaultValues: { type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
+  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
   const { register, setValue, formState: { errors, isSubmitting } } = form;
   useEffect(() => { setValue('submissionKey', crypto.randomUUID()); }, [setValue]);
   const onToken = useCallback((token: string) => setValue('turnstileToken', token), [setValue]);

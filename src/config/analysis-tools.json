@@ -1,5 +1,26 @@
 [
-  {"id":"pricelabs","name":"PriceLabs","url":"https://hello.pricelabs.co/","logo":"https://www.google.com/s2/favicons?domain=pricelabs.co&sz=128","role":"pricing","complementary":false},
-  {"id":"airdna","name":"AirDNA","url":"https://www.airdna.co/","logo":"https://www.google.com/s2/favicons?domain=airdna.co&sz=128","role":"market","complementary":false},
-  {"id":"beyond","name":"Beyond","url":"https://beyondpricing.com/try/market-insights-overview","logo":"https://www.google.com/s2/favicons?domain=beyondpricing.com&sz=128","role":"insights","complementary":true}
+  {
+    "id": "pricelabs",
+    "name": "PriceLabs",
+    "url": "https://hello.pricelabs.co/",
+    "logo": "/logos/tools/pricelabs.svg",
+    "role": "pricing",
+    "complementary": false
+  },
+  {
+    "id": "airdna",
+    "name": "AirDNA",
+    "url": "https://www.airdna.co/",
+    "logo": "/logos/tools/airdna.svg",
+    "role": "market",
+    "complementary": false
+  },
+  {
+    "id": "beyond",
+    "name": "Beyond",
+    "url": "https://beyondpricing.com/try/market-insights-overview",
+    "logo": "/logos/tools/beyond.svg",
+    "role": "insights",
+    "complementary": true
+  }
 ]

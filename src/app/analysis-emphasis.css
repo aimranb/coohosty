@@ -1,0 +1,42 @@
+/* Give the analysis stage the same hierarchy as the other main sections. */
+#main-content #revenue .analytics-bar{margin-top:56px;padding-block:36px 0;border-top:1px solid #e9e5df;border-bottom:0}
+#main-content #revenue .analytics-bar>h2{font-size:var(--type-section);font-weight:600;line-height:1.25;letter-spacing:-1.4px;color:var(--ink);margin:0 0 30px;max-width:900px}
+#revenue .analytics-bar-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;overflow:visible;padding:0}
+#revenue .analytics-bar .analysis-tool{min-width:0;padding:24px;border:1px solid #eadfd6;border-radius:18px;background:#fff8f2;gap:14px;animation:none;opacity:1;box-shadow:none;transition:border-color .25s,background .25s,transform .25s}
+#revenue .analytics-bar .analysis-tool:hover,#revenue .analytics-bar .analysis-tool:focus-visible{border-color:#ff7415;background:#fff1e5;transform:translateY(-3px)}
+#revenue .analytics-bar .analysis-tool-brand{gap:12px;min-height:48px}
+#main-content #revenue .analytics-bar .analysis-tool>span{font-size:var(--type-body);line-height:1.7;color:#555}
+#main-content #revenue .analytics-bar .analysis-tool>small{font-size:var(--type-caption);line-height:1.6;color:#666}
+
+/* Each service has its own orange-accented bar and staggered motion. */
+#revenue .revenue-grid{gap:12px}
+#revenue .revenue-feature{--feature-delay:0s;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:16px;min-height:76px;padding:16px 18px;border:1px solid #ff74152e;border-inline-start:4px solid #ff7415;border-radius:14px;background:#fff8f2;box-shadow:0 4px 18px #11111103;transition:border-color .25s,box-shadow .25s}
+#revenue .revenue-feature:nth-child(2){--feature-delay:.7s;background:#fff3e9}
+#revenue .revenue-feature:nth-child(3){--feature-delay:1.4s;background:#ffeadb}
+#revenue .revenue-feature:nth-child(4){--feature-delay:2.1s;background:#fff8f2}
+#revenue .revenue-feature:nth-child(5){--feature-delay:2.8s;background:#fff3e9}
+#revenue .revenue-feature:nth-child(6){--feature-delay:3.5s;background:#111;border-color:#111;border-inline-start-color:#ff7415}
+#revenue .revenue-feature-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;background:#ff741517;color:#a94700;border-radius:12px;animation:analysis-icon-pulse 7s ease-in-out infinite;animation-delay:var(--feature-delay)}
+#revenue .revenue-feature svg{width:23px;height:23px;color:currentColor}
+#main-content #revenue .revenue-feature h3{position:relative;z-index:1;font-size:var(--type-body);font-weight:600;line-height:1.7;letter-spacing:0;color:#222;margin:0}
+#revenue .revenue-feature-number{margin-inline-start:auto;padding-inline-start:8px;font-size:var(--type-caption);color:#a94700;font-variant-numeric:tabular-nums;flex-shrink:0}
+#main-content #revenue .revenue-feature:nth-child(6) h3{color:white}
+#revenue .revenue-feature:nth-child(6) .revenue-feature-icon{background:#ff741524;color:#ffac4d}
+#revenue .revenue-feature:nth-child(6) .revenue-feature-number{color:#ffac4d}
+#revenue .revenue-feature::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 20%,#ff741514 50%,transparent 80%);transform:translateX(-110%);animation:analysis-bar-sweep 7s ease-in-out infinite;animation-delay:var(--feature-delay);pointer-events:none}
+#revenue .revenue-feature:hover{border-color:#ff7415;box-shadow:0 6px 22px #ff741512}
+#revenue .revenue-feature:hover::after,#revenue .revenue-feature:hover .revenue-feature-icon{animation-play-state:paused}
+@keyframes analysis-bar-sweep{0%,65%{transform:translateX(-110%)}90%,100%{transform:translateX(110%)}}
+@keyframes analysis-icon-pulse{0%,65%,100%{transform:scale(1)}78%{transform:scale(1.09)}}
+@media(max-width:760px){
+ #main-content #revenue .analytics-bar{margin-top:36px;padding-top:30px}
+ #main-content #revenue .analytics-bar>h2{letter-spacing:-.8px;margin-bottom:24px}
+ #revenue .analytics-bar-track{grid-template-columns:1fr;gap:12px}
+ #revenue .analytics-bar .analysis-tool{padding:20px;flex-basis:auto;border:1px solid #eadfd6}
+ #revenue .revenue-feature{min-height:72px;padding:14px;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ #revenue .revenue-feature::after,#revenue .revenue-feature-icon{animation:none}
+ #revenue .analytics-bar .analysis-tool,#revenue .revenue-feature{transition:none}
+ #revenue .analytics-bar .analysis-tool:hover{transform:none}
+}
