@@ -19,8 +19,6 @@ export async function Hero() {
   const locale = isLocale(requestedLocale) ? requestedLocale : 'fr';
   return <div className="hero-surface">
     <section className="hero container">
-      <h1 className="hero-headline">{t('title')}{' '}{t('title2')}{' '}<em>{t('title3')}</em></h1>
-      <p className="hero-intro">{t('subtitle')}</p>
       <div className="hero-copy">
         <EstimateBar locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)}/>
       </div>
