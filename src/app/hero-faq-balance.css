@@ -1,0 +1,20 @@
+/* Match the form and photography, keeping the opening entirely white. */
+.hero-surface,.hero-surface .hero.container,.hero-surface .hero-copy{background:#fff}
+.hero-surface .hero.container{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 28px}
+.hero-surface .hero .hero-copy{display:flex;align-self:stretch;padding:0;width:100%;max-width:none}
+.hero-surface .hero .estimate-bar{flex:1;width:100%;max-width:none;height:100%;min-height:580px;display:flex;flex-direction:column;background:#fff;border-radius:22px;padding:28px;box-sizing:border-box}
+.hero-surface .hero .hero-property{min-height:580px;border-radius:22px}
+.hero-surface .estimate-bar .estimate-field input,.hero-surface .estimate-bar .estimate-field select{background:#fff}
+.hero-surface .estimate-bar .estimate-actions{margin-top:auto;padding-top:24px}
+.hero-surface .estimate-bar .estimate-footer{margin-top:12px}
+.analytics-bar .analysis-tool-brand>.analytics-tool-mark{margin-inline-start:0}
+
+#faq.faq-section{max-width:880px;padding-block:54px 64px}
+#faq .faq-intro{margin-bottom:24px}
+#faq .faq-intro h2{font-size:34px;font-weight:600;letter-spacing:-.8px;line-height:1.25}
+#faq .faq-item summary{padding:19px 0;min-height:62px;gap:20px}
+#faq .faq-item h3,[dir=rtl] #faq .faq-item h3{font-family:var(--font-poppins),Arial,sans-serif;font-size:17px;font-weight:500;line-height:1.5;letter-spacing:0}
+#faq .faq-plus,#faq .faq-item[open] .faq-plus{font-size:21px}
+#faq .faq-answer,[dir=rtl] #faq .faq-answer{padding:0 0 20px;max-width:760px}
+#faq .faq-answer p{font-size:14px;line-height:1.8}
+@media(max-width:760px){.hero-surface .hero.container{grid-template-columns:1fr;gap:18px}.hero-surface .hero .hero-copy{display:block}.hero-surface .hero .estimate-bar{min-height:0;height:auto;padding:20px}.hero-surface .hero .hero-property{min-height:380px}.hero-surface .estimate-bar .estimate-actions{margin-top:18px;padding-top:0}#faq.faq-section{padding-block:40px 48px}#faq .faq-intro{margin-bottom:18px}#faq .faq-intro h2{font-size:28px}#faq .faq-item summary{padding:17px 0;min-height:58px}#faq .faq-item h3,[dir=rtl] #faq .faq-item h3{font-size:15px}#faq .faq-answer p{font-size:13px}}

@@ -16,3 +16,7 @@ Replace each `src` with a licensed local asset such as `/images/properties/villa
 
 
 The homepage slideshow uses the original local hero photograph followed by property-gallery photos 0, 2, 5 and 7. These are illustrative apartment and villa photographs, not a tour of one property. Source and license information remains in src/config/property-gallery.json.
+
+
+## Matching hero interior collection
+The first photo remains hero-airbnb.webp. The remaining slides are now local WebP interiors: hero-interior-6.webp, hero-interior-warm.webp, hero-interior-3.webp and hero-interior-4.webp. Gallery indices 6, 3 and 4 retain their existing sources in src/config/property-gallery.json. The warm interior source is https://images.unsplash.com/photo-1616486338812-3dadae4b4ace . License: https://unsplash.com/license . All slides are illustrative, not a tour of one managed property.

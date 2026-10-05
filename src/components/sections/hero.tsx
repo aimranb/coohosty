@@ -1,6 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { PropertySlideshow } from './property-slideshow';
-import gallery from '@/config/property-gallery.json';
 import { EstimateBar } from '@/components/forms/estimate-bar';
 import { isLocale } from '@/config/site';
 
@@ -9,8 +8,13 @@ export async function Hero() {
   const showcase = await getTranslations('showcase');
   const destinations = await getTranslations('destinations');
   const alts = showcase.raw('photoAlts') as string[];
-  const indices = [1, 0, 2, 5, 7];
-  const photos = indices.map(index => ({ src: index === 1 ? '/images/hero-airbnb.webp' : gallery.photos[index].src, alt: alts[index] }));
+  const photos = [
+    { src: '/images/hero-airbnb.webp', alt: alts[1] },
+    { src: '/images/hero-interior-6.webp', alt: alts[6] },
+    { src: '/images/hero-interior-warm.webp', alt: alts[1] },
+    { src: '/images/hero-interior-3.webp', alt: alts[3] },
+    { src: '/images/hero-interior-4.webp', alt: alts[4] },
+  ];
   const requestedLocale = await getLocale();
   const locale = isLocale(requestedLocale) ? requestedLocale : 'fr';
   return <div className="hero-surface">
