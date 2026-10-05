@@ -11,10 +11,13 @@ const copy = {
   ar: { eyebrow: 'حجوزاتكم بكل انسجام', title: 'كل إقامة. كل التفاصيل. تقويم واحد.', description: 'ننسق الحجوزات والوصول والتنظيف لضمان انتقال سلس بين كل إقامة وأخرى.', calendar: 'تقويم الإقامات', sync: 'حجوزات منسقة', detail: 'الحجز القادم:', nights: 'ليالٍ', arrival: 'الوصول', departure: 'المغادرة', clean: 'تنظيف بين الإقامات', cleaning: 'تنظيف منسق', after: 'بعد المغادرة', checklist: 'تنظيف · تغيير المفروشات · فحص السكن', welcome: 'استقبال الضيوف جاهز', channels: 'حجوزات Airbnb والتنظيف، منسقة في مكان واحد', demo: 'جدول توضيحي · أسماء ضيوف خيالية', previous: 'الشهر السابق', next: 'الشهر التالي', pause: 'إيقاف الحركة', play: 'استئناف الحركة', steps: ['تجميع الحجوزات', 'تجهيز الوصول', 'تنسيق التنظيف'] },
 };
 const guests = [
-  { name: 'Yasmine El Amrani', party: 2, initials: 'YE', start: 3, end: 7, channel: 'Airbnb', color: 'airbnb' },
-  { name: 'Thomas Laurent', party: 2, initials: 'TL', start: 9, end: 14, channel: 'Airbnb', color: 'airbnb' },
-  { name: 'Mehdi Bennani', party: 4, initials: 'MB', start: 16, end: 20, channel: 'Airbnb', color: 'airbnb' },
-  { name: 'Salma Idrissi', party: 3, initials: 'SI', start: 23, end: 28, channel: 'Airbnb', color: 'airbnb' },
+  { name: 'Yasmine El Amrani', party: 2, initials: 'YE', start: 1, end: 5, channel: 'Airbnb' },
+  { name: 'Thomas Laurent', party: 2, initials: 'TL', start: 5, end: 9, channel: 'Airbnb' },
+  { name: 'Mehdi Bennani', party: 4, initials: 'MB', start: 10, end: 14, channel: 'Airbnb' },
+  { name: 'Salma Idrissi', party: 3, initials: 'SI', start: 14, end: 18, channel: 'Airbnb' },
+  { name: 'Sofia Martin', party: 2, initials: 'SM', start: 18, end: 22, channel: 'Airbnb' },
+  { name: 'Amine Alaoui', party: 4, initials: 'AA', start: 23, end: 27, channel: 'Airbnb' },
+  { name: 'Emma Wilson', party: 2, initials: 'EW', start: 27, end: 32, channel: 'Airbnb' },
 ];
 
 export function ReservationCalendar({ locale }: { locale: Locale }) {
@@ -58,7 +61,8 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
   const days = new Date(Date.UTC(year, monthIndex + 1, 0)).getUTCDate();
   const weeks = Math.ceil((offset + days) / 7);
   const format = (day: number, options: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(locale, { ...options, timeZone: 'UTC' }).format(new Date(Date.UTC(year, monthIndex, day)));
-  const guest = guests[selected];
+  const stays = guests.map(item => ({ ...item, end: Math.min(item.end, days + 1) }));
+  const guest = stays[selected];
   const visibleWeeks = view === 'month' ? Array.from({ length: weeks }, (_, index) => index) : [Math.floor((guest.start + offset - 1) / 7)];
   const playing = visible && !paused && !reduced;
   return <section ref={section} id="reservations" className="reservation-section section" aria-labelledby="reservation-title">
@@ -83,15 +87,15 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
             {visibleWeeks.flatMap((week, row) => Array.from({ length: 7 }, (_, column) => {
               const day = week * 7 + column - offset + 1;
               if (day < 1 || day > days) return <div key={`${week}-${column}`} className="reservation-day-empty" aria-hidden="true" style={{ gridColumn: column + 1, gridRow: row + 1 }}/>;
-              const booked = guests.some(item => day >= item.start && day < item.end);
-              return <div className="reservation-day" key={`${week}-${column}`} data-day={day} style={{ gridColumn: column + 1, gridRow: row + 1 }}><span>{day}</span>{!booked && <small className="reservation-day-rate" title={ui.rates}>MAD{520 + ((day + monthIndex) % 7) * 31}</small>}{guest.end === day && <span className="reservation-clean-badge current" title={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`} role="img" aria-label={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`}><SprayCan size={15}/><Sparkles size={8}/></span>}</div>;
+              const booked = stays.some(item => day >= item.start && day < item.end);
+              return <div className="reservation-day" key={`${week}-${column}`} data-day={day} data-booked={booked} style={{ gridColumn: column + 1, gridRow: row + 1 }}><span>{day}</span>{!booked && <small className="reservation-day-rate" title={ui.rates}>MAD{520 + ((day + monthIndex) % 7) * 31}</small>}{stays.some(item => item.end === day) && <span className={`reservation-clean-badge ${guest.end === day ? 'current' : ''}`} title={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`} role="img" aria-label={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`}><SprayCan size={15}/><Sparkles size={8}/></span>}</div>;
             }))}
-            {visibleWeeks.map((week, row) => {
-              const first = Math.max(guest.start + offset - 1, week * 7), last = Math.min(guest.end + offset - 2, week * 7 + 6);
+            {stays.flatMap((stay, stayIndex) => visibleWeeks.map((week, row) => {
+              const first = Math.max(stay.start + offset - 1, week * 7), last = Math.min(stay.end + offset - 2, week * 7 + 6);
               if (last < first) return null;
-              const continuation = first > guest.start + offset - 1;
-              return <button type="button" key={`${guest.name}-${week}-${monthOffset}`} className={`reservation-booking selected ${continuation ? 'reservation-continuation' : ''}`} style={{ gridColumn: `${first % 7 + 1} / ${last % 7 + 2}`, gridRow: row + 1, animationDelay: continuation ? '.1s' : '0s' }} aria-label={`${guest.name}, ${guest.channel}, ${format(guest.start, { month: 'short', day: 'numeric' })} – ${format(guest.end, { month: 'short', day: 'numeric' })}`} aria-pressed="true" onClick={() => setPaused(true)}>{!continuation && <><span className="reservation-avatar">{guest.initials}</span><span className="reservation-booking-name">{guest.name.split(' ')[0]} + {guest.party - 1}</span></>}</button>;
-            })}
+              const continuation = first > stay.start + offset - 1;
+              return <button type="button" key={`${stay.name}-${week}-${monthOffset}`} className={`reservation-booking ${selected === stayIndex ? 'selected' : ''} ${continuation ? 'reservation-continuation' : ''}`} style={{ gridColumn: `${first % 7 + 1} / ${last % 7 + 2}`, gridRow: row + 1, animationDelay: `${stayIndex * 0.16 + (continuation ? 0.08 : 0)}s` }} aria-label={`${stay.name}, ${stay.channel}, ${format(stay.start, { month: 'short', day: 'numeric' })} – ${format(stay.end, { month: 'short', day: 'numeric' })}`} aria-pressed={selected === stayIndex} onClick={() => { setSelected(stayIndex); setPaused(true); }}>{!continuation && <><span className="reservation-avatar">{stay.initials}</span><span className="reservation-booking-name">{stay.name.split(' ')[0]} + {stay.party - 1}</span></>}</button>;
+            }))}
           </div>
           <div className="reservation-reference-footer"><div className="reservation-legend"><span className="reservation-status-dot"/>{t.sync}<span><SprayCan size={14}/>{t.clean}</span></div><span className="reservation-currency-badge" title={ui.rates}>MAD</span></div>
         </div>
