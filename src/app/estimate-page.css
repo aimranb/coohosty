@@ -17,3 +17,15 @@
 @keyframes estimate-page-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:760px){.hero-surface .estimate-bar .estimate-actions{margin-top:18px}.estimate-completion-page{padding-block:24px 44px}.estimate-completion-card .estimate-bar{padding:22px}.estimate-completion-card .estimate-bar h2{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.estimate-completion-card{animation:none}}
+
+/* Spread the property form across the full height of its hero panel. */
+@media(min-width:761px){
+ .hero-surface .hero .estimate-bar{padding:24px;min-height:580px}
+ .hero-surface .hero .estimate-bar .estimate-fields{flex:1;align-content:center;column-gap:18px;row-gap:28px;padding-block:20px}
+ .hero-surface .hero .estimate-bar .estimate-field{font-size:13px;gap:10px}
+ .hero-surface .hero .estimate-bar .estimate-field input,.hero-surface .hero .estimate-bar .estimate-field select{height:50px;font-size:14px;padding-inline:14px}
+ .hero-surface .hero .estimate-bar .estimate-location-note{font-size:11px;line-height:1.6}
+ .hero-surface .hero .estimate-bar .estimate-actions{margin-top:auto;padding-top:12px}
+ .hero-surface .hero .estimate-bar .estimate-next{min-height:48px;font-size:14px}
+ .hero-surface .hero .estimate-bar .estimate-footer{margin-top:12px;font-size:10px}
+}
