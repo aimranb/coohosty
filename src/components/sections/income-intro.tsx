@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { ArrowDown, ArrowUpRight, CalendarDays, ChartNoAxesColumnIncreasing, Menu, MessageCircle, Star } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, ChartNoAxesColumnIncreasing, Menu, MessageCircle, Star } from 'lucide-react';
 
 export async function IncomeIntro() {
   const t = await getTranslations('incomeIntro');
@@ -8,8 +8,6 @@ export async function IncomeIntro() {
       <div className="income-intro-copy">
         <span className="eyebrow">{t('eyebrow')}</span>
         <h2 id="income-intro-title">{t('title')} <em>{t('accent')}</em></h2>
-        <p className="income-intro-lead">{t('lead')}</p><p>{t('description')}</p>
-        <div className="income-intro-links"><a href="#estimate">{t('estimate')}<ArrowDown size={15}/></a><a href="#contact">{t('consultation')}<ArrowUpRight size={15}/></a></div>
         <a className="income-intro-cta" href="#estimate">{t('cta')}<ArrowUpRight size={17}/></a>
       </div>
       <div className="income-devices" aria-label={t('previewLabel')}>
