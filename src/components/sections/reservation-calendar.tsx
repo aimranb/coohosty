@@ -68,7 +68,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
   const playing = visible && !paused && !reduced;
   return <section ref={section} id="reservations" className="reservation-section section" aria-labelledby="reservation-title">
     <div className="container">
-      <div className="reservation-heading"><span className="eyebrow">{t.eyebrow}</span><h2 id="reservation-title">{t.title}</h2><p>{t.description}</p></div>
+      <div className="reservation-heading"><h2 id="reservation-title">{t.title}</h2><p>{t.description}</p></div>
       <Reveal className="reservation-reveal"><div className="reservation-stage" data-playing={playing} data-visible={visible}>
         <div className="reservation-calendar" dir="ltr">
           <div className="reservation-reference-toolbar">
