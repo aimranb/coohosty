@@ -305,13 +305,22 @@
       "support": "Guest support",
       "listingOptimization": "Listing optimization",
       "performance": "Performance monitoring",
-      "review": "Monthly strategy review"
+      "review": "Monthly strategy review",
+      "airbnbListings": "Airbnb listing management",
+      "professionalPhotography": "Professional photography · on quote",
+      "listingCreation": "Listing creation & optimisation",
+      "guestVetting": "Guest screening & booking checks",
+      "linenToiletries": "Linen & toiletries · on quote",
+      "housekeeping": "Cleaning & housekeeping coordination",
+      "maintenance": "Maintenance coordination · on quote",
+      "insuranceSupport": "Property insurance guidance · on quote",
+      "managementSoftware": "Property management software"
     },
     "intro": "Understand your property. Manage revenue. Delegate hosting.",
     "idealFor": "Designed for",
     "deliverable": "What you receive",
     "viewScope": "Explore the full scope",
-    "scopeNote": "Service scope, tools and any on-site interventions are specified in your personalized quote.",
+    "scopeNote": "Photography, linen, toiletries, maintenance and insurance support are agreed in your personalized quote. Insurance premiums and on-site costs are separate; guest support hours are specified in the agreement.",
     "help": "Not sure which fits? Let’s discuss your property.",
     "comparison": "Every service. Choose your level of support.",
     "included": "Included",
@@ -319,7 +328,10 @@
     "groups": {
       "audit": "Property assessment",
       "optimization": "Revenue management",
-      "management": "Stay management"
+      "management": "Stay management",
+      "listingManagement": "Listing management",
+      "guestManagement": "Guest management",
+      "propertyManagement": "Property management"
     },
     "details": "View all included services",
     "whatsapp": "Talk on WhatsApp"
@@ -662,5 +674,30 @@
     "source": "View testimonial",
     "pending": "Owner testimonials will be shared here with their permission.",
     "cta": "Talk to our team"
+  },
+  "ownerSupport": {
+    "eyebrow": "A CLEAR PROCESS. A DEDICATED TEAM.",
+    "title": "Your property, cared for.",
+    "accent": "You stay in control.",
+    "description": "From preparing each arrival to coordinating cleaning and reviewing performance, one team connects the details. See how we work, then discuss the support your property needs.",
+    "cta": "Start with my property",
+    "arrival": {
+      "moment": "Before each arrival",
+      "title": "A stay prepared in advance",
+      "description": "Reservations, arrival instructions and guest communication coordinated together."
+    },
+    "cleaning": {
+      "moment": "Between reservations",
+      "title": "A coordinated changeover",
+      "description": "Cleaning, linen and property checks planned around departures and the next arrival."
+    },
+    "updates": {
+      "moment": "Throughout our partnership",
+      "title": "Decisions you can follow",
+      "description": "Performance monitoring and regular reporting to review pricing and the next steps."
+    },
+    "contactTitle": "One team. A direct conversation.",
+    "contactDescription": "Ask us about your property and the scope of your package.",
+    "email": "Email us"
   }
 }

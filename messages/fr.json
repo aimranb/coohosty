@@ -305,13 +305,22 @@
       "support": "Assistance voyageurs",
       "listingOptimization": "Optimisation de l’annonce",
       "performance": "Suivi de la performance",
-      "review": "Revue stratégique mensuelle"
+      "review": "Revue stratégique mensuelle",
+      "airbnbListings": "Gestion de votre annonce Airbnb",
+      "professionalPhotography": "Photographie professionnelle · sur devis",
+      "listingCreation": "Création et optimisation de l’annonce",
+      "guestVetting": "Vérification des voyageurs et réservations",
+      "linenToiletries": "Linge et produits d’accueil · sur devis",
+      "housekeeping": "Coordination du ménage et de l’entretien",
+      "maintenance": "Coordination de la maintenance · sur devis",
+      "insuranceSupport": "Accompagnement assurance du bien · sur devis",
+      "managementSoftware": "Logiciel de gestion locative"
     },
     "intro": "Comprendre votre bien. Piloter ses revenus. Déléguer sa gestion.",
     "idealFor": "Pensé pour",
     "deliverable": "Votre livrable",
     "viewScope": "Voir le détail des services",
-    "scopeNote": "Le périmètre, les outils et les éventuelles interventions sur place sont précisés dans votre devis personnalisé.",
+    "scopeNote": "Photographie, linge, produits d’accueil, maintenance et accompagnement assurance sont définis dans votre devis personnalisé. Les primes d’assurance et les interventions sur place sont facturées séparément ; les horaires d’assistance sont précisés au contrat.",
     "help": "Vous hésitez ? Parlons de votre bien.",
     "comparison": "Tous les services, le niveau qui vous convient.",
     "included": "Inclus",
@@ -319,7 +328,10 @@
     "groups": {
       "audit": "Diagnostic du bien",
       "optimization": "Pilotage des revenus",
-      "management": "Gestion des séjours"
+      "management": "Gestion des séjours",
+      "listingManagement": "Gestion des annonces",
+      "guestManagement": "Gestion des voyageurs",
+      "propertyManagement": "Gestion du logement"
     },
     "details": "Voir tous les services inclus",
     "whatsapp": "Parlons-en sur WhatsApp"
@@ -662,5 +674,30 @@
     "source": "Voir le témoignage",
     "pending": "Les témoignages des propriétaires seront partagés ici avec leur accord.",
     "cta": "Échanger avec notre équipe"
+  },
+  "ownerSupport": {
+    "eyebrow": "UNE MÉTHODE CLAIRE. UNE ÉQUIPE DÉDIÉE.",
+    "title": "Votre bien, entre de bonnes mains.",
+    "accent": "Vous gardez le contrôle.",
+    "description": "Préparation des arrivées, coordination du ménage et suivi des performances : une équipe relie chaque détail. Découvrez notre méthode, puis échangeons sur les besoins de votre logement.",
+    "cta": "Parlons de mon logement",
+    "arrival": {
+      "moment": "Avant chaque arrivée",
+      "title": "Un séjour préparé à l’avance",
+      "description": "Réservations, instructions d’arrivée et communication voyageurs coordonnées au même endroit."
+    },
+    "cleaning": {
+      "moment": "Entre les réservations",
+      "title": "Un ménage bien coordonné",
+      "description": "Ménage, linge et vérification du logement organisés selon les départs et la prochaine arrivée."
+    },
+    "updates": {
+      "moment": "Tout au long de notre accompagnement",
+      "title": "Des décisions que vous pouvez suivre",
+      "description": "Suivi des performances et rapports réguliers pour ajuster les prix et préparer la suite."
+    },
+    "contactTitle": "Une équipe. Un échange direct.",
+    "contactDescription": "Discutons de votre logement et du contenu de votre formule.",
+    "email": "Nous écrire"
   }
 }
