@@ -83,9 +83,9 @@
 .reservation-calendar .reservation-clean-badge>svg:last-child{width:6px;height:6px}
 .reservation-stage[data-visible=true] .reservation-booking{animation:reservation-filled-reveal .65s cubic-bezier(.22,1,.36,1) both;animation-delay:inherit}
 .reservation-stage[data-visible=true] .reservation-clean-badge{animation:none;opacity:1}
-.reservation-calendar .reservation-booking{background:#ff7415;transition:background .4s,box-shadow .4s}
-.reservation-calendar .reservation-avatar{border-color:#ff7415;background:white;color:#ff7415}
-.reservation-calendar .reservation-booking.selected{background:#ff7415;box-shadow:0 0 0 1px #ffffff,0 3px 10px #00000015}
+.reservation-calendar .reservation-booking{background:var(--stay-color,var(--navigation-accent,#ff7415));transition:background .4s,box-shadow .4s}
+.reservation-calendar .reservation-avatar{border-color:var(--stay-color,var(--navigation-accent,#ff7415));background:white;color:var(--stay-color,var(--purple,#bc5200))}
+.reservation-calendar .reservation-booking.selected{background:var(--stay-color,var(--navigation-accent,#ff7415));box-shadow:0 0 0 1px #ffffff,0 3px 10px #00000015}
 .reservation-booking:before{animation:none;opacity:0}
 .reservation-stage[data-playing=true] .reservation-booking.selected:before{animation:reservation-filled-sheen 3s ease-in-out infinite;opacity:1}
 .reservation-stage[data-playing=true] .reservation-clean-badge.current{animation:reservation-clean-pulse 1.5s ease-in-out infinite}
@@ -94,3 +94,6 @@
 @keyframes reservation-clean-pulse{0%,100%{box-shadow:0 0 0 0 #bc520000}50%{box-shadow:0 0 0 4px #bc520019}}
 @media(max-width:650px){.reservation-calendar .reservation-grid{--reservation-row-height:56px;gap:3px}.reservation-calendar .reservation-day{padding:6px;font-size:8px;border-radius:9px}.reservation-calendar .reservation-booking{height:21px;margin-bottom:5px}.reservation-calendar .reservation-avatar{width:16px;height:16px;font-size:6px}.reservation-calendar .reservation-booking-name{font-size:7px}.reservation-calendar .reservation-clean-badge{top:3px;right:2px;padding:1px}.reservation-calendar .reservation-clean-badge>svg:first-child{height:10px;width:10px}.reservation-calendar .reservation-day-rate{font-size:6px;left:3px;bottom:6px}.reservation-reference-month>select{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.reservation-calendar .reservation-booking{transition:none}.reservation-stage[data-playing=true] .reservation-booking.selected:before,.reservation-stage[data-playing=true] .reservation-clean-badge.current{animation:none!important}}
+
+/* Alternate the two oranges already used by the website and packages. */
+.reservation-calendar .reservation-booking[data-tone="1"]{--stay-color:var(--purple,#bc5200)}
