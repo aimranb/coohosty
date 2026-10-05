@@ -13,3 +13,6 @@ Replace each `src` with a licensed local asset such as `/images/properties/villa
 ## Homepage hero
 
 `hero-airbnb.webp` is a locally optimized illustrative interior photo, selected for the warm cognac sofa and natural daylight. Source: https://images.unsplash.com/photo-1600210492486-724fe5c67fb0 (also used in the existing property gallery). License: https://unsplash.com/license . It is not represented as a COOHOSTY-managed property. The homepage uses one preloaded photo instead of the city carousel.
+
+
+The homepage slideshow uses the original local hero photograph followed by property-gallery photos 0, 2, 5 and 7. These are illustrative apartment and villa photographs, not a tour of one property. Source and license information remains in src/config/property-gallery.json.

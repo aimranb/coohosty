@@ -27,6 +27,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
     en: { month: 'Month', week: 'Week', view: 'Calendar view', reset: 'Return to example schedule month', rates: 'Illustrative nightly rates in MAD' },
     ar: { month: 'شهر', week: 'أسبوع', view: 'عرض التقويم', reset: 'العودة إلى شهر المثال', rates: 'أسعار ليلية توضيحية بالدرهم' },
   }[locale];
+  const [showRates, setShowRates] = useState(false);
   const [monthOffset, setMonthOffset] = useState(0);
   const [view, setView] = useState<'month' | 'week'>('month');
   const [selected, setSelected] = useState(0);
@@ -52,7 +53,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
   }, []);
   useEffect(() => {
     if (paused || !visible || reduced) return;
-    const timer = window.setInterval(() => setSelected(value => (value + 1) % guests.length), 3000);
+    const timer = window.setInterval(() => setSelected(value => (value + 1) % guests.length), 6000);
     return () => window.clearInterval(timer);
   }, [paused, visible, reduced]);
   const month = new Date(Date.UTC(2026, 9 + monthOffset, 1));
@@ -88,7 +89,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
               const day = week * 7 + column - offset + 1;
               if (day < 1 || day > days) return <div key={`${week}-${column}`} className="reservation-day-empty" aria-hidden="true" style={{ gridColumn: column + 1, gridRow: row + 1 }}/>;
               const booked = stays.some(item => day >= item.start && day < item.end);
-              return <div className="reservation-day" key={`${week}-${column}`} data-day={day} data-booked={booked} style={{ gridColumn: column + 1, gridRow: row + 1 }}><span>{day}</span>{!booked && <small className="reservation-day-rate" title={ui.rates}>MAD{520 + ((day + monthIndex) % 7) * 31}</small>}{stays.some(item => item.end === day) && <span className={`reservation-clean-badge ${guest.end === day ? 'current' : ''}`} title={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`} role="img" aria-label={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`}><SprayCan size={15}/><Sparkles size={8}/></span>}</div>;
+              return <div className="reservation-day" key={`${week}-${column}`} data-day={day} data-booked={booked} style={{ gridColumn: column + 1, gridRow: row + 1 }}><span>{day}</span>{showRates && !booked && <small className="reservation-day-rate" title={ui.rates}>MAD{520 + ((day + monthIndex) % 7) * 31}</small>}{stays.some(item => item.end === day) && <span className={`reservation-clean-badge ${guest.end === day ? 'current' : ''}`} title={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`} role="img" aria-label={`${t.clean} · ${format(day, { day: 'numeric', month: 'short' })}`}><SprayCan size={15}/><Sparkles size={8}/></span>}</div>;
             }))}
             {stays.flatMap((stay, stayIndex) => visibleWeeks.map((week, row) => {
               const first = Math.max(stay.start + offset - 1, week * 7), last = Math.min(stay.end + offset - 2, week * 7 + 6);
@@ -97,7 +98,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
               return <button type="button" key={`${stay.name}-${week}-${monthOffset}`} data-tone={stayIndex % 2} className={`reservation-booking ${selected === stayIndex ? 'selected' : ''} ${continuation ? 'reservation-continuation' : ''}`} style={{ gridColumn: `${first % 7 + 1} / ${last % 7 + 2}`, gridRow: row + 1, animationDelay: `${stayIndex * 0.16 + (continuation ? 0.08 : 0)}s` }} aria-label={`${stay.name}, ${stay.channel}, ${format(stay.start, { month: 'short', day: 'numeric' })} – ${format(stay.end, { month: 'short', day: 'numeric' })}`} aria-pressed={selected === stayIndex} onClick={() => { setSelected(stayIndex); setPaused(true); }}>{!continuation && <><span className="reservation-avatar">{stay.initials}</span><span className="reservation-booking-name">{stay.name.split(' ')[0]} + {stay.party - 1}</span></>}</button>;
             }))}
           </div>
-          <div className="reservation-reference-footer"><div className="reservation-legend"><span className="reservation-status-dot"/>{t.sync}<span><SprayCan size={14}/>{t.clean}</span></div><span className="reservation-currency-badge" title={ui.rates}>MAD</span></div>
+          <div className="reservation-reference-footer"><div className="reservation-legend"><span className="reservation-status-dot"/>{t.sync}<span><SprayCan size={14}/>{t.clean}</span></div><button type="button" className="reservation-rates-toggle" aria-label={ui.rates} aria-pressed={showRates} onClick={() => setShowRates(value => !value)}>MAD</button></div>
         </div>
         <div className="reservation-aside">
           <div className="reservation-detail" key={`${selected}-${monthOffset}`}><span className="reservation-detail-avatar">{guest.initials}</span><span className="reservation-channel"><span className="platform-mark" aria-hidden="true">A</span>{guest.channel}</span><p className="reservation-detail-label">{t.detail}</p><h3>{guest.name}</h3><p className="reservation-nights">{guest.end - guest.start} {t.nights}</p><dl><div><dt>{t.arrival}</dt><dd>{format(guest.start, { weekday: 'short', day: 'numeric', month: 'short' })}</dd></div><div><dt>{t.departure}</dt><dd>{format(guest.end, { weekday: 'short', day: 'numeric', month: 'short' })}</dd></div></dl><div className="reservation-ready"><Check size={15}/>{t.welcome}</div><div className="reservation-progress" aria-hidden="true"><span/></div></div>

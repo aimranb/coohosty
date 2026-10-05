@@ -1,0 +1,61 @@
+/* A generous opening, followed by quieter information sections. */
+.hero-surface .hero.container{max-width:1280px;width:calc(100% - 72px);grid-template-columns:minmax(0,1fr) minmax(0,1.22fr);gap:22px 40px;padding-block:46px 54px}
+.hero-surface .hero .hero-headline{white-space:normal;font-size:clamp(34px,3.5vw,52px);line-height:1.15;text-wrap:balance;max-width:1100px;justify-self:center}
+.hero-surface .hero .hero-intro{grid-column:1/-1;max-width:750px;text-align:center;justify-self:center;margin:0 0 14px;font-size:16px;line-height:1.7}
+.hero-surface .hero .hero-property{min-height:600px;width:100%;border-radius:26px;align-self:stretch;margin:0}
+.hero-surface .hero .estimate-bar{margin-top:0;padding:26px;border-radius:22px}
+.hero-surface .hero .hero-copy{align-self:center;min-width:0}
+
+.reservation-section.section>.container{max-width:1120px}
+.reservation-section .reservation-heading{max-width:720px;margin-bottom:32px}
+.reservation-section .reservation-heading>p{font-size:15px;line-height:1.8}
+.reservation-section .reservation-stage{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(260px,1fr);gap:36px;background:transparent;align-items:start}
+.reservation-section .reservation-calendar{padding:22px;border:1px solid #e9e5df;border-radius:18px;background:white}
+.reservation-section .reservation-reference-title{margin:0;height:0;overflow:hidden}
+.reservation-section .reservation-reference-toolbar{margin-bottom:22px}
+.reservation-section .reservation-calendar .reservation-grid{gap:0;--reservation-row-height:76px;border-top:1px solid #efebe6;border-inline-start:1px solid #efebe6}
+.reservation-section .reservation-calendar .reservation-day,.reservation-section .reservation-day-empty{border:0;border-inline-end:1px solid #efebe6;border-bottom:1px solid #efebe6;border-radius:0;background:white;padding:9px;font-size:11px}
+.reservation-section .reservation-calendar .reservation-booking{height:26px;margin:0 0 8px;border-radius:6px;box-shadow:none;animation:none!important;clip-path:none;opacity:1;transform:none}
+.reservation-section .reservation-calendar .reservation-booking:not(.selected){background:#f4e4d6;color:#805737}
+.reservation-section .reservation-calendar .reservation-avatar{width:20px;height:20px;border:0;font-size:7px}
+.reservation-section .reservation-booking:before{display:none}
+.reservation-section .reservation-calendar .reservation-clean-badge{border:0;background:transparent;padding:0;animation:none!important;box-shadow:none}
+.reservation-section .reservation-stage .reservation-aside{display:flex;flex-direction:column;gap:0;margin-top:0}
+.reservation-section .reservation-stage .reservation-detail{width:100%;padding:24px;background:white;border:1px solid #e9e5df;border-radius:18px;box-shadow:none;animation:none}
+.reservation-section .reservation-detail h3{font-size:22px;margin-top:8px}
+.reservation-section .reservation-detail dl{gap:22px;font-size:12px;margin-block:18px}
+.reservation-section .reservation-detail .reservation-detail-label{font-size:10px}
+.reservation-section .reservation-detail .reservation-ready{font-size:11px}
+.reservation-section .reservation-stage .reservation-housekeeping{padding:22px 0;border:0;border-bottom:1px solid #e9e5df;background:transparent;border-radius:0;animation:none;box-shadow:none;width:100%}
+.reservation-section .reservation-stage .reservation-channel-note{padding-block:20px;font-size:12px}
+.reservation-section .reservation-housekeeping strong{font-size:14px}.reservation-section .reservation-housekeeping p,.reservation-section .reservation-housekeeping div>span{font-size:11px;line-height:1.7}
+.reservation-section .reservation-dots{gap:0}.reservation-section .reservation-dots button{width:32px;height:32px}
+.reservation-section .reservation-process{justify-content:flex-start;gap:24px;margin-top:28px;padding-top:20px;border-top:1px solid #e9e5df}
+.reservation-section .reservation-process>span{font-size:12px}.reservation-section .reservation-demo{text-align:start}
+.reservation-rates-toggle{border:1px solid #e9e5df;border-radius:7px;background:white;padding:8px 10px;font-size:10px;color:#666;cursor:pointer;min-height:36px}
+.reservation-rates-toggle[aria-pressed=true]{background:#fff0e2;color:#a34c0b}
+
+#revenue .revenue-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:start}
+#revenue .revenue-layout h2{font-size:clamp(30px,3vw,44px);line-height:1.2;letter-spacing:-1px}
+#revenue .section-description{font-size:15px;line-height:1.8;max-width:450px;margin-block:22px}
+#revenue .revenue-grid{grid-template-columns:1fr;gap:0}
+#revenue .revenue-feature{display:flex;align-items:center;gap:16px;padding:19px 0;border:0;border-bottom:1px solid #e9e5df;border-radius:0;background:transparent;box-shadow:none;min-height:0}
+#revenue .revenue-feature svg{width:21px;height:21px;flex-shrink:0;color:#bc5200}
+#revenue .revenue-feature h3{font-size:15px;font-weight:500;margin:0;line-height:1.5}
+.analysis-tools-disclosure{border-top:1px solid #e9e5df;padding-top:18px;margin-top:26px}
+.analysis-tools-disclosure>summary{font-size:13px;cursor:pointer;padding-block:10px;color:#795336;min-height:44px}
+.analysis-tools-disclosure .analysis-tools{margin-top:14px}.analysis-tools-disclosure .analysis-tools-grid{grid-template-columns:1fr;gap:0}
+.analysis-tools-disclosure .analysis-tool{border:0;border-bottom:1px solid #eee;border-radius:0;padding:14px 0;box-shadow:none}
+
+.owner-support .owner-support-layout{gap:80px;align-items:start}
+.owner-support .owner-support-copy>p{font-size:15px;line-height:1.85}
+.owner-support .owner-support-timeline{gap:0}
+.owner-support .owner-support-step{background:transparent;border:0;border-bottom:1px solid #e5dfd6;border-radius:0;box-shadow:none;padding:24px 24px 24px 0;gap:18px}
+.owner-support .owner-support-icon{background:transparent;width:32px;height:36px;border-radius:0}
+.owner-support .owner-support-step h3{font-size:18px}.owner-support .owner-support-step p{font-size:13px;line-height:1.8}
+.owner-support .owner-support-contact{background:transparent;color:#222;border-top:1px solid #e5dfd6;border-radius:0;padding:26px 0;margin-top:40px}
+.owner-support .owner-support-contact strong{color:#222;font-size:15px}.owner-support .owner-support-contact p>span{color:#777;font-size:12px;line-height:1.7}
+.owner-support .owner-support-links>a{color:#333;background:white;border-color:#e5dfd6;font-size:12px;min-height:44px}
+@media(max-width:1000px){.hero-surface .hero.container{width:calc(100% - 40px);gap:22px}.hero-surface .hero .hero-property{min-height:560px}.reservation-section .reservation-stage{gap:22px;grid-template-columns:minmax(0,1.6fr) minmax(240px,1fr)}#revenue .revenue-layout,.owner-support .owner-support-layout{gap:36px}}
+@media(max-width:760px){.hero-surface .hero.container{width:calc(100% - 32px);grid-template-columns:1fr;padding-block:28px 36px;gap:18px}.hero-surface .hero .hero-headline{font-size:clamp(30px,7.8vw,40px);order:1}.hero-surface .hero .hero-intro{font-size:14px;margin:0;order:2}.hero-surface .hero .hero-property{order:3;min-height:380px;border-radius:20px}.hero-surface .hero .hero-copy{order:4}.hero-surface .hero .estimate-bar{padding:20px}.reservation-section .reservation-stage{grid-template-columns:1fr;gap:24px}.reservation-section .reservation-calendar{padding:14px}.reservation-section .reservation-calendar .reservation-grid{--reservation-row-height:64px}.reservation-section .reservation-calendar .reservation-day{padding:6px;font-size:10px}.reservation-section .reservation-calendar .reservation-booking{height:22px;margin-bottom:7px}.reservation-section .reservation-calendar .reservation-booking-name{font-size:7px}.reservation-section .reservation-calendar .reservation-avatar{width:16px;height:16px;font-size:6px}.reservation-section .reservation-reference-footer{align-items:start}.reservation-section .reservation-legend{flex-wrap:wrap;line-height:1.8}.reservation-section .reservation-process{gap:12px}.reservation-section .reservation-stage .reservation-detail{padding:20px}.reservation-section .reservation-detail dl{font-size:13px}#revenue .revenue-layout,.owner-support .owner-support-layout{grid-template-columns:1fr;gap:28px}#revenue .revenue-feature{padding:16px 0}.owner-support .owner-support-contact{gap:20px}.owner-support .owner-support-step{padding-block:20px}}
+@media(prefers-reduced-motion:reduce){.reservation-section .reservation-booking{animation:none!important}}
