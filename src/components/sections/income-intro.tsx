@@ -1,5 +1,13 @@
 import { getTranslations } from 'next-intl/server';
-import { ArrowUpRight, CalendarDays, ChartNoAxesColumnIncreasing, Menu, MessageCircle, Star } from 'lucide-react';
+import { ArrowUpRight, BatteryFull, Signal, Wifi, CalendarDays, ChartNoAxesColumnIncreasing, Menu, MessageCircle, Star } from 'lucide-react';
+
+function PhoneHardware() {
+  return <div className="income-phone-hardware" aria-hidden="true">
+    <div className="income-dynamic-island"><span/></div>
+    <div className="income-phone-status"><span>9:41</span><div><Signal/><Wifi/><BatteryFull/></div></div>
+    <span className="income-phone-buttons"/><span className="income-phone-home"/>
+  </div>;
+}
 
 export async function IncomeIntro() {
   const t = await getTranslations('incomeIntro');
@@ -12,7 +20,7 @@ export async function IncomeIntro() {
       </div>
       <div className="income-devices" aria-label={t('previewLabel')}>
         <article className="income-phone income-phone-bookings">
-          <div className="income-phone-notch"/><div className="income-phone-screen">
+          <PhoneHardware/><div className="income-phone-screen">
             <div className="income-phone-header"><div><Menu size={14}/><span>COOHOSTY</span><MessageCircle size={14}/></div><h3>{t('bookings')}</h3></div>
             <div className="income-phone-content">
               <div className="income-mini-card"><h4>{t('experience')}</h4>{['welcome','cleanliness','communication'].map(key => <div className="income-rating-row" key={key}><span>{t(key)}</span><span className="income-stars" aria-label={t('illustration')}>{[0,1,2,3,4].map(i => <Star size={9} key={i}/>)}</span></div>)}</div>
@@ -22,7 +30,7 @@ export async function IncomeIntro() {
           </div>
         </article>
         <article className="income-phone income-phone-performance">
-          <div className="income-phone-notch"/><div className="income-phone-screen">
+          <PhoneHardware/><div className="income-phone-screen">
             <div className="income-phone-header"><div><Menu size={14}/><span>COOHOSTY</span><ChartNoAxesColumnIncreasing size={14}/></div><h3>{t('performance')}</h3></div>
             <div className="income-phone-content">
               <div className="income-mini-card"><h4>{t('revenue')}</h4><div className="income-chart" aria-hidden="true">{[32,44,40,57,70,62,87,76,63,72,59,80].map((height,i) => <span key={i} style={{ height: `${height}%`, animationDelay: `${i * 55}ms` }}/>)}</div><div className="income-chart-axis" aria-hidden="true"><span>01</span><span>06</span><span>12</span></div></div>
@@ -31,7 +39,7 @@ export async function IncomeIntro() {
           </div>
         </article>
         <article className="income-phone income-phone-calendar">
-          <div className="income-phone-notch"/><div className="income-phone-screen">
+          <PhoneHardware/><div className="income-phone-screen">
             <div className="income-phone-header"><div><Menu size={14}/><span>COOHOSTY</span><CalendarDays size={14}/></div><h3>{t('calendar')}</h3></div>
             <div className="income-phone-content">
               <div className="income-mini-card"><h4>{t('stayPlanning')}</h4><div className="income-mini-calendar" aria-hidden="true">{Array.from({length:28},(_,i) => <span key={i}>{i+1}</span>)}<i className="income-calendar-stay stay-one"/><i className="income-calendar-stay stay-two"/><i className="income-calendar-stay stay-three"/></div></div>

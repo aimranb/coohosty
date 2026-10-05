@@ -83,9 +83,9 @@
 .reservation-calendar .reservation-clean-badge>svg:last-child{width:6px;height:6px}
 .reservation-stage[data-visible=true] .reservation-booking{animation:reservation-filled-reveal .65s cubic-bezier(.22,1,.36,1) both;animation-delay:inherit}
 .reservation-stage[data-visible=true] .reservation-clean-badge{animation:none;opacity:1}
-.reservation-calendar .reservation-booking{background:#e31c5f;transition:background .4s,box-shadow .4s}
-.reservation-calendar .reservation-avatar{border-color:#e31c5f;background:white;color:#e31c5f}
-.reservation-calendar .reservation-booking.selected{background:#e31c5f;box-shadow:0 0 0 1px #ffffff,0 3px 10px #00000015}
+.reservation-calendar .reservation-booking{background:#ff7415;transition:background .4s,box-shadow .4s}
+.reservation-calendar .reservation-avatar{border-color:#ff7415;background:white;color:#ff7415}
+.reservation-calendar .reservation-booking.selected{background:#ff7415;box-shadow:0 0 0 1px #ffffff,0 3px 10px #00000015}
 .reservation-booking:before{animation:none;opacity:0}
 .reservation-stage[data-playing=true] .reservation-booking.selected:before{animation:reservation-filled-sheen 3s ease-in-out infinite;opacity:1}
 .reservation-stage[data-playing=true] .reservation-clean-badge.current{animation:reservation-clean-pulse 1.5s ease-in-out infinite}
