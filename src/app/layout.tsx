@@ -29,6 +29,7 @@ import './brand-palette.css';
 import './frontend-refinement.css';
 import './simple-landing.css';
 import './hero-faq-balance.css';
+import './estimate-page.css';
 const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
 export const metadata: Metadata = { metadataBase: new URL(site.url), icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' } };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

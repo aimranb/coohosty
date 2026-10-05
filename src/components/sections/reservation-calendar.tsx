@@ -53,7 +53,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
   }, []);
   useEffect(() => {
     if (paused || !visible || reduced) return;
-    const timer = window.setInterval(() => setSelected(value => (value + 1) % guests.length), 6000);
+    const timer = window.setInterval(() => setSelected(value => (value + 1) % guests.length), 2500);
     return () => window.clearInterval(timer);
   }, [paused, visible, reduced]);
   const month = new Date(Date.UTC(2026, 9 + monthOffset, 1));

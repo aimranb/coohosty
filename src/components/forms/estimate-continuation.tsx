@@ -1,0 +1,30 @@
+'use client';
+
+import { useMemo, useSyncExternalStore } from 'react';
+import { useTranslations } from 'next-intl';
+import { EstimateBar } from './estimate-bar';
+import { estimateSchema } from '@/validations/estimate';
+import type { Locale } from '@/config/site';
+
+const propertySchema = estimateSchema.pick({ type: true, bedrooms: true, city: true, address: true });
+function subscribe(callback: () => void) {
+  window.addEventListener('storage', callback);
+  return () => window.removeEventListener('storage', callback);
+}
+
+export function EstimateContinuation({ locale, emailEnabled }: { locale: Locale; emailEnabled: boolean }) {
+  const t = useTranslations('estimate');
+  const raw = useSyncExternalStore(subscribe, () => {
+    try { return sessionStorage.getItem(`coohosty-estimate-property-${locale}`); } catch { return null; }
+  }, () => undefined);
+  const property = useMemo(() => {
+    if (!raw) return undefined;
+    try {
+      const parsed = propertySchema.safeParse(JSON.parse(raw));
+      return parsed.success ? parsed.data : undefined;
+    } catch { return undefined; }
+  }, [raw]);
+
+  if (raw === undefined) return <div className="estimate-completion-loading" role="status">{t('title')}</div>;
+  return <EstimateBar locale={locale} emailEnabled={emailEnabled} completion initialProperty={property}/>;
+}

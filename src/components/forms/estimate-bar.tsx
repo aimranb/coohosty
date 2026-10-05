@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Check, House, LoaderCircle, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { site, type Locale } from '@/config/site';
 import { estimateSchema, estimateSteps, estimateTypes, estimateBedrooms, estimateGoals, estimateDurations, estimateStarts, type EstimateInput, type EstimateData } from '@/validations/estimate';
 import { Turnstile } from './turnstile';
@@ -15,23 +16,37 @@ type Benchmark = { lower: number; upper: number; currency: 'EUR'; listings: numb
 type Result = { channel: 'email' | 'whatsapp'; data: EstimateData; benchmark?: Benchmark | null; delivery?: string };
 const cities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Agadir', 'Fès', 'Meknès', 'Essaouira', 'Tétouan', 'Oujda', 'El Jadida', 'Kénitra', 'Mohammedia', 'Chefchaouen', 'Ifrane', 'Dakhla', 'Nador', 'Ouarzazate', 'Safi', 'Béni Mellal'];
 
-export function EstimateBar({ locale, emailEnabled }: { locale: Locale; emailEnabled: boolean }) {
+type PropertyDetails = Pick<EstimateInput, 'type' | 'bedrooms' | 'city' | 'address'>;
+
+export function EstimateBar({ locale, emailEnabled, completion = false, initialProperty }: { locale: Locale; emailEnabled: boolean; completion?: boolean; initialProperty?: PropertyDetails }) {
+  const router = useRouter();
   const t = useTranslations('estimate');
   const validation = useTranslations('form.validation');
   const reduced = useReducedMotion();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(initialProperty ? 1 : 0);
   const [error, setError] = useState('');
   const [result, setResult] = useState<Result | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const locked = useRef(false);
   const previousPayload = useRef('');
-  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onBlur', defaultValues: { type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '' } });
+  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onBlur', defaultValues: { type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
   const { register, setValue, formState: { errors, isSubmitting } } = form;
   useEffect(() => { setValue('submissionKey', crypto.randomUUID()); }, [setValue]);
   const onToken = useCallback((token: string) => setValue('turnstileToken', token), [setValue]);
 
   function showStep(index: number) { setError(''); setStep(index); requestAnimationFrame(() => heading.current?.focus()); }
-  async function next() { if (await form.trigger(estimateSteps[step], { shouldFocus: true })) showStep(step + 1); }
+  async function next() {
+    if (!await form.trigger(estimateSteps[step], { shouldFocus: true })) return;
+    if (step === 0 && !completion) {
+      const { type, bedrooms, city, address } = form.getValues();
+      try {
+        sessionStorage.setItem(`coohosty-estimate-property-${locale}`, JSON.stringify({ type, bedrooms, city, address }));
+      } catch { setError(t('error')); return; }
+      router.push(`/${locale}/estimate`);
+      return;
+    }
+    showStep(step + 1);
+  }
   function fieldError(name: keyof EstimateInput) {
     const issue = errors[name] as FieldError | undefined;
     if (!issue) return null;
