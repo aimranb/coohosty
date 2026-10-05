@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { IncomeMotion } from './income-motion';
 import { ArrowUpRight, BatteryFull, Signal, Wifi, CalendarDays, ChartNoAxesColumnIncreasing, Menu, MessageCircle, Star } from 'lucide-react';
 
 function PhoneHardware() {
@@ -12,7 +13,7 @@ function PhoneHardware() {
 export async function IncomeIntro() {
   const t = await getTranslations('incomeIntro');
   return <section className="income-intro" aria-labelledby="income-intro-title">
-    <div className="container income-intro-inner">
+    <IncomeMotion>
       <div className="income-intro-copy">
         <span className="eyebrow">{t('eyebrow')}</span>
         <h2 id="income-intro-title">{t('title')} <em>{t('accent')}</em></h2>
@@ -33,7 +34,7 @@ export async function IncomeIntro() {
           <PhoneHardware/><div className="income-phone-screen">
             <div className="income-phone-header"><div><Menu size={14}/><span>COOHOSTY</span><ChartNoAxesColumnIncreasing size={14}/></div><h3>{t('performance')}</h3></div>
             <div className="income-phone-content">
-              <div className="income-mini-card"><h4>{t('revenue')}</h4><div className="income-chart" aria-hidden="true">{[32,44,40,57,70,62,87,76,63,72,59,80].map((height,i) => <span key={i} style={{ height: `${height}%`, animationDelay: `${i * 55}ms` }}/>)}</div><div className="income-chart-axis" aria-hidden="true"><span>01</span><span>06</span><span>12</span></div></div>
+              <div className="income-mini-card"><h4>{t('revenue')}</h4><div className="income-chart" aria-hidden="true">{[32,44,40,57,70,62,87,76,63,72,59,80].map((height,i) => <span key={i} style={{ height: `${height}%` }}/>)}</div><div className="income-chart-axis" aria-hidden="true"><span>01</span><span>06</span><span>12</span></div></div>
               <div className="income-mini-card"><h4>{t('occupancy')}</h4><div className="income-occupancy"><ul><li><i/>{t('reserved')}</li><li><i/>{t('available')}</li><li><i/>{t('blocked')}</li></ul><div className="income-donut" aria-hidden="true"><CalendarDays size={22}/></div></div></div>
             </div>
           </div>
@@ -49,6 +50,6 @@ export async function IncomeIntro() {
         </article>
       </div>
       <p className="income-preview-note">{t('illustration')}</p>
-    </div>
+    </IncomeMotion>
   </section>;
 }

@@ -1,0 +1,17 @@
+.stage :global(.income-chart > span) {
+  animation: none;
+  transform-origin: center bottom;
+}
+
+.stage :global(.income-calendar-stay) {
+  transform-origin: left center;
+}
+
+.stage :global(.income-stars svg) {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage :global(.income-intro-cta) { transition: none; }
+}
