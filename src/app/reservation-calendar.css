@@ -97,3 +97,5 @@
 
 /* Alternate the two oranges already used by the website and packages. */
 .reservation-calendar .reservation-booking[data-tone="1"]{--stay-color:var(--purple,#bc5200)}
+
+.reservation-detail .reservation-channel .reservation-airbnb-logo{display:block;width:22px;height:24px;object-fit:contain}

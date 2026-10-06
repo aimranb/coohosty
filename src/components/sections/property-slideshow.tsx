@@ -2,11 +2,11 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, House, Pause, Play } from 'lucide-react';
+import { ArrowLeft, ArrowRight, House } from 'lucide-react';
 import styles from './property-slideshow.module.css';
 
 type Photo = { src: string; alt: string };
-type Labels = { label: string; title: string; caption: string; pause: string; play: string; previous: string; next: string; disclosure: string };
+type Labels = { label: string; title: string; caption: string; previous: string; next: string; disclosure: string };
 
 export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels: Labels }) {
   const [active, setActive] = useState(0);
@@ -47,7 +47,6 @@ export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels:
       <div className={styles.dots}>{photos.map((photo, index) => <button type="button" key={photo.src} aria-label={`${index + 1} — ${photo.alt}`} aria-pressed={active === index} onClick={() => select(index)}><span/></button>)}</div>
       <span className={styles.count} aria-live={paused ? 'polite' : 'off'}>{String(active + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
       <button type="button" aria-label={labels.previous} onClick={() => select(active - 1)}><ArrowLeft size={16}/></button>
-      <button type="button" aria-label={paused ? labels.play : labels.pause} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={15}/> : <Pause size={15}/>}</button>
       <button type="button" aria-label={labels.next} onClick={() => select(active + 1)}><ArrowRight size={16}/></button>
     </div>
   </figure>;

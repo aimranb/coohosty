@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, CalendarDays, Check, Pause, Play, Sparkles, SprayCan } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CalendarDays, Check, Sparkles, SprayCan } from 'lucide-react';
 import { Reveal } from '@/components/ui/reveal';
 import type { Locale } from '@/config/site';
 
@@ -77,7 +78,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
               <div className="reservation-reference-arrows"><button type="button" aria-label={t.previous} onClick={() => setMonthOffset(value => value - 1)}><ArrowLeft size={14}/></button><button type="button" aria-label={t.next} onClick={() => setMonthOffset(value => value + 1)}><ArrowRight size={14}/></button></div>
             </div>
             <div className="reservation-reference-actions">
-              <button type="button" onClick={() => setPaused(value => !value)} aria-label={paused ? t.play : t.pause} aria-pressed={paused}>{paused ? <Play size={14}/> : <Pause size={14}/>}</button>
+
               <select aria-label={ui.view} value={view} onChange={event => setView(event.target.value as 'month' | 'week')}><option value="month">{ui.month}</option><option value="week">{ui.week}</option></select>
               <button type="button" onClick={() => { setMonthOffset(0); setView('month'); }} aria-label={ui.reset}><CalendarDays size={14}/></button>
             </div>
@@ -101,7 +102,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
           <div className="reservation-reference-footer"><div className="reservation-legend"><span className="reservation-status-dot"/>{t.sync}<span><SprayCan size={14}/>{t.clean}</span></div><button type="button" className="reservation-rates-toggle" aria-label={ui.rates} aria-pressed={showRates} onClick={() => setShowRates(value => !value)}>MAD</button></div>
         </div>
         <div className="reservation-aside">
-          <div className="reservation-detail" key={`${selected}-${monthOffset}`}><span className="reservation-detail-avatar">{guest.initials}</span><span className="reservation-channel"><span className="platform-mark" aria-hidden="true">A</span>{guest.channel}</span><p className="reservation-detail-label">{t.detail}</p><h3>{guest.name}</h3><p className="reservation-nights">{guest.end - guest.start} {t.nights}</p><dl><div><dt>{t.arrival}</dt><dd>{format(guest.start, { weekday: 'short', day: 'numeric', month: 'short' })}</dd></div><div><dt>{t.departure}</dt><dd>{format(guest.end, { weekday: 'short', day: 'numeric', month: 'short' })}</dd></div></dl><div className="reservation-ready"><Check size={15}/>{t.welcome}</div><div className="reservation-progress" aria-hidden="true"><span/></div></div>
+          <div className="reservation-detail" key={`${selected}-${monthOffset}`}><span className="reservation-detail-avatar">{guest.initials}</span><span className="reservation-channel"><Image className="reservation-airbnb-logo" src="/logos/airbnb.svg" alt="" aria-hidden="true" width={22} height={24} unoptimized/>{guest.channel}</span><p className="reservation-detail-label">{t.detail}</p><h3>{guest.name}</h3><p className="reservation-nights">{guest.end - guest.start} {t.nights}</p><dl><div><dt>{t.arrival}</dt><dd>{format(guest.start, { weekday: 'short', day: 'numeric', month: 'short' })}</dd></div><div><dt>{t.departure}</dt><dd>{format(guest.end, { weekday: 'short', day: 'numeric', month: 'short' })}</dd></div></dl><div className="reservation-ready"><Check size={15}/>{t.welcome}</div><div className="reservation-progress" aria-hidden="true"><span/></div></div>
           <div className="reservation-housekeeping" key={`clean-${selected}-${monthOffset}`}><span className="reservation-housekeeping-icon"><SprayCan size={23}/><Sparkles size={12}/></span><div><strong>{t.cleaning}</strong><p>{t.after} · {format(guest.end, { day: 'numeric', month: 'short' })}</p><span>{t.checklist}</span></div></div>
           <div className="reservation-channel-note"><CalendarDays size={18}/><p>{t.channels}</p></div>
           <div className="reservation-dots">{guests.map((item, index) => <button type="button" key={item.name} aria-label={item.name} aria-pressed={selected === index} className={selected === index ? 'active' : ''} onClick={() => { setSelected(index); setPaused(true); }}/>)}</div>

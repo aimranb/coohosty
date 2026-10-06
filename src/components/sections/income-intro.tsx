@@ -24,7 +24,7 @@ export async function IncomeIntro() {
           <PhoneHardware/><div className="income-phone-screen">
             <div className="income-phone-header"><div><Menu size={14}/><span>COOHOSTY</span><MessageCircle size={14}/></div><h3>{t('bookings')}</h3></div>
             <div className="income-phone-content">
-              <div className="income-mini-card"><h4>{t('experience')}</h4>{['welcome','cleanliness','communication'].map(key => <div className="income-rating-row" key={key}><span>{t(key)}</span><span className="income-stars" aria-label={t('illustration')}>{[0,1,2,3,4].map(i => <Star size={9} key={i}/>)}</span></div>)}</div>
+              <div className="income-mini-card"><h4>{t('experience')}</h4>{['welcome','cleanliness','communication'].map(key => <div className="income-rating-row" key={key}><span>{t(key)}</span><span className="income-stars" aria-hidden="true">{[0,1,2,3,4].map(i => <Star size={9} key={i}/>)}</span></div>)}</div>
               <div className="income-mini-card"><h4>{t('nextStay')}</h4><div className="income-mini-guest"><span>YA</span><div><strong>Yasmine</strong><small>{t('arrivalReady')}</small></div><CalendarDays size={15}/></div></div>
               <div className="income-mini-task"><span className="income-status-dot"/>{t('housekeeping')}</div>
             </div>
@@ -49,7 +49,7 @@ export async function IncomeIntro() {
           </div>
         </article>
       </div>
-      <p className="income-preview-note">{t('illustration')}</p>
+
     </IncomeMotion>
   </section>;
 }

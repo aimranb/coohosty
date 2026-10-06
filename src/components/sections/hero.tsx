@@ -7,7 +7,6 @@ export async function Hero() {
   const t = await getTranslations('hero');
   const estimateTitle = await getTranslations('estimate');
   const showcase = await getTranslations('showcase');
-  const destinations = await getTranslations('destinations');
   const alts = showcase.raw('photoAlts') as string[];
   const photos = [
     { src: '/images/hero-airbnb.webp', alt: alts[1] },
@@ -24,7 +23,7 @@ export async function Hero() {
       <div className="hero-copy">
         <EstimateBar locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)}/>
       </div>
-      <PropertySlideshow photos={photos} labels={{ label: t('photoLabel'), title: t('photoTitle'), caption: t('caption'), disclosure: t('photoDisclosure'), pause: destinations('pause'), play: destinations('play'), previous: showcase('previousPhoto'), next: showcase('nextPhoto') }}/>
+      <PropertySlideshow photos={photos} labels={{ label: t('photoLabel'), title: t('photoTitle'), caption: t('caption'), disclosure: t('photoDisclosure'), previous: showcase('previousPhoto'), next: showcase('nextPhoto') }}/>
     </section>
   </div>;
 }

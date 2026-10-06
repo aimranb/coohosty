@@ -17,6 +17,6 @@ export async function Plans({ locale }: { locale: Locale }) {
       <PlanButton plan={plan.id} className="button package-cta">{t(`${plan.id}.cta`)}<ArrowUpRight size={15}/></PlanButton>
       <ul className="plan-highlights">{plan.highlights.map(feature => <li key={feature}><Check size={14} aria-hidden="true"/><span>{t(`features.${feature}`)}</span></li>)}</ul>
       <Link href={`/${locale}/services/${plan.id.toLowerCase()}`} className="button plan-more-link">{seeMore}<ArrowUpRight size={16}/></Link><a className="plan-whatsapp" href={site.whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon width={17} height={17}/>{t('whatsapp')}</a>
-    </article></Reveal></div>)}</div></div><p className="packages-note">{t('scopeNote')}</p><a className="package-help" href="#contact">{t('help')}<ArrowUpRight size={15}/></a>
+    </article></Reveal></div>)}</div></div>
   </div></section>;
 }

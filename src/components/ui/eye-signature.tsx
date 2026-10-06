@@ -21,6 +21,5 @@ export function EyeSignature({ labels }: { labels: SignatureLabels }) {
       </svg><span className="signature-wordmark">{site.brand}</span>
     </div>
     <div className="signature-copy"><h3>{labels.watching}</h3><p>{labels.tagline}</p><div className="signature-focus"><span className="signature-focus-dot" aria-hidden="true"/><span className="signature-focus-label">{labels.initialStep}</span></div></div>
-    <button className="signature-pause" type="button" data-pause={labels.pause} data-resume={labels.resume} aria-pressed="false" aria-label={labels.pause}>{labels.pause}</button>
   </div>;
 }
