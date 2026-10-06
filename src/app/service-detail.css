@@ -41,10 +41,5 @@
  #main-content .plans-section .comparison-card .plan-highlights{display:flex}
 }
 
-/* White background for Plan 03 with readable foreground colors. */
-#main-content [data-plan-card="COHOST"] .plan-card.comparison-card{background:#fff;border-color:#ded6ca;color:#15120f}
-#main-content [data-plan-card="COHOST"] .comparison-card h3,
-#main-content [data-plan-card="COHOST"] .comparison-card .plan-highlights li{color:#15120f}
-#main-content [data-plan-card="COHOST"] .comparison-card .package-number,
-#main-content [data-plan-card="COHOST"] .comparison-card .plan-highlights svg{color:#a34b00}
-#main-content [data-plan-card="COHOST"] .comparison-card .plan-whatsapp{color:#087c54}
+/* White label for Offre 03. */
+#main-content [data-plan-card="COHOST"] .comparison-card .package-number{color:#fff}
