@@ -42,4 +42,4 @@
 }
 
 /* White label for Offre 03. */
-#main-content [data-plan-card="COHOST"] .comparison-card .package-number{color:#fff}
+#main-content [data-plan-card="COHOST"] .comparison-card .package-number{color:#fff;background:transparent;border:0;box-shadow:none}
