@@ -25,3 +25,18 @@
 .service-detail-footer{margin-top:36px;padding-top:28px;border-top:1px solid #e9e5df}
 .service-detail-footer>p{max-width:720px;font-size:14px;line-height:1.8;color:#666;margin-bottom:24px}
 @media(max-width:760px){.service-detail-page{padding-block:24px 48px}.service-detail-heading{margin-bottom:36px}.service-detail-group{padding:22px}.service-detail-actions{gap:18px}.service-detail-form{width:100%}}
+
+
+/* Compact package cards with visible service lists at every screen size. */
+#main-content .plans-section .plan-services-card .comparison-card{padding:18px 20px}
+#main-content .plans-section .comparison-card h3{font-size:20px;margin-block:8px 14px}
+#main-content .plans-section .comparison-card .package-cta{min-height:40px;padding:10px 12px;font-size:12px}
+#main-content .plans-section .comparison-card .plan-highlights{display:flex;gap:8px;margin-block:14px}
+#main-content .plans-section .comparison-card .plan-highlights li{font-size:12px;line-height:1.5}
+#main-content .plans-section .comparison-card .plan-more-link{min-height:40px;padding:10px 12px;font-size:12px;margin-block:12px 10px}
+#main-content .plans-section .comparison-card .plan-whatsapp{font-size:11px;margin-top:8px}
+@media(max-width:540px){
+ #main-content .plans-section .plan-services-card .comparison-card{padding:16px 18px}
+ #main-content .plans-section .comparison-card h3{font-size:18px;margin-block:6px 12px}
+ #main-content .plans-section .comparison-card .plan-highlights{display:flex}
+}

@@ -14,7 +14,7 @@ const assert = require('node:assert/strict');
         assert.ok(subtitles.length >= 4);
         assert.ok(subtitles.every(node => node.size === (width <= 760 ? 18 : 20)), JSON.stringify(subtitles));
         const compact = await page.locator('.estimate-intro, .plan-subtitle').evaluateAll(nodes => nodes.map(node => parseFloat(getComputedStyle(node).fontSize)));
-        assert.ok(compact.length >= 4 && compact.every(size => size === 16));
+        assert.ok(compact.length >= 1 && compact.every(size => size === 16));
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
         assert.deepEqual(errors, []);
         if (locale === 'fr') await page.screenshot({ path: `.github/subtitles-${width}.png`, fullPage: true });

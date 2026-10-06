@@ -41,9 +41,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     <Link className="service-detail-back" href={`/${locale}#services`}><ArrowLeft size={17}/>{labels.back}</Link>
     <header className="service-detail-heading">
       <span className="eyebrow">COOHOSTY · {plan.id}</span>
-      <h1>{plan.id}</h1><p className="service-detail-subtitle">{t(`${plan.id}.subtitle`)}</p>
-      <p className="service-detail-outcome">{t(`${plan.id}.outcome`)}</p>
-      <div className="service-detail-actions"><span className="service-detail-price">{site.prices[plan.id][locale]} <small>{t(`${plan.id}.cadence`)}</small></span><Link href={formUrl} className="button service-detail-form">{labels.form}<ArrowUpRight size={18}/></Link></div>
+      <h1>{plan.id}</h1>
+      <div className="service-detail-actions"><Link href={formUrl} className="button service-detail-form">{labels.form}<ArrowUpRight size={18}/></Link></div>
     </header>
     <section className="service-detail-included" aria-labelledby="included-title"><h2 id="included-title">{labels.included}</h2>
       <div className="service-detail-groups">{groups.map(group => <section key={group.id} className="service-detail-group"><h3>{t(`groups.${group.id}`)}</h3><ul>{group.features.map(feature => <li key={feature}><Check size={18} aria-hidden="true"/><span>{t(`features.${feature}`)}</span></li>)}</ul></section>)}</div>
