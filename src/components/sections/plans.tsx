@@ -11,7 +11,7 @@ export async function Plans({ locale }: { locale: Locale }) {
   const heading = await getTranslations('services');
   const seeMore = { en: 'See more', fr: 'Voir plus', ar: 'عرض المزيد' }[locale];
   return <section id="services" className="section plans-section"><div id="plans" className="container">
-    <Reveal className="section-heading centered"><div className="eyebrow">{heading('eyebrow')}</div><h2>{heading('title')}<br/><em>{heading('accent')}</em></h2><p className="packages-intro">{t('comparison')}</p></Reveal>
+    <Reveal className="section-heading centered"><h2>{heading('title')}<br/><em>{heading('accent')}</em></h2><p className="packages-intro">{t('comparison')}</p></Reveal>
     <div className="plan-services-layout"><div className="plan-grid plan-services-track">{site.planInfo.map(plan => <div key={plan.id} className="plan-services-card" data-plan-card={plan.id}><Reveal className="package-reveal"><article className={`plan-card comparison-card ${plan.featured ? 'featured' : ''}`}>
       <div className="plan-label"><span className="package-number">{t('label')} {plan.number}</span></div><h3>{plan.id}</h3>
       <PlanButton plan={plan.id} className="button package-cta">{t(`${plan.id}.cta`)}<ArrowUpRight size={15}/></PlanButton>
