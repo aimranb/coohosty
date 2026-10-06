@@ -24,9 +24,9 @@ const guests = [
 export function ReservationCalendar({ locale }: { locale: Locale }) {
   const t = copy[locale];
   const ui = {
-    fr: { month: 'Mois', week: 'Semaine', view: 'Affichage du calendrier', reset: 'Revenir au mois du planning exemple', rates: 'Tarifs d’exemple en MAD' },
-    en: { month: 'Month', week: 'Week', view: 'Calendar view', reset: 'Return to example schedule month', rates: 'Illustrative nightly rates in MAD' },
-    ar: { month: 'شهر', week: 'أسبوع', view: 'عرض التقويم', reset: 'العودة إلى شهر المثال', rates: 'أسعار ليلية توضيحية بالدرهم' },
+    fr: { month: 'Mois', week: 'Semaine', view: 'Affichage du calendrier', reset: 'Revenir au mois du planning exemple', rates: 'Tarifs par nuit en MAD' },
+    en: { month: 'Month', week: 'Week', view: 'Calendar view', reset: 'Return to example schedule month', rates: 'Nightly rates in MAD' },
+    ar: { month: 'شهر', week: 'أسبوع', view: 'عرض التقويم', reset: 'العودة إلى شهر المثال', rates: 'أسعار الليلة بالدرهم' },
   }[locale];
   const [showRates, setShowRates] = useState(false);
   const [monthOffset, setMonthOffset] = useState(0);
@@ -108,7 +108,7 @@ export function ReservationCalendar({ locale }: { locale: Locale }) {
           <div className="reservation-dots">{guests.map((item, index) => <button type="button" key={item.name} aria-label={item.name} aria-pressed={selected === index} className={selected === index ? 'active' : ''} onClick={() => { setSelected(index); setPaused(true); }}/>)}</div>
         </div>
       </div></Reveal>
-      <div className="reservation-process">{t.steps.map((step, index) => <span key={step}><b>0{index + 1}</b>{step}</span>)}</div><p className="reservation-demo">{t.demo} · {ui.rates}</p>
+      <div className="reservation-process">{t.steps.map((step, index) => <span key={step}><b>0{index + 1}</b>{step}</span>)}</div>
     </div>
   </section>;
 }
