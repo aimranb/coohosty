@@ -2,57 +2,36 @@
   "cities": [
     {
       "id": "casablanca",
-      "image": "/images/cities/casablanca.webp",
-      "source": "https://unsplash.com/photos/5WBxcyapLfQ",
-      "author": "Val Vesa",
-      "position": "50% 45%",
-      "licenseName": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license"
+      "image": "/images/cities/casablanca-original.webp",
+      "source": "https://www.pexels.com/photo/hassan-ii-mosque-in-casablanca-morocco-32880203/"
     },
     {
       "id": "fes",
-      "image": "/images/cities/fes.webp",
-      "source": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_the_Medina_of_Fes.jpg",
-      "author": "Mustang Joe",
-      "position": "50% 35%",
-      "licenseName": "CC0 1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+      "image": "/images/cities/fes-original.webp",
+      "source": "https://www.pexels.com/fr-fr/photo/la-porte-bleue-emblematique-de-la-medina-de-fes-au-maroc-35036526/"
     },
     {
       "id": "meknes",
-      "image": "/images/cities/meknes.webp",
+      "image": "/images/cities/meknes-original.webp",
       "source": "https://commons.wikimedia.org/wiki/File:Bab_mansour_DSCF5776.jpg",
-      "author": "Robert Prazeres",
+      "author": "Robert Prazeres / Wikimedia Commons",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "licenseName": "CC BY-SA 4.0",
-      "position": "27% 50%"
+      "licenseName": "CC BY-SA 4.0"
     },
     {
       "id": "agadir",
-      "image": "/images/cities/agadir.webp",
-      "source": "https://commons.wikimedia.org/wiki/File:Panorama_Marina_Agadir_2020.jpg",
-      "author": "Abdeaitali",
-      "position": "50% 50%",
-      "licenseName": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+      "image": "/images/cities/agadir-original.webp",
+      "source": "https://www.pexels.com/fr-fr/photo/vue-aerienne-de-la-ville-et-de-la-plage-d-agadir-35627666/"
     },
     {
       "id": "tanger",
-      "image": "/images/cities/tanger.webp",
-      "source": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_Tangier.jpg",
-      "author": "mokhtarakel1",
-      "position": "50% 50%",
-      "licenseName": "CC0 1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+      "image": "/images/cities/tanger-original.webp",
+      "source": "https://www.pexels.com/photo/cityscape-of-tangier-morocco-20890428/"
     },
     {
       "id": "rabat",
-      "image": "/images/cities/rabat.webp",
-      "source": "https://commons.wikimedia.org/wiki/File:Kasbah_des_Oudayas_%C3%A0_Rabat.jpg",
-      "author": "TheUmpteenthPostwoman",
-      "position": "55% 50%",
-      "licenseName": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+      "image": "/images/cities/rabat-original.webp",
+      "source": "https://www.pexels.com/photo/charming-moroccan-street-scene-in-rabat-31741321/"
     }
   ],
   "platforms": [

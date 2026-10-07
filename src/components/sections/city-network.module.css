@@ -1,5 +1,4 @@
 .scene{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:stretch;margin-top:35px;--accent:#ff7415}
-.credits{margin-top:18px;font-size:11px;line-height:1.7;color:#817369}.credits summary{cursor:pointer;width:fit-content}.credits p{margin:7px 0;font-size:11px}.credits a{text-decoration:underline;text-underline-offset:3px}
 .mapPanel{min-width:0;background:#fcfaf8;border:1px solid #e6ddd6;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
 .mapTop{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;gap:12px}
 .mapTop>span{display:flex;align-items:center;gap:10px;font-size:12px;color:#62605d;line-height:1.6}
@@ -26,7 +25,7 @@
 .mapBottom{display:flex;align-items:center;gap:9px;font-size:11px;color:#7b7067;padding:16px 24px 22px;margin-top:auto;line-height:1.5}
 .mapBottom svg{color:#bc5200;flex-shrink:0}
 .mapCount{margin-inline-start:auto;color:#bc5200;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:1px}
-.cityPanel{min-width:0;display:flex;flex-direction:column;gap:22px}
+.cityPanel{min-width:0;display:flex;flex-direction:column;gap:22px;padding-block-end:204.6px}
 .photo{position:relative;flex:1;min-height:320px;border-radius:24px;overflow:hidden;background:#111;isolation:isolate}
 .photoLayer{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;z-index:-2}
 .activePhoto{opacity:1}
@@ -55,7 +54,7 @@
 @keyframes map-radar{0%{transform:scale(.35);opacity:0}20%{opacity:.3}100%{transform:scale(1.5);opacity:0}}
 @keyframes city-image-drift{from{transform:scale(1.025)}to{transform:scale(1.08)}}
 @keyframes city-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media(max-width:1000px){.scene{gap:22px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.mapTop{padding:20px}.mapLabel{font-size:11px;padding:8px}.photo{min-height:290px}.cityChoices button{padding:14px 10px;font-size:12px;gap:7px}.cityPanel{gap:15px}.mapBottom{padding-inline:18px}}
-@media(max-width:760px){.scene{grid-template-columns:1fr;gap:22px}.mapCanvas{max-width:520px;margin-inline:auto}.mapLabel{font-size:12px;padding:8px 10px}.photo{min-height:270px;aspect-ratio:1.4;flex:none}.cityChoices button{padding:16px 14px;font-size:13px}.mapTop>span{font-size:11px}.mapBottom{font-size:10px}.photoCaption p{font-size:13px}.photoCaption h3{font-size:32px}}
+@media(max-width:1000px){.scene{gap:22px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.mapTop{padding:20px}.mapLabel{font-size:11px;padding:8px}.photo{min-height:290px}.cityChoices button{padding:14px 10px;font-size:12px;gap:7px}.cityPanel{gap:15px;padding-block-end:175.4px}.mapBottom{padding-inline:18px}}
+@media(max-width:760px){.scene{grid-template-columns:1fr;gap:22px}.cityPanel{padding-block-end:0}.mapCanvas{max-width:520px;margin-inline:auto}.mapLabel{font-size:12px;padding:8px 10px}.photo{min-height:270px;aspect-ratio:1.4;flex:none}.cityChoices button{padding:16px 14px;font-size:13px}.mapTop>span{font-size:11px}.mapBottom{font-size:10px}.photoCaption p{font-size:13px}.photoCaption h3{font-size:32px}}
 @media(max-width:390px){.mapLabel{font-size:10px;padding:7px 8px;gap:6px}.mapTop,.mapBottom{padding-inline:15px}.mapTop>span{max-width:220px}.mapBottom{gap:6px}.mapCount{letter-spacing:0}.photoCaption{inset-inline:22px}.cityChoices button{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.scene *{animation:none!important;transition:none!important}.routeSignal,.radar,.radarInner{display:none}.photoLayer img{transform:none}}

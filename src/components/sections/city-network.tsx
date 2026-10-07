@@ -84,7 +84,6 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
         <div className={styles.photoCaption}><h3>{city.name}</h3><p>{city.detail}</p></div>
         <span key={active} className={styles.photoProgress} aria-hidden="true"/>
       </div>
-      <div className={styles.cityChoices}>{cities.map((item, index) => <button key={item.id} type="button" onClick={() => select(index)} aria-pressed={index === active} className={index === active ? styles.selectedCity : ''}><span className={styles.cityNumber}>{String(index + 1).padStart(2, '0')}</span><span>{item.name}</span><ArrowUpRight size={15} aria-hidden="true"/></button>)}</div>
       <a className={styles.cityCta} href="#estimate">{copy.viewCity}<ArrowUpRight size={18}/></a>
     </div>
   </div>;

@@ -18,7 +18,7 @@ const screenshotStyle = '.site-header,.floating-whatsapp,.skip-link,nextjs-porta
       await page.waitForFunction(() => document.querySelector('#destinations [data-running]')?.dataset.running === 'true');
       const mapButtons = scene.locator('button[aria-pressed]').filter({ hasNot: page.locator('svg') });
       assert.equal(await mapButtons.count(), 6);
-      assert.equal(await scene.locator('button[aria-pressed]').count(), 13);
+      assert.equal(await scene.locator('button[aria-pressed]').count(), 7);
       const labels = await mapButtons.allTextContents();
       assert.ok(labels.every(label => label.trim()));
       await mapButtons.nth(3).click();
