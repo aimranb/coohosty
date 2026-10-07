@@ -84,7 +84,7 @@ export function AnalysisNetwork({ tools, children, locale }: { tools: ReactNode;
     </svg>
     <div className="analysis-network-sources"><span className="analysis-network-kicker">{copy.sources}</span>{tools}</div>
     <div className="analysis-network-center">
-      <div className="analysis-network-hub" data-flow-hub><Logo href={`/${locale}`}/></div>
+      <div className="analysis-network-hub" data-flow-hub><Logo href={`/${locale}`} centered/></div>
       <span className="analysis-hub-label">{copy.hub}</span><span className="analysis-hub-caption">{copy.insight}</span>
       <button type="button" className="analysis-network-pause" aria-label={paused ? copy.play : copy.pause} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={13}/> : <Pause size={13}/>}</button>
     </div>

@@ -9,7 +9,7 @@ export async function Revenue() {
   const locale = isLocale(requested) ? requested : 'fr';
   const features = [{ id: 'dynamic', icon: TrendingUp }, { id: 'monitoring', icon: Radar }, { id: 'market', icon: ChartNoAxesCombined }, { id: 'calendar', icon: CalendarCheck }, { id: 'minimum', icon: Clock3 }, { id: 'report', icon: FileChartColumn }];
   return <section id="revenue" className="section container">
-    <header className="analysis-heading"><h2>{t('title')}<br/><em>{t('accent')}</em></h2><p className="section-description">{t('sentence')}</p></header>
+    <header className="analysis-heading"><h2>{t('title')}<br/><em>{t('accent')}</em></h2></header>
     <AnalysisNetwork locale={locale} tools={<AnalysisTools/>}>
       <div className="revenue-grid">{features.map(({ id, icon: Icon }, index) => <div className="revenue-feature" data-flow-target={id} key={id}><span className="revenue-feature-icon"><Icon size={25} strokeWidth={1.5} aria-hidden="true"/></span><h3>{t(id)}</h3><span className="revenue-feature-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></div>)}</div>
     </AnalysisNetwork>

@@ -12,11 +12,11 @@
     {
       "id": "fes",
       "image": "/images/cities/fes.webp",
-      "source": "https://unsplash.com/photos/ZQaEb6kbMhk",
-      "author": "Nichika Sakurai",
-      "position": "55% 50%",
-      "licenseName": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license"
+      "source": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_the_Medina_of_Fes.jpg",
+      "author": "Mustang Joe",
+      "position": "50% 35%",
+      "licenseName": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
     },
     {
       "id": "meknes",
@@ -30,29 +30,29 @@
     {
       "id": "agadir",
       "image": "/images/cities/agadir.webp",
-      "source": "https://unsplash.com/photos/7ItLiFBGmuk",
-      "author": "Mustafa Elkhnati",
+      "source": "https://commons.wikimedia.org/wiki/File:Panorama_Marina_Agadir_2020.jpg",
+      "author": "Abdeaitali",
       "position": "50% 50%",
-      "licenseName": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license"
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     {
       "id": "tanger",
       "image": "/images/cities/tanger.webp",
-      "source": "https://unsplash.com/photos/O3_dTJd-hQs",
-      "author": "Othman Alghanmi",
+      "source": "https://commons.wikimedia.org/wiki/File:Panoramic_view_of_Tangier.jpg",
+      "author": "mokhtarakel1",
       "position": "50% 50%",
-      "licenseName": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license"
+      "licenseName": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
     },
     {
       "id": "rabat",
       "image": "/images/cities/rabat.webp",
-      "source": "https://unsplash.com/photos/b8j8m_D5jj8",
-      "author": "Xhiliana",
-      "position": "50% 35%",
-      "licenseName": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license"
+      "source": "https://commons.wikimedia.org/wiki/File:Kasbah_des_Oudayas_%C3%A0_Rabat.jpg",
+      "author": "TheUmpteenthPostwoman",
+      "position": "55% 50%",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
   ],
   "platforms": [

@@ -6,6 +6,14 @@ import styles from './blog-journal.module.css';
 export function BlogCover({ post }: { post: BlogPost }) {
   const kind = post.slug;
   return <div className={styles.cover} aria-hidden="true">
+    {kind === 'creer-annonce-airbnb-maroc' && <>
+      <Image src="/images/hero-interior-6.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+      <div className={styles.coverShade}/><span className={styles.coverTag}>VOTRE PREMIÈRE ANNONCE</span><div className={styles.coverPhotoCaption}><strong>Un logement.<br/>Une annonce soignée.</strong></div>
+    </>}
+    {kind === 'conciergerie-airbnb-casablanca' && <>
+      <Image src="/images/hero-interior-warm.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+      <div className={styles.coverShade}/><span className={styles.coverTag}>GESTION LOCALE</span><div className={styles.coverPhotoCaption}><strong>Casablanca.<br/>Votre bien, accompagné.</strong></div>
+    </>}
     {kind === 'fiche-de-police-airbnb-maroc' && <>
       <Image src="/images/hero-interior-warm.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
       <span className={styles.coverTag}>GUIDE PROPRIÉTAIRE</span>

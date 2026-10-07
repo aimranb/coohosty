@@ -50,10 +50,10 @@ export function Eyes({ className = '' }: { className?: string }) {
     <path d="M28 34q9 5 18 0" stroke="#c9a96e" strokeWidth="1.5" strokeLinecap="round"/>
   </svg>;
 }
-export function Logo({ href = '/fr', light = false }: { href?: string; light?: boolean }) {
+export function Logo({ href = '/fr', light = false, centered = false }: { href?: string; light?: boolean; centered?: boolean }) {
   const root = useRef<HTMLAnchorElement>(null);
   useEffect(() => { if (root.current) return mountLogoGaze(root.current); }, []);
   return <Link ref={root} data-logo-gaze href={href} className={`logo ${styles.welcome} ${light ? 'logo-light' : ''}`} aria-label={site.domain}>
-    <svg width="216" height="52" viewBox="0 0 230 56" fill="none" role="img" aria-label={site.brand}><text x="1" y="36" fill="currentColor" fontFamily="var(--font-poppins), Arial, sans-serif" fontSize="26" fontWeight="600">C</text><g aria-hidden="true"><path className={styles.route} d="M2 45C-2 12 21 1 34 22"/><circle className={styles.traveler} r="2.3"/><path className={styles.roof} d="M20 12L45 1L70 12"/></g><g className="logo-gaze-art" transform="translate(12 6) scale(.4)"><EyeArtwork/></g><text x="76" y="36" fill="currentColor" fontFamily="var(--font-poppins), Arial, sans-serif" fontSize="26" fontWeight="600" letterSpacing="-.8">HOSTY</text></svg>
+    <svg width="216" height="52" viewBox={centered ? '0 0 168 52' : '0 0 230 56'} fill="none" role="img" aria-label={site.brand}><text x="1" y="36" fill="currentColor" fontFamily="var(--font-poppins), Arial, sans-serif" fontSize="26" fontWeight="600">C</text><g aria-hidden="true"><path className={styles.route} d="M2 45C-2 12 21 1 34 22"/><circle className={styles.traveler} r="2.3"/><path className={styles.roof} d="M20 12L45 1L70 12"/></g><g className="logo-gaze-art" transform="translate(12 6) scale(.4)"><EyeArtwork/></g><text x="76" y="36" fill="currentColor" fontFamily="var(--font-poppins), Arial, sans-serif" fontSize="26" fontWeight="600" letterSpacing="-.8">HOSTY</text></svg>
   </Link>;
 }

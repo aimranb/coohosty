@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 
 const base = process.env.BLOG_TEST_URL || 'http://localhost:3135';
-const slugs = ['fiche-de-police-airbnb-maroc', 'fiscalite-taxes-airbnb-maroc', 'commission-airbnb-maroc', 'sous-location-airbnb-maroc', 'airbnb-maroc-definition', 'conciergerie-airbnb-marrakech'];
+const slugs = ['fiche-de-police-airbnb-maroc', 'fiscalite-taxes-airbnb-maroc', 'commission-airbnb-maroc', 'sous-location-airbnb-maroc', 'airbnb-maroc-definition', 'conciergerie-airbnb-marrakech', 'creer-annonce-airbnb-maroc', 'conciergerie-airbnb-casablanca'];
 
 (async () => {
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
@@ -16,7 +16,7 @@ const slugs = ['fiche-de-police-airbnb-maroc', 'fiscalite-taxes-airbnb-maroc', '
       const response = await page.goto(`${base}/fr/blog`, { waitUntil: 'networkidle' });
       assert.equal(response.status(), 200);
       assert.equal(await page.locator('h1').count(), 1);
-      assert.equal(await page.locator('main article').count(), 6);
+      assert.equal(await page.locator('main article').count(), 8);
       assert.equal(await page.locator('html').getAttribute('lang'), 'fr');
       assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://coohosty.com/fr/blog');
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Blog index overflows at ${width}`);
@@ -52,7 +52,7 @@ const slugs = ['fiche-de-police-airbnb-maroc', 'fiscalite-taxes-airbnb-maroc', '
       assert.equal(await page.locator('#blog-preview-title').count(), 1);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Homepage overflows at ${width}`);
       assert.deepEqual(errors, []);
-      console.log(`PASS ${width}px: blog, six articles, SEO, FAQ, anchors, homepage, no browser errors`);
+      console.log(`PASS ${width}px: blog, eight articles, SEO, FAQ, anchors, homepage, no browser errors`);
       await page.close();
     }
     const request = await browser.newContext();

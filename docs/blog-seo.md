@@ -1,6 +1,6 @@
 # Blog propriétaires : SEO et maintenance
 
-Six guides français sont disponibles dans le projet à `/fr/blog`. Le guide de la fiche de police apparaît en premier. Leur contenu éditorial se trouve dans `src/content/blog.ts` ; leurs métadonnées et données structurées dans `src/lib/blog-seo.ts`.
+Huit guides français sont disponibles dans le projet à `/fr/blog`. Le guide de la fiche de police apparaît en premier. Leur contenu éditorial se trouve dans `src/content/blog.ts` ; leurs métadonnées et données structurées dans `src/lib/blog-seo.ts`.
 
 | URL sous `/fr/blog/` | Intention principale |
 | --- | --- |
@@ -32,3 +32,5 @@ Les sources ont été consultées le 7 octobre 2026. Vérifier en particulier le
 ## Après publication
 
 La création locale ne constitue pas un déploiement. Après publication sur le domaine, vérifier les nouvelles URL et soumettre le sitemap existant dans Google Search Console. Suivre les impressions, requêtes, clics et demandes reçues avant de choisir de nouveaux sujets. Aucun accès Search Console n’a été utilisé pour ce travail.
+
+Deux guides complémentaires ciblent la création d’une annonce au Maroc et la conciergerie à Casablanca. Les six sujets prioritaires restent en tête.

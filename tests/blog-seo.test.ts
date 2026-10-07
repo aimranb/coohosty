@@ -8,9 +8,9 @@ import { NextRequest } from 'next/server';
 import { proxy } from '@/proxy';
 
 describe('blog discovery and SEO', () => {
-  it('publishes the six requested subjects with police formalities first', () => {
+  it('publishes the six priority subjects first, followed by complementary guides', () => {
     expect(blogPosts.map(post => post.slug)).toEqual([...blogSlugs]);
-    expect(blogPosts.map(post => post.slug)).toEqual(['fiche-de-police-airbnb-maroc', 'fiscalite-taxes-airbnb-maroc', 'commission-airbnb-maroc', 'sous-location-airbnb-maroc', 'airbnb-maroc-definition', 'conciergerie-airbnb-marrakech']);
+    expect(blogPosts.slice(0, 6).map(post => post.slug)).toEqual(['fiche-de-police-airbnb-maroc', 'fiscalite-taxes-airbnb-maroc', 'commission-airbnb-maroc', 'sous-location-airbnb-maroc', 'airbnb-maroc-definition', 'conciergerie-airbnb-marrakech']);
   });
 
   it('uses valid internal article links, section anchors and source references', () => {

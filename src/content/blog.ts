@@ -1,3 +1,5 @@
+import { additionalBlogPosts } from './blog-additions';
+
 export type BlogSection = {
   id: string;
   title: string;
@@ -24,6 +26,8 @@ export type BlogPost = {
 };
 
 export const blogSources: Record<string, { title: string; url: string }> = {
+  createListing: { title: 'Airbnb — créer une annonce', url: 'https://www.airbnb.fr/help/article/1336' },
+  photoTour: { title: 'Airbnb — créer une visite photo du logement', url: 'https://www.airbnb.fr/help/article/477' },
   tourism: { title: 'Ministère du Tourisme — cadre juridique de l’hébergement touristique', url: 'https://mtaess.gov.ma/fr/tourisme/metiers-tourisme/hebergement-touristique/' },
   police: { title: 'Décret n° 2-15-865 et modèle du bulletin individuel d’hébergement (PDF officiel)', url: 'https://mtaess.gov.ma/wp-content/uploads/2025/06/Decret-n%C2%B02-15-865-teledec.pdf' },
   privacy: { title: 'CNDP — guide de conformité des sites web et protection des données', url: 'https://www.cndp.ma/wp-content/uploads/2023/01/CNDP-guide-conformite-sites-web-fr.pdf' },
@@ -191,6 +195,8 @@ export const blogPosts: BlogPost[] = [
     related: ['commission-airbnb-maroc', 'airbnb-maroc-definition', 'sous-location-airbnb-maroc'],
   },
 ];
+
+blogPosts.push(...additionalBlogPosts);
 
 export function getBlogPost(slug: string) {
   return blogPosts.find(post => post.slug === slug);

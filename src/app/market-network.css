@@ -26,6 +26,8 @@
 .analysis-network-hub{position:relative;display:flex;align-items:center;justify-content:center;width:130px;height:72px;border-radius:16px;background:#fff;color:#111;border:1px solid #ead8ca;box-shadow:0 0 0 7px #fff;animation:analysis-logo-breathe 7.2s ease-in-out infinite}
 .analysis-network-hub .logo{width:116px;min-width:0;height:auto;margin:0;padding:0;animation:none;transform:none}
 .analysis-network-hub .logo>svg{width:100%;height:auto;display:block}
+.analysis-network-hub .logo{display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.analysis-network-hub .logo *{animation:none!important}
 .analysis-network-hub .logo>svg>g[aria-hidden=true]{display:none}
 .analysis-network-hub .logo path,.analysis-network-hub .logo circle{animation:none}
 @keyframes analysis-logo-breathe{0%,18%,55%,100%{border-color:#ead8ca;box-shadow:0 0 0 7px #fff}28%,38%{border-color:#ff741580;box-shadow:0 0 0 7px #fff,0 0 0 9px #ff74150d}}
