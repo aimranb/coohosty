@@ -9,6 +9,10 @@ import type { FullRequest } from '@/lib/request-data';
 const data = estimateSchema.parse({ type: 'villa', bedrooms: '3', city: 'Sidi Ifni', address: '12 Rue du Port', objective: 'time', duration: '6to12', ready: 'now', fullName: '<script>Owner</script>', email: 'owner@example.com', phone: '+212600000000', channel: 'email', consent: true, locale: 'en', submissionKey: '123e4567-e89b-42d3-a456-426614174000', honeypot: '' });
 beforeEach(() => { vi.clearAllMocks(); mocks.find.mockResolvedValue(null); mocks.create.mockResolvedValue({ id: 'saved-estimate' }); });
 describe('durable estimate enquiries', () => {
+  it('stores the selected service rather than silently assigning AUDIT', async () => {
+    await storeEstimate({ ...data, plan: 'COHOST' });
+    expect(mocks.create.mock.calls[0][0].data.plan).toBe('COHOST');
+  });
   it('stores all supplied property details and both notifications without inventing uncollected property metrics', async () => {
     await storeEstimate(data);
     const saved = mocks.create.mock.calls[0][0].data;

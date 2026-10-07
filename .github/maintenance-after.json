@@ -1,0 +1,80 @@
+[
+  {
+    "locale": "fr",
+    "status": 200,
+    "ttfb": 1149,
+    "lcp": 3280,
+    "htmlBytes": 239894,
+    "resourceBytes": 421544,
+    "heroRequests": 1,
+    "lang": "fr",
+    "dir": "ltr",
+    "overflow": false,
+    "errors": [],
+    "failures": []
+  },
+  {
+    "locale": "en",
+    "status": 200,
+    "ttfb": 421,
+    "lcp": 1932,
+    "htmlBytes": 212770,
+    "resourceBytes": 421539,
+    "heroRequests": 1,
+    "lang": "en",
+    "dir": "ltr",
+    "overflow": false,
+    "errors": [],
+    "failures": []
+  },
+  {
+    "locale": "ar",
+    "status": 200,
+    "ttfb": 350,
+    "lcp": 1896,
+    "htmlBytes": 220324,
+    "resourceBytes": 421606,
+    "heroRequests": 1,
+    "lang": "ar",
+    "dir": "rtl",
+    "overflow": false,
+    "errors": [],
+    "failures": []
+  },
+  {
+    "path": "/fr/blog",
+    "status": 200
+  },
+  {
+    "path": "/fr/estimate",
+    "status": 200
+  },
+  {
+    "path": "/fr/privacy",
+    "status": 200
+  },
+  {
+    "path": "/fr/legal",
+    "status": 200
+  },
+  {
+    "path": "/fr/services/audit",
+    "status": 200
+  },
+  {
+    "path": "/fr/services/optimize",
+    "status": 200
+  },
+  {
+    "path": "/fr/services/cohost",
+    "status": 200
+  },
+  {
+    "path": "/admin/login",
+    "status": 200
+  },
+  {
+    "path": "/fr/blog/nonexistent",
+    "status": 404
+  }
+]

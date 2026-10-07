@@ -2,7 +2,7 @@
 
 A full-stack property audit and co-hosting platform for Morocco. French is the default language; English and Arabic have their own routes, metadata and content. Arabic uses RTL layouts. The public experience combines a concise premium marketing page with a five-step audit form. A protected admin area manages actual PostgreSQL submissions.
 
-**Verification status:** dependency downloads were blocked by network `EACCES` in the implementation environment. Lint, build and tests were attempted but could not run without their packages. Local import and translation structure checks passed. This is implemented application source, not a production-verified deployment. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for the exact outstanding checks.
+**Verification status:** Production build, TypeScript and ESLint pass. All 93 unit tests pass; the database integration test requires a separate configured test database. Current desktop/mobile browser checks and loading measurements are recorded in [.github/website-completion.md](.github/website-completion.md). Live hosting and real database/email/upload integration still require verification.
 
 ## Stack and architecture
 
@@ -36,7 +36,7 @@ public/logo/               Replaceable full and icon SVGs
 
 ## 1. Install
 
-Use Node.js 22 or newer and npm. Internet access is needed for npm packages, Prisma engines and Next.js font downloads during build.
+Use Node.js 22 or newer and npm. Internet access is needed for npm packages and Prisma engines. Website fonts are served locally.
 
 ```sh
 npm install
@@ -44,7 +44,7 @@ npm install
 
 On Windows where PowerShell blocks `npm.ps1`, use `npm.cmd` and `npx.cmd` for the commands in this guide; no execution-policy change is needed.
 
-Commit the generated `package-lock.json` after the first successful installation and use `npm ci` for subsequent CI/production installs. A lockfile could not be generated in the restricted environment; no lockfile was fabricated.
+The committed `package-lock.json` pins dependencies. Use `npm ci` for reproducible CI and production installs.
 
 ## 2. Environment
 
@@ -265,9 +265,3 @@ Follow [Vercel’s domain setup instructions](https://vercel.com/docs/domains/se
 11. Send a real test inquiry and inspect both internal and customer email delivery and authentication results.
 
 Do not mark the release production-ready until the checks in `docs/VERIFICATION.md` and live integration smoke checks pass.
-#   c o o h o s t y  
- #   c o o h o s t y  
- #   c o o h o s t y  
- #   c o o h o s t y  
- #   c o o h o s t y  
- 

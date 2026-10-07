@@ -6,7 +6,7 @@ import { EstimateBar } from './estimate-bar';
 import { estimateSchema } from '@/validations/estimate';
 import type { Locale } from '@/config/site';
 
-const propertySchema = estimateSchema.pick({ type: true, bedrooms: true, city: true, address: true });
+const propertySchema = estimateSchema.pick({ type: true, bedrooms: true, city: true, address: true, plan: true });
 function subscribe(callback: () => void) {
   window.addEventListener('storage', callback);
   return () => window.removeEventListener('storage', callback);

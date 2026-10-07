@@ -1,0 +1,5 @@
+/* Small form transitions use CSS so initial pages do not load an animation library. */
+@media (prefers-reduced-motion: no-preference) {
+  .estimate-step-fields { animation: estimate-step-enter .18s ease-out; }
+  @keyframes estimate-step-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+}

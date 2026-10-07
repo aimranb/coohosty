@@ -11,5 +11,5 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   setRequestLocale(locale);
   const messages = await getMessages();
   const t = await getTranslations('nav');
-  return <NextIntlClientProvider locale={locale} messages={messages}><HomeInteractions/><a className="skip-link" href="#main-content">{t('skip')}</a><div id="top"/><Header locale={locale}/>{children}<Footer locale={locale}/></NextIntlClientProvider>;
+  return <NextIntlClientProvider locale={locale} messages={{ nav: messages.nav, form: messages.form, estimate: messages.estimate }}><HomeInteractions/><a className="skip-link" href="#main-content">{t('skip')}</a><div id="top"/><Header locale={locale}/>{children}<Footer locale={locale}/></NextIntlClientProvider>;
 }

@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm, type FieldError } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Check, House, LoaderCircle, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -16,31 +15,43 @@ type Benchmark = { lower: number; upper: number; currency: 'EUR'; listings: numb
 type Result = { channel: 'email' | 'whatsapp'; data: EstimateData; benchmark?: Benchmark | null; delivery?: string };
 const cities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Agadir', 'Fès', 'Meknès', 'Essaouira', 'Tétouan', 'Oujda', 'El Jadida', 'Kénitra', 'Mohammedia', 'Chefchaouen', 'Ifrane', 'Dakhla', 'Nador', 'Ouarzazate', 'Safi', 'Béni Mellal'];
 
-type PropertyDetails = Pick<EstimateInput, 'type' | 'bedrooms' | 'city' | 'address'>;
+type PropertyDetails = Pick<EstimateInput, 'type' | 'bedrooms' | 'city' | 'address' | 'plan'>;
 
 export function EstimateBar({ locale, emailEnabled, completion = false, initialProperty }: { locale: Locale; emailEnabled: boolean; completion?: boolean; initialProperty?: PropertyDetails }) {
   const router = useRouter();
   const t = useTranslations('estimate');
   const validation = useTranslations('form.validation');
-  const reduced = useReducedMotion();
   const [step, setStep] = useState(initialProperty ? 1 : 0);
   const [error, setError] = useState('');
   const [result, setResult] = useState<Result | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const locked = useRef(false);
   const previousPayload = useRef('');
-  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
+  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { plan: 'AUDIT', type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
   const { register, setValue, formState: { errors, isSubmitting } } = form;
-  useEffect(() => { setValue('submissionKey', crypto.randomUUID()); }, [setValue]);
+  useEffect(() => {
+    setValue('submissionKey', crypto.randomUUID());
+    const syncPlan = () => {
+      const plan = new URLSearchParams(window.location.search).get('plan');
+      if (plan === 'AUDIT' || plan === 'OPTIMIZE' || plan === 'COHOST') setValue('plan', plan);
+    };
+    syncPlan();
+    window.addEventListener('coohosty-plan-change', syncPlan);
+    window.addEventListener('popstate', syncPlan);
+    return () => {
+      window.removeEventListener('coohosty-plan-change', syncPlan);
+      window.removeEventListener('popstate', syncPlan);
+    };
+  }, [setValue]);
   const onToken = useCallback((token: string) => setValue('turnstileToken', token), [setValue]);
 
   function showStep(index: number) { setError(''); setStep(index); requestAnimationFrame(() => heading.current?.focus()); }
   async function next() {
     if (!await form.trigger(estimateSteps[step], { shouldFocus: true })) return;
     if (step === 0 && !completion) {
-      const { type, bedrooms, city, address } = form.getValues();
+      const { type, bedrooms, city, address, plan } = form.getValues();
       try {
-        sessionStorage.setItem(`coohosty-estimate-property-${locale}`, JSON.stringify({ type, bedrooms, city, address }));
+        sessionStorage.setItem(`coohosty-estimate-property-${locale}`, JSON.stringify({ type, bedrooms, city, address, plan }));
       } catch { setError(t('error')); return; }
       router.push(`/${locale}/estimate`);
       return;
@@ -62,6 +73,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
   }
   function whatsappUrl(data: EstimateData, benchmark?: Benchmark | null) {
     const entries: [string, string][] = [
+      [{ fr: 'Offre', en: 'Plan', ar: 'الخطة' }[locale], data.plan],
       [t('fields.fullName'), data.fullName], [t('fields.email'), data.email], [t('fields.phone'), data.phone || '—'],
       [t('fields.type'), t(`options.${data.type}`)], [t('fields.bedrooms'), data.bedrooms],
       [t('fields.city'), `${data.city}, Morocco`], [t('fields.address'), data.address],
@@ -105,18 +117,18 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
     <button className="estimate-edit" onClick={() => { setResult(null); setStep(0); }}>{t('edit')}</button>
   </div>;
 
-  return <motion.form layout={!reduced} id="estimate" className="estimate-bar" noValidate onSubmit={event => { event.preventDefault(); if (step < 2) void next(); else void form.handleSubmit(submit)(event); }} aria-label={t('title')}>
+  return <form id="estimate" className="estimate-bar" noValidate onSubmit={event => { event.preventDefault(); if (step < 2) void next(); else void form.handleSubmit(submit)(event); }} aria-label={t('title')}>
     <div className="estimate-heading"><span><House size={15}/>{t('eyebrow')}</span><b>{step + 1}/3</b></div>
     <h2 ref={heading} tabIndex={-1}>{t('title')}</h2><p className="estimate-intro">{t('subtitle')}</p>
     <ol className="estimate-progress" aria-label={t('progress')}>{['property', 'plans', 'contact'].map((name, index) => <li key={name} className={index <= step ? 'is-active' : ''} aria-current={index === step ? 'step' : undefined}><span>{index < step ? <Check size={10}/> : index + 1}</span>{t(`steps.${name}`)}</li>)}</ol>
-    <AnimatePresence mode="wait" initial={false}><motion.div className="estimate-fields" key={step} initial={{ opacity: 0, x: reduced ? 0 : locale === 'ar' ? -12 : 12 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: reduced ? 0 : locale === 'ar' ? 8 : -8 }} transition={{ duration: reduced ? 0 : .18 }}>
+    <div className="estimate-fields estimate-step-fields" key={step}>
       {step === 0 && <>{select('type', estimateTypes)}{select('bedrooms', estimateBedrooms)}{input('city')}{input('address')}<datalist id="estimate-morocco-cities">{cities.map(city => <option key={city} value={city}/>)}</datalist><small className="estimate-full estimate-location-note">{t('allMorocco')}</small></>}
       {step === 1 && <>{select('objective', estimateGoals, true)}{select('duration', estimateDurations, true)}{select('ready', estimateStarts, true)}</>}
       {step === 2 && <>{input('fullName', true)}{input('email')}{input('phone')}<fieldset className="estimate-full estimate-channel"><legend>{t('fields.channel')}</legend>{(['email', 'whatsapp'] as const).map(channel => <label key={channel}><input type="radio" value={channel} disabled={channel === 'email' && !emailEnabled} {...register('channel')}/>{channel === 'email' ? <Mail size={15}/> : <WhatsAppIcon width={15} height={15}/>}<span>{channel === 'email' ? t('emailOption') : 'WhatsApp'}</span></label>)}</fieldset><div className="estimate-full"><label className="estimate-consent"><input type="checkbox" {...register('consent')} aria-invalid={!!errors.consent} aria-describedby={errors.consent ? 'estimate-consent-error' : undefined}/><span>{t('consent')}</span></label>{fieldError('consent')}<Link className="estimate-privacy" href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">{t('privacy')}</Link></div><Turnstile onToken={onToken}/></>}
-    </motion.div></AnimatePresence>
+    </div>
     <div className="estimate-honeypot" aria-hidden="true"><label htmlFor="estimate-company">Company</label><input id="estimate-company" tabIndex={-1} autoComplete="off" {...register('honeypot')}/></div>
     {error && <p className="estimate-submit-error" role="alert">{error}</p>}
     <div className="estimate-actions">{step > 0 && <button type="button" className="estimate-back" disabled={isSubmitting} onClick={() => showStep(step - 1)} aria-label={t('back')}><ArrowLeft size={16}/></button>}<button className="estimate-next" type="submit" disabled={isSubmitting}>{isSubmitting ? <><LoaderCircle className="estimate-spinner" size={16}/>{t('sending')}</> : <>{t(step < 2 ? 'next' : 'submit')}<ArrowRight size={16}/></>}</button></div>
     <div className="estimate-footer">{t('footer')}</div>
-  </motion.form>;
+  </form>;
 }

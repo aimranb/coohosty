@@ -27,7 +27,7 @@ export async function storeEstimate(data: EstimateData, benchmark: RevenueBenchm
   try {
     return await db.auditRequest.create({ data: {
       submissionKey: data.submissionKey, payloadHash, source: 'hero-estimate',
-      fullName: data.fullName, email: data.email, phone: data.phone, country: 'Morocco', plan: 'AUDIT', locale: data.locale,
+      fullName: data.fullName, email: data.email, phone: data.phone, country: 'Morocco', plan: data.plan, locale: data.locale,
       authorization: 'unknown', objective: data.objective, availability: t.options[data.ready], comments, consent: data.consent,
       emails: { create: [{ kind: 'internal' }, { kind: 'customer' }] },
     } });

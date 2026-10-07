@@ -6,6 +6,11 @@ export const validEstimate = { type: 'apartment', bedrooms: '2', city: 'Sidi Ifn
 const sample = { KPIsByBedroomCategory: { '2': { Revenue25PercentileSum: 24000, Revenue75PercentileSum: 36000, NoOfListings: 25, bedrooms_considered: ['2'] } } };
 afterEach(() => { vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
 describe('estimate request validation', () => {
+  it('preserves supported selected plans and defaults older requests to AUDIT', () => {
+    expect(estimateSchema.parse(validEstimate).plan).toBe('AUDIT');
+    for (const plan of ['AUDIT', 'OPTIMIZE', 'COHOST']) expect(estimateSchema.parse({ ...validEstimate, plan }).plan).toBe(plan);
+    expect(estimateSchema.safeParse({ ...validEstimate, plan: 'OTHER' }).success).toBe(false);
+  });
   it('accepts cities outside a fixed list and normalizes contact and address fields', () => { const result = estimateSchema.parse({ ...validEstimate, city: ' Sidi Ifni ', address: ' 12 Rue du Port ' }); expect(result.city).toBe('Sidi Ifni'); expect(result.address).toBe('12 Rue du Port'); expect(result.email).toBe('owner@example.com'); });
   it.each([{ consent: false }, { email: 'bad' }, { bedrooms: '20' }, { address: '' }, { city: '' }, { honeypot: 'bot' }, { phone: 'abc' }])('rejects invalid or non-consensual requests %j', change => { expect(estimateSchema.safeParse({ ...validEstimate, ...change }).success).toBe(false); });
   it('accepts optional phone and ten bedrooms', () => { expect(estimateSchema.safeParse({ ...validEstimate, bedrooms: '10', phone: '' }).success).toBe(true); });

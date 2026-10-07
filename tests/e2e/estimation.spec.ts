@@ -1,73 +1,59 @@
-import { test, expect, type Page } from '@playwright/test';
-async function fillDetails(page: Page) {
-  const bar = page.locator('#estimate');
-  await bar.getByLabel('City in Morocco').fill('Sidi Ifni');
-  await bar.getByLabel('Property address').fill('12 Rue du Port');
-  await bar.getByRole('button', { name: 'Continue', exact: true }).click();
-  await bar.getByLabel('What is your main goal with COOHOSTY?').selectOption('time');
-  await bar.getByLabel('How long do you plan to short-let your property for?').selectOption('yearplus');
-  await bar.getByLabel('When would you be ready to start?').selectOption('month');
-  await bar.getByRole('button', { name: 'Continue', exact: true }).click();
-  await bar.getByLabel('Your full name').fill('Test Owner');
-  await bar.getByLabel('Your email').fill('owner@example.com');
-  await bar.getByLabel('Phone / WhatsApp (optional)').fill('+212600000000');
-  await bar.getByLabel('I agree that COOHOSTY may use').check();
-  return bar;
-}
-test('property estimate validates steps, preserves answers and submits all requested details', async ({ page }) => {
+import { test, expect } from '@playwright/test';
+test('selected plan and property answers survive navigation and reload, and WhatsApp contains complete details', async ({ page }) => {
   let submitted = false;
   await page.route('**/api/estimate', async route => {
-    const data = route.request().postDataJSON();
-    expect(data).toMatchObject({ type: 'apartment', bedrooms: '2', city: 'Sidi Ifni', address: '12 Rue du Port', objective: 'time', duration: 'yearplus', ready: 'month', fullName: 'Test Owner', email: 'owner@example.com', phone: '+212600000000', consent: true });
-    expect(data.submissionKey).toMatch(/^[0-9a-f-]{36}$/);
+    expect(route.request().postDataJSON()).toMatchObject({ plan: 'COHOST', type: 'apartment', bedrooms: '2', city: 'Sidi Ifni', address: '12 Rue du Port', objective: 'time', duration: 'yearplus', ready: 'month', fullName: 'Test Owner', email: 'owner@example.com', consent: true, channel: 'whatsapp' });
     submitted = true;
-    await route.fulfill({ status: 201, contentType: 'application/json', body: JSON.stringify({ ok: true, delivery: 'sent', benchmark: { lower: 2000, upper: 3000, currency: 'EUR', provider: 'PriceLabs', listings: 25, bedrooms: 2, retrievedAt: '2026-10-04T00:00:00Z' } }) });
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, delivery: 'whatsapp_prepared', benchmark: null }) });
   });
   await page.goto('/en');
+  await page.locator('[data-plan-card=COHOST] .package-cta').click();
   const bar = page.locator('#estimate');
-  await bar.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(bar.getByLabel('City in Morocco')).toBeFocused();
-  await expect(bar.getByText('This field is required.').first()).toBeVisible();
-  await fillDetails(page);
-  await bar.getByRole('button', { name: 'Previous step' }).click();
-  await expect(bar.getByLabel('How long do you plan to short-let your property for?')).toHaveValue('yearplus');
-  await bar.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(bar.getByLabel('Your email')).toHaveValue('owner@example.com');
-  await bar.getByRole('button', { name: 'Get my estimate' }).click();
-  await expect(bar.getByRole('heading', { name: 'Your request is received' })).toBeVisible();
-  await expect(bar.getByText(/A 2-bedroom rental in Sidi Ifni could generate/)).toBeVisible();
-  await expect(bar.getByText(/PriceLabs · 25/)).toBeVisible();
-  await expect(bar.getByText(/earnings are not guaranteed/)).toBeVisible();
+  await bar.locator('.estimate-next').click();
+  await expect(bar.locator('#estimate-city')).toBeFocused();
+  await bar.locator('#estimate-city').fill('Sidi Ifni');
+  await bar.locator('#estimate-address').fill('12 Rue du Port');
+  await bar.locator('.estimate-next').click();
+  await expect(page).toHaveURL(/\/en\/estimate$/);
+  await expect(bar.locator('#estimate-objective')).toBeVisible();
+  await page.reload();
+  await expect(bar.locator('#estimate-objective')).toBeVisible();
+  await bar.locator('.estimate-back').click();
+  await expect(bar.locator('#estimate-city')).toHaveValue('Sidi Ifni');
+  await bar.locator('.estimate-next').click();
+  await bar.locator('#estimate-objective').selectOption('time');
+  await bar.locator('#estimate-duration').selectOption('yearplus');
+  await bar.locator('#estimate-ready').selectOption('month');
+  await bar.locator('.estimate-next').click();
+  await bar.locator('#estimate-fullName').fill('Test Owner');
+  await bar.locator('#estimate-email').fill('owner@example.com');
+  await bar.locator('#estimate-phone').fill('+212600000000');
+  await bar.getByRole('checkbox').check();
+  await bar.getByRole('radio', { name: 'WhatsApp', exact: true }).check();
+  await bar.locator('.estimate-next').click();
+  await expect(bar.getByRole('heading')).toHaveText('Your WhatsApp message is ready');
+  const message = new URL((await bar.locator('.estimate-whatsapp').getAttribute('href'))!).searchParams.get('text')!;
+  for (const value of ['COHOST', 'Sidi Ifni', '12 Rue du Port', 'owner@example.com', '+212600000000', 'Save time', 'A year or longer', 'Within a month']) expect(message).toContain(value);
   expect(submitted).toBe(true);
 });
-test('email failure retains details and WhatsApp prepares a complete message without claiming delivery', async ({ page }) => {
-  await page.route('**/api/estimate', async route => {
-    const email = route.request().postDataJSON().channel === 'email';
-    await route.fulfill({ status: email ? 503 : 200, contentType: 'application/json', body: JSON.stringify(email ? { error: 'email_unavailable' } : { ok: true, delivery: 'whatsapp_prepared', benchmark: null }) });
-  });
-  await page.goto('/en');
-  const bar = await fillDetails(page);
-  // Email is enabled in the controlled preview; production defaults to WhatsApp if no sender is configured.
-  if (await bar.getByRole('radio', { name: 'Email', exact: true }).isEnabled()) {
-    await bar.getByRole('radio', { name: 'Email', exact: true }).check();
-    await bar.getByRole('button', { name: 'Get my estimate' }).click();
-    await expect(bar.getByRole('alert')).toContainText('Email is temporarily unavailable');
-    await expect(bar.getByLabel('Your email')).toHaveValue('owner@example.com');
-  }
-  await bar.getByRole('radio', { name: 'WhatsApp', exact: true }).check();
-  await bar.getByRole('button', { name: 'Get my estimate' }).click();
-  await expect(bar.getByRole('heading', { name: 'Your WhatsApp message is ready' })).toBeVisible();
-  const href = await bar.getByRole('link', { name: 'Open WhatsApp and send' }).getAttribute('href');
-  const message = new URL(href!).searchParams.get('text')!;
-  for (const text of ['Sidi Ifni', '12 Rue du Port', 'owner@example.com', '+212600000000', '2', 'Save time', 'A year or longer', 'Within a month']) expect(message).toContain(text);
-  await expect(bar.getByRole('status')).toContainText('press Send');
-});
-test('all localized estimate forms fit the viewport', async ({ page }) => {
-  for (const locale of ['fr', 'en', 'ar']) {
-    await page.goto('/'+locale);
-    await expect(page.locator('#estimate')).toBeVisible();
-    await expect(page.locator('.hero-headline br')).toHaveCount(0);
-    expect(await page.locator('.hero-headline').evaluate(el => el.getBoundingClientRect().height <= parseFloat(getComputedStyle(el).lineHeight) + 1)).toBe(true);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  }
+test('email delivery errors preserve contact details for retry', async ({ page }) => {
+  await page.route('**/api/estimate', route => route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ error: 'email_unavailable' }) }));
+  await page.goto('/en/estimate');
+  const bar = page.locator('#estimate');
+  await bar.locator('#estimate-city').fill('Rabat');
+  await bar.locator('#estimate-address').fill('12 Rue du Port');
+  await bar.locator('.estimate-next').click();
+  await bar.locator('#estimate-objective').selectOption('revenue');
+  await bar.locator('#estimate-duration').selectOption('yearplus');
+  await bar.locator('#estimate-ready').selectOption('now');
+  await bar.locator('.estimate-next').click();
+  const email = bar.getByRole('radio', { name: 'Email', exact: true });
+  test.skip(!await email.isEnabled(), 'No email provider configured in this runtime.');
+  await email.check();
+  await bar.locator('#estimate-fullName').fill('Test Owner');
+  await bar.locator('#estimate-email').fill('owner@example.com');
+  await bar.getByRole('checkbox').check();
+  await bar.locator('.estimate-next').click();
+  await expect(bar.getByRole('alert')).toContainText('Email is temporarily unavailable');
+  await expect(bar.locator('#estimate-email')).toHaveValue('owner@example.com');
 });

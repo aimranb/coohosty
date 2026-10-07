@@ -8,6 +8,7 @@ export const estimateDurations = ['under3', '3to6', '6to12', 'yearplus', 'flexib
 export const estimateStarts = ['now', 'month', 'threeMonths', 'exploring'] as const;
 const text = (max: number) => z.string().trim().min(1, 'required').max(max, 'tooLong').refine(value => !/[\u0000-\u001f\u007f]/.test(value), 'invalid');
 export const estimateSchema = z.object({
+  plan: z.enum(['AUDIT', 'OPTIMIZE', 'COHOST']).default('AUDIT'),
   type: z.enum(estimateTypes), bedrooms: z.enum(estimateBedrooms),
   city: text(120), address: text(300), objective: z.enum(estimateGoals),
   duration: z.enum(estimateDurations), ready: z.enum(estimateStarts),
