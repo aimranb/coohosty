@@ -1,4 +1,4 @@
-const { chromium } = require('@playwright/test');
+const { chromium, expect } = require('@playwright/test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const base = process.env.MOTION_TEST_URL || 'http://localhost:3136';
@@ -15,6 +15,7 @@ const screenshotStyle = '.site-header,.floating-whatsapp,.skip-link,nextjs-porta
       await page.goto(`${base}/${locale}`, { waitUntil: 'networkidle' });
       await page.locator('#destinations').scrollIntoViewIfNeeded();
       const scene = page.locator('#destinations [data-running]');
+      await page.waitForFunction(() => getComputedStyle(document.querySelector('#destinations [data-running]').parentElement).transform === 'none');
       await page.waitForFunction(() => document.querySelector('#destinations [data-running]')?.dataset.running === 'true');
       const mapButtons = scene.locator('button[aria-pressed]').filter({ hasNot: page.locator('svg') });
       assert.equal(await mapButtons.count(), 6);
@@ -22,7 +23,7 @@ const screenshotStyle = '.site-header,.floating-whatsapp,.skip-link,nextjs-porta
       const labels = await mapButtons.allTextContents();
       assert.ok(labels.every(label => label.trim()));
       await mapButtons.nth(3).click();
-      assert.equal(await mapButtons.nth(3).getAttribute('aria-pressed'), 'true');
+      await expect(mapButtons.nth(3)).toHaveAttribute('aria-pressed', 'true');
       assert.equal(await scene.getAttribute('data-running'), 'false');
       assert.equal(await scene.locator('h3').innerText(), labels[3].trim());
       await scene.locator('button').first().click();
@@ -34,6 +35,7 @@ const screenshotStyle = '.site-header,.floating-whatsapp,.skip-link,nextjs-porta
       assert.equal(await network.locator('[data-flow-source]').count(), 3);
       assert.equal(await network.locator('[data-flow-target]').count(), 6);
       await page.waitForFunction(() => document.querySelectorAll('.analysis-network .analysis-wire').length === 9);
+      await page.waitForFunction(() => getComputedStyle(document.querySelector('.analysis-network').parentElement).transform === 'none');
       assert.equal(await network.locator('.analysis-connection.input').count(), 3);
       assert.equal(await network.locator('.analysis-connection.output').count(), 6);
       const error = await network.evaluate(stage => {
