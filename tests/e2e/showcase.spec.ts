@@ -13,10 +13,15 @@ test('hero loads one photo on entry and manual navigation loads valid photos', a
   await expect(gallery.locator('[data-active=true] img')).toHaveAttribute('src', /hero-interior-4/);
 });
 test('FAQ expands with keyboard navigation', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/en');
   const items = page.locator('#faq .faq-item');
   await expect(items).toHaveCount(8);
-  await items.first().locator('summary').focus();
+  const question = items.first().locator('summary');
+  await question.scrollIntoViewIfNeeded();
+  await expect(question).toBeVisible();
+  await question.focus();
+  await expect(question).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(items.first()).toHaveAttribute('open', '');
   await expect(items.first().locator('.faq-answer')).toBeVisible();

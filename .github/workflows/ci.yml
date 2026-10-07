@@ -29,7 +29,13 @@ jobs:
       - run: npm run test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - run: npm run test:e2e -- --reporter=list
+      - name: Report browser failure details
+        if: failure()
+        run: |
+          if [ -d test-results ]; then
+            find test-results -name error-context.md -exec cat {} +
+          fi
 
   production:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
