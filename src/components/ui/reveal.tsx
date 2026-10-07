@@ -28,12 +28,17 @@ export function Reveal({ children, className = '', delay = 0 }: { children: Reac
     const show = () => { observer.disconnect(); entrance.cancel(); };
     const reduce = () => { if (preference.matches) show(); };
     preference.addEventListener('change', reduce);
-    element.addEventListener('focusin', show);
+    // Keyboard focus must reveal hidden controls immediately. Pointer focus must
+    // not move a control between pointerdown and pointerup and lose its click.
+    const focus = (event: FocusEvent) => {
+      if (event.target instanceof Element && event.target.matches(':focus-visible')) show();
+    };
+    element.addEventListener('focusin', focus);
     return () => {
       observer.disconnect();
       entrance.removeEventListener('finish', finish);
       preference.removeEventListener('change', reduce);
-      element.removeEventListener('focusin', show);
+      element.removeEventListener('focusin', focus);
       entrance.cancel();
     };
   }, [delay]);

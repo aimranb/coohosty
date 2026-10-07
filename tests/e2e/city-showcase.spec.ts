@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 test('city selection exposes the selected photograph and pauses rotation', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/en');
   const scene = page.locator('#destinations [data-running]');
   await scene.getByRole('button', { name: 'Tangier', exact: true }).click();

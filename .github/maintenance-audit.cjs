@@ -1,9 +1,10 @@
 const { chromium } = require('@playwright/test');
 const fs = require('node:fs');
+const assert = require('node:assert/strict');
 
 (async () => {
   const origin = process.env.AUDIT_ORIGIN || 'https://www.coohosty.com';
-  const browser = await chromium.launch({ channel: 'chrome', headless: true });
+  const browser = await chromium.launch({ channel: process.platform === 'win32' ? 'chrome' : undefined, headless: true });
   const results = [];
   try {
     for (const locale of ['fr', 'en', 'ar']) {
@@ -26,12 +27,20 @@ const fs = require('node:fs');
       await page.locator('#destinations').scrollIntoViewIfNeeded();
       const cityButtons = page.locator('button[aria-pressed]', { hasText: /Casablanca|Agadir|Rabat|Tanger|Mekn|F.s|الرباط|أكادير|طنجة|مكناس|فاس|الدار/ });
       if (await cityButtons.count()) await cityButtons.last().click();
+      assert.equal(response.status(), 200, `${locale} homepage must load`);
+      assert.equal(initial.lang, locale);
+      assert.equal(initial.dir, locale === 'ar' ? 'rtl' : 'ltr');
+      assert.equal(initial.overflow, false, `${locale} page must fit the mobile viewport`);
+      assert.equal(initial.heroRequests, 1, 'Reduced-motion entry must request only the first hero photo');
+      assert.deepEqual(errors, [], `${locale} browser runtime errors`);
+      assert.deepEqual(failures, [], `${locale} failed assets or requests`);
       results.push({ locale, status: response.status(), ...initial, errors, failures });
       await page.close();
     }
     const page = await browser.newPage();
     for (const path of ['/fr/blog', '/fr/estimate', '/fr/privacy', '/fr/legal', '/fr/services/audit', '/fr/services/optimize', '/fr/services/cohost', '/admin/login', '/fr/blog/nonexistent']) {
       const response = await page.goto(`${origin}${path}`, { waitUntil: 'domcontentloaded' });
+      assert.equal(response.status(), path.endsWith('/nonexistent') ? 404 : 200, `Unexpected status for ${path}`);
       results.push({ path, status: response.status() });
     }
     console.log(JSON.stringify(results, null, 2));

@@ -22,7 +22,7 @@ const positions: Record<string, { x: number; y: number; lx: number; ly: number }
 const silhouette = 'M391 96 C383 108 378 125 369 142 L360 174 L335 209 L304 231 L286 247 L251 272 L226 301 L216 330 L198 350 L177 371 L166 399 L153 438 L154 458 L134 482 L121 510 L100 535 L104 558 L152 578 L209 561 L268 505 L328 475 L351 424 L409 389 L461 349 L488 303 L537 269 L566 224 L561 192 L555 161 L522 163 L497 153 L479 156 L455 145 L436 140 L421 117 L411 102 Z';
 
 export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: Locale }) {
-  const { root, running, reduced, paused, setPaused } = useVisibleMotion();
+  const { root, ready, running, reduced, paused, setPaused } = useVisibleMotion();
   const [active, setActive] = useState(0);
   const id = useId().replace(/:/g, '');
   const copy = motionCopy[locale];
@@ -41,7 +41,7 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
 
   return <div ref={root} className={styles.scene} data-running={running} data-reduced={reduced} aria-label={copy.map}>
     <div className={styles.mapPanel}>
-      <div className={styles.mapTop}><span><span className={styles.statusDot}/>{copy.localApproach}</span><button type="button" className={styles.motionButton} aria-label={paused ? copy.play : copy.pause} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={15}/> : <Pause size={15}/>}</button></div>
+      <div className={styles.mapTop}><span><span className={styles.statusDot}/>{copy.localApproach}</span><button type="button" disabled={!ready} className={styles.motionButton} aria-label={paused ? copy.play : copy.pause} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={15}/> : <Pause size={15}/>}</button></div>
       <div className={styles.mapCanvas}>
         <svg viewBox="0 0 640 620" className={styles.mapSvg} aria-hidden="true">
           <defs>
@@ -71,7 +71,7 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
         </svg>
         {cities.map((item, index) => {
           const point = positions[item.id];
-          return <button key={item.id} type="button" className={`${styles.mapLabel} ${index === active ? styles.selectedLabel : ''}`} style={{ '--x': `${point.lx / 640 * 100}%`, '--y': `${point.ly / 620 * 100}%` } as CSSProperties} aria-pressed={index === active} onClick={() => select(index)}>{item.name}<span className={styles.labelDot}/></button>;
+          return <button key={item.id} type="button" className={`${styles.mapLabel} ${index === active ? styles.selectedLabel : ''}`} style={{ '--x': `${point.lx / 640 * 100}%`, '--y': `${point.ly / 620 * 100}%` } as CSSProperties} aria-pressed={index === active} disabled={!ready} onClick={() => select(index)}>{item.name}<span className={styles.labelDot}/></button>;
         })}
       </div>
       <div className={styles.mapBottom}><MapPin size={14}/><span>{copy.mapHint}</span><span className={styles.mapCount}>{String(active + 1).padStart(2, '0')} / {String(cities.length).padStart(2, '0')}</span></div>

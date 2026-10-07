@@ -16,7 +16,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: cohosty
         ports: ['5432:5432']
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options: --health-cmd "pg_isready -U postgres" --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,3 +30,31 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+
+  production:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Wait for Vercel production deployment
+        run: node .github/wait-production.cjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Audit the live website
+        run: node .github/maintenance-audit.cjs
+        env:
+          AUDIT_ORIGIN: https://coohosty.com
+          AUDIT_OUTPUT: .github/maintenance-live.json
+      - name: Verify live desktop and mobile flows
+        run: npx playwright test --config .github/maintenance-playwright.config.cjs
+        env:
+          E2E_BASE_URL: https://coohosty.com

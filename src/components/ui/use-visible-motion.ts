@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 export function useVisibleMotion() {
   const root = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
   const [reduced, setReduced] = useState(true);
   const [paused, setPaused] = useState(false);
 
@@ -13,6 +14,7 @@ export function useVisibleMotion() {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let intersects = false;
     const sync = () => {
+      setReady(true);
       setReduced(preference.matches);
       setVisible(intersects && !document.hidden);
     };
@@ -31,5 +33,5 @@ export function useVisibleMotion() {
     };
   }, []);
 
-  return { root, running: visible && !reduced && !paused, reduced, paused, setPaused };
+  return { root, ready, running: visible && !reduced && !paused, reduced, paused, setPaused };
 }

@@ -20,7 +20,9 @@ Initial resource transfer fell about 27%; HTML fell 11–13%. With normal motion
 
 Homepage, journal, estimate, legal/privacy, three service pages and admin login return 200 locally; an unknown journal article returns 404. No broken assets or browser runtime errors were recorded.
 
-These changes have not been deployed. The public domain timed out from this environment, including an attempted browser check outside the sandbox. Live hosting performance, real database insertion, email delivery and uploads remain unverified. No customer enquiry or email was sent. Existing unrelated workspace edits were preserved.
+The maintenance changes were published to Vercel from GitHub `main` in commit `0a27970`; Vercel reported deployment success. Deployment CI exposed a city-selection failure with normal motion: pointer focus cancelled an entrance animation and moved the button between press and release. The follow-up fix preserves pointer-click geometry while still revealing content immediately for keyboard focus. City controls also wait until hydration completes. CI now tests the production build with two workers, checks PostgreSQL health using its configured role, and checks the deployed site's pages and desktop/mobile flows after Vercel completes.
+
+The public domain intermittently times out from this local environment. Live verification now also runs from GitHub's runner. Real production database insertion, email delivery and uploads remain unverified; browser form submissions are intercepted. No customer enquiry or email was sent. Existing unrelated workspace edits were preserved.
 
 ## Previous verification — 7 October 2026
 
