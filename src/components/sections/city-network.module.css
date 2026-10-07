@@ -1,0 +1,61 @@
+.scene{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:stretch;margin-top:35px;--accent:#ff7415}
+.credits{margin-top:18px;font-size:11px;line-height:1.7;color:#817369}.credits summary{cursor:pointer;width:fit-content}.credits p{margin:7px 0;font-size:11px}.credits a{text-decoration:underline;text-underline-offset:3px}
+.mapPanel{min-width:0;background:#fcfaf8;border:1px solid #e6ddd6;border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.mapTop{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;gap:12px}
+.mapTop>span{display:flex;align-items:center;gap:10px;font-size:12px;color:#62605d;line-height:1.6}
+.statusDot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #ff741514;flex-shrink:0}
+.motionButton{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid #ded4cb;background:white;color:#555;flex-shrink:0}
+.motionButton:hover{border-color:var(--accent);color:#bc5200}
+.mapCanvas{position:relative;width:100%;aspect-ratio:640/620;direction:ltr;margin-top:-20px}
+.mapSvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.route{stroke:#d9bda5;transition:stroke .6s}
+.activeRoute{stroke:var(--accent)}
+.routeSignal{stroke:var(--accent);stroke-dasharray:12 88;animation:map-signal 4.4s linear infinite;opacity:0}
+.activeRoute .routeSignal{opacity:.8}
+.pinRing{fill:#ff74150d;stroke:#ff741533;transform-box:fill-box;transform-origin:center;opacity:.5}
+.activeRoute .pinRing{animation:map-pin 2.2s ease-out infinite}
+.radar,.radarInner{transform-origin:286px 247px;animation:map-radar 5s ease-out infinite;opacity:0}
+.radarInner{animation-delay:2.5s}
+.mapLabel{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);border:1px solid #e3d8ce;border-radius:8px;padding:9px 11px;background:#fff;color:#333;display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:13px;font-weight:500;box-shadow:0 4px 12px #34201505;transition:background .4s,color .4s,border-color .4s,box-shadow .4s;z-index:2;direction:inherit}
+.mapLabel:hover{border-color:var(--accent);box-shadow:0 4px 18px #ff74151c}
+.labelDot{width:4px;height:4px;border-radius:50%;background:#b6a08e}
+.selectedLabel{background:#111;color:white;border-color:#111;box-shadow:0 5px 22px #1111111c}
+.selectedLabel .labelDot{background:var(--accent);box-shadow:0 0 0 3px #ff741529}
+.ocean{font-size:10px;letter-spacing:4px;fill:#aa9b90;font-family:inherit}
+.compass text{font-size:10px;fill:#8b7a6d}
+.mapBottom{display:flex;align-items:center;gap:9px;font-size:11px;color:#7b7067;padding:16px 24px 22px;margin-top:auto;line-height:1.5}
+.mapBottom svg{color:#bc5200;flex-shrink:0}
+.mapCount{margin-inline-start:auto;color:#bc5200;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:1px}
+.cityPanel{min-width:0;display:flex;flex-direction:column;gap:22px}
+.photo{position:relative;flex:1;min-height:320px;border-radius:24px;overflow:hidden;background:#111;isolation:isolate}
+.photoLayer{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;z-index:-2}
+.activePhoto{opacity:1}
+.photoLayer img{object-fit:cover;transform:scale(1.025)}
+.activePhoto img{animation:city-image-drift 8.8s ease-out both}
+.photoShade{position:absolute;inset:0;background:linear-gradient(180deg,#11111128 0%,transparent 40%,#111111d9 100%);z-index:-1}
+.photoTag{position:absolute;top:25px;inset-inline-start:25px;display:flex;gap:8px;align-items:center;color:white;background:#11111126;backdrop-filter:blur(12px);border:1px solid #ffffff55;padding:9px 13px;border-radius:20px;font-size:12px}
+.photoCaption{position:absolute;inset-inline:28px;bottom:32px;color:white}
+.photoCaption h3{font-size:clamp(27px,3vw,39px);letter-spacing:-1px;font-weight:500;line-height:1.2;margin:0 0 9px}
+.photoCaption p{font-size:14px;line-height:1.7;color:#ffffffe3;margin:0}
+.photoProgress{position:absolute;bottom:0;inset-inline-start:0;height:3px;width:100%;background:var(--accent);transform-origin:left;animation:city-progress 4.4s linear both}
+.cityChoices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cityChoices button{display:flex;align-items:center;gap:10px;padding:17px 15px;background:#fff;border:1px solid #e6e0db;border-radius:12px;font-size:13px;line-height:1.4;color:#4e4742;min-width:0;transition:background .3s,border-color .3s,color .3s}
+.cityChoices button:hover{border-color:var(--accent)}
+.cityChoices button svg{margin-inline-start:auto;flex-shrink:0;color:#a59487}
+.cityNumber{font-size:10px;color:#a18d7d;font-variant-numeric:tabular-nums}
+.cityChoices .selectedCity{background:#fff4ea;border-color:#ff741588;color:#a74700}
+.selectedCity svg,.selectedCity .cityNumber{color:#bc5200}
+.cityCta{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:500;line-height:1.6;padding:8px 3px;color:#a74700}
+.cityCta:hover{text-decoration:underline}
+.scene[data-running=false] *{animation-play-state:paused!important}
+.scene[data-reduced=true] .routeSignal,.scene[data-reduced=true] .radar,.scene[data-reduced=true] .radarInner{display:none}
+.scene[data-reduced=true] .photoProgress{transform:scaleX(1);animation:none}
+@keyframes map-signal{from{stroke-dashoffset:100}to{stroke-dashoffset:-100}}
+@keyframes map-pin{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+@keyframes map-radar{0%{transform:scale(.35);opacity:0}20%{opacity:.3}100%{transform:scale(1.5);opacity:0}}
+@keyframes city-image-drift{from{transform:scale(1.025)}to{transform:scale(1.08)}}
+@keyframes city-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(max-width:1000px){.scene{gap:22px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.mapTop{padding:20px}.mapLabel{font-size:11px;padding:8px}.photo{min-height:290px}.cityChoices button{padding:14px 10px;font-size:12px;gap:7px}.cityPanel{gap:15px}.mapBottom{padding-inline:18px}}
+@media(max-width:760px){.scene{grid-template-columns:1fr;gap:22px}.mapCanvas{max-width:520px;margin-inline:auto}.mapLabel{font-size:12px;padding:8px 10px}.photo{min-height:270px;aspect-ratio:1.4;flex:none}.cityChoices button{padding:16px 14px;font-size:13px}.mapTop>span{font-size:11px}.mapBottom{font-size:10px}.photoCaption p{font-size:13px}.photoCaption h3{font-size:32px}}
+@media(max-width:390px){.mapLabel{font-size:10px;padding:7px 8px;gap:6px}.mapTop,.mapBottom{padding-inline:15px}.mapTop>span{max-width:220px}.mapBottom{gap:6px}.mapCount{letter-spacing:0}.photoCaption{inset-inline:22px}.cityChoices button{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.scene *{animation:none!important;transition:none!important}.routeSignal,.radar,.radarInner{display:none}.photoLayer img{transform:none}}

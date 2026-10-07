@@ -1,0 +1,70 @@
+/* Editorial cards inspired by the supplied reference. */
+.journal,:global(#main-content).journal,:global(#main-content)>.journal{background-color:#faf7f1;background-image:linear-gradient(#30211404 1px,transparent 1px),linear-gradient(90deg,#30211404 1px,transparent 1px);background-size:54px 54px}
+.journalInner{max-width:1440px;padding-block:45px 80px}
+.journalHeading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:36px}
+.journalEyebrow{display:flex;align-items:center;gap:13px;font-size:12px;font-weight:500;letter-spacing:1.8px;line-height:1.6;color:#e65f00;margin-bottom:20px}
+.journalEyebrow i{width:9px;height:9px;flex-shrink:0;border-radius:50%;background:#ff7415;box-shadow:0 0 0 5px #ff74151f}
+.journalHeading h1,.journalHeading h2{font-size:clamp(40px,5.5vw,80px);font-weight:700;line-height:1.1;letter-spacing:-2.5px;margin:0;color:#171410}
+.entryCount,.journalAll{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#8b8177;line-height:1.7;white-space:nowrap;padding-bottom:5px}
+.journalAll{display:flex;align-items:center;gap:10px}
+.journalAll:hover{color:#bc5200}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.card{padding:0;border:1px solid #ded8cf;border-radius:23px;background:#faf7f1;display:flex;flex-direction:column;min-width:0;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s}
+.card:hover{border-color:#d5aa87;box-shadow:0 12px 35px #3924140a;transform:translateY(-4px)}
+.featured{grid-column:auto}
+.coverLink{display:block;position:relative;padding:8px;width:100%;flex-shrink:0}
+.cover{position:relative;isolation:isolate;overflow:hidden;width:100%;aspect-ratio:1.6;border-radius:16px;background:#f0e8dc}
+.cardContent{display:flex;flex-direction:column;align-items:start;padding:24px 24px 27px;flex:1}
+.cardMeta{display:flex;align-items:start;flex-wrap:wrap;justify-content:space-between;gap:8px 12px;width:100%;margin-bottom:19px;line-height:1.6}
+.cardMeta>span:first-child{font-size:11px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#ed6600}
+.cardMeta>span:last-child{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;color:#a0988f;white-space:nowrap}
+.card h2{font-size:clamp(22px,1.9vw,28px);line-height:1.27;letter-spacing:-.8px;font-weight:650;margin:0 0 16px;color:#191611}
+.card h2 a:hover{color:#bc5200}
+.card p{font-size:13px;line-height:1.85;color:#82796f;margin:0 0 24px}
+.cardLink{display:inline-flex;align-items:center;gap:9px;color:#a74700;font-size:12px;font-weight:600;line-height:1.6;margin-top:auto}
+.cardLink:hover{text-decoration:underline}
+.priorityBadge{position:absolute;bottom:24px;left:24px;border:1px solid #ffffff44;border-radius:6px;padding:6px 9px;color:white;background:#171410bd;backdrop-filter:blur(8px);font-size:9px;font-weight:500}
+.coverPhoto{object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .coverPhoto{transform:scale(1.045)}
+.coverShade{position:absolute;inset:0;background:linear-gradient(180deg,#17141015,transparent 35%,#171410bf)}
+.coverTag{position:absolute;top:16px;left:16px;right:auto;padding:6px 9px;border-radius:5px;background:#ffffffde;color:#534537;font-size:8px;font-weight:600;letter-spacing:.6px;line-height:1.5;max-width:calc(100% - 32px)}
+.coverDocument{position:absolute;right:20px;top:18%;width:53%;height:78%;border:1px solid #ddcfbd;border-radius:6px;background:#fffdf7;box-shadow:0 12px 24px #1b120d30;transform:rotate(5deg);padding:16px;display:flex;flex-direction:column;gap:8px}
+.documentIcon{width:30px;height:30px;color:#bc5200}
+.coverDocument small{font-size:7px;font-weight:600;letter-spacing:1px;color:#9c7961}
+.coverDocument strong{font-family:Georgia,serif;font-size:clamp(13px,1.25vw,19px);line-height:1.2;color:#382b21;font-weight:500}
+.documentRule{height:1px;background:#e1d4c5;margin-block:3px}
+.documentField{display:flex;align-items:center;gap:8px;font-size:8px;color:#9c8979}
+.documentField i{height:1px;flex:1;background:#dfd2c2}
+.documentCheck{display:flex;align-items:center;gap:5px;font-size:7px;color:#bc5200;margin-top:auto}
+.taxCover,.commissionCover,.marrakechCover{position:absolute;inset:0}
+.taxCover{background:#f1e9dc}
+.coverArt{position:absolute;inset:0;width:100%;height:100%}
+.coverEditorial{position:absolute;left:22px;top:23%;display:flex;flex-direction:column;gap:12px;max-width:52%}
+.coverEditorial>span{font-size:7px;letter-spacing:.9px;color:#937559;line-height:1.5;font-weight:600}
+.coverEditorial strong{font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,2.7vw,42px);font-weight:600;line-height:1.04;letter-spacing:-1.5px;color:#302315}
+.coverEditorial small{font-size:9px;color:#9d7859;line-height:1.6}
+.commissionCover{display:flex;justify-content:center;align-items:center;gap:10px;padding:38px 15px 16px;background:#eeeae2}
+.receipt{position:relative;flex:1;min-width:0;height:80%;border:1px solid #ddd7cc;border-radius:7px;padding:18px 10px 11px;background:#faf9f4;box-shadow:0 9px 18px #30211408;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-3deg)}
+.receiptNet{background:#fff5e8;transform:rotate(3deg);border-color:#e6c5a6}
+.receipt>small{font-size:9px;color:#877867;margin-bottom:12px}
+.receipt>strong{font-size:clamp(19px,1.85vw,29px);font-weight:650;color:#33291e;white-space:nowrap;line-height:1.15;letter-spacing:-1px;text-align:center}
+.receiptNet>strong{color:#bc5200}
+.receipt>strong>span{display:block;font-size:8px;letter-spacing:1px;margin-top:5px;font-weight:400}
+.receiptLines{display:grid;gap:5px;width:75%;margin:13px 0 10px}
+.receiptLines i{height:1px;background:#d8cdbf}
+.receiptLines i:last-child{width:65%}
+.receiptFoot{font-size:7px;color:#98816c;text-align:center;line-height:1.5}
+.receiptArrow{flex-shrink:0;width:25px;color:#33291e}
+.keyBadge{position:absolute;top:38px;right:26px;width:74px;height:74px;display:grid;place-items:center;border:1px solid #ffffff65;border-radius:50%;background:#fff9eddd;color:#9d4f19;backdrop-filter:blur(10px);transform:rotate(-20deg)}
+.coverPhotoCaption{position:absolute;left:22px;right:20px;bottom:24px;display:flex;flex-direction:column;gap:10px;color:white}
+.coverPhotoCaption>span{font-size:7px;letter-spacing:1.2px;color:#ffffffc7}
+.coverPhotoCaption strong{font-size:clamp(19px,1.8vw,27px);line-height:1.18;font-weight:500;letter-spacing:-.6px}
+.marrakechCover .coverTag{background:#fffcf3e3}
+.marrakechLabel{position:absolute;bottom:24px;left:24px;font-size:10px;font-weight:600;letter-spacing:3px;color:#fff4e9;text-shadow:0 1px 4px #563e25}
+.home{padding-block:70px;max-width:1360px}
+.home .journalHeading h2{font-size:clamp(38px,5vw,70px)}
+.srOnly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1100px){.grid{gap:18px}.cardContent{padding:20px}.cardMeta{flex-direction:column;gap:5px}.coverDocument{right:14px;padding:11px;gap:5px}.documentIcon{height:22px}.coverDocument strong{font-size:14px}.coverDocument small{font-size:6px}.documentCheck{font-size:6px}.coverEditorial{left:16px}.coverEditorial strong{font-size:30px}.keyBadge{width:58px;height:58px}.keyBadge svg{width:34px}.receipt{padding-inline:7px}.receiptArrow{width:20px}.receipt>strong{font-size:22px}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.journalHeading h1,.journalHeading h2{letter-spacing:-1.7px}.coverDocument{padding:15px}.coverDocument strong{font-size:18px}.coverDocument small{font-size:7px}.documentCheck{font-size:7px}.coverEditorial strong{font-size:39px}.cardMeta{flex-direction:row;gap:8px}.card h2{font-size:24px}}
+@media(max-width:600px){.journalInner{padding-block:28px 55px}.journalHeading{margin-bottom:26px;gap:15px}.journalHeading h1,.journalHeading h2{font-size:40px;letter-spacing:-1.5px}.journalEyebrow{font-size:10px;letter-spacing:1.2px;margin-bottom:17px;gap:11px}.entryCount{font-size:11px;padding-bottom:3px}.grid{grid-template-columns:1fr;gap:23px}.cardContent{padding:22px 23px 25px}.card h2{font-size:26px;letter-spacing:-.8px}.card p{font-size:13px}.cardMeta>span:first-child,.cardMeta>span:last-child{font-size:10px}.coverDocument{padding:15px;gap:7px}.coverDocument strong{font-size:18px}.coverEditorial strong{font-size:38px}.receipt>strong{font-size:27px}.receiptArrow{width:25px}.receipt>small{font-size:10px}.receiptFoot{font-size:8px}.coverPhotoCaption strong{font-size:26px}.keyBadge{width:64px;height:64px}.home{padding-block:48px}.home .journalHeading{display:block}.home .journalHeading h2{font-size:42px}.journalAll{margin-top:20px;font-size:12px}.coverTag{font-size:7px}.priorityBadge{font-size:8px}.marrakechLabel{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.card,.coverPhoto{transition:none}.card:hover{transform:none}.card:hover .coverPhoto{transform:none}}

@@ -34,6 +34,7 @@ import './site-typography.css';
 import './plan-services-panel.css';
 import './analysis-emphasis.css';
 import './service-detail.css';
+import './market-network.css';
 const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
 export const metadata: Metadata = { metadataBase: new URL(site.url), icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' } };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

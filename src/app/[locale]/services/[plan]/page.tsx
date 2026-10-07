@@ -17,7 +17,11 @@ async function resolvePlan(params: PageProps['params']) {
 export async function generateMetadata({ params }: PageProps) {
   const { locale, plan } = await resolvePlan(params);
   const t = await getTranslations({ locale, namespace: 'plans' });
-  return { title: `${plan.id} | COOHOSTY`, description: t(`${plan.id}.outcome`) };
+  const title = `${plan.id} — ${t(`${plan.id}.subtitle`)} | ${site.brand}`;
+  const description = t(`${plan.id}.outcome`);
+  const path = `/services/${plan.id.toLowerCase()}`;
+  const canonical = `${site.url}/${locale}${path}`;
+  return { title, description, alternates: { canonical, languages: Object.fromEntries(['fr', 'en', 'ar'].map(language => [language, `${site.url}/${language}${path}`])) }, openGraph: { title, description, url: canonical, siteName: site.brand, type: 'website' as const, locale: { fr: 'fr_MA', en: 'en_US', ar: 'ar_MA' }[locale], images: [site.seo.socialImage] }, twitter: { card: site.seo.twitterCard, title, description, images: [site.seo.socialImage] } };
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {

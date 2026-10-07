@@ -1,0 +1,65 @@
+#revenue .analysis-heading{display:flex;justify-content:space-between;align-items:end;gap:55px;margin-bottom:48px}
+#main-content #revenue .analysis-heading h2{font-size:var(--type-section);font-weight:600;line-height:1.3;letter-spacing:-1.4px;max-width:650px;margin:0}
+#revenue .analysis-heading .section-description{max-width:400px;font-size:16px;line-height:1.9;margin:0}
+.analysis-network{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) 130px minmax(0,1.2fr);gap:clamp(28px,4.5vw,70px);align-items:center;padding:25px 0 30px;direction:inherit}
+.analysis-network-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:-1;direction:ltr}
+.analysis-wire{stroke:#dac8b9;stroke-width:1.25}
+.analysis-beam{stroke:#ff7415;stroke-width:2;stroke-linecap:round;stroke-dasharray:18 82;stroke-dashoffset:100;opacity:0;animation:analysis-data-beam 7.2s linear infinite;animation-delay:var(--launch-delay)}
+.analysis-projectile{offset-distance:0%;offset-rotate:auto;animation:analysis-data-launch 7.2s linear infinite;animation-delay:var(--launch-delay);opacity:0;filter:drop-shadow(0 0 4px #ff741559)}
+.analysis-projectile-trail{fill:none;stroke:#ff7415;stroke-width:2;stroke-linecap:round;opacity:.4}
+.analysis-projectile-arrow{fill:none;stroke:#ff7415;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.analysis-network-kicker{display:block;font-size:10px;line-height:1.7;letter-spacing:1.4px;text-transform:uppercase;color:#977a64;font-weight:600;margin-bottom:16px}
+.analysis-network-sources,.analysis-network-targets{position:relative;min-width:0;align-self:stretch}
+#main-content #revenue .analysis-network .analytics-bar{margin:0;padding:0;border:0;background:transparent}
+#main-content #revenue .analysis-network .analytics-bar>h2{font-size:clamp(21px,2.4vw,29px);line-height:1.35;letter-spacing:-.7px;margin:0 0 24px;max-width:340px;color:#111}
+#revenue .analysis-network .analytics-bar-track{display:grid;grid-template-columns:1fr;gap:15px;padding:0;overflow:visible}
+#revenue .analysis-network .analytics-bar .analysis-tool{position:relative;flex-basis:auto;background:#fff;border:1px solid #e3d9d0;border-radius:15px;padding:20px;gap:9px;min-height:116px;box-shadow:0 6px 20px #30201304;transform:none;animation:analysis-source-charge 7.2s ease infinite;animation-delay:calc(var(--source-index,0) * .24s)}
+#revenue .analysis-network .analysis-tool:nth-child(2){--source-index:1}
+#revenue .analysis-network .analysis-tool:nth-child(3){--source-index:2}
+#revenue .analysis-network .analysis-tool:hover{border-color:#ff7415;background:#fff8f2}
+#revenue .analysis-network .analysis-tool-brand{min-height:35px;justify-content:space-between}
+#revenue .analysis-network .analysis-tool-brand .analytics-tool-logo{width:min(155px,80%);height:36px;object-fit:contain}
+#revenue .analysis-network .analysis-tool:nth-child(2) .analytics-tool-logo{height:27px}
+#main-content #revenue .analysis-network .analysis-tool>span{font-size:12px;line-height:1.65;color:#665e58}
+#main-content #revenue .analysis-network .analysis-tool>small{font-size:10px;line-height:1.6;color:#8b7767}
+.analysis-network-center{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:13px;align-self:center;min-width:0;padding-top:60px}
+.analysis-network-hub{position:relative;display:flex;align-items:center;justify-content:center;width:130px;height:72px;border-radius:16px;background:#fff;color:#111;border:1px solid #ead8ca;box-shadow:0 0 0 7px #fff;animation:analysis-logo-breathe 7.2s ease-in-out infinite}
+.analysis-network-hub .logo{width:116px;min-width:0;height:auto;margin:0;padding:0;animation:none;transform:none}
+.analysis-network-hub .logo>svg{width:100%;height:auto;display:block}
+.analysis-network-hub .logo>svg>g[aria-hidden=true]{display:none}
+.analysis-network-hub .logo path,.analysis-network-hub .logo circle{animation:none}
+@keyframes analysis-logo-breathe{0%,18%,55%,100%{border-color:#ead8ca;box-shadow:0 0 0 7px #fff}28%,38%{border-color:#ff741580;box-shadow:0 0 0 7px #fff,0 0 0 9px #ff74150d}}
+.analysis-network-hub strong{font-size:9px;letter-spacing:1px;color:white;font-weight:500}
+.analysis-hub-orbit{position:absolute;inset:-18px;border:1px dashed #ff741544;border-radius:50%;animation:analysis-orbit 24s linear infinite;pointer-events:none}
+.analysis-hub-orbit:before{content:'';position:absolute;top:12px;left:18px;width:5px;height:5px;border-radius:50%;background:#ff7415;box-shadow:0 0 10px #ff741544}
+.analysis-hub-orbit.inner{inset:-10px;border-style:solid;border-color:#ff741514;animation-direction:reverse;animation-duration:15s}
+.analysis-hub-orbit.inner:before{width:3px;height:3px;top:14px;left:14px;background:#bc5200}
+.analysis-hub-label{font-size:12px;font-weight:600;color:#7f3b0b;line-height:1.5;margin-top:10px}
+.analysis-hub-caption{font-size:10px;line-height:1.6;color:#8b7c70;max-width:115px}
+.analysis-network-pause{width:28px;height:28px;border:1px solid #e4d6cb;background:white;display:grid;place-items:center;border-radius:50%;color:#827266;margin-top:2px}
+.analysis-network-pause:hover{color:#bc5200;border-color:#ff7415}
+#revenue .analysis-network .revenue-grid{display:grid;grid-template-columns:1fr;gap:12px}
+#revenue .analysis-network .revenue-feature{--arrival-delay:3.2s;position:relative;overflow:visible;display:flex;align-items:center;gap:14px;min-height:76px;border:1px solid #ead9cd;border-inline-start:3px solid #e7cab5;border-radius:14px;background:#fffaf6;padding:15px 16px;box-shadow:none;animation:analysis-lever-impact 7.2s ease infinite;animation-delay:var(--arrival-delay)}
+#revenue .analysis-network .revenue-feature:before{content:'';position:absolute;left:-4px;top:calc(50% - 3px);width:6px;height:6px;background:#ff7415;border:2px solid white;box-sizing:content-box;border-radius:50%;box-shadow:0 0 0 4px #ff741514;z-index:2}
+[dir=rtl] #revenue .analysis-network .revenue-feature:before{left:auto;right:-4px}
+#revenue .analysis-network .revenue-feature:nth-child(2){--arrival-delay:3.48s}
+#revenue .analysis-network .revenue-feature:nth-child(3){--arrival-delay:3.76s}
+#revenue .analysis-network .revenue-feature:nth-child(4){--arrival-delay:4.04s}
+#revenue .analysis-network .revenue-feature:nth-child(5){--arrival-delay:4.32s}
+#revenue .analysis-network .revenue-feature:nth-child(6){--arrival-delay:4.6s;background:#111;border-color:#111;border-inline-start-color:#ff7415;color:white}
+#revenue .analysis-network .revenue-feature::after{content:none;display:none;animation:none}
+#revenue .analysis-network .revenue-feature-icon{width:38px;flex-basis:38px;height:38px;border-radius:10px;animation:none;background:#ff741515;color:#bc5200}
+#main-content #revenue .analysis-network .revenue-feature h3{font-size:14px;line-height:1.6;font-weight:500}
+#revenue .analysis-network .revenue-feature-number{font-size:11px;color:#a27757;letter-spacing:1px}
+#revenue .analysis-network .revenue-feature:nth-child(6) .revenue-feature-number,#revenue .analysis-network .revenue-feature:nth-child(6) .revenue-feature-icon{color:#ffac4d}
+.analysis-network[data-running=false] *{animation-play-state:paused!important}
+.analysis-network[data-reduced=true] .analysis-beam,.analysis-network[data-reduced=true] .analysis-projectile{display:none}
+@keyframes analysis-data-launch{0%{offset-distance:0%;opacity:0}2%{opacity:1}16%{offset-distance:100%;opacity:1}18%,100%{offset-distance:100%;opacity:0}}
+@keyframes analysis-data-beam{0%{stroke-dashoffset:100;opacity:0}2%{opacity:.6}16%{stroke-dashoffset:-18;opacity:.6}20%,100%{stroke-dashoffset:-18;opacity:0}}
+@keyframes analysis-source-charge{0%,22%,100%{border-color:#e3d9d0;box-shadow:0 6px 20px #30201304}5%,14%{border-color:#ff7415;box-shadow:0 0 0 3px #ff74150a}}
+@keyframes analysis-hub-charge{0%,16%,55%,100%{box-shadow:0 0 0 8px #fff,0 0 0 9px #ead8ca}25%,38%{box-shadow:0 0 0 8px #fff,0 0 0 10px #ff7415,0 0 40px #ff741526}}
+@keyframes analysis-lever-impact{0%,20%,100%{border-inline-start-color:#e7cab5;box-shadow:none}2%,10%{border-inline-start-color:#ff7415;box-shadow:0 0 0 2px #ff741516,0 5px 24px #ff741514}}
+@keyframes analysis-orbit{to{transform:rotate(360deg)}}
+@media(max-width:1000px){#revenue .analysis-heading{gap:30px;align-items:start}#revenue .analysis-heading .section-description{max-width:340px;font-size:14px}.analysis-network{grid-template-columns:minmax(0,1fr) 100px minmax(0,1.1fr);gap:30px}.analysis-network-hub{width:100px;height:64px}.analysis-network-hub .logo{width:90px}.analysis-network-hub strong{font-size:8px}#revenue .analysis-network .analytics-bar .analysis-tool{padding:17px 14px}#revenue .analysis-network .revenue-feature{padding:14px 12px;gap:10px}#main-content #revenue .analysis-network .revenue-feature h3{font-size:13px}.analysis-network-kicker{letter-spacing:.9px;font-size:9px}}
+@media(max-width:760px){#revenue .analysis-heading{display:block;margin-bottom:26px}#revenue .analysis-heading .section-description{margin-top:20px;max-width:100%;font-size:15px}.analysis-network{grid-template-columns:1fr;gap:40px;padding-block:12px 20px}.analysis-network-center{padding-top:0;gap:8px}.analysis-network-hub{width:130px;height:72px}.analysis-network-hub .logo{width:116px}.analysis-network-sources,.analysis-network-targets{align-self:auto}.analysis-network-kicker{font-size:10px;letter-spacing:1px;margin-bottom:14px}#main-content #revenue .analysis-network .analytics-bar>h2{font-size:27px;max-width:100%;margin-bottom:22px}#revenue .analysis-network .analytics-bar-track{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}#revenue .analysis-network .analytics-bar .analysis-tool{padding:13px 10px;min-height:112px;gap:8px;border-radius:12px}#revenue .analysis-network .analysis-tool-brand{min-height:28px}#revenue .analysis-network .analysis-tool-brand .analytics-tool-logo{width:100%;height:26px}#revenue .analysis-network .analysis-tool:nth-child(2) .analytics-tool-logo{height:22px}#revenue .analysis-network .analysis-tool-brand>span{display:none}#main-content #revenue .analysis-network .analysis-tool>span{font-size:10px;line-height:1.5}#main-content #revenue .analysis-network .analysis-tool>small{font-size:9px}.analysis-hub-label{margin-top:9px}.analysis-hub-caption{max-width:200px}.analysis-network-targets{padding-left:34px}.analysis-network-targets>.analysis-network-kicker{margin-bottom:15px}#revenue .analysis-network .revenue-feature{min-height:74px;padding:14px;gap:12px}#main-content #revenue .analysis-network .revenue-feature h3{font-size:13px}[dir=rtl] #revenue .analysis-network .revenue-feature:before{right:auto;left:-4px}}
+@media(prefers-reduced-motion:reduce){.analysis-network *{animation:none!important;transition:none!important}.analysis-projectile,.analysis-beam{display:none}}

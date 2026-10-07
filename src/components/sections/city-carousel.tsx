@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { MapPin, Pause, Play } from 'lucide-react';
 
-export type CitySlide = { id: string; image: string; name: string; detail: string };
+export type CitySlide = { id: string; image: string; name: string; detail: string; position?: string };
 export function CityCarousel({ cities, caption, label, pause, play }: { cities: CitySlide[]; caption: string; label: string; pause: string; play: string }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);

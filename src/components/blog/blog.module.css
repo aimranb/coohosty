@@ -1,0 +1,74 @@
+.page{padding-block:48px 80px;max-width:1160px}
+.breadcrumbs{display:flex;flex-wrap:wrap;gap:10px;font-size:13px;color:#636363;line-height:1.7;margin-bottom:40px}
+.breadcrumbs a:hover{text-decoration:underline;color:#bc5200}
+.eyebrow{display:block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#bc5200;font-weight:600;margin-bottom:20px}
+.heading{max-width:860px;margin-bottom:46px}
+.heading h1{font-size:clamp(32px,4.5vw,58px);line-height:1.14;letter-spacing:-1.6px;color:#111}
+.heading>p{font-size:18px;line-height:1.8;color:#565656;max-width:740px;margin-top:23px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.card{padding:32px;border:1px solid #dedede;border-radius:16px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;min-width:0;transition:border-color .2s}
+.card:hover{border-color:#bc5200}
+.featured{grid-column:1 / -1;background:#fff8f3;border-color:#eacdb8}
+.cardMeta{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;width:100%;font-size:12px;color:#686868;margin-bottom:22px}
+.cardMeta>span:first-child{color:#a74700;font-weight:600}
+.card h2{font-size:24px;line-height:1.35;letter-spacing:-.6px;margin:0 0 15px;color:#111}
+.featured h2{font-size:clamp(26px,3vw,36px);max-width:800px}
+.card p{font-size:15px;line-height:1.8;color:#565656;margin:0 0 24px;max-width:780px}
+.cardLink{display:inline-flex;align-items:center;gap:10px;color:#a74700;font-size:14px;font-weight:600;margin-top:auto}
+.cardLink:hover{text-decoration:underline}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:#666;margin-top:24px;line-height:1.7}
+.articleLayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:55px;align-items:start}
+.toc{position:sticky;top:115px;padding:24px;background:#faf8f6;border:1px solid #e9e3df;border-radius:12px}
+.toc h2{font-size:14px;letter-spacing:0;margin:0 0 15px;font-weight:600;line-height:1.4}
+.toc ol{padding-inline-start:18px;margin:0;display:grid;gap:12px;list-style:decimal}
+.toc li{font-size:13px;line-height:1.6;color:#565656}
+.toc a:hover{color:#a74700;text-decoration:underline}
+.body{min-width:0;max-width:760px}
+.takeaway{padding:25px 28px;border-inline-start:3px solid #bc5200;background:#fff8f3;border-radius:0 10px 10px 0;margin-bottom:30px}
+.takeaway strong{display:block;font-size:14px;color:#a74700;margin-bottom:8px}
+.body p,.body li{font-size:16px;line-height:1.9;color:#444}
+.body section{margin-block:35px;scroll-margin-top:115px}
+.body h2{font-size:clamp(23px,2.5vw,29px);line-height:1.35;letter-spacing:-.5px;margin:0 0 19px;color:#111}
+.body p+p{margin-top:18px}
+.body ul{padding-inline-start:22px;list-style:disc;margin-block:18px}
+.body li+li{margin-top:9px}
+.body .note{font-size:13px;line-height:1.8;padding:18px 0;border-bottom:1px solid #eee;color:#696969}
+.sourceLinks{margin-top:20px;display:grid;gap:9px}
+.sourceLinks a{font-size:13px;line-height:1.7;color:#854000;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.inlineLinks{display:grid;gap:12px;margin-top:22px}
+.inlineLinks a{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.7;color:#a74700;font-weight:500}
+.inlineLinks a:hover{text-decoration:underline}
+.inlineLinks svg{flex-shrink:0}
+.tableWrap{overflow-x:auto;margin-block:25px;border:1px solid #ddd;border-radius:10px}
+.tableWrap table{width:100%;border-collapse:collapse;white-space:normal;min-width:430px;font-size:14px}
+.tableWrap caption{text-align:start;padding:16px;background:#fff8f3;color:#555;font-size:13px;line-height:1.7}
+.tableWrap th,.tableWrap td{font-size:14px;line-height:1.6;padding:14px;text-align:start;border-bottom:1px solid #eee;color:#333}
+.tableWrap th{font-weight:600;background:#fafafa}
+.tableWrap tbody tr:last-child td{border-bottom:0;font-weight:600}
+.faq details{border-bottom:1px solid #ddd;padding-block:18px}
+.faq summary{font-size:16px;font-weight:500;line-height:1.7;cursor:pointer;list-style:disclosure-closed;color:#222}
+.faq details[open] summary{list-style:disclosure-open}
+.faq details p{margin-top:14px;font-size:15px}
+.sources{padding-top:10px;border-top:1px solid #eee}
+.sources p{font-size:13px}
+.cta{background:#111;color:white;border-radius:16px;padding:35px;margin-top:45px}
+.cta h2{color:white;font-size:clamp(24px,3vw,32px);line-height:1.35;letter-spacing:-.6px;margin:0 0 14px}
+.cta p{color:#ddd;line-height:1.8;font-size:16px;max-width:700px}
+.ctaActions{display:flex;flex-wrap:wrap;gap:14px;margin-top:23px}
+.ctaActions a{display:inline-flex;align-items:center;gap:12px;background:#ff7415;color:#111;padding:14px 20px;border-radius:7px;font-size:14px;font-weight:600}
+.ctaActions a:hover{background:#ff934b}
+.related{margin-top:55px}
+.related>h2,.homeHeading h2{font-size:clamp(27px,3vw,36px);line-height:1.3;margin:0 0 24px;letter-spacing:-.7px}
+.related .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.related .card{padding:24px}
+.related .card h2{font-size:20px}
+.home{padding-block:65px}
+.homeHeading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}
+.homeHeading h2{margin-bottom:12px}
+.homeHeading p{font-size:16px;max-width:640px;line-height:1.8;color:#555}
+.home .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.home .card{padding:25px}
+.home .card h2{font-size:22px}
+.srOnly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1000px){.articleLayout{grid-template-columns:210px minmax(0,1fr);gap:30px}.related .grid,.home .grid{grid-template-columns:1fr}.homeHeading{align-items:start;flex-direction:column}}
+@media(max-width:760px){.page{padding-block:30px 55px}.breadcrumbs{margin-bottom:28px;font-size:12px}.heading{margin-bottom:30px}.heading h1{letter-spacing:-.8px}.heading>p{font-size:16px}.grid{grid-template-columns:1fr;gap:18px}.card{padding:25px}.articleLayout{display:flex;flex-direction:column;gap:25px}.toc{position:static;width:100%}.body{max-width:100%;width:100%}.body p,.body li{font-size:15px;line-height:1.85}.takeaway{padding:20px}.cta{padding:27px 23px}.ctaActions{flex-direction:column;align-items:flex-start}.related .grid{grid-template-columns:1fr}.home{padding-block:45px}}
