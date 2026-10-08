@@ -37,7 +37,11 @@ import './service-detail.css';
 import './market-network.css';
 import './maintenance.css';
 const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
-export const metadata: Metadata = { metadataBase: new URL(site.url), icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' } };
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' },
+  verification: { google: '_RUv7GKowIl-T2NEj8gQa_V2hB0nnK8EYROh6VyPFpQ' },
+};
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const requested = (await headers()).get('x-cohosty-locale') || 'fr';
   const locale = isLocale(requested) ? requested : 'fr';
