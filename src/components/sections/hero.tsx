@@ -3,7 +3,7 @@ import { PropertySlideshow } from './property-slideshow';
 import { EstimateBar } from '@/components/forms/estimate-bar';
 import { isLocale } from '@/config/site';
 
-export async function Hero() {
+export async function Hero({ market }: { market?: 'marrakech' } = {}) {
   const t = await getTranslations('hero');
   const estimateTitle = await getTranslations('estimate');
   const showcase = await getTranslations('showcase');
@@ -21,7 +21,7 @@ export async function Hero() {
     <section className="hero container">
       <h1 className="sr-only">{estimateTitle('title')}</h1>
       <div className="hero-copy">
-        <EstimateBar locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)}/>
+        <EstimateBar locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)} fixedCity={market === 'marrakech' ? 'Marrakech' : undefined}/>
       </div>
       <PropertySlideshow photos={photos} labels={{ label: t('photoLabel'), title: t('photoTitle'), caption: t('caption'), disclosure: t('photoDisclosure'), previous: showcase('previousPhoto'), next: showcase('nextPhoto') }}/>
     </section>

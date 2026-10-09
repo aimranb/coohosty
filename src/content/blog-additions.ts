@@ -1,5 +1,6 @@
 import type { BlogPost } from './blog';
 import { conciergerieBlogPosts } from './blog-conciergerie';
+import { marrakechNeighborhoodBlogPosts } from './blog-marrakech-neighborhoods';
 
 export const additionalBlogPosts: BlogPost[] = [
   {
@@ -41,4 +42,5 @@ export const additionalBlogPosts: BlogPost[] = [
     related:['conciergerie-airbnb-marrakech','commission-airbnb-maroc','creer-annonce-airbnb-maroc'],
   },
   ...conciergerieBlogPosts,
+  ...marrakechNeighborhoodBlogPosts,
 ];

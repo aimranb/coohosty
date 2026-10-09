@@ -12,7 +12,7 @@ function subscribe(callback: () => void) {
   return () => window.removeEventListener('storage', callback);
 }
 
-export function EstimateContinuation({ locale, emailEnabled }: { locale: Locale; emailEnabled: boolean }) {
+export function EstimateContinuation({ locale, emailEnabled, market }: { locale: Locale; emailEnabled: boolean; market?: 'marrakech' }) {
   const t = useTranslations('estimate');
   const raw = useSyncExternalStore(subscribe, () => {
     try { return sessionStorage.getItem(`coohosty-estimate-property-${locale}`); } catch { return null; }
@@ -26,5 +26,5 @@ export function EstimateContinuation({ locale, emailEnabled }: { locale: Locale;
   }, [raw]);
 
   if (raw === undefined) return <div className="estimate-completion-loading" role="status">{t('title')}</div>;
-  return <EstimateBar locale={locale} emailEnabled={emailEnabled} completion initialProperty={property}/>;
+  return <EstimateBar locale={locale} emailEnabled={emailEnabled} completion initialProperty={property} fixedCity={market === 'marrakech' ? 'Marrakech' : undefined}/>;
 }

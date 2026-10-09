@@ -17,7 +17,7 @@ const cities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Agadir', 'Fès', 
 
 type PropertyDetails = Pick<EstimateInput, 'type' | 'bedrooms' | 'city' | 'address' | 'plan'>;
 
-export function EstimateBar({ locale, emailEnabled, completion = false, initialProperty }: { locale: Locale; emailEnabled: boolean; completion?: boolean; initialProperty?: PropertyDetails }) {
+export function EstimateBar({ locale, emailEnabled, completion = false, initialProperty, fixedCity }: { locale: Locale; emailEnabled: boolean; completion?: boolean; initialProperty?: PropertyDetails; fixedCity?: 'Marrakech' }) {
   const router = useRouter();
   const t = useTranslations('estimate');
   const validation = useTranslations('form.validation');
@@ -27,7 +27,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
   const heading = useRef<HTMLHeadingElement>(null);
   const locked = useRef(false);
   const previousPayload = useRef('');
-  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { plan: 'AUDIT', type: 'apartment', bedrooms: '2', city: '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
+  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { plan: fixedCity ? 'COHOST' : 'AUDIT', type: 'apartment', bedrooms: '2', city: fixedCity ?? '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
   const { register, setValue, formState: { errors, isSubmitting } } = form;
   useEffect(() => {
     setValue('submissionKey', crypto.randomUUID());
@@ -53,7 +53,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
       try {
         sessionStorage.setItem(`coohosty-estimate-property-${locale}`, JSON.stringify({ type, bedrooms, city, address, plan }));
       } catch { setError(t('error')); return; }
-      router.push(`/${locale}/estimate`);
+      router.push(`/${locale}/estimate${fixedCity ? '?market=marrakech' : ''}`);
       return;
     }
     showStep(step + 1);
@@ -69,7 +69,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
   }
   function input(name: 'city' | 'address' | 'fullName' | 'email' | 'phone', full = false) {
     const autoComplete = { city: 'address-level2', address: 'street-address', fullName: 'name', email: 'email', phone: 'tel' };
-    return <label className={`estimate-field ${full ? 'estimate-full' : ''}`} htmlFor={`estimate-${name}`}><span>{t(`fields.${name}`)}</span><input id={`estimate-${name}`} {...register(name)} type={name === 'email' ? 'email' : name === 'phone' ? 'tel' : 'text'} autoComplete={autoComplete[name]} maxLength={name === 'address' ? 300 : name === 'email' ? 254 : name === 'phone' ? 24 : 120} list={name === 'city' ? 'estimate-morocco-cities' : undefined} placeholder={t(`placeholders.${name}`)} aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `estimate-${name}-error` : undefined}/>{fieldError(name)}</label>;
+    return <label className={`estimate-field ${full ? 'estimate-full' : ''}`} htmlFor={`estimate-${name}`}><span>{t(`fields.${name}`)}</span><input id={`estimate-${name}`} {...register(name)} type={name === 'email' ? 'email' : name === 'phone' ? 'tel' : 'text'} readOnly={name === 'city' && Boolean(fixedCity)} autoComplete={autoComplete[name]} maxLength={name === 'address' ? 300 : name === 'email' ? 254 : name === 'phone' ? 24 : 120} list={name === 'city' && !fixedCity ? 'estimate-morocco-cities' : undefined} placeholder={t(`placeholders.${name}`)} aria-invalid={!!errors[name]} aria-describedby={errors[name] ? `estimate-${name}-error` : undefined}/>{fieldError(name)}</label>;
   }
   function whatsappUrl(data: EstimateData, benchmark?: Benchmark | null) {
     const entries: [string, string][] = [
@@ -122,7 +122,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
     <h2 ref={heading} tabIndex={-1}>{t('title')}</h2><p className="estimate-intro">{t('subtitle')}</p>
     <ol className="estimate-progress" aria-label={t('progress')}>{['property', 'plans', 'contact'].map((name, index) => <li key={name} className={index <= step ? 'is-active' : ''} aria-current={index === step ? 'step' : undefined}><span>{index < step ? <Check size={10}/> : index + 1}</span>{t(`steps.${name}`)}</li>)}</ol>
     <div className="estimate-fields estimate-step-fields" key={step}>
-      {step === 0 && <>{select('type', estimateTypes)}{select('bedrooms', estimateBedrooms)}{input('city')}{input('address')}<datalist id="estimate-morocco-cities">{cities.map(city => <option key={city} value={city}/>)}</datalist><small className="estimate-full estimate-location-note">{t('allMorocco')}</small></>}
+      {step === 0 && <>{select('type', estimateTypes)}{select('bedrooms', estimateBedrooms)}{input('city')}{input('address')}<datalist id="estimate-morocco-cities">{(fixedCity ? [fixedCity] : cities).map(city => <option key={city} value={city}/>)}</datalist><small className="estimate-full estimate-location-note">{t('allMorocco')}</small></>}
       {step === 1 && <>{select('objective', estimateGoals, true)}{select('duration', estimateDurations, true)}{select('ready', estimateStarts, true)}</>}
       {step === 2 && <>{input('fullName', true)}{input('email')}{input('phone')}<fieldset className="estimate-full estimate-channel"><legend>{t('fields.channel')}</legend>{(['email', 'whatsapp'] as const).map(channel => <label key={channel}><input type="radio" value={channel} disabled={channel === 'email' && !emailEnabled} {...register('channel')}/>{channel === 'email' ? <Mail size={15}/> : <WhatsAppIcon width={15} height={15}/>}<span>{channel === 'email' ? t('emailOption') : 'WhatsApp'}</span></label>)}</fieldset><div className="estimate-full"><label className="estimate-consent"><input type="checkbox" {...register('consent')} aria-invalid={!!errors.consent} aria-describedby={errors.consent ? 'estimate-consent-error' : undefined}/><span>{t('consent')}</span></label>{fieldError('consent')}<Link className="estimate-privacy" href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">{t('privacy')}</Link></div><Turnstile onToken={onToken}/></>}
     </div>
