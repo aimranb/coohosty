@@ -1,4 +1,5 @@
 import type { BlogPost } from './blog';
+import { conciergerieBlogPosts } from './blog-conciergerie';
 
 export const additionalBlogPosts: BlogPost[] = [
   {
@@ -39,4 +40,5 @@ export const additionalBlogPosts: BlogPost[] = [
     faq:[{question:'Une conciergerie gère-t-elle uniquement le ménage ?',answer:'Cela dépend de la prestation. Certaines proposent une intervention locale ; d’autres assurent aussi l’annonce, le calendrier, les messages et l’accueil. Faites préciser chaque mission.'},{question:'Comment comparer deux devis de conciergerie à Casablanca ?',answer:'Comparez l’assiette des honoraires, les missions incluses, les frais supplémentaires, les modalités de suivi et les conditions de fin de contrat.'},{question:'Puis-je garder des dates pour mon usage personnel ?',answer:'Faites prévoir vos dates et la procédure de blocage dans l’organisation convenue. Le calendrier doit être mis à jour avant qu’une réservation soit acceptée.'}],
     related:['conciergerie-airbnb-marrakech','commission-airbnb-maroc','creer-annonce-airbnb-maroc'],
   },
+  ...conciergerieBlogPosts,
 ];

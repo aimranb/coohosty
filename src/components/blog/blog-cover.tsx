@@ -10,9 +10,9 @@ export function BlogCover({ post }: { post: BlogPost }) {
       <Image src="/images/hero-interior-6.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
       <div className={styles.coverShade}/><span className={styles.coverTag}>VOTRE PREMIÈRE ANNONCE</span><div className={styles.coverPhotoCaption}><strong>Un logement.<br/>Une annonce soignée.</strong></div>
     </>}
-    {kind === 'conciergerie-airbnb-casablanca' && <>
+    {['conciergerie-airbnb-casablanca', 'conciergerie-airbnb-maroc', 'choisir-societe-conciergerie-maroc', 'conciergerie-ou-gestion-autonome-airbnb-maroc'].includes(kind) && <>
       <Image src="/images/hero-interior-warm.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
-      <div className={styles.coverShade}/><span className={styles.coverTag}>GESTION LOCALE</span><div className={styles.coverPhotoCaption}><strong>Casablanca.<br/>Votre bien, accompagné.</strong></div>
+      <div className={styles.coverShade}/><span className={styles.coverTag}>GESTION LOCALE</span><div className={styles.coverPhotoCaption}><strong>{kind === 'conciergerie-airbnb-casablanca' ? 'Casablanca.' : kind === 'choisir-societe-conciergerie-maroc' ? 'Choisir son partenaire.' : kind === 'conciergerie-ou-gestion-autonome-airbnb-maroc' ? 'Organiser sa gestion.' : 'Votre logement au Maroc.'}<br/>Votre bien, accompagné.</strong></div>
     </>}
     {kind === 'fiche-de-police-airbnb-maroc' && <>
       <Image src="/images/hero-interior-warm.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
