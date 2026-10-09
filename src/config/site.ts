@@ -1,10 +1,12 @@
+import { resolveSiteUrl } from './site-url';
+
 export const locales = ['fr', 'en', 'ar'] as const;
 export type Locale = typeof locales[number];
 export const plans = ['AUDIT', 'OPTIMIZE', 'COHOST', 'UNDECIDED'] as const;
 export type Plan = typeof plans[number];
 export const site = {
   brand: 'COOHOSTY', domain: 'coohosty.com',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://coohosty.com',
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   phone: '+212 663 448 785', tel: '+212663448785',
   whatsapp: 'https://wa.me/212663448785', email: 'benaissiimran08@gmail.com',
   social: { instagram: '', linkedin: '' },
