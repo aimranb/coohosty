@@ -3,6 +3,12 @@ import { ArrowRight, FileText, KeyRound, Check } from 'lucide-react';
 import type { BlogPost } from '@/content/blog';
 import styles from './blog-journal.module.css';
 
+const conciergeCoverImages: Record<string, string> = {
+  'conciergerie-airbnb-maroc': '/images/hero-interior-3.webp',
+  'choisir-societe-conciergerie-maroc': '/images/hero-airbnb.webp',
+  'conciergerie-ou-gestion-autonome-airbnb-maroc': '/images/hero-interior-4.webp',
+};
+
 export function BlogCover({ post }: { post: BlogPost }) {
   const kind = post.slug;
   return <div className={styles.cover} aria-hidden="true">
@@ -11,7 +17,7 @@ export function BlogCover({ post }: { post: BlogPost }) {
       <div className={styles.coverShade}/><span className={styles.coverTag}>VOTRE PREMIÈRE ANNONCE</span><div className={styles.coverPhotoCaption}><strong>Un logement.<br/>Une annonce soignée.</strong></div>
     </>}
     {['conciergerie-airbnb-casablanca', 'conciergerie-airbnb-maroc', 'choisir-societe-conciergerie-maroc', 'conciergerie-ou-gestion-autonome-airbnb-maroc'].includes(kind) && <>
-      <Image src="/images/hero-interior-warm.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+      <Image src={conciergeCoverImages[kind] ?? '/images/hero-interior-warm.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
       <div className={styles.coverShade}/><span className={styles.coverTag}>GESTION LOCALE</span><div className={styles.coverPhotoCaption}><strong>{kind === 'conciergerie-airbnb-casablanca' ? 'Casablanca.' : kind === 'choisir-societe-conciergerie-maroc' ? 'Choisir son partenaire.' : kind === 'conciergerie-ou-gestion-autonome-airbnb-maroc' ? 'Organiser sa gestion.' : 'Votre logement au Maroc.'}<br/>Votre bien, accompagné.</strong></div>
     </>}
     {kind === 'fiche-de-police-airbnb-maroc' && <>
