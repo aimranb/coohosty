@@ -34,9 +34,15 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
     return () => window.clearInterval(timer);
   }, [running, cities.length]);
 
+  function syncFormCity(index: number) {
+    const names: Record<string, string> = { casablanca: 'Casablanca', tanger: 'Tanger', fes: 'Fès', meknes: 'Meknès', agadir: 'Agadir', rabat: 'Rabat' };
+    const selected = names[cities[index].id];
+    if (selected) window.dispatchEvent(new CustomEvent('coohosty-city-change', { detail: { city: selected } }));
+  }
   function select(index: number) {
     setActive(index);
     setPaused(true);
+    syncFormCity(index);
   }
 
   return <div ref={root} className={styles.scene} data-running={running} data-reduced={reduced} aria-label={copy.map}>
@@ -84,7 +90,7 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
         <div className={styles.photoCaption}><h3>{city.name}</h3><p>{city.detail}</p></div>
         <span key={active} className={styles.photoProgress} aria-hidden="true"/>
       </div>
-      <a className={styles.cityCta} href="#estimate">{copy.viewCity}<ArrowUpRight size={18}/></a>
+      <a className={styles.cityCta} href="#estimate" onClick={() => syncFormCity(active)}>{copy.viewCity}<ArrowUpRight size={18}/></a>
     </div>
   </div>;
 }

@@ -29,7 +29,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
   const locked = useRef(false);
   const previousPayload = useRef('');
   const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { plan: fixedCity ? 'COHOST' : 'AUDIT', type: 'apartment', bedrooms: '2', city: fixedCity ?? '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty, ...(fixedCity ? { city: fixedCity } : {}) } });
-  const { register, setValue, formState: { errors, isSubmitting } } = form;
+  const { register, setValue, getValues, formState: { errors, isSubmitting } } = form;
   useEffect(() => {
     setValue('submissionKey', crypto.randomUUID());
     const syncPlan = () => {
@@ -44,6 +44,17 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
       window.removeEventListener('popstate', syncPlan);
     };
   }, [setValue]);
+  useEffect(() => {
+    if (fixedCity) return;
+    const syncCity = (event: Event) => {
+      const city = (event as CustomEvent<{ city: string }>).detail?.city;
+      if (!cities.includes(city) || getValues('city') === city) return;
+      setValue('city', city, { shouldValidate: true, shouldDirty: true });
+      setValue('address', '', { shouldDirty: true });
+    };
+    window.addEventListener('coohosty-city-change', syncCity);
+    return () => window.removeEventListener('coohosty-city-change', syncCity);
+  }, [fixedCity, getValues, setValue]);
   const onToken = useCallback((token: string) => setValue('turnstileToken', token), [setValue]);
 
   function showStep(index: number) { setError(''); setStep(index); requestAnimationFrame(() => heading.current?.focus()); }

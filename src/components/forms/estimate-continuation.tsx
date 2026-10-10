@@ -27,5 +27,5 @@ export function EstimateContinuation({ locale, emailEnabled, market }: { locale:
   }, [raw]);
 
   if (raw === undefined) return <div className="estimate-completion-loading" role="status">{t('title')}</div>;
-  return <EstimateBar locale={locale} emailEnabled={emailEnabled} completion initialProperty={property} fixedCity={market ? getCohostingCity(market).name : undefined}/>;
+  return <EstimateBar key={market ?? "national"} locale={locale} emailEnabled={emailEnabled} completion initialProperty={property} fixedCity={market ? getCohostingCity(market).name : undefined}/>;
 }

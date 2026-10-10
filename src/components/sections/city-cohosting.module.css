@@ -46,3 +46,43 @@
 :global(#main-content) .heroActions :global(.button):hover{background:var(--city-accent);border-color:var(--city-accent)}
 :global(#main-content) .commissionCta:global(.button){background:#fff;border-color:#fff;color:#111}
 .cityLinks{--city-accent:var(--purple,#bc5200)}
+
+/* A compact commission presentation with readable calculation details. */
+.commission{padding:34px;border-radius:22px}
+.commissionHeading h2{font-size:clamp(26px,2.7vw,36px);margin-top:14px;letter-spacing:-1px}
+.commissionHeading h2>span{color:#ffffffbf}
+.commissionGrid{gap:32px;margin-top:25px;grid-template-columns:.8fr 1.2fr}
+.ratePanel{min-height:270px}
+.rateHalo{width:220px;top:8px}
+.rateDisplay{padding-top:0}
+.rateDisplay strong{font-size:108px;letter-spacing:-6px}
+.rateDisplay strong>span{letter-spacing:-2px}
+.rateDisplay p{margin-top:10px}
+.rateFooter{margin-top:45px}
+.calculator{padding:22px}
+.calculator h3{font-size:17px}
+.modeSwitch{margin-top:16px}
+.amountLabel{margin-top:18px;gap:8px}
+.amountLabel output{font-size:25px}
+.calculator input[type=range]{margin-block:10px 14px}
+.calculationRows{gap:14px}
+.calculationRows strong{font-size:18px}
+.shareBar{margin-top:16px}
+.explanation{margin-top:14px;font-size:12px}
+.commissionCta:global(.button){margin-top:16px}
+.commission>.terms{margin-top:22px}
+@media(max-width:760px){
+  .commission{padding:24px 20px;border-radius:18px}
+  .commissionHeading h2{font-size:25px;letter-spacing:-.6px}
+  .commissionGrid{grid-template-columns:1fr;gap:18px;margin-top:18px}
+  .ratePanel{min-height:160px;display:grid;grid-template-columns:140px 1fr;gap:14px}
+  .rateHalo{width:140px;top:10px;inset-inline-start:0}
+  .rateDisplay{width:140px;text-align:center}
+  .rateDisplay strong{font-size:76px;letter-spacing:-4px}
+  .rateDisplay p{font-size:10px;line-height:1.5;margin-top:7px;padding-inline:7px}
+  .rateFooter{margin-top:0;font-size:11px;line-height:1.7;text-align:start;justify-content:start;align-items:start}
+  .liveDot{margin-top:7px}
+  .calculator{padding:20px 16px}
+  .calculationRows span{font-size:12px}
+  .commission>.terms{font-size:11px;line-height:1.7}
+}

@@ -48,3 +48,20 @@ test('city pages support translated layouts and reduced motion', async ({ page }
     await expect(page.locator('#cohosting a')).toHaveCount(3);
   }
 });
+
+
+test('switching city through site links updates the form and its continuation', async ({ page }) => {
+  await page.goto('/fr/services/conciergerie-marrakech');
+  await page.locator('#estimate-address').fill('Adresse Marrakech');
+  for (const [city, name] of [['casablanca', 'Casablanca'], ['tanger', 'Tanger'], ['marrakech', 'Marrakech']]) {
+    await page.locator(`#cohosting a[href="/fr/services/conciergerie-${city}"]`).click();
+    await expect(page.locator('#estimate-city')).toHaveValue(name);
+    await expect(page.locator('#estimate-address')).toHaveValue('');
+    await page.locator('#estimate-address').fill(`Adresse ${name}`);
+    await page.locator('#estimate .estimate-next').click();
+    await expect(page).toHaveURL(new RegExp(`/fr/estimate\\?market=${city}$`));
+    await expect(page.locator('#estimate-objective')).toBeVisible();
+    await page.locator('.estimate-home-link').click();
+    await expect(page.locator('#estimate-city')).toHaveValue(name);
+  }
+});
