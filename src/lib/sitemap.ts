@@ -2,11 +2,11 @@ import type { MetadataRoute } from 'next';
 import type { BlogPost } from '@/content/blog';
 import { locales, site } from '@/config/site';
 import { sitemapOrigin } from '@/config/site-url';
-import { marrakechServicePath, marrakechServiceModified } from '@/content/marrakech-service';
+import { cohostingCities, cityPageModified } from '@/config/cohosting-cities';
 
 // Content revision dates; update with meaningful page edits, never on requests.
 export const publicPages = [
-  { path: marrakechServicePath, modified: marrakechServiceModified, frequency: 'monthly', priority: 0.9 },
+  ...cohostingCities.map(city => ({ path: city.path, modified: cityPageModified, frequency: 'monthly' as const, priority: 0.9 })),
   { path: '', modified: '2026-10-08', frequency: 'monthly', priority: 1 },
   ...site.planInfo.map(plan => ({ path: `/services/${plan.id.toLowerCase()}`, modified: '2026-10-07', frequency: 'monthly' as const, priority: plan.id === 'COHOST' ? 0.9 : 0.8 })),
   { path: '/legal', modified: '2026-10-07', frequency: 'yearly', priority: 0.2 },

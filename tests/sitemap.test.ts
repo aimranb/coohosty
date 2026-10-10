@@ -8,7 +8,7 @@ import { productionSiteUrl, resolveSiteUrl, sitemapOrigin } from '@/config/site-
 describe('production sitemap', () => {
   it('includes all available indexable pages with canonical, unique HTTPS URLs and stable dates', () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(55);
+    expect(entries).toHaveLength(61);
     expect(new Set(entries.map(entry => entry.url)).size).toBe(entries.length);
     for (const entry of entries) {
       const url = new URL(entry.url);
@@ -31,7 +31,7 @@ describe('production sitemap', () => {
       { ...post, slug: 'invalid', published: 'invalid' },
     ], new Date('2026-10-09'));
     expect(entries.filter(entry => entry.url.includes('/blog/'))).toHaveLength(3);
-    expect(buildSitemap(() => [], new Date('2026-10-09'))).toHaveLength(24);
+    expect(buildSitemap(() => [], new Date('2026-10-09'))).toHaveLength(30);
   });
 
   it('rejects invalid slugs and modification dates and deduplicates content', () => {

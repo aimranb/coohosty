@@ -1,20 +1,21 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { isLocale, site } from '@/config/site';
 import { blogSlugs, frenchOnlyBlogSlugs } from '@/config/blog';
-import { marrakechServicePath } from '@/content/marrakech-service';
+import { cohostingCities, isCityMarket } from '@/config/cohosting-cities';
 export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname === '/') return NextResponse.redirect(new URL('/fr', request.url), 308);
   const segment = request.nextUrl.pathname.split('/')[1];
   const headers = new Headers(request.headers);
   headers.set('x-cohosty-locale', isLocale(segment) ? segment : 'fr');
   const parts = request.nextUrl.pathname.split('/').filter(Boolean);
-  const marrakech = isLocale(segment) && (parts.length === 3 && parts[1] === 'services' && parts[2] === 'conciergerie-marrakech'
-    || parts.length === 2 && parts[1] === 'estimate' && request.nextUrl.searchParams.get('market') === 'marrakech');
-  headers.set('x-cohosty-market', marrakech ? 'marrakech' : 'national');
+  const city = isLocale(segment) ? cohostingCities.find(city => `/${parts.slice(1).join('/')}` === city.path) : undefined;
+  const requestedMarket = request.nextUrl.searchParams.get('market');
+  const market = city?.id ?? (isLocale(segment) && parts.length === 2 && parts[1] === 'estimate' && isCityMarket(requestedMarket) ? requestedMarket : 'national');
+  headers.set('x-cohosty-market', market);
   if (isLocale(segment) && parts[1] !== 'blog') {
     const valid = parts.length === 1
       || (parts.length === 2 && ['legal', 'privacy', 'estimate'].includes(parts[1]))
-      || (parts.length === 3 && parts[1] === 'services' && (site.planInfo.some(plan => plan.id.toLowerCase() === parts[2]) || `/${parts.slice(1).join('/')}` === marrakechServicePath));
+      || (parts.length === 3 && parts[1] === 'services' && (site.planInfo.some(plan => plan.id.toLowerCase() === parts[2]) || cohostingCities.some(city => `/${parts.slice(1).join('/')}` === city.path)));
     if (!valid) return NextResponse.rewrite(new URL('/_not-found', request.url), { status: 404, request: { headers }, headers: { 'X-Robots-Tag': 'noindex' } });
   }
   if (parts[1] === 'blog') {

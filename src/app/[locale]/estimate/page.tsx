@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { isLocale } from '@/config/site';
 import { EstimateContinuation } from '@/components/forms/estimate-continuation';
 import { headers } from 'next/headers';
-import { marrakechServicePath } from '@/content/marrakech-service';
+import { getCohostingCity, isCityMarket } from '@/config/cohosting-cities';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -19,6 +19,7 @@ export default async function EstimatePage({ params }: { params: Promise<{ local
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations('estimate');
-  const market = (await headers()).get('x-cohosty-market') === 'marrakech' ? 'marrakech' : undefined;
-  return <main id="main-content" className="estimate-completion-page container"><Link className="estimate-home-link" href={`/${locale}${market ? marrakechServicePath : ''}#estimate`}><ArrowLeft size={16}/>{t('edit')}</Link><div className="estimate-completion-card"><EstimateContinuation locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)} market={market}/></div></main>;
+  const requestedMarket = (await headers()).get('x-cohosty-market');
+  const market = isCityMarket(requestedMarket) ? requestedMarket : undefined;
+  return <main id="main-content" className="estimate-completion-page container"><Link className="estimate-home-link" href={`/${locale}${market ? getCohostingCity(market).path : ''}#estimate`}><ArrowLeft size={16}/>{t('edit')}</Link><div className="estimate-completion-card"><EstimateContinuation locale={locale} emailEnabled={Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM)} market={market}/></div></main>;
 }

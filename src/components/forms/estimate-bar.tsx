@@ -7,6 +7,7 @@ import { ArrowRight, ArrowLeft, Check, House, LoaderCircle, Mail } from 'lucide-
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { site, type Locale } from '@/config/site';
+import { cohostingCities } from '@/config/cohosting-cities';
 import { estimateSchema, estimateSteps, estimateTypes, estimateBedrooms, estimateGoals, estimateDurations, estimateStarts, type EstimateInput, type EstimateData } from '@/validations/estimate';
 import { Turnstile } from './turnstile';
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
@@ -17,7 +18,7 @@ const cities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Agadir', 'Fès', 
 
 type PropertyDetails = Pick<EstimateInput, 'type' | 'bedrooms' | 'city' | 'address' | 'plan'>;
 
-export function EstimateBar({ locale, emailEnabled, completion = false, initialProperty, fixedCity }: { locale: Locale; emailEnabled: boolean; completion?: boolean; initialProperty?: PropertyDetails; fixedCity?: 'Marrakech' }) {
+export function EstimateBar({ locale, emailEnabled, completion = false, initialProperty, fixedCity }: { locale: Locale; emailEnabled: boolean; completion?: boolean; initialProperty?: PropertyDetails; fixedCity?: 'Marrakech' | 'Casablanca' | 'Tanger' }) {
   const router = useRouter();
   const t = useTranslations('estimate');
   const validation = useTranslations('form.validation');
@@ -27,7 +28,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
   const heading = useRef<HTMLHeadingElement>(null);
   const locked = useRef(false);
   const previousPayload = useRef('');
-  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { plan: fixedCity ? 'COHOST' : 'AUDIT', type: 'apartment', bedrooms: '2', city: fixedCity ?? '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty } });
+  const form = useForm<EstimateInput, unknown, EstimateData>({ resolver: zodResolver(estimateSchema), mode: 'onSubmit', reValidateMode: 'onSubmit', defaultValues: { plan: fixedCity ? 'COHOST' : 'AUDIT', type: 'apartment', bedrooms: '2', city: fixedCity ?? '', address: '', fullName: '', email: '', phone: '', channel: emailEnabled ? 'email' : 'whatsapp', consent: false, locale, honeypot: '', submissionKey: '', ...initialProperty, ...(fixedCity ? { city: fixedCity } : {}) } });
   const { register, setValue, formState: { errors, isSubmitting } } = form;
   useEffect(() => {
     setValue('submissionKey', crypto.randomUUID());
@@ -53,7 +54,8 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
       try {
         sessionStorage.setItem(`coohosty-estimate-property-${locale}`, JSON.stringify({ type, bedrooms, city, address, plan }));
       } catch { setError(t('error')); return; }
-      router.push(`/${locale}/estimate${fixedCity ? '?market=marrakech' : ''}`);
+      const market = cohostingCities.find(city => city.name === fixedCity)?.id;
+      router.push(`/${locale}/estimate${market ? `?market=${market}` : ''}`);
       return;
     }
     showStep(step + 1);

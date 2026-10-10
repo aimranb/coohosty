@@ -6,10 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Menu, X, Phone, Globe } from 'lucide-react';
 import { Logo } from '@/components/ui/logo';
 import { locales, site, type Locale } from '@/config/site';
+import { cohostingCities } from '@/config/cohosting-cities';
 export function Header({ locale }: { locale: Locale }) {
   const t = useTranslations('nav');
   const pathname = usePathname();
-  const homePath = pathname.endsWith('/services/conciergerie-marrakech') ? pathname : `/${locale}`;
+  const homePath = cohostingCities.some(city => pathname.endsWith(city.path)) ? pathname : `/${locale}`;
   const blogLabel = { fr: 'Blog', en: 'Blog', ar: 'المدونة' }[locale];
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
