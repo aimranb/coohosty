@@ -8,6 +8,15 @@ test('city cohosting keeps the same services, transparent arithmetic and city on
     await expect(page.locator('main h1')).toHaveCount(1);
     await expect(page.locator('main h1')).toContainText(name);
     await expect(page.locator('#services li')).toHaveCount(12);
+    await expect(page.locator('main a[href*="/blog/"]')).toHaveCount(0);
+    const tools = await page.locator('[data-flow-source]').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().height));
+    expect(Math.max(...tools) - Math.min(...tools)).toBeLessThan(1);
+    const questions = page.locator('#faq details');
+    await questions.nth(0).locator('summary').click();
+    await expect(questions.nth(0)).toHaveAttribute('open', '');
+    await questions.nth(1).locator('summary').click();
+    await expect(questions.nth(0)).not.toHaveAttribute('open', '');
+    await expect(questions.nth(1).locator('.faq-answer')).toBeVisible();
     const calculator = page.locator('[data-commission]');
     await calculator.scrollIntoViewIfNeeded();
     await expect(calculator.locator('[data-commission-value]')).toContainText('2');
@@ -28,7 +37,7 @@ test('city cohosting keeps the same services, transparent arithmetic and city on
     await expect(page.locator('#estimate-objective')).toBeVisible();
     await page.reload();
     await expect(page.locator('#estimate-objective')).toBeVisible();
-    const property = await page.evaluate(() => JSON.parse(sessionStorage.getItem('coohosty-estimate-property-fr')!));
+    const property = await page.evaluate(market => JSON.parse(sessionStorage.getItem(`coohosty-estimate-property-fr-${market}`)!), city);
     expect(property.city).toBe(name);
     expect(property.plan).toBe('COHOST');
     await expect(page.locator('.estimate-home-link')).toHaveAttribute('href', `/fr/services/conciergerie-${city}#estimate`);

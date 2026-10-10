@@ -86,3 +86,24 @@
   .calculationRows span{font-size:12px}
   .commission>.terms{font-size:11px;line-height:1.7}
 }
+
+/* One complete stroke around a stationary rate, played once on arrival. */
+.rateHalo{background:none;transform:rotate(-90deg);overflow:visible;opacity:1;pointer-events:none}
+.rateHalo:before,.rateHalo:after{content:none}
+.ringTrack,.ringDraw{fill:none;stroke-width:1.5}
+.ringTrack{stroke:#ffffff18}
+.ringDraw{stroke:#ffac4d;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:0}
+.commission[data-visible=true] .rateHalo,.commission[data-visible=true] .rateDisplay,.commission[data-visible=true] .liveDot{animation:none}
+.commission[data-visible=true] .ringDraw{animation:completeRing 2s cubic-bezier(.33,0,.2,1) both}
+@keyframes completeRing{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+.ratePanel{justify-content:flex-start;padding-top:52px}
+.rateFooter{margin-top:56px;max-width:240px;line-height:1.6}
+.faq :global(.faq-item){border-radius:0;border-bottom:1px solid var(--line);background:transparent}
+.faq :global(.faq-item summary){align-items:center;padding:20px 0;cursor:pointer;gap:18px}
+.faq :global(.faq-item summary:focus-visible){outline:2px solid var(--city-accent);outline-offset:5px;border-radius:4px}
+.faq :global(.faq-item h3){margin:0;line-height:1.6;font-weight:500}
+.faq :global(.faq-plus){flex-shrink:0;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:#bc52000a;color:var(--city-accent)}
+.faq :global(.faq-answer){padding:0 0 22px!important;max-width:62ch}
+.faq :global(.faq-answer p){margin:0;line-height:1.85;color:var(--muted)}
+@media(max-width:760px){.ratePanel{display:flex;min-height:230px;padding-top:43px;gap:0}.rateHalo{width:180px;top:0;inset-inline-start:auto}.rateDisplay{width:180px}.rateDisplay strong{font-size:88px;letter-spacing:-5px}.rateFooter{margin-top:43px;text-align:center;justify-content:center;align-items:center;font-size:10px;max-width:240px}.liveDot{margin-top:0}.faq :global(.faq-item h3){font-size:15px!important}}
+@media(prefers-reduced-motion:reduce){.commission[data-visible=true] .ringDraw{animation:none;stroke-dashoffset:0}}

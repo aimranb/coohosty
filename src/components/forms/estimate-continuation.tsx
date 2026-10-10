@@ -16,7 +16,7 @@ function subscribe(callback: () => void) {
 export function EstimateContinuation({ locale, emailEnabled, market }: { locale: Locale; emailEnabled: boolean; market?: CityMarket }) {
   const t = useTranslations('estimate');
   const raw = useSyncExternalStore(subscribe, () => {
-    try { return sessionStorage.getItem(`coohosty-estimate-property-${locale}`); } catch { return null; }
+    try { return sessionStorage.getItem(`coohosty-estimate-property-${locale}${market ? `-${market}` : ""}`); } catch { return null; }
   }, () => undefined);
   const property = useMemo(() => {
     if (!raw) return undefined;

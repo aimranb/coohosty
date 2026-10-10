@@ -15,7 +15,7 @@ export function CohostingCommission({ locale }: { locale: Locale }) {
   useEffect(() => {
     const element = root.current;
     if (!element) return;
-    const observer = new IntersectionObserver(([entry]) => { element.dataset.visible = String(entry.isIntersecting); }, { threshold: 0.15 });
+    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { element.dataset.visible = "true"; observer.disconnect(); } }, { threshold: 0.15 });
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
@@ -25,7 +25,7 @@ export function CohostingCommission({ locale }: { locale: Locale }) {
     <div className={styles.commissionHeading}><span className={styles.kicker}>{copy.commissionEyebrow}</span><h2 id="commission-title">{copy.commissionTitle}<br/><span>{copy.commissionAccent}</span></h2></div>
     <div className={styles.commissionGrid}>
       <div className={styles.ratePanel}>
-        <div className={styles.rateHalo} aria-hidden="true"/>
+        <svg className={styles.rateHalo} viewBox="0 0 240 240" aria-hidden="true"><circle className={styles.ringTrack} cx="120" cy="120" r="116"/><circle className={styles.ringDraw} cx="120" cy="120" r="116" pathLength="100"/></svg>
         <div className={styles.rateDisplay}><strong dir="ltr">20<span>%</span></strong><p>{copy.rateLabel}</p></div>
         <div className={styles.rateFooter}><span className={styles.liveDot} aria-hidden="true"/><span>{copy.rateNote}</span></div>
       </div>

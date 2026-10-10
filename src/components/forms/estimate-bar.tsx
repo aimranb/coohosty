@@ -63,7 +63,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
     if (step === 0 && !completion) {
       const { type, bedrooms, city, address, plan } = form.getValues();
       try {
-        sessionStorage.setItem(`coohosty-estimate-property-${locale}`, JSON.stringify({ type, bedrooms, city, address, plan }));
+        sessionStorage.setItem(`coohosty-estimate-property-${locale}${fixedCity ? `-${cohostingCities.find(item => item.name === fixedCity)!.id}` : ""}`, JSON.stringify({ type, bedrooms, city, address, plan }));
       } catch { setError(t('error')); return; }
       const market = cohostingCities.find(city => city.name === fixedCity)?.id;
       router.push(`/${locale}/estimate${market ? `?market=${market}` : ''}`);

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import { cohostingCopy } from '@/content/city-cohosting';
 import { useState } from 'react';
 import { ArrowUpRight, MapPin } from 'lucide-react';
 import type { Locale } from '@/config/site';
@@ -26,7 +26,7 @@ export function MarrakechMap({ locale }: { locale: Locale }) {
         <div className={styles.photoCaption}><h3>{area.names[locale]}</h3><p>{area.details[locale]}</p></div>
       </div>
       <div className={styles.cityChoices} role="group" aria-label={copy.mapLabel}>{marrakechNeighborhoods.map((item, index) => <button key={item.id} type="button" className={index === active ? styles.selectedCity : undefined} aria-pressed={index === active} onClick={() => setActive(index)}><MapPin size={15} aria-hidden="true"/>{item.names[locale]}<ArrowUpRight size={16} aria-hidden="true"/></button>)}</div>
-      <Link className={styles.cityCta} href={`/fr/blog/${area.slug}`}>{copy.readGuide}<ArrowUpRight size={18} aria-hidden="true"/></Link>
+      <a className={styles.cityCta} href="#estimate">{cohostingCopy[locale].start}<ArrowUpRight size={18} aria-hidden="true"/></a>
     </div>
   </div>;
 }
