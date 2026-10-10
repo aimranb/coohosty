@@ -5,7 +5,7 @@ test('offers distinguish free estimates, quoted services and cohosting commissio
   await expect(page.locator('[data-offer-terms="AUDIT"]')).toContainText('Sur devis');
   await expect(page.locator('[data-offer-terms="OPTIMIZE"]')).toContainText('Sur devis');
   await expect(page.locator('[data-offer-terms="COHOST"]')).toContainText('20 %');
-  await expect(page.locator('.offer-scope')).toContainText('L’estimation initiale est gratuite');
+  await expect(page.locator('.offer-scope, .offer-scope-detail')).toHaveCount(0);
   await expect(page.locator('#about-coohosty')).toContainText('COOHOSTY');
   const pricing = page.locator('#faq details').filter({ hasText: 'Comment sont fixés les tarifs' });
   await pricing.locator('summary').click();

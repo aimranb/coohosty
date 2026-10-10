@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { OfferTerms, OfferScope } from './offer-terms';
+import { OfferTerms } from './offer-terms';
 import { getTranslations } from 'next-intl/server';
 import { Check, ArrowUpRight } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
@@ -22,7 +22,6 @@ export async function Plans({ locale, market }: { locale: Locale; market?: 'marr
       <OfferTerms plan={plan.id} compact/><ul className="plan-highlights">{plan.highlights.map(feature => <li key={feature}><Check size={14} aria-hidden="true"/><span>{t(`features.${feature}`)}</span></li>)}</ul>
       <Link href={`/${locale}/services/${plan.id.toLowerCase()}`} className="button plan-more-link">{seeMore}<ArrowUpRight size={16}/></Link><a className="plan-whatsapp" href={site.whatsapp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon width={17} height={17}/>{t('whatsapp')}</a>
     </article></Reveal></div>)}</div></div>
-    <OfferScope/>
     {market !== 'marrakech' && <MarrakechServiceLink locale={locale}/>}
   </div></section>;
 }
