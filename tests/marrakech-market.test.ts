@@ -7,6 +7,7 @@ import { marrakechNeighborhoods, marrakechServicePath } from '@/content/marrakec
 import { blogPosts } from '@/content/blog';
 import sitemap from '@/app/sitemap';
 import { site } from '@/config/site';
+import { sitemapOrigin } from '@/config/site-url';
 import fr from '../messages/fr.json';
 
 describe('Marrakech market isolation and discovery', () => {
@@ -39,7 +40,7 @@ describe('Marrakech market isolation and discovery', () => {
       expect(article?.sections.length).toBeGreaterThanOrEqual(5);
       expect(article?.faq.length).toBe(4);
       expect(article?.sections.flatMap(section => section.links ?? []).some(link => link.href === `/fr${marrakechServicePath}`)).toBe(true);
-      expect(urls).toContain(`${site.url}/fr/blog/${area.slug}`);
+      expect(urls).toContain(`${sitemapOrigin(site.url)}/fr/blog/${area.slug}`);
       expect(area.lat).toBeGreaterThan(31.585);
       expect(area.lat).toBeLessThan(31.715);
       expect(area.lon).toBeGreaterThan(-8.055);

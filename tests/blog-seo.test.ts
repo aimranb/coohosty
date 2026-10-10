@@ -3,6 +3,7 @@ import { blogPosts, blogSources, getBlogPost, getBlogPosts, getBlogSources } fro
 import { blogMetadata, blogStructuredData } from '@/lib/blog-seo';
 import sitemap from '@/app/sitemap';
 import { site } from '@/config/site';
+import { sitemapOrigin } from '@/config/site-url';
 import { blogSlugs, frenchOnlyBlogSlugs } from '@/config/blog';
 import { NextRequest } from 'next/server';
 import { proxy } from '@/proxy';
@@ -72,14 +73,14 @@ describe('blog discovery and SEO', () => {
     const entries = sitemap();
     const urls = entries.map(entry => entry.url);
     expect(new Set(urls).size).toBe(urls.length);
-    for (const post of blogPosts) expect(urls).toContain(`${site.url}/fr/blog/${post.slug}`);
+    for (const post of blogPosts) expect(urls).toContain(`${sitemapOrigin(site.url)}/fr/blog/${post.slug}`);
     for (const locale of ['fr', 'en', 'ar']) {
-      for (const plan of ['audit', 'optimize', 'cohost']) expect(urls).toContain(`${site.url}/${locale}/services/${plan}`);
+      for (const plan of ['audit', 'optimize', 'cohost']) expect(urls).toContain(`${sitemapOrigin(site.url)}/${locale}/services/${plan}`);
     }
     for (const locale of ['en', 'ar'] as const) {
-      expect(urls).toContain(`${site.url}/${locale}/blog`);
-      for (const post of getBlogPosts(locale)) expect(urls).toContain(`${site.url}/${locale}/blog/${post.slug}`);
-      for (const slug of frenchOnlyBlogSlugs) expect(urls).not.toContain(`${site.url}/${locale}/blog/${slug}`);
+      expect(urls).toContain(`${sitemapOrigin(site.url)}/${locale}/blog`);
+      for (const post of getBlogPosts(locale)) expect(urls).toContain(`${sitemapOrigin(site.url)}/${locale}/blog/${post.slug}`);
+      for (const slug of frenchOnlyBlogSlugs) expect(urls).not.toContain(`${sitemapOrigin(site.url)}/${locale}/blog/${slug}`);
     }
   });
 
