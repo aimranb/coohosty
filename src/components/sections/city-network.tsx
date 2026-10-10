@@ -9,7 +9,7 @@ import type { Locale } from '@/config/site';
 import type { CitySlide } from './city-carousel';
 import styles from './city-network.module.css';
 
-// Stylized coastal silhouette, focused on the six existing destination cities.
+// Stylized coastal silhouette, focused on the seven destination cities.
 // Positions follow longitude/latitude in a common SVG coordinate space.
 const positions: Record<string, { x: number; y: number; lx: number; ly: number }> = {
   casablanca: { x: 286, y: 247, lx: 160, ly: 271 },
@@ -18,6 +18,7 @@ const positions: Record<string, { x: number; y: number; lx: number; ly: number }
   agadir: { x: 153, y: 452, lx: 206, ly: 489 },
   tanger: { x: 391, y: 104, lx: 460, ly: 77 },
   rabat: { x: 335, y: 217, lx: 248, ly: 184 },
+  marrakech: { x: 262, y: 369, lx: 365, ly: 395 },
 };
 const silhouette = 'M391 96 C383 108 378 125 369 142 L360 174 L335 209 L304 231 L286 247 L251 272 L226 301 L216 330 L198 350 L177 371 L166 399 L153 438 L154 458 L134 482 L121 510 L100 535 L104 558 L152 578 L209 561 L268 505 L328 475 L351 424 L409 389 L461 349 L488 303 L537 269 L566 224 L561 192 L555 161 L522 163 L497 153 L479 156 L455 145 L436 140 L421 117 L411 102 Z';
 
@@ -35,7 +36,7 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
   }, [running, cities.length]);
 
   function syncFormCity(index: number) {
-    const names: Record<string, string> = { casablanca: 'Casablanca', tanger: 'Tanger', fes: 'Fès', meknes: 'Meknès', agadir: 'Agadir', rabat: 'Rabat' };
+    const names: Record<string, string> = { casablanca: 'Casablanca', tanger: 'Tanger', fes: 'Fès', meknes: 'Meknès', agadir: 'Agadir', rabat: 'Rabat', marrakech: 'Marrakech' };
     const selected = names[cities[index].id];
     if (selected) window.dispatchEvent(new CustomEvent('coohosty-city-change', { detail: { city: selected } }));
   }

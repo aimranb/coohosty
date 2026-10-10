@@ -32,6 +32,12 @@
       "id": "rabat",
       "image": "/images/cities/rabat-original.webp",
       "source": "https://www.pexels.com/photo/charming-moroccan-street-scene-in-rabat-31741321/"
+    },
+    {
+      "id": "marrakech",
+      "image": "/images/cities/marrakech-original.webp",
+      "source": "https://www.pexels.com/photo/marrakech-cityscape-with-koutoubia-mosque-36871970/",
+      "position": "50% 25%"
     }
   ],
   "platforms": [

@@ -563,6 +563,10 @@
       "rabat": {
         "name": "Rabat",
         "detail": "Heritage by the ocean"
+      },
+      "marrakech": {
+        "name": "Marrakech",
+        "detail": "The ochre city, between the medina and gardens"
       }
     }
   },

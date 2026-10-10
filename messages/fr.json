@@ -563,6 +563,10 @@
       "rabat": {
         "name": "Rabat",
         "detail": "Le patrimoine, au rythme de l’océan"
+      },
+      "marrakech": {
+        "name": "Marrakech",
+        "detail": "La ville ocre, entre médina et jardins"
       }
     }
   },
