@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { OfferTerms } from '@/components/sections/offer-terms';
 import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -48,7 +49,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     <Link className="service-detail-back" href={`/${locale}#services`}><ArrowLeft size={17}/>{labels.back}</Link>
     <header className="service-detail-heading">
       <span className="eyebrow">COOHOSTY · {plan.id}</span>
-      <h1>{plan.id}</h1>
+      <h1>{plan.id}</h1><OfferTerms plan={plan.id}/>
       <div className="service-detail-actions"><Link href={formUrl} className="button service-detail-form">{labels.form}<ArrowUpRight size={18}/></Link></div>
     </header>
     <section className="service-detail-included" aria-labelledby="included-title"><h2 id="included-title">{labels.included}</h2>

@@ -9,11 +9,11 @@ export async function Hero({ market }: { market?: 'marrakech' } = {}) {
   const showcase = await getTranslations('showcase');
   const alts = showcase.raw('photoAlts') as string[];
   const photos = [
-    { src: '/images/hero-airbnb.webp', alt: alts[1] },
-    { src: '/images/hero-interior-6.webp', alt: alts[6] },
-    { src: '/images/hero-interior-warm.webp', alt: alts[1] },
-    { src: '/images/hero-interior-3.webp', alt: alts[3] },
-    { src: '/images/hero-interior-4.webp', alt: alts[4] },
+    { src: '/images/optimized/hero-airbnb-093f4743d5.webp', alt: alts[1] },
+    { src: '/images/optimized/hero-interior-6-f56b18dc0f.webp', alt: alts[6] },
+    { src: '/images/optimized/hero-interior-warm-98ad1d0a55.webp', alt: alts[1] },
+    { src: '/images/optimized/hero-interior-3-7dc2908220.webp', alt: alts[3] },
+    { src: '/images/optimized/hero-interior-4-ba476144e8.webp', alt: alts[4] },
   ];
   const requestedLocale = await getLocale();
   const locale = isLocale(requestedLocale) ? requestedLocale : 'fr';

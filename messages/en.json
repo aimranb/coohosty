@@ -176,7 +176,7 @@
   },
   "meta": {
     "title": "COOHOSTY — Co-hosting & revenue management in Morocco",
-    "description": "Professional co-hosting and revenue optimization for property owners in Morocco. One subscription. One team. A better-performing property."
+    "description": "Professional co-hosting and revenue optimization for property owners in Morocco. One service. One team. A better-performing property."
   },
   "nav": {
     "services": "Services",
@@ -184,7 +184,7 @@
     "plans": "Plans",
     "contact": "Contact",
     "call": "Let’s talk",
-    "audit": "Free property audit",
+    "audit": "Free estimate",
     "menu": "Open navigation",
     "language": "Language",
     "skip": "Skip to content"
@@ -205,13 +205,13 @@
     "imageAlt": "Bright living room with a cognac sofa, natural wood and large windows",
     "caption": "YOUR PROPERTY, IN GOOD HANDS",
     "location": "Made for Morocco.",
-    "tag": "One subscription. One team.",
+    "tag": "One service. One team.",
     "scroll": "Explore the COOHOSTY approach"
   },
   "services": {
     "eyebrow": "LESS COMPLEXITY. MORE CONTROL.",
     "title": "Everything your property needs.",
-    "accent": "One COOHOSTY subscription.",
+    "accent": "One COOHOSTY service.",
     "AUDIT": "Understand your property’s opportunities.",
     "OPTIMIZE": "Improve pricing, positioning & revenue.",
     "COHOST": "Let COOHOSTY manage the property for you.",
@@ -634,7 +634,7 @@
       },
       "price": {
         "question": "How is pricing determined?",
-        "answer": "All plans are quoted individually. Pricing depends on your property, its situation and the scope of support. Services, tools and any additional fees are specified before you commit."
+        "answer": "AUDIT and OPTIMIZE are quoted individually. For COHOST in Marrakech, Casablanca and Tangier, the management commission is fixed at 20% per booking, or 20% of total bookings using the same basis. Your written proposal specifies the calculation basis, services and who pays other costs."
       },
       "guarantees": {
         "question": "Do you guarantee higher revenue or five-star reviews?",
@@ -650,10 +650,10 @@
       },
       "onSite": {
         "question": "Are cleaning, photography and on-site check-in included?",
-        "answer": "The comparison covers photo assessment and check-in/out communication. A photo shoot, cleaning, maintenance or physical check-in are not automatically included. Any on-site intervention must be confirmed in your quote."
+        "answer": "COHOST includes the management and coordination agreed in your offer. Cleaning, linen, photography, maintenance and insurance costs are separated from management fees in your proposal. AUDIT analyses the listing and OPTIMIZE manages revenue: neither automatically includes on-site services."
       },
       "start": {
-        "question": "What happens after I request an audit?",
+        "question": "What happens after I request an income estimate?",
         "answer": "You submit your property information and preferred plan. Our team reviews the request and contacts you to clarify your needs and propose an appropriate scope."
       },
       "data": {
@@ -703,5 +703,24 @@
     "contactTitle": "One team. A direct conversation.",
     "contactDescription": "Ask us about your property and the scope of your package.",
     "email": "Email us"
+  },
+  "offerPolicy": {
+    "quoteLabel": "On request",
+    "quoteDetail": "AUDIT and OPTIMIZE: a proposal tailored to your property, before you commit.",
+    "cohostLabel": "20% management commission",
+    "cohostDetail": "COHOST in Marrakech, Casablanca and Tangier: 20% per booking, or 20% of total bookings using the same calculation basis.",
+    "scopeTitle": "A clear rate. A written scope.",
+    "scopeDetail": "The commission covers the management and coordination agreed in your offer. Your proposal separates these fees from platform fees, taxes and cleaning, linen, photography, maintenance and insurance costs. Who pays these costs and the exact calculation basis are specified before you commit.",
+    "teamEyebrow": "BY YOUR SIDE",
+    "teamTitle": "COOHOSTY, your point of contact for your property.",
+    "teamIntro": "We support property owners in Morocco, from analysing their listing to coordinating guest stays. Choose the level of support that fits your home.",
+    "commitment1": "A direct conversation",
+    "detail1": "Tell us about your property and goals. Speak with COOHOSTY before choosing your offer.",
+    "commitment2": "A clear proposal",
+    "detail2": "Services, commission or fees and additional costs are specified in your proposal.",
+    "commitment3": "Support that fits",
+    "detail3": "AUDIT analyses your listing. OPTIMIZE manages revenue. COHOST adds booking and guest coordination.",
+    "contact": "Let’s discuss your property",
+    "initialEstimate": "The initial income estimate is free, with no commitment. AUDIT and OPTIMIZE services are then quoted individually."
   }
 }

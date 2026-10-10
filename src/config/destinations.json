@@ -2,17 +2,17 @@
   "cities": [
     {
       "id": "casablanca",
-      "image": "/images/cities/casablanca-original.webp",
+      "image": "/images/optimized/casablanca-original-0aadd1a16f.webp",
       "source": "https://www.pexels.com/photo/hassan-ii-mosque-in-casablanca-morocco-32880203/"
     },
     {
       "id": "fes",
-      "image": "/images/cities/fes-original.webp",
+      "image": "/images/optimized/fes-original-ef44f01428.webp",
       "source": "https://www.pexels.com/fr-fr/photo/la-porte-bleue-emblematique-de-la-medina-de-fes-au-maroc-35036526/"
     },
     {
       "id": "meknes",
-      "image": "/images/cities/meknes-original.webp",
+      "image": "/images/optimized/meknes-original-e07149895e.webp",
       "source": "https://commons.wikimedia.org/wiki/File:Bab_mansour_DSCF5776.jpg",
       "author": "Robert Prazeres / Wikimedia Commons",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -20,22 +20,22 @@
     },
     {
       "id": "agadir",
-      "image": "/images/cities/agadir-original.webp",
+      "image": "/images/optimized/agadir-original-c4e9d3bd19.webp",
       "source": "https://www.pexels.com/fr-fr/photo/vue-aerienne-de-la-ville-et-de-la-plage-d-agadir-35627666/"
     },
     {
       "id": "tanger",
-      "image": "/images/cities/tanger-original.webp",
+      "image": "/images/optimized/tanger-original-2a22a7ac35.webp",
       "source": "https://www.pexels.com/photo/cityscape-of-tangier-morocco-20890428/"
     },
     {
       "id": "rabat",
-      "image": "/images/cities/rabat-original.webp",
+      "image": "/images/optimized/rabat-original-8eff31fa96.webp",
       "source": "https://www.pexels.com/photo/charming-moroccan-street-scene-in-rabat-31741321/"
     },
     {
       "id": "marrakech",
-      "image": "/images/cities/marrakech-original.webp",
+      "image": "/images/optimized/marrakech-original-588db8192b.webp",
       "source": "https://www.pexels.com/photo/marrakech-cityscape-with-koutoubia-mosque-36871970/",
       "position": "50% 25%"
     }

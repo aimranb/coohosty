@@ -19,7 +19,10 @@ describe('Marrakech market isolation and discovery', () => {
     expect(local.plans.features).toEqual(fr.plans.features);
     expect(local.estimate.title).toContain('Marrakech');
     expect(JSON.stringify(fr)).toBe(original);
-    expect(fr.faq.items.price.answer).not.toContain('20 %');
+    expect(fr.faq.items.price.answer).toContain('COHOST');
+    expect(fr.faq.items.price.answer).toContain('20 %');
+    expect(fr.faq.items.price.answer).toContain('Casablanca et Tanger');
+    expect(fr.faq.items.price.answer).toContain('AUDIT et OPTIMIZE sont sur devis');
   });
   it('sets market context from the actual route and overwrites spoofed incoming context', () => {
     for (const locale of ['fr', 'en', 'ar']) {

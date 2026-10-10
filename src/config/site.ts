@@ -8,7 +8,7 @@ export const site = {
   brand: 'COOHOSTY', domain: 'coohosty.com',
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   phone: '+212 663 448 785', tel: '+212663448785',
-  whatsapp: 'https://wa.me/212663448785', email: 'benaissiimran08@gmail.com',
+  whatsapp: 'https://wa.me/212663448785', email: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || 'benaissiimran08@gmail.com',
   social: { instagram: '', linkedin: '' },
   company: { legalName: '', registrationNumber: '', taxIdentifier: '', dataProtectionRegistration: '', address: '', privacyRetentionDays: 365 },
   seo: { defaultLocale: 'fr', socialImage: '/opengraph-image', twitterCard: 'summary_large_image' } as const,

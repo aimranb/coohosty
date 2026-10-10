@@ -1,4 +1,5 @@
 'use client';
+import { imagePlaceholders } from '@/config/image-placeholders';
 
 import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
@@ -54,7 +55,7 @@ export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels:
   return <figure ref={root} className={`hero-photo hero-property ${styles.gallery}`} aria-label={labels.disclosure} aria-roledescription="carousel" data-motion={visible && !paused && !reduced}>
     {photos.map((photo, index) => <div key={photo.src} className={styles.slide} data-active={displayed === index} aria-hidden={displayed !== index}>
       {(index === 0 || loaded.includes(index) || index === requested || (visible && !paused && !reduced && index === next)) &&
-        <Image src={photo.src} alt={photo.alt} fill preload={index === 0} loading={index === 0 ? undefined : 'eager'} sizes="(max-width: 760px) 90vw, 60vw" onLoad={() => {
+        <Image unoptimized placeholder="blur" blurDataURL={imagePlaceholders[photo.src]} src={photo.src} alt={photo.alt} fill preload={index === 0} loading={index === 0 ? undefined : 'eager'} sizes="(max-width: 760px) 90vw, (max-width: 1200px) 45vw, 560px" onLoad={() => {
           setLoaded(current => current.includes(index) ? current : [...current, index]);
           if (index === requested) setActive(index);
         }}/>}

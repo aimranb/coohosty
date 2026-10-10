@@ -1,4 +1,5 @@
 'use client';
+import { imagePlaceholders } from '@/config/image-placeholders';
 
 import Image from 'next/image';
 import { useEffect, useId, useState, type CSSProperties } from 'react';
@@ -25,6 +26,7 @@ const silhouette = 'M391 96 C383 108 378 125 369 142 L360 174 L335 209 L304 231 
 export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: Locale }) {
   const { root, ready, running, reduced, paused, setPaused } = useVisibleMotion();
   const [active, setActive] = useState(0);
+  const [visited, setVisited] = useState<number[]>([0]);
   const id = useId().replace(/:/g, '');
   const copy = motionCopy[locale];
   const city = cities[active];
@@ -41,6 +43,7 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
     if (selected) window.dispatchEvent(new CustomEvent('coohosty-city-change', { detail: { city: selected } }));
   }
   function select(index: number) {
+    setVisited(current => current.includes(index) ? current : [...current, index]);
     setActive(index);
     setPaused(true);
     syncFormCity(index);
@@ -85,7 +88,7 @@ export function CityNetwork({ cities, locale }: { cities: CitySlide[]; locale: L
     </div>
     <div className={styles.cityPanel}>
       <div className={styles.photo}>
-        {cities.map((item, index) => <div key={item.id} className={`${styles.photoLayer} ${index === active ? styles.activePhoto : ''}`} aria-hidden={index !== active}><Image src={item.image} alt={index === active ? `${item.name} — ${item.detail}` : ''} fill style={{objectPosition:item.position}} sizes="(max-width: 760px) 90vw, 40vw" loading="lazy"/></div>)}
+        {cities.map((item, index) => <div key={item.id} className={`${styles.photoLayer} ${index === active ? styles.activePhoto : ''}`} aria-hidden={index !== active}>{(index === active || visited.includes(index)) && <Image unoptimized placeholder="blur" blurDataURL={imagePlaceholders[item.image]} src={item.image} alt={index === active ? `${item.name} — ${item.detail}` : ''} fill style={{objectPosition:item.position}} sizes="(max-width: 760px) 90vw, 40vw" loading="lazy"/>}</div>)}
         <div className={styles.photoShade}/>
         <span className={styles.photoTag}><MapPin size={14}/>{city.name}</span>
         <div className={styles.photoCaption}><h3>{city.name}</h3><p>{city.detail}</p></div>

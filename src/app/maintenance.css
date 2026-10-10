@@ -3,3 +3,22 @@
   .estimate-step-fields { animation: estimate-step-enter .18s ease-out; }
   @keyframes estimate-step-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 }
+
+.offer-terms{margin-block:20px;padding:20px 24px;border:1px solid #eadfd6;border-radius:16px;background:#fff8f2;text-align:start}
+.offer-terms>strong{font-size:20px;font-weight:600;color:#a74700;letter-spacing:-.5px}
+.offer-terms>p{font-size:13px;line-height:1.8;color:#625a52;margin-top:10px;max-width:72ch}
+.offer-terms.compact{padding:14px 16px;margin-block:16px;border-radius:12px;min-height:136px;background:#fff}
+.offer-terms.compact>strong{font-size:17px}.offer-terms.compact>p{font-size:12px;margin-top:7px;line-height:1.65}
+.offer-scope{border-top:1px solid #eadfd6;padding-block:25px;margin-top:28px;max-width:860px}
+.offer-scope h3{font-size:19px;letter-spacing:-.4px}.offer-scope p{font-size:13px;line-height:1.9;color:#625a52;margin-top:10px}
+.about-coohosty{display:grid;grid-template-columns:1fr 1fr;gap:65px;border-top:1px solid #eadfd6}
+.about-coohosty-intro h2{font-size:clamp(28px,3vw,40px);line-height:1.25;letter-spacing:-1px;margin-top:18px;font-weight:600}
+.about-coohosty-intro>p{font-size:16px;line-height:1.8;color:#625a52;margin-top:22px;max-width:48ch}
+.about-coohosty-intro>a{display:inline-flex;align-items:center;gap:14px;border-bottom:1px solid #d9ba9d;padding-block:12px;margin-top:18px;color:#a74700;font-size:13px}
+.about-coohosty-points{display:grid;gap:16px;align-content:center}
+.about-coohosty-points article{display:flex;gap:18px;border:1px solid #eadfd6;border-radius:16px;padding:22px;background:#fff}
+.about-coohosty-points svg{flex-shrink:0;color:#a74700;margin-top:2px}
+.about-coohosty-points h3{font-size:17px;font-weight:500;margin:0}.about-coohosty-points p{font-size:13px;line-height:1.8;color:#625a52;margin-top:8px}
+.service-proof-bar{background:#fff8f2;border-color:#eadfd6;box-shadow:none}.service-proof-heading h2,.service-review-person strong{color:#111}.service-review-card{border-color:#eadfd6}.service-review-card blockquote,.service-proof-heading p{color:#625a52}
+@media(max-width:760px){.about-coohosty{grid-template-columns:1fr;gap:30px}.about-coohosty-intro h2{font-size:29px;letter-spacing:-.6px}.about-coohosty-points article{padding:20px}.offer-terms.compact{min-height:0}.offer-terms{padding:18px}.offer-scope{margin-top:20px}}
+[dir=rtl] .about-coohosty-intro h2,[dir=rtl] .offer-terms>strong{letter-spacing:0}

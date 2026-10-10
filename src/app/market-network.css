@@ -73,3 +73,5 @@
 #revenue .analysis-network .analysis-tool-brand .analytics-tool-logo,#revenue .analysis-network .analysis-tool:nth-child(2) .analytics-tool-logo{height:32px;width:min(155px,80%);object-fit:contain}
 #revenue .analysis-network .analysis-tool:focus-visible{outline:2px solid #bc5200;outline-offset:4px}
 @media(max-width:760px){#revenue .analysis-network .analytics-bar-track{grid-template-columns:1fr;gap:12px}#revenue .analysis-network .analytics-bar .analysis-tool{min-height:130px;padding:18px}#revenue .analysis-network .analysis-tool-brand .analytics-tool-logo{width:155px}#main-content #revenue .analysis-network .analysis-tool>span{font-size:12px}#revenue .analysis-network .analysis-tool-brand>span{display:block}}
+
+.analytics-tool-logo>svg{width:100%;height:100%;display:block}

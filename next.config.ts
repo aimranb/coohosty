@@ -5,7 +5,7 @@ const config: NextConfig = {
   outputFileTracingIncludes: { '/api/admin/requests/*/pdf': ['./node_modules/@fontsource/noto-sans/files/*400-normal.woff', './node_modules/@fontsource/noto-sans-arabic/files/*400-normal.woff'] },
   images: { deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2560, 3840], remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }, { protocol: 'https', hostname: 'images.pexels.com' }, { protocol: 'https', hostname: 'upload.wikimedia.org' }, { protocol: 'https', hostname: 'res.cloudinary.com' }] },
   async headers() {
-    return [{ source: '/:path*', headers: [
+    return [{ source: '/images/optimized/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] }, { source: '/:path*', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
       { key: 'X-Frame-Options', value: 'DENY' },
       { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },

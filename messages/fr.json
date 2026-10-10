@@ -176,7 +176,7 @@
   },
   "meta": {
     "title": "COOHOSTY — Co-hosting et gestion de revenus au Maroc",
-    "description": "Co-hosting professionnel et optimisation des revenus pour les propriétaires au Maroc. Un abonnement. Une équipe. Un bien plus performant."
+    "description": "Co-hosting professionnel et optimisation des revenus pour les propriétaires au Maroc. Un accompagnement. Une équipe. Un bien plus performant."
   },
   "nav": {
     "services": "Services",
@@ -184,7 +184,7 @@
     "plans": "Offres",
     "contact": "Contact",
     "call": "Parlons-en",
-    "audit": "Audit gratuit",
+    "audit": "Estimation",
     "menu": "Ouvrir le menu",
     "language": "Langue",
     "skip": "Aller au contenu"
@@ -205,13 +205,13 @@
     "imageAlt": "Salon lumineux avec canapé cognac, bois naturel et grandes fenêtres",
     "caption": "VOTRE BIEN, ENTRE DE BONNES MAINS",
     "location": "Pensé pour le Maroc.",
-    "tag": "Un abonnement. Une équipe.",
+    "tag": "Un accompagnement. Une équipe.",
     "scroll": "Découvrir l’approche COOHOSTY"
   },
   "services": {
     "eyebrow": "MOINS DE COMPLEXITÉ. PLUS DE MAÎTRISE.",
     "title": "Tout ce dont votre bien a besoin.",
-    "accent": "Un seul abonnement COOHOSTY.",
+    "accent": "Un accompagnement COOHOSTY.",
     "AUDIT": "Comprendre les opportunités de votre bien.",
     "OPTIMIZE": "Améliorer les prix, le positionnement et les revenus.",
     "COHOST": "Confier la gestion de votre bien à COOHOSTY.",
@@ -634,7 +634,7 @@
       },
       "price": {
         "question": "Comment sont fixés les tarifs ?",
-        "answer": "Chaque offre est sur devis. Le prix dépend du bien, de sa situation et du périmètre d’accompagnement. Les prestations, les outils et les éventuels frais complémentaires sont précisés avant votre engagement."
+        "answer": "AUDIT et OPTIMIZE sont sur devis. Pour COHOST à Marrakech, Casablanca et Tanger, la commission de gestion est fixée à 20 % par réservation, ou à 20 % de leur total sur la même base. La proposition écrite précise la base de calcul, les prestations et la prise en charge des autres frais."
       },
       "guarantees": {
         "question": "Garantissez-vous plus de revenus ou des avis cinq étoiles ?",
@@ -650,10 +650,10 @@
       },
       "onSite": {
         "question": "Le ménage, les photos et l’accueil sur place sont-ils inclus ?",
-        "answer": "Le tableau décrit l’analyse des photos et la communication d’arrivée et de départ. Une séance photo, le ménage, la maintenance ou un accueil physique ne sont pas automatiquement inclus. Toute intervention sur place doit être confirmée dans le devis."
+        "answer": "COHOST comprend la gestion et la coordination prévues dans votre offre. Les coûts de ménage, de linge, de photographie, de maintenance et d’assurance sont distingués des honoraires de gestion dans votre proposition. AUDIT analyse l’annonce et OPTIMIZE pilote les revenus : ces deux offres ne comprennent pas automatiquement les interventions sur place."
       },
       "start": {
-        "question": "Que se passe-t-il après ma demande d’audit ?",
+        "question": "Que se passe-t-il après ma demande d’estimation ?",
         "answer": "Vous renseignez les informations de votre bien et l’offre souhaitée. Notre équipe étudie votre demande puis vous contacte pour clarifier les besoins et proposer le périmètre adapté."
       },
       "data": {
@@ -703,5 +703,24 @@
     "contactTitle": "Une équipe. Un échange direct.",
     "contactDescription": "Discutons de votre logement et du contenu de votre formule.",
     "email": "Nous écrire"
+  },
+  "offerPolicy": {
+    "quoteLabel": "Sur devis",
+    "quoteDetail": "AUDIT et OPTIMIZE : une proposition adaptée à votre bien, avant engagement.",
+    "cohostLabel": "20 % de commission",
+    "cohostDetail": "COHOST à Marrakech, Casablanca et Tanger : 20 % par réservation, ou 20 % du total des réservations sur la même base.",
+    "scopeTitle": "Un taux clair. Un périmètre écrit.",
+    "scopeDetail": "La commission rémunère la gestion et la coordination prévues dans votre offre. Votre proposition distingue ces honoraires des frais de plateforme, des taxes et des coûts de ménage, de linge, de photographie, de maintenance et d’assurance. Leur prise en charge et la base exacte de calcul sont précisées avant engagement.",
+    "teamEyebrow": "À VOS CÔTÉS",
+    "teamTitle": "COOHOSTY, votre interlocuteur pour votre bien.",
+    "teamIntro": "Nous accompagnons les propriétaires au Maroc, de l’analyse de leur annonce à la coordination de leurs séjours. Vous choisissez le niveau d’accompagnement qui correspond à votre logement.",
+    "commitment1": "Un échange direct",
+    "detail1": "Présentez votre logement et vos objectifs. Échangez avec COOHOSTY avant de choisir votre offre.",
+    "commitment2": "Une proposition lisible",
+    "detail2": "Prestations, commission ou honoraires et frais complémentaires sont précisés dans votre proposition.",
+    "commitment3": "Un suivi adapté",
+    "detail3": "AUDIT analyse votre annonce. OPTIMIZE pilote les revenus. COHOST ajoute la coordination des réservations et des voyageurs.",
+    "contact": "Parlons de votre logement",
+    "initialEstimate": "L’estimation initiale est gratuite et sans engagement. Les prestations AUDIT et OPTIMIZE font ensuite l’objet d’un devis."
   }
 }
