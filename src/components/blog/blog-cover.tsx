@@ -6,31 +6,31 @@ import { marrakechNeighborhoods } from '@/content/marrakech-service';
 import styles from './blog-journal.module.css';
 
 const conciergeCoverImages: Record<string, string> = {
-  'conciergerie-airbnb-maroc': '/images/hero-interior-3.webp',
-  'choisir-societe-conciergerie-maroc': '/images/hero-airbnb.webp',
-  'conciergerie-ou-gestion-autonome-airbnb-maroc': '/images/hero-interior-4.webp',
+  'conciergerie-airbnb-maroc': '/images/optimized/hero-interior-3-7dc2908220.webp',
+  'choisir-societe-conciergerie-maroc': '/images/optimized/hero-airbnb-093f4743d5.webp',
+  'conciergerie-ou-gestion-autonome-airbnb-maroc': '/images/optimized/hero-interior-4-ba476144e8.webp',
 };
 
 export function BlogCover({ post, locale = 'fr' }: { post: BlogPost; locale?: Locale }) {
   const kind = post.slug;
   const neighborhood = marrakechNeighborhoods.find(area => area.slug === kind);
   if (locale !== 'fr') return <div className={styles.cover} aria-hidden="true">
-    <Image src={kind.includes('casablanca') || kind.includes('police') ? '/images/hero-interior-warm.webp' : '/images/hero-interior-6.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+    <Image src={kind.includes('casablanca') || kind.includes('police') ? '/images/optimized/hero-interior-warm-98ad1d0a55.webp' : '/images/optimized/hero-interior-6-f56b18dc0f.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
     <div className={styles.coverShade}/><span className={styles.coverTag}>{post.category}</span>
     <div className={styles.coverPhotoCaption}><strong>{post.title}</strong></div>
   </div>;
   return <div className={styles.cover} aria-hidden="true">
     {neighborhood && <><Image src={neighborhood.image} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/><div className={styles.coverShade}/><span className={styles.coverTag}>MARRAKECH · GUIDE DE QUARTIER</span><div className={styles.coverPhotoCaption}><strong>{neighborhood.names.fr}.<br/>Votre projet, votre quartier.</strong></div></>}
     {kind === 'creer-annonce-airbnb-maroc' && <>
-      <Image src="/images/hero-interior-6.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+      <Image src="/images/optimized/hero-interior-6-f56b18dc0f.webp" alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
       <div className={styles.coverShade}/><span className={styles.coverTag}>VOTRE PREMIÈRE ANNONCE</span><div className={styles.coverPhotoCaption}><strong>Un logement.<br/>Une annonce soignée.</strong></div>
     </>}
     {['conciergerie-airbnb-casablanca', 'conciergerie-airbnb-maroc', 'choisir-societe-conciergerie-maroc', 'conciergerie-ou-gestion-autonome-airbnb-maroc'].includes(kind) && <>
-      <Image src={conciergeCoverImages[kind] ?? '/images/hero-interior-warm.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+      <Image src={conciergeCoverImages[kind] ?? '/images/optimized/hero-interior-warm-98ad1d0a55.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
       <div className={styles.coverShade}/><span className={styles.coverTag}>GESTION LOCALE</span><div className={styles.coverPhotoCaption}><strong>{kind === 'conciergerie-airbnb-casablanca' ? 'Casablanca.' : kind === 'choisir-societe-conciergerie-maroc' ? 'Choisir son partenaire.' : kind === 'conciergerie-ou-gestion-autonome-airbnb-maroc' ? 'Organiser sa gestion.' : 'Votre logement au Maroc.'}<br/>Votre bien, accompagné.</strong></div>
     </>}
     {kind === 'fiche-de-police-airbnb-maroc' && <>
-      <Image src="/images/hero-interior-warm.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
+      <Image src="/images/optimized/hero-interior-warm-98ad1d0a55.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
       <span className={styles.coverTag}>GUIDE PROPRIÉTAIRE</span>
       <div className={styles.coverDocument}><span className={styles.documentIcon}><FileText size={23} strokeWidth={1.4}/></span><small>ACCUEIL · MAROC</small><strong>Tout commence<br/>par un bon accueil.</strong><div className={styles.documentRule}/><span className={styles.documentField}>Identité <i/></span><span className={styles.documentField}>Séjour <i/></span><span className={styles.documentCheck}><Check size={12}/> Les bonnes démarches</span></div>
     </>}
@@ -51,12 +51,12 @@ export function BlogCover({ post, locale = 'fr' }: { post: BlogPost; locale?: Lo
       <div className={`${styles.receipt} ${styles.receiptNet}`}><small>Versement</small><strong>2 535<span>MAD</span></strong><div className={styles.receiptLines}><i/><i/><i/></div><span className={styles.receiptFoot}>Hypothèse : frais de 15,5 %</span></div>
     </div>}
     {kind === 'sous-location-airbnb-maroc' && <>
-      <Image src="/images/hero-interior-6.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
+      <Image src="/images/optimized/hero-interior-6-f56b18dc0f.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
       <div className={styles.coverShade}/><span className={styles.coverTag}>BAIL & ACCORD DU PROPRIÉTAIRE</span>
       <div className={styles.keyBadge}><KeyRound size={48} strokeWidth={1.25}/></div><div className={styles.coverPhotoCaption}><strong>Les clés<br/>d’un projet bien préparé.</strong></div>
     </>}
     {kind === 'airbnb-maroc-definition' && <>
-      <Image src="/images/hero-interior-4.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
+      <Image src="/images/optimized/hero-interior-4-ba476144e8.webp" alt="" fill sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw" className={styles.coverPhoto}/>
       <div className={styles.coverShade}/><span className={styles.coverTag}>VOTRE PREMIÈRE LOCATION</span><div className={styles.coverPhotoCaption}><span>DE L’ANNONCE À L’ACCUEIL</span><strong>Votre logement.<br/>De nouvelles possibilités.</strong></div>
     </>}
     {kind === 'conciergerie-airbnb-marrakech' && <div className={styles.marrakechCover}>

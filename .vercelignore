@@ -1,0 +1,15 @@
+# Remote builds install dependencies and generate their own output.
+node_modules/
+.next/
+.tmp/
+.github/
+tests/
+test-results/
+playwright-report/
+docs/
+coverage/
+# Only optimized photos are shipped; originals remain in Git for recovery.
+public/images/cities/*-original.webp
+public/images/cities/*-editorial.webp
+public/images/hero-airbnb.webp
+public/images/hero-interior-*.webp
