@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { isLocale, site } from '@/config/site';
 import comparison from '@/config/service-comparison.json';
 import { MarrakechServiceLink } from '@/components/sections/marrakech-service-link';
+import { serviceStructuredData } from '@/lib/structured-data';
 
 type PageProps = { params: Promise<{ locale: string; plan: string }> };
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps) {
   const description = t(`${plan.id}.outcome`);
   const path = `/services/${plan.id.toLowerCase()}`;
   const canonical = `${site.url}/${locale}${path}`;
-  return { title, description, alternates: { canonical, languages: Object.fromEntries(['fr', 'en', 'ar'].map(language => [language, `${site.url}/${language}${path}`])) }, openGraph: { title, description, url: canonical, siteName: site.brand, type: 'website' as const, locale: { fr: 'fr_MA', en: 'en_US', ar: 'ar_MA' }[locale], images: [site.seo.socialImage] }, twitter: { card: site.seo.twitterCard, title, description, images: [site.seo.socialImage] } };
+  return { title, description, alternates: { canonical, languages: { ...Object.fromEntries(['fr', 'en', 'ar'].map(language => [language, `${site.url}/${language}${path}`])), 'x-default': `${site.url}/${site.seo.defaultLocale}${path}` } }, openGraph: { title, description, url: canonical, siteName: site.brand, type: 'website' as const, locale: { fr: 'fr_MA', en: 'en_US', ar: 'ar_MA' }[locale], images: [{ url: site.seo.socialImage, width: 1200, height: 630, alt: site.brand }] }, twitter: { card: site.seo.twitterCard, title, description, images: [site.seo.socialImage] } };
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {
@@ -43,6 +44,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const groups = plan.id === 'COHOST' ? cohostGroups : comparison.filter(group => order.indexOf(plan.id) >= order.indexOf(group.availableFrom));
   const formUrl = `/${locale}?plan=${plan.id}#estimate`;
   return <main id="main-content" className="container service-detail-page">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData(locale, plan.id.toLowerCase(), plan.id, t(`${plan.id}.outcome`))).replace(/</g, '\\u003c') }}/>
     <Link className="service-detail-back" href={`/${locale}#services`}><ArrowLeft size={17}/>{labels.back}</Link>
     <header className="service-detail-heading">
       <span className="eyebrow">COOHOSTY · {plan.id}</span>

@@ -72,3 +72,6 @@
 .srOnly{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1000px){.articleLayout{grid-template-columns:210px minmax(0,1fr);gap:30px}.related .grid,.home .grid{grid-template-columns:1fr}.homeHeading{align-items:start;flex-direction:column}}
 @media(max-width:760px){.page{padding-block:30px 55px}.breadcrumbs{margin-bottom:28px;font-size:12px}.heading{margin-bottom:30px}.heading h1{letter-spacing:-.8px}.heading>p{font-size:16px}.grid{grid-template-columns:1fr;gap:18px}.card{padding:25px}.articleLayout{display:flex;flex-direction:column;gap:25px}.toc{position:static;width:100%}.body{max-width:100%;width:100%}.body p,.body li{font-size:15px;line-height:1.85}.takeaway{padding:20px}.cta{padding:27px 23px}.ctaActions{flex-direction:column;align-items:flex-start}.related .grid{grid-template-columns:1fr}.home{padding-block:45px}}
+
+:global([dir="rtl"]) .heading h1,:global([dir="rtl"]) .body h2,:global([dir="rtl"]) .cta h2{letter-spacing:normal;line-height:1.6}
+:global([dir="rtl"]) .takeaway{border-radius:10px 0 0 10px}

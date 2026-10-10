@@ -1,4 +1,7 @@
+import type { Locale } from '@/config/site';
+import { blogTranslations, localizedSourceTitles } from './blog-translations';
 import { additionalBlogPosts } from './blog-additions';
+import { frenchOnlyBlogSlugs } from '@/config/blog';
 
 export type BlogSection = {
   id: string;
@@ -19,6 +22,8 @@ export type BlogPost = {
   takeaway: string;
   published: string;
   modified: string;
+  status?: 'published' | 'draft';
+  noindex?: boolean;
   note?: string;
   sections: BlogSection[];
   faq: { question: string; answer: string }[];
@@ -198,8 +203,27 @@ export const blogPosts: BlogPost[] = [
 
 blogPosts.push(...additionalBlogPosts);
 
-export function getBlogPost(slug: string) {
-  return blogPosts.find(post => post.slug === slug);
+export function getBlogPosts(locale: Locale = 'fr'): BlogPost[] {
+  if (locale === 'fr') return blogPosts;
+  return blogPosts.filter(post => !frenchOnlyBlogSlugs.includes(post.slug)).map(post => {
+    const translation = blogTranslations[locale][post.slug];
+    if (!translation) throw new Error(`Missing ${locale} blog translation: ${post.slug}`);
+    return { ...post, ...translation, seoTitle: translation.title,
+      modified: '2026-10-08',
+      note: post.note ? (locale === 'en'
+        ? 'This guide provides general information. Confirm the requirements for your property with the competent authorities and, where appropriate, a lawyer or accountant in Morocco.'
+        : 'يقدم هذا الدليل معلومات عامة. أكد متطلبات عقارك مع السلطات المختصة، وعند الحاجة مع محام أو محاسب في المغرب.') : undefined,
+    };
+  });
+}
+
+export function getBlogPost(slug: string, locale: Locale = 'fr') {
+  return getBlogPosts(locale).find(post => post.slug === slug);
+}
+
+export function getBlogSources(locale: Locale = 'fr') {
+  if (locale === 'fr') return blogSources;
+  return Object.fromEntries(Object.entries(blogSources).map(([id, source]) => [id, { ...source, title: localizedSourceTitles[locale][id] }]));
 }
 
 export function blogReadingTime(post: BlogPost) {

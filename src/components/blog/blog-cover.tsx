@@ -1,3 +1,4 @@
+import type { Locale } from '@/config/site';
 import Image from 'next/image';
 import { ArrowRight, FileText, KeyRound, Check } from 'lucide-react';
 import type { BlogPost } from '@/content/blog';
@@ -10,9 +11,14 @@ const conciergeCoverImages: Record<string, string> = {
   'conciergerie-ou-gestion-autonome-airbnb-maroc': '/images/hero-interior-4.webp',
 };
 
-export function BlogCover({ post }: { post: BlogPost }) {
+export function BlogCover({ post, locale = 'fr' }: { post: BlogPost; locale?: Locale }) {
   const kind = post.slug;
   const neighborhood = marrakechNeighborhoods.find(area => area.slug === kind);
+  if (locale !== 'fr') return <div className={styles.cover} aria-hidden="true">
+    <Image src={kind.includes('casablanca') || kind.includes('police') ? '/images/hero-interior-warm.webp' : '/images/hero-interior-6.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
+    <div className={styles.coverShade}/><span className={styles.coverTag}>{post.category}</span>
+    <div className={styles.coverPhotoCaption}><strong>{post.title}</strong></div>
+  </div>;
   return <div className={styles.cover} aria-hidden="true">
     {neighborhood && <><Image src={neighborhood.image} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/><div className={styles.coverShade}/><span className={styles.coverTag}>MARRAKECH · GUIDE DE QUARTIER</span><div className={styles.coverPhotoCaption}><strong>{neighborhood.names.fr}.<br/>Votre projet, votre quartier.</strong></div></>}
     {kind === 'creer-annonce-airbnb-maroc' && <>

@@ -1,0 +1,16 @@
+import type { Locale } from '@/config/site';
+
+export const blogUi = {
+  fr: {
+    title: 'Blog Airbnb Maroc : guides pour propriétaires', description: 'Guides pour propriétaires au Maroc : accueil, fiscalité, commissions, annonces et conciergerie.',
+    home: 'Accueil', blog: 'Blog', breadcrumb: 'Fil d’Ariane', journal: 'LE JOURNAL DE COOHOSTY', recent: 'Articles récents', guides: 'guides', all: 'Tous les guides', priority: 'Guide prioritaire', read: 'Lire le guide', minutes: 'min de lecture', owner: 'Guide propriétaire', by: 'Par l’équipe', updated: 'Mis à jour le', toc: 'Dans ce guide', faq: 'Questions fréquentes', sources: 'Sources et références', takeaway: 'À retenir', source: 'Source', consulted: 'Références consultées le', sourceNote: 'Les textes et les règles de plateforme peuvent évoluer ; consultez leur version actuelle avant d’effectuer vos démarches.', related: 'Pour aller plus loin', ctaLabel: 'Accompagnement COOHOSTY', ctaTitle: 'Un projet de location au Maroc ?', ctaText: 'Présentez-nous votre logement et les tâches que vous souhaitez déléguer. Nous pourrons discuter de l’accompagnement adapté à votre projet.', ctaProperty: 'Parler de mon logement', ctaService: 'Découvrir COHOST',
+  },
+  en: {
+    title: 'Airbnb Morocco blog: guides for property owners', description: 'Guides for property owners in Morocco: guest arrivals, taxes, fees, listings and property management.',
+    home: 'Home', blog: 'Blog', breadcrumb: 'Breadcrumb', journal: 'THE COOHOSTY JOURNAL', recent: 'Recent articles', guides: 'guides', all: 'All guides', priority: 'Essential guide', read: 'Read the guide', minutes: 'min read', owner: 'Owner guide', by: 'By the team at', updated: 'Updated on', toc: 'In this guide', faq: 'Frequently asked questions', sources: 'Sources and references', takeaway: 'Key takeaway', source: 'Source', consulted: 'References consulted on', sourceNote: 'Legislation and platform policies may change; check the current version before taking action.', related: 'Related guides', ctaLabel: 'COOHOSTY support', ctaTitle: 'Planning a rental project in Morocco?', ctaText: 'Tell us about your property and the tasks you would like to delegate. We can discuss the support that fits your project.', ctaProperty: 'Discuss my property', ctaService: 'Explore COHOST',
+  },
+  ar: {
+    title: 'مدونة Airbnb المغرب: أدلة لأصحاب العقارات', description: 'أدلة لأصحاب العقارات في المغرب حول استقبال الضيوف والضرائب والعمولات والإعلانات وإدارة الإيجار.',
+    home: 'الرئيسية', blog: 'المدونة', breadcrumb: 'مسار التصفح', journal: 'مجلة COOHOSTY', recent: 'أحدث المقالات', guides: 'أدلة', all: 'جميع الأدلة', priority: 'دليل أساسي', read: 'اقرأ الدليل', minutes: 'دقائق للقراءة', owner: 'دليل المالك', by: 'بقلم فريق', updated: 'آخر تحديث في', toc: 'في هذا الدليل', faq: 'الأسئلة الشائعة', sources: 'المصادر والمراجع', takeaway: 'خلاصة الدليل', source: 'المصدر', consulted: 'تم الاطلاع على المراجع في', sourceNote: 'قد تتغير النصوص القانونية وقواعد المنصة؛ راجع نسختها الحالية قبل القيام بالإجراءات.', related: 'أدلة ذات صلة', ctaLabel: 'مواكبة COOHOSTY', ctaTitle: 'هل تخطط لتأجير عقارك في المغرب؟', ctaText: 'أخبرنا عن عقارك والمهام التي ترغب في تفويضها، لنناقش معك المواكبة المناسبة لمشروعك.', ctaProperty: 'ناقش معنا عقارك', ctaService: 'اكتشف COHOST',
+  },
+} satisfies Record<Locale, Record<string, string>>;

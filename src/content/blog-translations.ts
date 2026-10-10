@@ -1,0 +1,243 @@
+import type { BlogPost } from './blog';
+
+type Translation = Pick<BlogPost, 'title' | 'description' | 'category' | 'intro' | 'takeaway' | 'sections' | 'faq'>;
+const section = (id: string, title: string, paragraphs: string[], sources?: string[]): BlogPost['sections'][number] => ({ id, title, paragraphs, sources });
+const faq = (question: string, answer: string) => ({ question, answer });
+
+// Localized editorial versions of the eight French guides. Slugs stay stable
+// across languages so language switching preserves the current subject.
+export const blogTranslations: Record<'en' | 'ar', Record<string, Translation>> = {
+  en: {
+    'fiche-de-police-airbnb-maroc': {
+      title: 'Airbnb guest registration in Morocco: procedures and official form',
+      description: 'Understand the individual accommodation form, find the official PDF and prepare guest registration for your property in Morocco.',
+      category: 'Guest registration',
+      intro: 'Before welcoming your first guests, distinguish the individual accommodation form, guest declarations and permission to operate your property. A downloadable form alone does not settle all the requirements for an Airbnb rental in Morocco.',
+      takeaway: 'Consult the official form and ask the competent local service which procedure, reporting channel and deadlines apply to your accommodation.',
+      sections: [
+        section('definition', 'What is the guest registration form?', ['The expression “police form” commonly refers to a document used to identify guests. Decree No. 2-15-865 of 9 June 2016 concerns electronic reporting of guest information for tourist accommodation and includes the individual accommodation form.', 'The procedure depends on your property’s administrative situation and accommodation category, rather than simply on having an Airbnb listing. Ask the competent authorities to clarify your situation before your first arrival.'], ['police', 'tourism']),
+        section('modele-pdf', 'Find the official PDF and prepare your process', ['The Ministry of Tourism publishes the decree and its annex. Open the official document in the sources below and consult the annex for the form. Check whether the local service requires that form, electronic submission or additional steps.', 'Keep a file for each property: the accepted procedure, required information, deadlines and the person responsible for each arrival. A completed PDF is not permission to rent. A key box also does not replace guest registration requirements.'], ['police']),
+        section('donnees-personnelles', 'Collect information responsibly', ['After confirming the procedure, check the information against the identification presented by guests. Do not assume that recording one person automatically covers the whole group. Track what was checked and submitted, and retain evidence when required.', 'Identity information requires controlled access. Avoid openly shared folders and uncontrolled copies sent through several messaging services. Have your collection method, retention period and any transfers abroad reviewed under Moroccan personal data requirements.'], ['privacy']),
+        section('organisation', 'Define responsibilities when delegating', ['If a manager handles arrivals, agree in writing who collects, checks and transmits guest information, and how you follow the process. Prepare cover for late arrivals and ask what the management contract actually includes.', 'Do not copy a procedure used in France or another property without checking its local application. Guest declarations and permission to operate remain separate matters.']),
+      ],
+      faq: [faq('Where can I download the official form?', 'Use the Ministry of Tourism decree linked in the sources and consult its annex for the individual accommodation form.'), faq('Does a completed form authorize me to rent?', 'No. Confirm permission to operate and the guest declaration procedure separately with the competent authorities.'), faq('Can my property manager handle registration?', 'Agree on the operational responsibilities in writing and verify that the procedure fits your accommodation.')],
+    },
+    'fiscalite-taxes-airbnb-maroc': {
+      title: 'Airbnb taxes in Morocco: questions property owners should prepare',
+      description: 'Prepare the right questions about rental income, tourist tax, declarations and Airbnb payouts in Morocco.',
+      category: 'Taxes',
+      intro: 'An Airbnb payout is not enough to determine your tax position. Your activity, property, operating structure and tax residence can affect the questions you need to address. Prepare a clear record of income and expenses before discussing your situation with an accountant.',
+      takeaway: 'Separate rental income, platform fees and local tourist taxes. Have the rules for your own activity confirmed rather than applying one rate to every property.',
+      sections: [
+        section('revenus', 'Identify your income and operating situation', ['Keep booking statements, gross receipts, platform fees, refunds and supporting expense documents. The amount paid into your bank account may already have had fees deducted; it does not describe every part of the transaction.', 'Explain who operates the accommodation, who receives the income and how the property is used. Ask an accountant to identify the applicable tax treatment, reporting obligations and records needed for your situation.'], ['tax']),
+        section('taxe-sejour', 'Check the tourist tax locally', ['The local taxation guide presents the tourist tax under Law No. 47-06. For accommodation covered by the rules, it is added to the accommodation price and calculated per person and per night. Rates depend on the category and municipal decision.', 'There is no single amount to copy for every Airbnb in Morocco. Confirm your accommodation category, local rate, exemptions and declaration and payment deadlines. Do not assume Airbnb collects and remits every local tax for your listing.'], ['localTax', 'collectedTax']),
+        section('frais', 'Separate costs from tax obligations', ['Airbnb service fees and management fees are different expenses. Ask for a sample statement showing accommodation receipts, cleaning charges, platform deductions, management charges and the owner’s payout.', 'A management contract should say who prepares reports and supplies supporting documents. Delegating bookings does not by itself establish your tax treatment or settle your declarations.'], ['fees', 'payout']),
+        section('dossier', 'Prepare your discussion with an accountant', ['Bring your property details, contracts, listing information, booking statements and expense records. If you live abroad, explain your tax residence and ask how obligations in the relevant countries interact.', 'Ask for a calendar of declarations and payments, the documents to retain and the person responsible for each step. Review the current official texts before making decisions.'], ['tax']),
+      ],
+      faq: [faq('Is there one tax rate for all Airbnb owners?', 'No universal rate can be inferred from a listing. Have your operating situation and income treatment assessed.'), faq('Does Airbnb collect all tourist taxes?', 'Check the platform’s published collection information and confirm the requirements with the competent local service.'), faq('Can a concierge replace my accountant?', 'A manager can provide operational records, but the tax treatment and declarations should be confirmed with an appropriate adviser.')],
+    },
+    'commission-airbnb-maroc': {
+      title: 'Airbnb fees in Morocco: understand your host payout',
+      description: 'Distinguish Airbnb service fees, management fees and the amount paid to the host, with a simple example in dirhams.',
+      category: 'Fees and payouts',
+      intro: 'The booking amount and the money received by a host can differ. To understand a payout, identify the service fee model used by your listing, the calculation base and any other adjustments. Property management charges are a separate expense.',
+      takeaway: 'Check the fee shown for your own reservation. A percentage used in an example is an assumption, not a universal Airbnb rate.',
+      sections: [
+        section('frais', 'Which service fee applies to your listing?', ['Airbnb explains its service fee structures in its help centre. The applicable structure and rate can depend on the listing and account situation. Read the current policy and the breakdown of an actual booking.', 'Do not compare two percentages without checking what each applies to. Distinguish accommodation charges, cleaning charges, guest service fees and deductions from the host payout.'], ['fees']),
+        section('exemple', 'A simple example in Moroccan dirhams', ['Suppose a fee calculation base is MAD 3,000 and the assumed host fee is 15.5%. The deduction would be MAD 465 and the remainder MAD 2,535 before any other adjustments. This is an illustration of arithmetic, not a promised payout or a rate for all Moroccan listings.', 'Use the actual reservation statement to check your own calculation. Refunds, adjustments and the items included in the fee base can change the result.'], ['payout']),
+        section('gestion', 'Add management costs separately', ['A concierge’s commission is distinct from Airbnb’s service fee. Ask whether it is calculated on nightly charges, total booking value or another base, and how cleaning charges are treated.', 'Request a written example that includes platform fees, management charges, consumables and occasional interventions. Comparing the remaining amount is more useful than comparing a headline percentage alone.']),
+        section('suivi', 'Reconcile bookings and payouts', ['Track bookings and statements over the same period. Check cancellations, refunds and the date of each payout before comparing totals with your bank account.', 'Keep access to your booking records and agree how your manager provides reports. A clear statement should explain deductions and make the owner’s remaining balance understandable.'], ['payout']),
+      ],
+      faq: [faq('Is the 15.5% example a universal fee?', 'No. It is a calculation assumption. Check the service fee that applies to your own listing and reservation.'), faq('Are concierge fees included in Airbnb fees?', 'No. They are separate charges under your management agreement.'), faq('Why is my payout lower than the booking amount?', 'Check platform deductions, refunds and adjustments in the reservation’s payout breakdown.')],
+    },
+    'sous-location-airbnb-maroc': {
+      title: 'Airbnb subletting in Morocco: prepare your lease and permissions',
+      description: 'Review the lease, owner’s agreement and accommodation requirements before planning an Airbnb subletting project in Morocco.',
+      category: 'Subletting',
+      intro: 'Renting a property and offering it to short-stay guests raises different questions from managing a property for its owner. Before investing in furniture or publishing an Airbnb listing, review your lease, permissions and the operating situation.',
+      takeaway: 'Obtain a clear written agreement and have the legal and administrative conditions checked. A listing or verbal agreement alone does not establish your right to sublet.',
+      sections: [
+        section('bail', 'Start with the lease and owner’s agreement', ['Read the clauses about use of the property, subletting and permission from the landlord. The French translation of Law No. 67-12 linked below is non-official: use it as a reading aid and have the applicable legal text and your lease reviewed.', 'Clarify in writing the intended short-stay use, the people involved and any limits. Do not treat permission for one use as automatic permission for another.'], ['lease']),
+        section('autorisations', 'Check the accommodation requirements', ['The owner’s agreement and the right to operate tourist accommodation are separate issues. Ask the competent authorities about the property’s status and the applicable procedures before accepting guests.', 'Prepare for guest registration, personal data handling and tax questions as well as the lease. Do not copy a model from another country without checking whether it fits your project in Morocco.'], ['tourism', 'police']),
+        section('budget', 'Build a realistic operating budget', ['Include rent during unbooked periods, furnishing, utilities, cleaning, maintenance, platform fees and any management costs. Use several scenarios for occupancy and nightly prices instead of assuming every available night will sell.', 'Check who pays for repairs and damage, how insurance fits the intended use and how the property will be returned at the end. A revenue projection does not guarantee bookings.']),
+        section('contrat', 'Distinguish subletting from management', ['A manager working for an owner under a management agreement does not necessarily become the tenant. Specify who contracts with guests, receives payouts and carries the agreed responsibilities.', 'Before signing, have the contract reviewed for the actual operating arrangement. Keep written records of permissions, responsibilities and termination conditions.'], ['terms']),
+      ],
+      faq: [faq('Does an Airbnb listing give me permission to sublet?', 'No. Check the lease, the owner’s written agreement and the applicable operating requirements separately.'), faq('Is property management the same as subletting?', 'No. A manager may work on the owner’s behalf without renting the property.'), faq('Can I budget using guaranteed occupancy?', 'Bookings are uncertain. Compare several occupancy, price and expense scenarios.')],
+    },
+    'airbnb-maroc-definition': {
+      title: 'What is Airbnb in Morocco? A guide for new property owners',
+      description: 'Understand listings, bookings, guest arrivals and the responsibilities to prepare before hosting on Airbnb in Morocco.',
+      category: 'Getting started',
+      intro: 'Airbnb connects hosts offering accommodation with travellers looking for a stay. For an owner, publishing a listing is only one step: the property, calendar, guest communication and local procedures also need an organized approach.',
+      takeaway: 'Prepare both the listing and the day-to-day operation. Publishing on Airbnb does not replace the checks required for your property in Morocco.',
+      sections: [
+        section('fonctionnement', 'From listing to reservation', ['A listing describes the property through photos, amenities, sleeping arrangements, prices and house rules. Travellers use these details to assess whether the accommodation meets their needs.', 'The calendar must reflect genuine availability. Review reservation settings and current platform conditions before accepting bookings, and make sure the property is ready for the dates offered.'], ['createListing', 'booking']),
+        section('accueil', 'Prepare the guest experience', ['Write clear arrival instructions, check access to the building and arrange cleaning between stays. Give guests accurate information about equipment and explain who they can contact if something goes wrong.', 'Prepare cover for late arrivals and maintenance issues. A reliable operating process matters as much as attractive photos: what the listing promises must match what guests find.']),
+        section('obligations', 'Check local procedures and costs', ['Confirm the administrative situation of your accommodation with the competent services. Guest declarations, personal data handling and taxes must be considered separately from opening an Airbnb account.', 'Distinguish the booking price from your payout and from the income left after operating costs. Platform fees, cleaning, utilities and maintenance can all affect the result.'], ['tourism', 'police', 'fees']),
+        section('delegation', 'Choose what to manage and what to delegate', ['You can organize tasks yourself or define a management service with a provider. List your needs: listing preparation, pricing, messages, arrivals, cleaning and owner reports.', 'If you live abroad, plan a local contact and maintain access to statements and contracts. Ask for clear responsibilities and several financial scenarios; projected income is not guaranteed.']),
+      ],
+      faq: [faq('Is Airbnb a property manager?', 'The platform enables listings and reservations. You still need an arrangement for the property’s day-to-day operation.'), faq('Is publishing a listing enough to start legally?', 'Check the property’s operating situation and the relevant local procedures independently.'), faq('Can I host while living abroad?', 'Prepare a local operating arrangement, clear contracts and a way to follow bookings, expenses and administrative tasks.')],
+    },
+    'conciergerie-airbnb-marrakech': {
+      title: 'Airbnb property management in Marrakech: how to compare services',
+      description: 'Compare guest reception, cleaning, listing management, fees and owner reporting before choosing a concierge in Marrakech.',
+      category: 'Management in Marrakech',
+      intro: 'A concierge in Marrakech can cover anything from local cleaning to complete booking management. Define the tasks your property needs before comparing quotes, and make sure the proposed organization fits its access, equipment and location.',
+      takeaway: 'Compare the same scope of work, fee calculation base, availability and reporting. A commission percentage alone does not describe the service.',
+      sections: [
+        section('missions', 'Define the service you need', ['Ask whether the provider handles listing preparation, calendars, pricing, guest messages, arrivals and cleaning. Clarify occasional tasks such as linen purchases, equipment checks and coordination with tradespeople.', 'A riad, apartment or villa may require different arrival instructions and maintenance arrangements. Identify who remains available when guests arrive late or encounter an issue.']),
+        section('honoraires', 'Understand management fees and extra costs', ['Ask which amount the commission applies to and whether cleaning is included or charged separately. Platform service fees remain a different expense.', 'Request a sample booking statement with the owner’s remaining balance. Include consumables, linen, exceptional visits and approved repairs when comparing offers.'], ['fees', 'payout']),
+        section('contrat', 'Set responsibilities and access in writing', ['Define who holds access to the listing, receives payouts and approves expenses. Agree on personal-use dates, notice periods and how keys and records are handed back at the end.', 'State who handles guest registration and supplies supporting documents. A management service does not replace checking the property’s administrative and tax situation.'], ['tourism', 'police']),
+        section('resultats', 'Follow performance with clear figures', ['Compare available nights, booked nights, receipts and costs for the same period. Separate owner-blocked dates from nights offered to guests so occupancy figures remain meaningful.', 'Ask for the assumptions behind any income projection and compare different scenarios. Prepare your property details, photos and existing listing link for a discussion with COOHOSTY.']),
+      ],
+      faq: [faq('Does a concierge guarantee rental income?', 'No. Ask for pricing, occupancy and expense assumptions and compare several scenarios.'), faq('Does the concierge become my tenant?', 'Not necessarily. A provider may work for the owner under a management agreement.'), faq('How should I compare two quotes?', 'Compare tasks, availability, fee bases, extra costs, expense approval, reporting and exit conditions.')],
+    },
+    'creer-annonce-airbnb-maroc': {
+      title: 'Create an Airbnb listing in Morocco: prepare your first publication',
+      description: 'Prepare photos, amenities, prices, house rules and availability before publishing your Airbnb listing in Morocco.',
+      category: 'Listings',
+      intro: 'A useful listing helps travellers understand the accommodation before they book. Gather accurate information and photos, then align your calendar and arrival process with what you promise in the description.',
+      takeaway: 'Publish a clear and faithful description, and open only the dates when the property and your hosting arrangement will be ready.',
+      sections: [
+        section('preparation', 'Gather accurate property information', ['List the actual sleeping arrangements, rooms, amenities and access conditions. Mention stairs, shared parking or other details guests need to judge whether the accommodation fits their stay.', 'Prepare the address, arrival instructions and house rules. Confirm local operating requirements separately: creating an Airbnb listing is not authorization to rent.'], ['createListing', 'tourism']),
+        section('photos', 'Show the property clearly', ['Use sharp, well-lit photographs of each space. Represent the rooms and equipment faithfully rather than making promises the property cannot meet.', 'Organize the photos so travellers understand the layout and sleeping arrangements. A professional photographer can help when your images do not make the spaces easy to understand.'], ['photoTour']),
+        section('prix', 'Set prices and real availability', ['Check the accommodation price, cleaning charges and service fees when estimating the owner’s payout. Compare scenarios and avoid treating a projected booking total as guaranteed income.', 'Open only dates you can actually host. Plan cleaning, access and a contact for guests before accepting reservations. Keep personal-use dates blocked in the calendar.'], ['fees', 'payout']),
+        section('publication', 'Review before publishing', ['Read the listing from a traveller’s perspective: can they understand the spaces, rules, access and included amenities? Check that photos and descriptions agree.', 'After publication, update the calendar and equipment details when they change. Review recurring guest questions to improve unclear instructions without adding unsupported claims.'], ['createListing']),
+      ],
+      faq: [faq('Can I prepare my listing before the property is ready?', 'You can prepare content ahead of time, but open only the dates when the accommodation and your hosting process will be ready.'), faq('Do I need a professional photographer?', 'It can help if your photos do not show the spaces clearly. Accurate, well-lit images remain the priority.'), faq('Does publishing make the rental legally compliant?', 'No. Verify the operating requirements and local procedures separately.')],
+    },
+    'conciergerie-airbnb-casablanca': {
+      title: 'Airbnb property management in Casablanca: what to delegate',
+      description: 'Compare listing management, guest arrivals, cleaning, fees and owner reporting for your property in Casablanca.',
+      category: 'Management in Casablanca',
+      intro: 'If you own an apartment in Casablanca, a concierge can help with local operations or a wider management service. The key is to define who does what, how expenses are approved and how you follow the property’s activity.',
+      takeaway: 'Compare the service content before its percentage. A clear agreement covers arrivals, cleaning, expenses, account access and reporting.',
+      sections: [
+        section('missions', 'Clarify the included tasks', ['A complete service may include preparing the listing, managing calendars and messages, guest arrivals and coordinating cleaning. Ask for the actual list instead of assuming everything is covered.', 'Separate regular turnover cleaning from equipment checks, linen purchases and arranging repairs. These tasks can have different costs and approval procedures.']),
+        section('quartier', 'Adapt the operation to the building and neighbourhood', ['Stairs, shared parking, a caretaker and access arrangements require specific instructions. Test the arrival route with someone who does not know the building to identify missing information.', 'Describe the neighbourhood accurately and avoid unrealistic journey times. Check the needs that actual guests express, such as reliable internet, workspace or suitable sleeping arrangements for a family.']),
+        section('tarifs', 'Compare fees and contract terms', ['Clarify the commission base, cleaning charges and extra costs. Ask for an example statement for a hypothetical booking, separating platform fees from management charges.', 'Specify who controls listing access, receives payouts and approves expenses. Agree personal-use dates, termination conditions and the return of keys and records. Guest registration and other obligations should be assigned explicitly.'], ['fees', 'police']),
+        section('suivi', 'Ask for reporting that helps you decide', ['Reports should show available nights, booked nights, receipts and expenses for the same period. Distinguish owner-blocked dates from nights offered to guests.', 'Request incident records and maintenance recommendations. To discuss your needs with COOHOSTY, prepare the property location, capacity, photos, availability constraints and the existing listing link. Results depend on the property and period; management fees alone guarantee no income.']),
+      ],
+      faq: [faq('Does a concierge only handle cleaning?', 'Some offer local visits; others also handle listings, calendars, messages and arrivals. Clarify every task.'), faq('How do I compare two Casablanca quotes?', 'Compare fee bases, included tasks, extra expenses, reporting and termination terms.'), faq('Can I keep dates for my own use?', 'Agree on those dates and the blocking procedure, and update the calendar before bookings are accepted.')],
+    },
+  },
+  ar: {
+    'fiche-de-police-airbnb-maroc': {
+      title: 'بطاقة تسجيل ضيوف Airbnb في المغرب: الإجراءات والنموذج الرسمي',
+      description: 'تعرّف على الاستمارة الفردية للإيواء والنموذج الرسمي وكيفية تنظيم التصريح بالضيوف في عقارك بالمغرب.',
+      category: 'إجراءات استقبال الضيوف',
+      intro: 'قبل استقبال أول ضيوفك، ميّز بين الاستمارة الفردية للإيواء والتصريح ببيانات النزلاء وحق استغلال العقار. تنزيل نموذج وملؤه لا يحسم جميع المتطلبات المتعلقة بتأجير عقار عبر Airbnb في المغرب.',
+      takeaway: 'راجع النموذج الرسمي واسأل المصلحة المحلية المختصة عن الإجراءات وقناة التصريح والآجال التي تنطبق على نوع إيوائك.',
+      sections: [
+        section('definition', 'ما المقصود ببطاقة تسجيل الضيوف؟', ['يُستخدم تعبير «بطاقة الشرطة» عادة للإشارة إلى وثيقة تحديد هوية الأشخاص المستضافين. يتعلق المرسوم رقم 2-15-865 الصادر في 9 يونيو 2016 بالتصريح الإلكتروني ببيانات نزلاء مؤسسات وأشكال الإيواء السياحي، ويتضمن نموذج الاستمارة الفردية للإيواء.', 'لا يتحدد الإجراء بمجرد وجود إعلان على Airbnb؛ بل يجب توضيح الوضع الإداري للعقار وصنف الإيواء مع الجهات المختصة قبل استقبال الضيوف.'], ['police', 'tourism']),
+        section('modele-pdf', 'أين تجد النموذج الرسمي وكيف تستعد؟', ['تنشر وزارة السياحة المرسوم وملحقه. افتح الوثيقة الرسمية ضمن المصادر أدناه وراجع الملحق للاطلاع على النموذج. اسأل هل تتطلب المصلحة المحلية هذه الاستمارة أو إدخالا إلكترونيا أو إجراءات إضافية.', 'خصص ملفا لكل عقار يضم الإجراء المعتمد والبيانات المطلوبة والآجال والشخص المسؤول عن كل وصول. ملء ملف PDF لا يمنح ترخيصا بالتأجير، كما أن صندوق المفاتيح لا يعوض إجراءات تسجيل الضيوف.'], ['police']),
+        section('donnees-personnelles', 'اجمع البيانات واحمها بطريقة منظمة', ['بعد تأكيد الإجراء، تحقق من المعلومات بالرجوع إلى وثائق الهوية التي يقدمها الضيوف. لا تفترض أن تسجيل شخص واحد يغطي المجموعة كلها. تتبع ما تم التحقق منه وإرساله، واحتفظ بالإثبات عندما يكون ذلك مطلوبا.', 'قيد الوصول إلى بيانات الهوية على الأشخاص المكلفين بالإجراء. تجنب المجلدات المفتوحة للجميع وتداول نسخ الوثائق دون ضبط في عدة تطبيقات. اطلب مراجعة طريقة الجمع ومدة الاحتفاظ وأي نقل للبيانات إلى الخارج وفق المتطلبات المغربية لحماية البيانات.'], ['privacy']),
+        section('organisation', 'حدد المسؤوليات عند تفويض الاستقبال', ['إذا تولى مسير استقبال الضيوف، وضح كتابة من يجمع البيانات ويتحقق منها ويرسلها وكيف تتابع هذه المهام. خطط للوصول المتأخر واسأل عن الخدمات التي يشملها العقد فعلا.', 'لا تنقل إجراء مستخدما في فرنسا أو في عقار آخر دون التحقق من انطباقه محليا. التصريح بالضيوف وحق استغلال العقار مسألتان منفصلتان.']),
+      ],
+      faq: [faq('أين يمكن تنزيل النموذج الرسمي؟', 'راجع المرسوم المنشور من وزارة السياحة ضمن المصادر، ثم اطلع على ملحق الاستمارة الفردية للإيواء.'), faq('هل الاستمارة المملوءة تسمح لي بالتأجير؟', 'لا. تحقق بشكل مستقل من حق الاستغلال وإجراء التصريح مع السلطات المختصة.'), faq('هل يستطيع مسير العقار القيام بالتسجيل؟', 'حدد المسؤوليات العملية كتابة وتأكد من ملاءمة الإجراء لوضع عقارك.')],
+    },
+    'fiscalite-taxes-airbnb-maroc': {
+      title: 'ضرائب Airbnb في المغرب: أسئلة ينبغي للمالك تحضيرها',
+      description: 'حضّر أسئلتك حول دخل الإيجار ورسم الإقامة والتصريحات والمبالغ المحولة من Airbnb في المغرب.',
+      category: 'الضرائب والرسوم',
+      intro: 'المبلغ الذي تحوله Airbnb لا يكفي وحده لتحديد وضعك الضريبي. قد تؤثر طبيعة النشاط والعقار وطريقة الاستغلال والإقامة الضريبية في الالتزامات. جهّز سجلا واضحا للإيرادات والمصاريف قبل مناقشة وضعك مع محاسب.',
+      takeaway: 'ميّز بين دخل الإيجار ورسوم المنصة والرسوم المحلية على الإقامة. اطلب تأكيد القواعد المناسبة لنشاطك بدل تطبيق نسبة واحدة على جميع العقارات.',
+      sections: [
+        section('revenus', 'حدد الإيرادات وطريقة الاستغلال', ['احتفظ بكشوف الحجوزات والإيرادات الإجمالية ورسوم المنصة والمبالغ المستردة ومستندات المصاريف. قد يكون المبلغ المحول إلى حسابك قد خضع بالفعل لاقتطاعات، فلا يوضح وحده جميع عناصر العملية.', 'وضح من يستغل العقار ومن يتلقى الإيرادات وكيف يُستخدم السكن. اطلب من محاسب تحديد المعالجة الضريبية والتصريحات والوثائق المطلوبة لحالتك.'], ['tax']),
+        section('taxe-sejour', 'تحقق من رسم الإقامة محليا', ['يعرض دليل الجبايات المحلية رسم الإقامة المنصوص عليه في القانون رقم 47-06. بالنسبة للإيواء المعني، يضاف إلى ثمن الإقامة ويحسب لكل شخص ولكل ليلة، وتختلف التعريفة حسب الصنف والقرار الجماعي.', 'لا يوجد مبلغ واحد يمكن نسخه لجميع عقارات Airbnb في المغرب. تأكد من صنف إيوائك والتعريفة المحلية والإعفاءات وآجال التصريح والأداء. لا تفترض أن Airbnb تجمع وتؤدي كل رسم محلي نيابة عنك.'], ['localTax', 'collectedTax']),
+        section('frais', 'افصل المصاريف عن الالتزامات الضريبية', ['رسوم خدمات Airbnb وأتعاب إدارة العقار مصاريف مختلفة. اطلب نموذجا لكشف يبين إيرادات الإقامة والتنظيف واقتطاعات المنصة وأتعاب الإدارة والمبلغ المتبقي للمالك.', 'يجب أن يحدد عقد الإدارة من يعد التقارير ويوفر المستندات. تفويض الحجوزات لا يحدد تلقائيا وضعك الضريبي ولا يعوض التصريحات المطلوبة.'], ['fees', 'payout']),
+        section('dossier', 'جهز ملفا للنقاش مع المحاسب', ['اجمع معلومات العقار والعقود والإعلان وكشوف الحجوزات وفواتير المصاريف. إذا كنت تقيم بالخارج، وضح إقامتك الضريبية واسأل عن كيفية تداخل الالتزامات في البلدان المعنية.', 'اطلب جدولا للتصريحات والأداء والوثائق الواجب حفظها والمسؤول عن كل خطوة. راجع النسخ الحالية للنصوص الرسمية قبل اتخاذ القرارات.'], ['tax']),
+      ],
+      faq: [faq('هل توجد نسبة ضريبية واحدة لجميع الملاك؟', 'لا يمكن استنتاج نسبة عامة من الإعلان. ينبغي تقييم طريقة الاستغلال والمعالجة الضريبية لدخلك.'), faq('هل تجمع Airbnb كل رسوم الإقامة؟', 'راجع معلومات التحصيل التي تنشرها المنصة وتأكد من المتطلبات لدى المصلحة المحلية المختصة.'), faq('هل تعوض شركة الإدارة المحاسب؟', 'يمكنها توفير سجلات التشغيل، لكن المعالجة الضريبية والتصريحات تحتاج إلى تأكيد من مستشار مناسب.')],
+    },
+    'commission-airbnb-maroc': {
+      title: 'عمولة Airbnb في المغرب: فهم المبلغ المحول للمضيف',
+      description: 'ميّز بين رسوم Airbnb وأتعاب الإدارة والمبلغ المتبقي للمضيف من خلال مثال مبسط بالدرهم.',
+      category: 'العمولات والتحويلات',
+      intro: 'قد يختلف مبلغ الحجز عن المبلغ الذي يتلقاه المضيف. لفهم التحويل، حدد نظام رسوم الخدمة المطبق على إعلانك وقاعدة الحساب وأي تعديلات أخرى. أتعاب إدارة العقار تكلفة منفصلة.',
+      takeaway: 'راجع الرسوم الظاهرة في حجزك الفعلي. النسبة المستخدمة في مثال حسابي افتراض توضيحي وليست تعريفة عامة لجميع إعلانات Airbnb.',
+      sections: [
+        section('frais', 'ما رسوم الخدمة المطبقة على إعلانك؟', ['تشرح Airbnb أنظمة رسوم الخدمة في مركز المساعدة. قد يتوقف النظام والنسبة المطبقان على وضع الإعلان والحساب. راجع السياسة الحالية وتفاصيل حجز فعلي.', 'لا تقارن نسبتين دون معرفة المبلغ الذي تطبق عليه كل منهما. ميّز بين ثمن الإقامة ورسوم التنظيف ورسوم خدمة الضيف والاقتطاعات من تحويل المضيف.'], ['fees']),
+        section('exemple', 'مثال مبسط بالدرهم المغربي', ['إذا افترضنا قاعدة حساب قدرها 3000 درهم ورسوم مضيف بنسبة 15.5%، يكون الاقتطاع 465 درهما ويتبقى 2535 درهما قبل أي تعديلات أخرى. هذا شرح للحساب، وليس وعدا بمبلغ تحويل أو نسبة تنطبق على جميع الإعلانات المغربية.', 'استخدم كشف الحجز الفعلي لمراجعة حسابك. قد تؤثر المبالغ المستردة والتعديلات والعناصر المشمولة في قاعدة الرسوم على النتيجة.'], ['payout']),
+        section('gestion', 'أضف أتعاب الإدارة بشكل مستقل', ['عمولة شركة إدارة العقار مختلفة عن رسوم Airbnb. اسأل هل تحسب على إيرادات الليالي أو إجمالي الحجز أو قاعدة أخرى، وكيف تعامل رسوم التنظيف.', 'اطلب مثالا مكتوبا يشمل رسوم المنصة وأتعاب الإدارة والمستهلكات والتدخلات الاستثنائية. مقارنة المبلغ المتبقي أوضح من الاكتفاء بنسبة معلنة.']),
+        section('suivi', 'طابق الحجوزات مع التحويلات', ['تتبع الحجوزات والكشوف خلال الفترة نفسها. راجع الإلغاءات والمبالغ المستردة وتاريخ كل تحويل قبل مقارنة الإجماليات بحسابك البنكي.', 'احتفظ بإمكانية الوصول إلى سجلات الحجوزات واتفق على طريقة تقديم تقارير المسير. يجب أن يوضح الكشف الاقتطاعات والمبلغ المتبقي للمالك.'], ['payout']),
+      ],
+      faq: [faq('هل نسبة 15.5% عامة لجميع الإعلانات؟', 'لا، إنها افتراض حسابي. تحقق من رسوم الخدمة المطبقة على إعلانك وحجزك.'), faq('هل أتعاب الإدارة مشمولة في رسوم Airbnb؟', 'لا، إنها أتعاب مستقلة يحددها عقد الإدارة.'), faq('لماذا التحويل أقل من مبلغ الحجز؟', 'راجع اقتطاعات المنصة والمبالغ المستردة والتعديلات في تفاصيل التحويل الخاصة بالحجز.')],
+    },
+    'sous-location-airbnb-maroc': {
+      title: 'التأجير من الباطن عبر Airbnb في المغرب: العقد والموافقات',
+      description: 'راجع عقد الإيجار وموافقة المالك ومتطلبات الإيواء قبل بدء مشروع التأجير من الباطن عبر Airbnb في المغرب.',
+      category: 'التأجير من الباطن',
+      intro: 'استئجار عقار ثم عرضه على ضيوف للإقامة القصيرة يطرح أسئلة مختلفة عن إدارته لحساب مالكه. قبل الاستثمار في الأثاث أو نشر إعلان، راجع العقد والموافقات ووضع الاستغلال.',
+      takeaway: 'احصل على اتفاق مكتوب وواضح وتحقق من الشروط القانونية والإدارية. الإعلان أو الموافقة الشفهية وحدهما لا يثبتان حق التأجير من الباطن.',
+      sections: [
+        section('bail', 'ابدأ بالعقد وموافقة المالك', ['اقرأ البنود المتعلقة باستعمال العقار والتأجير من الباطن وموافقة المكري. الترجمة الفرنسية للقانون رقم 67-12 المرتبطة أدناه غير رسمية؛ استخدمها للمساعدة على القراءة واطلب مراجعة النص المعتمد وعقدك.', 'وضح كتابة طبيعة الاستعمال للإقامة القصيرة والأطراف المعنية والقيود المحتملة. لا تعتبر الإذن باستعمال معين موافقة تلقائية على استعمال آخر.'], ['lease']),
+        section('autorisations', 'تحقق من متطلبات الإيواء', ['موافقة المالك وحق استغلال إيواء سياحي مسألتان منفصلتان. اسأل الجهات المختصة عن وضع العقار والإجراءات المطبقة قبل قبول الضيوف.', 'حضّر تسجيل الضيوف وحماية البيانات والأسئلة الضريبية إلى جانب العقد. لا تنقل نموذجا من بلد آخر دون التأكد من ملاءمته لمشروعك في المغرب.'], ['tourism', 'police']),
+        section('budget', 'ابن ميزانية تشغيل واقعية', ['احسب الإيجار خلال الفترات غير المحجوزة والتأثيث والمرافق والتنظيف والصيانة ورسوم المنصة وأتعاب الإدارة. قارن عدة سيناريوهات للإشغال والأسعار بدل افتراض حجز كل الليالي المتاحة.', 'حدد من يتحمل الإصلاحات والأضرار ومدى ملاءمة التأمين للاستعمال المقصود وكيف يعاد العقار عند انتهاء العلاقة. توقع الإيرادات لا يضمن الحجوزات.']),
+        section('contrat', 'ميّز بين الإدارة والتأجير من الباطن', ['المسير الذي يعمل لحساب المالك بموجب عقد إدارة لا يصبح بالضرورة مستأجرا. وضح من يتعاقد مع الضيوف ويتلقى التحويلات ويتحمل المسؤوليات المتفق عليها.', 'اطلب مراجعة العقد وفقا لطريقة التشغيل الفعلية قبل التوقيع. احتفظ بالموافقات والمسؤوليات وشروط الإنهاء مكتوبة.'], ['terms']),
+      ],
+      faq: [faq('هل إعلان Airbnb يمنحني حق التأجير من الباطن؟', 'لا، تحقق من عقد الإيجار وموافقة المالك المكتوبة ومتطلبات الاستغلال بشكل مستقل.'), faq('هل إدارة العقار هي التأجير من الباطن؟', 'لا، قد يعمل المسير لحساب المالك دون استئجار العقار.'), faq('هل يمكن إعداد ميزانية بإشغال مضمون؟', 'الحجوزات غير مضمونة. قارن عدة سيناريوهات للإشغال والأسعار والمصاريف.')],
+    },
+    'airbnb-maroc-definition': {
+      title: 'ما هي Airbnb في المغرب؟ دليل لأصحاب العقارات الجدد',
+      description: 'افهم الإعلانات والحجوزات واستقبال الضيوف والمسؤوليات التي ينبغي تحضيرها قبل التأجير عبر Airbnb في المغرب.',
+      category: 'البداية على Airbnb',
+      intro: 'تربط Airbnb بين مضيفين يعرضون أماكن للإقامة ومسافرين يبحثون عن سكن. نشر الإعلان خطوة واحدة فقط؛ إذ يحتاج تجهيز العقار والتقويم والتواصل والإجراءات المحلية إلى تنظيم واضح.',
+      takeaway: 'حضّر الإعلان والتشغيل اليومي معا. النشر على Airbnb لا يعوض التحقق من المتطلبات المتعلقة بعقارك في المغرب.',
+      sections: [
+        section('fonctionnement', 'من الإعلان إلى الحجز', ['يعرض الإعلان العقار بالصور والتجهيزات وترتيب أماكن النوم والأسعار وقواعد السكن. يستخدم المسافرون هذه المعلومات لتقييم مدى ملاءمة الإقامة لاحتياجاتهم.', 'يجب أن يعكس التقويم التوافر الحقيقي. راجع إعدادات الحجز وشروط المنصة الحالية قبل قبول الحجوزات، وتأكد من جاهزية العقار خلال التواريخ المعروضة.'], ['createListing', 'booking']),
+        section('accueil', 'جهّز تجربة الضيف', ['اكتب تعليمات وصول واضحة وتحقق من الدخول إلى المبنى ونظم التنظيف بين الإقامات. قدم معلومات دقيقة عن التجهيزات وحدد الشخص الذي يتواصل معه الضيف عند حدوث مشكلة.', 'خطط للوصول المتأخر ولمشاكل الصيانة. تنظيم التشغيل مهم مثل الصور الجذابة؛ يجب أن تطابق وعود الإعلان ما يجده الضيف فعلا.']),
+        section('obligations', 'تحقق من الإجراءات والتكاليف', ['أكد الوضع الإداري للإيواء لدى المصالح المختصة. ينبغي معالجة التصريح بالضيوف وحماية البيانات والضرائب بشكل مستقل عن فتح حساب Airbnb.', 'ميّز بين ثمن الحجز والتحويل الذي تتلقاه والدخل المتبقي بعد مصاريف التشغيل. تؤثر رسوم المنصة والتنظيف والمرافق والصيانة على النتيجة.'], ['tourism', 'police', 'fees']),
+        section('delegation', 'حدد ما تديره وما تفوضه', ['يمكنك تنظيم المهام بنفسك أو تحديد خدمات إدارة مع مقدم خدمة. دوّن احتياجاتك المتعلقة بالإعلان والتسعير والرسائل والوصول والتنظيف وتقارير المالك.', 'إذا كنت تقيم بالخارج، عين جهة اتصال محلية واحتفظ بإمكانية الوصول إلى الكشوف والعقود. اطلب مسؤوليات واضحة وعدة سيناريوهات مالية، فالدخل المتوقع غير مضمون.']),
+      ],
+      faq: [faq('هل Airbnb تدير عقاري؟', 'تتيح المنصة الإعلانات والحجوزات، لكنك تحتاج إلى تنظيم مستقل للتشغيل اليومي.'), faq('هل يكفي نشر الإعلان للبدء بشكل قانوني؟', 'تحقق بشكل مستقل من وضع الاستغلال والإجراءات المحلية المناسبة للعقار.'), faq('هل يمكن التأجير وأنا مقيم بالخارج؟', 'حضّر تنظيما محليا وعقودا واضحة وطريقة لمتابعة الحجوزات والمصاريف والمهام الإدارية.')],
+    },
+    'conciergerie-airbnb-marrakech': {
+      title: 'إدارة عقارات Airbnb في مراكش: كيف تقارن الخدمات؟',
+      description: 'قارن الاستقبال والتنظيف وإدارة الإعلان والأتعاب وتقارير المالك قبل اختيار خدمة إدارة في مراكش.',
+      category: 'الإدارة في مراكش',
+      intro: 'قد تشمل خدمة إدارة عقار في مراكش التنظيف المحلي فقط أو إدارة الحجوزات كاملة. حدد احتياجات عقارك قبل مقارنة العروض، وتأكد من ملاءمة التنظيم المقترح لموقعه وتجهيزاته وطريقة الوصول إليه.',
+      takeaway: 'قارن نطاق المهام نفسه وقاعدة حساب الأتعاب والتوافر والتقارير. نسبة العمولة وحدها لا تشرح الخدمة.',
+      sections: [
+        section('missions', 'حدد الخدمة التي تحتاجها', ['اسأل هل تشمل الخدمة إعداد الإعلان والتقويم والتسعير ورسائل الضيوف والاستقبال والتنظيف. وضح المهام الاستثنائية مثل شراء الأغطية وفحص التجهيزات والتنسيق مع الحرفيين.', 'قد يحتاج الرياض أو الشقة أو الفيلا إلى تعليمات وصول وصيانة مختلفة. حدد من يبقى متاحا عند وصول الضيوف متأخرين أو مواجهتهم مشكلة.']),
+        section('honoraires', 'افهم الأتعاب والتكاليف الإضافية', ['اسأل على أي مبلغ تطبق العمولة وهل التنظيف مشمول أم يحتسب منفصلا. تبقى رسوم خدمات المنصة تكلفة مختلفة.', 'اطلب نموذجا لكشف حجز يوضح المبلغ المتبقي للمالك. أدخل المستهلكات والأغطية والزيارات الاستثنائية والإصلاحات الموافق عليها ضمن المقارنة.'], ['fees', 'payout']),
+        section('contrat', 'حدد المسؤوليات والوصول كتابة', ['وضح من يحتفظ بالوصول إلى الإعلان ويتلقى التحويلات ويوافق على المصاريف. اتفق على تواريخ الاستعمال الشخصي وآجال الإنهاء وتسليم المفاتيح والسجلات في النهاية.', 'حدد من يتولى التصريح بالضيوف ويوفر الوثائق. خدمة الإدارة لا تعوض التحقق من الوضع الإداري والضريبي للعقار.'], ['tourism', 'police']),
+        section('resultats', 'تابع الأداء بأرقام واضحة', ['قارن الليالي المتاحة والمحجوزة والإيرادات والمصاريف في الفترة نفسها. افصل التواريخ التي حجبها المالك عن الليالي المعروضة للضيوف حتى يكون معدل الإشغال مفهوما.', 'اطلب فرضيات أي توقع للإيرادات وقارن عدة سيناريوهات. جهز معلومات العقار وصوره ورابط الإعلان الموجود لمناقشة احتياجاتك مع COOHOSTY.']),
+      ],
+      faq: [faq('هل تضمن شركة الإدارة دخل الإيجار؟', 'لا، اطلب فرضيات الأسعار والإشغال والمصاريف وقارن عدة سيناريوهات.'), faq('هل تصبح شركة الإدارة مستأجرة للعقار؟', 'ليس بالضرورة، فقد تعمل لحساب المالك بموجب عقد إدارة.'), faq('كيف أقارن عرضين؟', 'قارن المهام والتوافر وقاعدة الأتعاب والمصاريف الإضافية والموافقة على الإنفاق والتقارير وشروط الإنهاء.')],
+    },
+    'creer-annonce-airbnb-maroc': {
+      title: 'إنشاء إعلان Airbnb في المغرب: حضّر أول نشر لك',
+      description: 'جهّز الصور والتجهيزات والأسعار وقواعد السكن والتوافر قبل نشر إعلان عقارك على Airbnb في المغرب.',
+      category: 'الإعلانات',
+      intro: 'يساعد الإعلان الواضح المسافر على فهم السكن قبل الحجز. اجمع المعلومات الدقيقة والصور، ثم اجعل التقويم وطريقة الاستقبال متوافقين مع الوعود الواردة في الوصف.',
+      takeaway: 'انشر وصفا واضحا ومطابقا للعقار، وافتح فقط التواريخ التي يكون فيها السكن وتنظيم الاستقبال جاهزين.',
+      sections: [
+        section('preparation', 'اجمع معلومات دقيقة عن العقار', ['حدد أماكن النوم الفعلية والغرف والتجهيزات وشروط الوصول. اذكر السلالم أو الموقف المشترك أو التفاصيل اللازمة لتقييم ملاءمة السكن للضيف.', 'جهز العنوان وتعليمات الوصول وقواعد السكن. تحقق بشكل مستقل من متطلبات الاستغلال المحلية، فإنشاء إعلان على Airbnb ليس ترخيصا بالتأجير.'], ['createListing', 'tourism']),
+        section('photos', 'اعرض المساحات بوضوح', ['استخدم صورا حادة بإضاءة جيدة لكل مساحة. مثّل الغرف والتجهيزات بأمانة دون تقديم وعود لا يحققها العقار.', 'رتب الصور بحيث يفهم المسافر توزيع الغرف وأماكن النوم. قد يساعد مصور محترف إذا كانت صورك لا توضح المساحات بشكل كاف.'], ['photoTour']),
+        section('prix', 'حدد الأسعار والتوافر الحقيقي', ['راجع ثمن الإقامة ورسوم التنظيف ورسوم الخدمة عند تقدير تحويل المالك. قارن سيناريوهات مختلفة ولا تعتبر إجمالي الحجوزات المتوقع دخلا مضمونا.', 'افتح فقط التواريخ التي تستطيع استقبال الضيوف فيها فعلا. خطط للتنظيف والدخول وجهة اتصال قبل قبول الحجوزات. احجب تواريخ استعمالك الشخصي في التقويم.'], ['fees', 'payout']),
+        section('publication', 'راجع الإعلان قبل النشر', ['اقرأ الإعلان من منظور المسافر: هل يفهم المساحات والقواعد والوصول والتجهيزات المشمولة؟ تأكد من تطابق الصور والوصف.', 'بعد النشر، حدّث التقويم ومعلومات التجهيزات عند تغيرها. استفد من أسئلة الضيوف المتكررة لتوضيح التعليمات دون إضافة ادعاءات غير مؤكدة.'], ['createListing']),
+      ],
+      faq: [faq('هل يمكن تحضير الإعلان قبل جاهزية العقار؟', 'يمكن تحضير المحتوى مسبقا، لكن افتح فقط التواريخ التي يكون فيها السكن وتنظيم الاستقبال جاهزين.'), faq('هل أحتاج إلى مصور محترف؟', 'قد يفيد إذا كانت صورك لا توضح المساحات. تبقى دقة الصور والإضاءة الجيدة الأولوية.'), faq('هل النشر يجعل التأجير قانونيا تلقائيا؟', 'لا، تحقق من متطلبات الاستغلال والإجراءات المحلية بشكل مستقل.')],
+    },
+    'conciergerie-airbnb-casablanca': {
+      title: 'إدارة عقارات Airbnb في الدار البيضاء: ما المهام التي تفوضها؟',
+      description: 'قارن إدارة الإعلان واستقبال الضيوف والتنظيف والأتعاب وتقارير المالك لعقارك في الدار البيضاء.',
+      category: 'الإدارة في الدار البيضاء',
+      intro: 'إذا كنت تملك شقة في الدار البيضاء، يمكن لخدمة إدارة أن تتولى العمليات المحلية أو نطاقا أوسع من المهام. المهم تحديد من يقوم بكل مهمة وكيف تُعتمد المصاريف وكيف تتابع نشاط العقار.',
+      takeaway: 'قارن محتوى الخدمة قبل النسبة المعلنة. الاتفاق الواضح يشمل الاستقبال والتنظيف والمصاريف والوصول إلى الحسابات والتقارير.',
+      sections: [
+        section('missions', 'وضح المهام المشمولة', ['قد تشمل الخدمة الكاملة إعداد الإعلان وإدارة التقويم والرسائل واستقبال الضيوف وتنسيق التنظيف. اطلب قائمة فعلية بدل افتراض أن كل شيء مشمول.', 'افصل التنظيف المعتاد بين الإقامات عن فحص التجهيزات وشراء الأغطية وترتيب الإصلاحات. قد تختلف تكاليف هذه المهام وإجراءات الموافقة عليها.']),
+        section('quartier', 'كيّف التنظيم مع المبنى والحي', ['تحتاج السلالم والموقف المشترك والحارس وترتيبات الدخول إلى تعليمات محددة. جرّب مسار الوصول مع شخص لا يعرف المبنى لتحديد المعلومات الناقصة.', 'صف الحي بدقة وتجنب أوقات تنقل غير واقعية. تحقق من احتياجات الضيوف الفعلية مثل الإنترنت المستقر ومساحة العمل أو أماكن النوم المناسبة للعائلات.']),
+        section('tarifs', 'قارن الأتعاب وشروط العقد', ['وضح قاعدة العمولة ورسوم التنظيف والتكاليف الإضافية. اطلب كشفا لحجز افتراضي يفصل رسوم المنصة عن أتعاب الإدارة.', 'حدد من يتحكم في الوصول إلى الإعلان ويتلقى التحويلات ويوافق على المصاريف. اتفق على تواريخ الاستعمال الشخصي وشروط الإنهاء وإعادة المفاتيح والسجلات. يجب توزيع مسؤوليات تسجيل الضيوف والالتزامات الأخرى بوضوح.'], ['fees', 'police']),
+        section('suivi', 'اطلب تقارير تساعدك على القرار', ['ينبغي أن توضح التقارير الليالي المتاحة والمحجوزة والإيرادات والمصاريف للفترة نفسها. ميّز بين التواريخ التي حجبها المالك والليالي المعروضة للضيوف.', 'اطلب سجل الحوادث وتوصيات الصيانة. لمناقشة احتياجاتك مع COOHOSTY، جهز موقع العقار وطاقته وصوره وقيود التوافر ورابط الإعلان. تختلف النتائج حسب العقار والفترة، ولا تضمن أتعاب الإدارة وحدها دخلا.']),
+      ],
+      faq: [faq('هل تقتصر الخدمة على التنظيف؟', 'بعض الخدمات محلية فقط، وأخرى تشمل الإعلان والتقويم والرسائل والاستقبال. وضح كل مهمة.'), faq('كيف أقارن عرضين في الدار البيضاء؟', 'قارن قاعدة الأتعاب والمهام المشمولة والمصاريف الإضافية والتقارير وشروط الإنهاء.'), faq('هل يمكن الاحتفاظ بتواريخ لاستعمالي الشخصي؟', 'اتفق على هذه التواريخ وطريقة حجبها، وحدّث التقويم قبل قبول الحجوزات.')],
+    },
+  },
+};
+
+export const localizedSourceTitles: Record<'en' | 'ar', Record<string, string>> = {
+  en: { createListing: 'Airbnb — create a listing', photoTour: 'Airbnb — create a photo tour', tourism: 'Ministry of Tourism — tourist accommodation legal framework', police: 'Official Decree No. 2-15-865 and individual accommodation form (PDF)', privacy: 'CNDP — website compliance and personal data protection', tax: '2026 General Tax Code — DGI edition', localTax: 'Local authorities — local taxation guide', collectedTax: 'Airbnb — where tourist taxes are collected and remitted', fees: 'Airbnb — service fees for stays', payout: 'Airbnb — calculating the host payout', lease: 'Law No. 67-12 — non-official French translation', terms: 'Airbnb — terms of service', booking: 'Airbnb — booking accommodation' },
+  ar: { createListing: 'Airbnb — إنشاء إعلان', photoTour: 'Airbnb — إنشاء جولة بالصور', tourism: 'وزارة السياحة — الإطار القانوني للإيواء السياحي', police: 'المرسوم الرسمي رقم 2-15-865 ونموذج الاستمارة الفردية للإيواء (PDF)', privacy: 'اللجنة الوطنية لحماية البيانات الشخصية — دليل امتثال المواقع', tax: 'المدونة العامة للضرائب 2026 — إصدار المديرية العامة للضرائب', localTax: 'المديرية العامة للجماعات الترابية — دليل الجبايات المحلية', collectedTax: 'Airbnb — أماكن تحصيل رسوم الإقامة وأدائها', fees: 'Airbnb — رسوم خدمات الإقامة', payout: 'Airbnb — حساب تحويل المضيف', lease: 'القانون رقم 67-12 — ترجمة فرنسية غير رسمية', terms: 'Airbnb — شروط الخدمة', booking: 'Airbnb — حجز مكان للإقامة' },
+};

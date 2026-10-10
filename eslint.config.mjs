@@ -5,5 +5,5 @@ export default defineConfig([
   ...nextVitals,
   ...nextTypescript,
   { files: ['**/*.cjs'], rules: { '@typescript-eslint/no-require-imports': 'off' } },
-  globalIgnores(['.next/**', 'node_modules/**', 'next-env.d.ts', 'playwright-report/**', 'test-results/**', 'cohosty-complete-source/**', '.swc-cache/**', '.preview-check/**']),
+  globalIgnores(['.tmp/**', '.github/maintenance-test-results/**', '.next/**', 'node_modules/**', 'next-env.d.ts', 'playwright-report/**', 'test-results/**', 'cohosty-complete-source/**', '.swc-cache/**', '.preview-check/**']),
 ]);

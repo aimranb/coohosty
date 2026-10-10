@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { isLocale, site } from '@/config/site';
+import { isLocale } from '@/config/site';
 import { localizedMetadata } from '@/lib/metadata';
+import { homeStructuredData } from '@/lib/structured-data';
 import { Hero } from '@/components/sections/hero';
 import { Destinations } from '@/components/sections/destinations';
 import { ReservationCalendar } from '@/components/sections/reservation-calendar';
@@ -20,6 +21,6 @@ export default async function MarketingPage({ params }: { params: Promise<{ loca
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations('revenue');
-  const structuredData = { '@context': 'https://schema.org', '@type': 'ProfessionalService', name: site.brand, url: site.url, telephone: site.tel, email: site.email, areaServed: { '@type': 'Country', name: 'Morocco' } };
-  return <main id="main-content"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}/><Hero/><Destinations/><Plans locale={locale}/><Workflow/><ReservationCalendar locale={locale}/><Revenue/><Faq/>{locale === 'fr' && <BlogPreview/>}<p className="brand-disclaimer container">{t('disclaimer')}</p></main>;
+  const structuredData = homeStructuredData(locale);
+  return <main id="main-content"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}/><Hero/><Destinations/><Plans locale={locale}/><Workflow/><ReservationCalendar locale={locale}/><Revenue/><Faq/><BlogPreview locale={locale}/><p className="brand-disclaimer container">{t('disclaimer')}</p></main>;
 }

@@ -84,3 +84,7 @@
 .cardLink,.journalAll{font-size:var(--type-label)}
 .coverDocument strong,.coverEditorial strong{font-family:inherit}
 @media(max-width:760px){.journalHeading h1,.journalHeading h2,.home .journalHeading h2{letter-spacing:-.8px}}
+
+:global([dir="rtl"]) .journalHeading h1,:global([dir="rtl"]) .journalHeading h2,:global([dir="rtl"]) .card h2,:global([dir="rtl"]) .coverPhotoCaption strong{letter-spacing:normal;line-height:1.6}
+:global([dir="rtl"]) .coverPhotoCaption{left:auto;right:8%;text-align:right}
+:global([dir="rtl"]) .coverTag{left:auto;right:7%}
