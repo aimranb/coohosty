@@ -1,14 +1,19 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ArrowLeft, ArrowRight, House } from 'lucide-react';
 import styles from './property-slideshow.module.css';
+
+const subscribeHydration = () => () => {};
+const clientReady = () => true;
+const serverReady = () => false;
 
 type Photo = { src: string; alt: string };
 type Labels = { label: string; title: string; caption: string; previous: string; next: string; disclosure: string };
 
 export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels: Labels }) {
+  const ready = useSyncExternalStore(subscribeHydration, clientReady, serverReady);
   const [active, setActive] = useState(0);
   const [requested, setRequested] = useState(0);
   const [loaded, setLoaded] = useState<number[]>([]);
@@ -58,10 +63,10 @@ export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels:
     <div className="hero-photo-label"><House size={15}/>{labels.label}</div>
     <figcaption className="hero-property-caption"><strong>{labels.title}</strong><span>{labels.caption}</span></figcaption>
     <div className={styles.controls}>
-      <div className={styles.dots}>{photos.map((photo, index) => <button type="button" key={photo.src} aria-label={`${index + 1} — ${photo.alt}`} aria-pressed={displayed === index} onClick={() => select(index)}><span/></button>)}</div>
+      <div className={styles.dots}>{photos.map((photo, index) => <button type="button" disabled={!ready} key={photo.src} aria-label={`${index + 1} — ${photo.alt}`} aria-pressed={displayed === index} onClick={() => select(index)}><span/></button>)}</div>
       <span className={styles.count} aria-live={paused ? 'polite' : 'off'}>{String(displayed + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
-      <button type="button" aria-label={labels.previous} onClick={() => select(requested - 1)}><ArrowLeft size={16}/></button>
-      <button type="button" aria-label={labels.next} onClick={() => select(requested + 1)}><ArrowRight size={16}/></button>
+      <button type="button" disabled={!ready} aria-label={labels.previous} onClick={() => select(requested - 1)}><ArrowLeft size={16}/></button>
+      <button type="button" disabled={!ready} aria-label={labels.next} onClick={() => select(requested + 1)}><ArrowRight size={16}/></button>
     </div>
   </figure>;
 }
