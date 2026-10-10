@@ -4,7 +4,7 @@ test('city cohosting keeps the same services, transparent arithmetic and city on
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   for (const [city, name] of [['marrakech', 'Marrakech'], ['casablanca', 'Casablanca'], ['tanger', 'Tanger']]) {
-    await page.goto(`/fr/services/conciergerie-${city}`);
+    await page.goto(`/fr/services/conciergerie-${city}`, { waitUntil: "domcontentloaded" });
     await expect(page.locator('main h1')).toHaveCount(1);
     await expect(page.locator('main h1')).toContainText(name);
     await expect(page.locator('#services li')).toHaveCount(12);

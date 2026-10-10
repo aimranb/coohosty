@@ -18,8 +18,8 @@ describe('technical SEO safeguards', () => {
     }
   });
 
-  it('permanently redirects the default homepage and prevents indexing private endpoints', () => {
-    expect(proxy(new NextRequest(`${site.url}/`)).status).toBe(308);
+  it('temporarily redirects the language-dependent homepage and prevents indexing private endpoints', () => {
+    expect(proxy(new NextRequest(`${site.url}/`)).status).toBe(307);
     for (const path of ['/admin/login', '/admin/requests', '/api/auth/login']) {
       const result = proxy(new NextRequest(`${site.url}${path}`));
       expect(result.headers.get('X-Robots-Tag')).toBe('noindex, nofollow');

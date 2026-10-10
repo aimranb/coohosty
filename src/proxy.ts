@@ -1,9 +1,18 @@
 import { NextResponse, type NextRequest } from 'next/server';
+import { preferredLocale } from '@/lib/preferred-locale';
 import { isLocale, site } from '@/config/site';
 import { blogSlugs, frenchOnlyBlogSlugs } from '@/config/blog';
 import { cohostingCities, isCityMarket } from '@/config/cohosting-cities';
 export function proxy(request: NextRequest) {
-  if (request.nextUrl.pathname === '/') return NextResponse.redirect(new URL('/fr', request.url), 308);
+  if (request.nextUrl.pathname === '/') {
+    const locale = preferredLocale(request.headers.get('accept-language'), request.cookies.get('coohosty-locale')?.value);
+    const destination = request.nextUrl.clone();
+    destination.pathname = `/${locale}`;
+    const response = NextResponse.redirect(destination, 307);
+    response.headers.set('Vary', 'Accept-Language, Cookie');
+    response.headers.set('Cache-Control', 'private, no-store');
+    return response;
+  }
   const segment = request.nextUrl.pathname.split('/')[1];
   const headers = new Headers(request.headers);
   headers.set('x-cohosty-locale', isLocale(segment) ? segment : 'fr');
