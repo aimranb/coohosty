@@ -36,6 +36,7 @@ import './analysis-emphasis.css';
 import './service-detail.css';
 import './market-network.css';
 import './maintenance.css';
+import './site-background.css';
 const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

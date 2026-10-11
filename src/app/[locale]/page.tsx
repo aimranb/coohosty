@@ -24,5 +24,5 @@ export default async function MarketingPage({ params }: { params: Promise<{ loca
   setRequestLocale(locale);
   const t = await getTranslations('revenue');
   const structuredData = homeStructuredData(locale);
-  return <main id="main-content"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}/><Hero/><Destinations/><Plans locale={locale}/><Workflow/><ReservationCalendar locale={locale}/><Revenue/><AboutCoohosty/><ServiceProof locale={locale}/><Faq/><BlogPreview locale={locale}/><p className="brand-disclaimer container">{t('disclaimer')}</p></main>;
+  return <main id="main-content" className="public-home"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}/><Hero/><Destinations/><Plans locale={locale}/><Workflow/><ReservationCalendar locale={locale}/><Revenue/><AboutCoohosty/><ServiceProof locale={locale}/><Faq/><BlogPreview locale={locale}/><p className="brand-disclaimer container">{t('disclaimer')}</p></main>;
 }

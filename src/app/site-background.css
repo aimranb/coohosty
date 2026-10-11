@@ -1,0 +1,27 @@
+/* One continuous landing-page grid across every public route. */
+.public-site{
+  min-height:100vh;
+  background-color:#faf7f1;
+  background-image:linear-gradient(#ded7cc55 1px,transparent 1px),linear-gradient(90deg,#ded7cc55 1px,transparent 1px);
+  background-size:54px 54px;
+}
+.public-site #main-content,
+.public-site #main-content.public-home>section,
+.public-site #main-content>.hero-surface,
+.public-site #main-content>.hero-surface .hero.container,
+.public-site #main-content>.hero-surface .hero-copy,
+.public-site #main-content>.destinations-section,
+.public-site #main-content>.plans-section,
+.public-site #main-content>.workflow,
+.public-site #main-content>.reservation-section,
+.public-site #main-content>.income-intro,
+.public-site #main-content>.showcase-section,
+.public-site #main-content>.faq-section,
+.public-site #main-content>.audit-section,
+.public-site .footer.container{
+  background:transparent;
+}
+/* The introduction shares the page grid rather than drawing a second grid. */
+.public-site #main-content>section[aria-labelledby="landing-title"]{background:transparent}
+.public-site #main-content>section[aria-labelledby="landing-title"]:after{background:none}
+@media(max-width:760px){.public-site{background-size:40px 40px}}
