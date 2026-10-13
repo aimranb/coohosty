@@ -5,15 +5,21 @@ import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ArrowLeft, ArrowRight, House } from 'lucide-react';
 import styles from './property-slideshow.module.css';
+import type { Locale } from '@/config/site';
 
 const subscribeHydration = () => () => {};
 const clientReady = () => true;
 const serverReady = () => false;
 
-type Photo = { src: string; alt: string };
+type Photo = { src: string; alt: string; city: string; nightlyRate: number; bookedNights: number };
+const metricsCopy = {
+  fr: { apartment: 'Appartement', revenue: 'Revenu brut mensuel simulé', occupancy: 'Occupation mensuelle simulée', note: 'Simulation favorable sur 30 nuits disponibles, avant frais et charges. Photos illustratives ; résultats non constatés.', night: 'MAD / nuit', nights: 'nuits réservées', cities: { Marrakech: 'Marrakech', Casablanca: 'Casablanca', Tanger: 'Tanger' } },
+  en: { apartment: 'Apartment', revenue: 'Simulated monthly gross revenue', occupancy: 'Simulated monthly occupancy', note: 'Favourable scenario over 30 available nights, before fees and expenses. Illustrative photos; not recorded results.', night: 'MAD / night', nights: 'booked nights', cities: { Marrakech: 'Marrakech', Casablanca: 'Casablanca', Tanger: 'Tangier' } },
+  ar: { apartment: 'شقة', revenue: 'الإيراد الشهري الإجمالي في المحاكاة', occupancy: 'الإشغال الشهري في المحاكاة', note: 'سيناريو متفائل على أساس 30 ليلة متاحة، قبل الرسوم والمصاريف. صور توضيحية؛ ليست نتائج فعلية.', night: 'درهم / ليلة', nights: 'ليلة محجوزة', cities: { Marrakech: 'مراكش', Casablanca: 'الدار البيضاء', Tanger: 'طنجة' } },
+};
 type Labels = { label: string; title: string; caption: string; previous: string; next: string; disclosure: string };
 
-export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels: Labels }) {
+export function PropertySlideshow({ photos, labels, locale }: { photos: Photo[]; labels: Labels; locale: Locale }) {
   const ready = useSyncExternalStore(subscribeHydration, clientReady, serverReady);
   const [active, setActive] = useState(0);
   const [requested, setRequested] = useState(0);
@@ -26,6 +32,10 @@ export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels:
   // Keep the current photo visible while a newly requested photo downloads.
   const displayed = loaded.includes(requested) ? requested : active;
   const next = (requested + 1) % photos.length;
+  const photo = photos[displayed];
+  const copy = metricsCopy[locale];
+  const city = copy.cities[photo.city as keyof typeof copy.cities];
+  const money = new Intl.NumberFormat(locale === 'ar' ? 'ar-MA' : locale === 'fr' ? 'fr-MA' : 'en-GB', { numberingSystem:'latn',  maximumFractionDigits: 0 }).format(photo.nightlyRate * photo.bookedNights);
 
 
   useEffect(() => {
@@ -61,8 +71,15 @@ export function PropertySlideshow({ photos, labels }: { photos: Photo[]; labels:
         }}/>}
     </div>)}
     <div className="hero-property-shade"/>
-    <div className="hero-photo-label"><House size={15}/>{labels.label}</div>
-    <figcaption className="hero-property-caption"><strong>{labels.title}</strong><span>{labels.caption}</span></figcaption>
+    <div className="hero-photo-label"><House size={20} aria-hidden="true"/><div className={styles.location}><span>{copy.apartment} {String(displayed + 1).padStart(2, '0')}</span><strong>{city}</strong></div></div>
+    <figcaption className="hero-property-caption">
+      <strong>{labels.title}</strong>
+      <dl className={styles.metrics}>
+        <div><dt>{copy.revenue}</dt><dd dir="ltr">{money} <small>MAD</small></dd></div>
+        <div><dt>{copy.occupancy}</dt><dd dir="ltr">{Math.round(photo.bookedNights / 30 * 100)} %</dd></div>
+      </dl>
+      <span className={styles.assumptions}>{photo.bookedNights} {copy.nights} × {photo.nightlyRate} {copy.night}</span>
+    </figcaption>
     <div className={styles.controls}>
       <div className={styles.dots}>{photos.map((photo, index) => <button type="button" disabled={!ready} key={photo.src} aria-label={`${index + 1} — ${photo.alt}`} aria-pressed={displayed === index} onClick={() => select(index)}><span/></button>)}</div>
       <span className={styles.count} aria-live={paused ? 'polite' : 'off'}>{String(displayed + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>

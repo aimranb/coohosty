@@ -1,0 +1,32 @@
+.scene{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;direction:ltr}
+.glow{position:absolute;inset:0;background:radial-gradient(ellipse at 5% 35%,#ff385c09,transparent 35%),radial-gradient(ellipse at 95% 20%,#006ce408,transparent 30%),radial-gradient(ellipse at 80% 85%,#006ce40a,transparent 32%)}
+.orbit{position:absolute;inset:35px 4%;border:1px dashed #d7b59233;border-radius:50%;transform:rotate(-8deg);mask-image:linear-gradient(90deg,#000,transparent 28%,transparent 72%,#000)}
+.mark{position:absolute;display:flex;align-items:center;justify-content:center;gap:9px;min-height:60px;padding:13px 20px;border-radius:18px;background:#ffffffed;border:1px solid #e5cbb1;box-shadow:0 10px 32px #46322506;animation:float 7s ease-in-out infinite;will-change:transform;direction:ltr}
+.airbnb{left:6%;top:18px;rotate:-9deg;color:#ff385c;font-size:26px;font-weight:700;letter-spacing:-1px}
+.airbnbIcon{width:28px;height:30px;flex:none}
+.booking{right:5%;top:22px;rotate:7deg;color:#003b95;font-size:23px;font-weight:750;letter-spacing:-1px;animation-delay:-2s}
+.bookingDot{color:#006ce4}
+.vrbo{left:5%;bottom:86px;rotate:7deg;animation-delay:-4s;padding:7px 22px}
+.vrbo>svg{width:104px;height:40px}
+.stars{position:absolute;right:6%;bottom:104px;display:flex;gap:5px;padding:15px 20px;background:#ffffffed;border:1px solid #e5cbb1;border-radius:40px;rotate:-7deg;box-shadow:0 10px 30px #46322505;animation:float 8s ease-in-out infinite;animation-delay:-3s}
+.stars svg{width:22px;height:22px;fill:#ffc06c;color:#e9a54e;stroke-width:1.2;animation:shimmer 4s ease-in-out infinite}
+.spark{position:absolute;color:#e8aa72;opacity:.5;font-size:22px;animation:shimmer 5s ease-in-out infinite}
+.sparkOne{top:42%;left:9%}.sparkTwo{top:52%;right:8%;font-size:14px;animation-delay:-2s}
+.pause{position:absolute;right:18px;bottom:15px;z-index:2;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid #e5dbcf;background:#fff9;color:#66615a;cursor:pointer}
+.pause:hover{color:#006ce4;border-color:#006ce4}.pause:focus-visible{outline:2px solid #006ce4;outline-offset:4px}
+.scene[data-running=false] *{animation-play-state:paused}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes shimmer{0%,100%{opacity:.65}50%{opacity:1}}
+@media(min-width:761px) and (max-width:1100px){.airbnb{left:3%;font-size:21px;padding:10px 14px;top:16px}.booking{right:3%;top:25px;font-size:20px;padding:10px 14px}.vrbo{left:3%;bottom:30px}.stars{right:3%;bottom:35px;padding:12px 15px}.sparkOne,.sparkTwo{display:none}}
+@media(max-width:760px){.orbit,.spark{display:none}.mark{top:27px;bottom:auto;min-height:43px;padding:8px 10px;border-radius:12px;gap:5px}.airbnb{left:5%;font-size:17px;rotate:-5deg}.airbnbIcon{width:19px;height:21px}.booking{right:auto;left:50%;translate:-50% 0;font-size:16px;rotate:3deg;letter-spacing:-.6px}.vrbo{left:auto;right:5%;padding:4px 10px;rotate:6deg}.vrbo>svg{width:62px;height:33px}.stars{left:50%;right:auto;bottom:20px;translate:-50% 0;rotate:-3deg;padding:10px 16px;gap:5px}.stars svg{width:17px;height:17px}.pause{bottom:21px;right:16px}}
+@media(prefers-reduced-motion:reduce){.scene *{animation:none!important}.mark{will-change:auto}}
+.glow{display:none}
+.scene{z-index:2}
+.scene .stars{overflow:hidden;isolation:isolate;pointer-events:auto;rotate:0deg;scale:1;transition:scale 220ms ease;animation:proof-float 2.8s ease-in-out infinite;animation-delay:0s}
+.scene .stars:hover{scale:1.04}
+.scene .stars svg{animation:none}
+.scene .stars::after{content:'';position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(110deg,transparent 30%,#ffffff00 40%,#ffffff80 50%,#ffffff00 60%,transparent 70%);transform:translateX(-140%);animation:proof-shine 5s ease-in-out infinite;animation-delay:4.2s}
+.scene[data-running=false] .stars::after{animation-play-state:paused}
+@keyframes proof-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes proof-shine{0%{transform:translateX(-140%);opacity:0}2%{opacity:1}16%{transform:translateX(140%);opacity:0}100%{transform:translateX(140%);opacity:0}}
+@media(prefers-reduced-motion:reduce){.scene .stars,.scene .stars:hover{animation:none;scale:1;transition:none}.scene .stars::after{animation:none;opacity:0}}

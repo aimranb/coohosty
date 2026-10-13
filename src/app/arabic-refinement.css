@@ -1,0 +1,24 @@
+body{--font-poppins:var(--font-latin)}
+html[lang=ar] body{--font-poppins:var(--font-arabic),var(--font-latin);font-family:var(--font-arabic),var(--font-latin),Arial,sans-serif}
+html[lang=ar] .public-site :is(h1,h2,h3,h4,p,li,span,a,button,label,summary,dt,dd){letter-spacing:0}
+html[lang=ar] .public-site h1{font-size:clamp(36px,4.5vw,64px);font-weight:700;line-height:1.5;letter-spacing:0}
+html[lang=ar] .public-site h2{line-height:1.55;font-weight:700;letter-spacing:0}
+html[lang=ar] .public-site h3{line-height:1.6;font-weight:600;letter-spacing:0}
+html[lang=ar] .public-site p{line-height:1.95}
+html[lang=ar] .public-site .eyebrow,html[lang=ar] [data-category-label]{font-size:12px;font-weight:600;line-height:1.7;letter-spacing:0}
+html[lang=ar] .site-header .logo svg,html[lang=ar] .analysis-network-hub .logo svg{direction:ltr}
+html[lang=ar] .logo svg text{font-family:var(--font-latin),Arial,sans-serif;direction:ltr}
+html[lang=ar] .language-select,html[lang=ar] .analytics-tool-logo{font-family:var(--font-latin),Arial,sans-serif;direction:ltr}
+html[lang=ar] .public-site input[type=email],html[lang=ar] .public-site input[type=tel]{direction:ltr;text-align:left;font-family:var(--font-latin),Arial,sans-serif}
+html[lang=ar] .public-site input:not([type=email]):not([type=tel]){text-align:start}
+html[lang=ar] .public-site .reservation-calendar{direction:rtl}
+html[lang=ar] .reservation-grid,html[lang=ar] .reservation-weekdays{direction:rtl}
+html[lang=ar] .reservation-booking{text-align:start}
+html[lang=ar] .reservation-booking-name,html[lang=ar] .reservation-booking-platform,html[lang=ar] .reservation-channel{unicode-bidi:plaintext}
+html[lang=ar] .hero-property-caption strong{line-height:1.6;font-size:clamp(22px,2.1vw,29px)}
+html[lang=ar] .hero-property-caption dd,html[lang=ar] .hero-property [aria-live],html[lang=ar] .reservation-day>span:first-child{font-variant-numeric:tabular-nums}
+html[lang=ar] .public-site .desktop-nav a{font-size:14px;font-weight:500}
+html[lang=ar] .public-site .faq-item summary h3{font-size:18px;line-height:1.8}
+html[lang=ar] .public-site .faq-answer p{font-size:15px;line-height:2}
+html[lang=ar] .footer-bottom{font-size:11px;line-height:1.8}
+@media(max-width:760px){html[lang=ar] .public-site h1{font-size:36px;line-height:1.65}html[lang=ar] .public-site h2{font-size:29px;line-height:1.65}html[lang=ar] .public-site .header-button{font-size:12px;line-height:1.5;padding:10px 12px}html[lang=ar] .site-header .logo svg{width:122px}html[lang=ar] .public-site .mobile-menu a{font-size:16px;line-height:1.7}html[lang=ar] .public-site .faq-item summary h3{font-size:16px}html[lang=ar] .hero-property-caption strong{font-size:22px;line-height:1.55}}

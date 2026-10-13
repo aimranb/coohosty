@@ -7,8 +7,8 @@ import { cohostingCities, cityPageModified } from '@/config/cohosting-cities';
 // Content revision dates; update with meaningful page edits, never on requests.
 export const publicPages = [
   ...cohostingCities.map(city => ({ path: city.path, modified: cityPageModified, frequency: 'monthly' as const, priority: 0.9 })),
-  { path: '', modified: '2026-10-08', frequency: 'monthly', priority: 1 },
-  ...site.planInfo.map(plan => ({ path: `/services/${plan.id.toLowerCase()}`, modified: '2026-10-07', frequency: 'monthly' as const, priority: plan.id === 'COHOST' ? 0.9 : 0.8 })),
+  { path: '', modified: '2026-10-13', frequency: 'monthly', priority: 1 },
+  ...site.planInfo.map(plan => ({ path: `/services/${plan.id.toLowerCase()}`, modified: '2026-10-13', frequency: 'monthly' as const, priority: plan.id === 'COHOST' ? 0.9 : 0.8 })),
   { path: '/legal', modified: '2026-10-07', frequency: 'yearly', priority: 0.2 },
   { path: '/privacy', modified: '2026-10-07', frequency: 'yearly', priority: 0.2 },
 ] satisfies { path: string; modified: string; frequency: NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>; priority: number }[];

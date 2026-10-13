@@ -1,0 +1,85 @@
+/* Orange actions, black headings and white surfaces. */
+:root{--brand-navy:#171717;--brand-blue:#ff852b;--brand-blue-hover:#ec650a;--brand-ink:#171717;--brand-text:#414141;--brand-muted:#66615a;--brand-page:#faf7f2;--brand-surface:#fff;--brand-tint:#fff0e2;--brand-border:#e5dbcf;--purple:#ff852b;--navigation-accent:#ff852b;--reference-paper:#faf7f2;--reference-dark:#171717;--ink:#171717;--muted:#66615a;--line:#e5dbcf;--brand-paper-grid:linear-gradient(#6c452909 1px,transparent 1px),linear-gradient(90deg,#6c452909 1px,transparent 1px)}
+body{background:#faf7f2;color:#171717}.public-site{background-color:#faf7f2;background-image:var(--brand-paper-grid);background-size:52px 52px}
+.public-site .site-header,.public-site .site-header.compact{background:#fffdf9;background-image:none;border:1px solid #e7d1b8;box-shadow:0 6px 24px #4127090d}
+.public-site .site-header .logo,.public-site .site-header .desktop-nav a,.public-site .site-header .language-select,.public-site .site-header .mobile-toggle,.public-site .site-header .call-link,.public-site .site-header .navbar-language-icon,.public-site .site-header .mobile-menu a{color:#171717}
+.public-site .site-header .mobile-menu{background:#fffdf9;border-color:#e7d1b8}
+.public-site .site-header .desktop-nav a:hover,.public-site .site-header .desktop-nav a[aria-current=page],.public-site .site-header .mobile-menu a:hover{background:#fff0e2;color:#ff852b}
+.public-site .site-header .language-select option{background:#fff;color:#171717}
+.public-site .site-header .header-button,.public-site .estimate-next,.public-site .package-cta{background:#ff852b;border-color:#ff852b;color:#171717;box-shadow:0 3px 12px #ff852b18}
+.public-site .site-header .header-button:hover,.public-site .estimate-next:hover,.public-site .package-cta:hover{background:#ec650a;border-color:#ec650a;color:#171717}
+.public-site #services .section-heading h2{color:#171717}.public-site #services .section-heading h2 em{color:#ff852b}
+.public-site #services .comparison-card{border:1px solid #e7d1b8;background:#fff;box-shadow:0 7px 22px #24170a08}
+.public-site #services .comparison-card h3{color:#171717}.public-site #services .comparison-card .package-number{color:#ff852b;background:#fff0e2;border-color:#f0c7a3}
+.public-site #services .comparison-card .plan-highlights li{color:#414141}.public-site #services .comparison-card .plan-highlights svg{color:#ff852b}
+.public-site #services .comparison-card .plan-more-link{background:#fff0e2;border-color:#f0c7a3;color:#ff852b}
+.public-site #services .comparison-card.featured{background:#171717;border-color:#171717;box-shadow:0 10px 28px #17171716}
+.public-site #services .comparison-card.featured h3,.public-site #services .comparison-card.featured .plan-highlights li{color:#fff}
+.public-site #services .comparison-card.featured .package-number{color:#ffc994;background:#ffffff10;border-color:#ffffff25}
+.public-site #services .comparison-card.featured .plan-highlights svg{color:#ffad72}
+.public-site #services .comparison-card.featured .package-cta{background:#ff852b;border-color:#ff852b;color:#171717}
+.public-site #services .comparison-card.featured .plan-more-link{background:#ffffff0c;border-color:#ffffff35;color:#fff}
+.public-site #workflow .workflow-icon{position:relative;isolation:isolate;background:transparent;border:0;box-shadow:none;color:#ff852b}
+.public-site #workflow .workflow-icon::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:55% 55% 55% 12%;transform:rotate(-45deg);background:linear-gradient(140deg,#ffffffeb 0%,#ffe8d0 45%,#ffb9808c 100%);border:1px solid #f2b584;box-shadow:inset 3px 4px 8px #ffffffbf,0 6px 16px #ff852b12}
+.public-site #workflow .workflow-icon::after{content:'';position:absolute;width:18px;height:8px;border-radius:50%;background:#ffffffbc;top:9px;inset-inline-start:9px;rotate:-35deg;pointer-events:none}
+.public-site #workflow .workflow-steps li>span{color:#414141;font-weight:550}.public-site #workflow .workflow-arrow{color:#ff852b}
+@media(prefers-reduced-motion:no-preference){.public-site #workflow .workflow-icon::before{animation:water-glow 3.4s ease-in-out infinite}.public-site #workflow .workflow-steps li:nth-child(2) .workflow-icon::before{animation-delay:.2s}.public-site #workflow .workflow-steps li:nth-child(3) .workflow-icon::before{animation-delay:.4s}.public-site #workflow .workflow-steps li:nth-child(4) .workflow-icon::before{animation-delay:.6s}.public-site #workflow .workflow-steps li:nth-child(5) .workflow-icon::before{animation-delay:.8s}}
+@keyframes water-glow{0%,100%{transform:rotate(-45deg) scale(1);filter:brightness(1)}50%{transform:rotate(-45deg) scale(1.06);filter:brightness(1.06)}}
+@media(max-width:760px){.public-site{background-size:38px 38px}}
+.public-site #main-content :is(.section-description,.section-heading>p,.reservation-heading>p,.destination-heading>p,.workflow-heading>p,.income-intro-lead){font-weight:550;color:#414141}
+.public-site #faq.faq-section .faq-item,.public-site #faq.faq-section .faq-item:hover,.public-site #faq.faq-section .faq-item[open]{background:transparent;border:0;border-bottom:1px solid #e5dbcf;box-shadow:none}
+/* Five service stickers: translucent cards, amber medallions and a quiet light sweep. */
+.public-site #workflow .workflow-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.public-site #workflow .workflow-steps li{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:165px;padding:21px 12px 18px;border:1px solid #eedac7;border-radius:23px;background:linear-gradient(145deg,#fffffff0,#fff5ebc9);box-shadow:0 8px 22px #6b3c0b08,inset 0 1px #fff;backdrop-filter:blur(4px);transition:scale 220ms ease,box-shadow 220ms ease,border-color 220ms ease}
+.public-site #workflow .workflow-steps li:hover{scale:1.04;border-color:#ffb77e;box-shadow:0 12px 28px #b9661714}
+.public-site #workflow .workflow-icon{width:73px;height:73px;margin:0 0 15px;border-radius:50%;overflow:hidden;color:#ff852b;background:radial-gradient(circle at 30% 20%,#fff 0%,#ffe9d4 55%,#ffd4ae 100%);border:1px solid #f3c39b;box-shadow:inset 0 2px 5px #ffffffb3,0 5px 13px #d47c2512}
+.public-site #workflow .workflow-icon svg{width:36px;height:36px;position:relative;z-index:1}
+.public-site #workflow .workflow-icon::before{content:none;animation:none}
+.public-site #workflow .workflow-icon::after{inset:0;width:auto;height:auto;border-radius:inherit;background:linear-gradient(110deg,transparent 30%,#ffffff00 40%,#ffffff85 50%,#ffffff00 60%,transparent 70%);rotate:0deg;transform:translateX(-140%);opacity:0}
+.public-site #workflow .workflow-steps li>span{font-size:13px;line-height:1.4;color:#38332e;font-weight:650;letter-spacing:.1px}
+.public-site #workflow .workflow-arrow{position:absolute;inset-inline-end:-19px;top:calc(50% - 10px);width:15px;height:20px;opacity:.45}
+@media(prefers-reduced-motion:no-preference){.public-site #workflow .workflow-steps li{animation:service-sticker-float 2.8s ease-in-out infinite}.public-site #workflow .workflow-icon::after{animation:service-sticker-shine 5s ease-in-out infinite}.public-site #workflow .workflow-steps li:nth-child(2){animation-delay:-.4s}.public-site #workflow .workflow-steps li:nth-child(3){animation-delay:-.8s}.public-site #workflow .workflow-steps li:nth-child(4){animation-delay:-1.2s}.public-site #workflow .workflow-steps li:nth-child(5){animation-delay:-1.6s}}
+@keyframes service-sticker-float{0%,100%{translate:0 0}50%{translate:0 -3px}}
+@keyframes service-sticker-shine{0%{transform:translateX(-140%);opacity:0}2%{opacity:1}16%{transform:translateX(140%);opacity:0}100%{transform:translateX(140%);opacity:0}}
+@media(max-width:760px){.public-site #workflow .workflow-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.public-site #workflow .workflow-steps li{min-height:140px;padding:17px 6px;border-radius:19px}.public-site #workflow .workflow-icon{width:60px;height:60px;margin-bottom:12px}.public-site #workflow .workflow-icon svg{width:31px;height:31px}.public-site #workflow .workflow-steps li>span{font-size:10px}.public-site #workflow .workflow-arrow{display:none}}
+@media(prefers-reduced-motion:reduce){.public-site #workflow .workflow-steps li,.public-site #workflow .workflow-icon::after{animation:none}.public-site #workflow .workflow-steps li{transition:none}.public-site #workflow .workflow-steps li:hover{scale:1}.public-site #workflow .workflow-icon::after{opacity:0}}
+.public-site .eyebrow,.public-site .footer a:hover,.public-site .site-header .desktop-nav a:hover,.public-site .site-header .desktop-nav a[aria-current=page],.public-site .site-header .mobile-menu a:hover{color:#171717}
+.public-site #services .section-heading h2 em,.public-site #services .comparison-card .package-number{color:#171717}
+.public-site #workflow .workflow-icon,.public-site .hero-photo-label>svg{color:#171717}
+.market-study-section{padding-block:75px;border-top:1px solid #e5dbcf;border-bottom:1px solid #e5dbcf}
+.market-study-heading{max-width:820px;margin-bottom:35px}.market-study-heading h2{font-size:clamp(30px,3.5vw,44px);font-weight:650;line-height:1.2;letter-spacing:-1.2px;color:#171717;margin-top:13px}.market-study-heading p{font-size:18px;font-weight:550;line-height:1.8;color:#414141;margin-top:20px}
+.public-site #market-study .analysis-network-hub{border-color:#ffb674;box-shadow:0 0 0 7px #fffaf5,0 5px 20px #ff852b15}
+.public-site #market-study .analysis-wire{stroke:#e5bc98;stroke-width:1.5}
+.public-site #market-study .analysis-projectile{filter:drop-shadow(0 0 3px #ff852b50)}
+.public-site #market-study .analysis-projectile-trail,.public-site #market-study .analysis-projectile-arrow{stroke:#ff852b}
+.public-site #market-study .analysis-network-kicker{color:#56514b}
+.public-site #market-study .analysis-network .revenue-feature{background:#fffaf5;border-color:#efd9c4;border-inline-start-color:#ffb674}
+.public-site #market-study .analysis-network .revenue-feature:last-child{background:#171717;border-color:#171717;border-inline-start-color:#ff852b;color:white}
+.public-site #market-study .analysis-network .revenue-feature-icon{background:#fff0e2;color:#171717}
+.public-site #market-study .analysis-network .revenue-feature:last-child .revenue-feature-icon{background:#ffffff14;color:#ffb674}
+.public-site #market-study .analysis-network .revenue-feature:last-child h3{color:#fff}
+@media(max-width:760px){.market-study-section{padding-block:50px}.market-study-heading h2{font-size:32px}.market-study-heading p{font-size:17px}}
+.public-site .eyebrow,.public-site [data-category-label]{position:relative;display:inline-flex;align-items:center;gap:8px;width:fit-content;max-width:100%;padding:7px 11px;border:1px solid #f0dbc6;border-radius:30px;background:#fff8f0;color:#171717;overflow:hidden;isolation:isolate}
+.public-site .eyebrow::before,.public-site [data-category-label]::before{content:'';width:5px;height:5px;border-radius:50%;background:#ff852b;flex-shrink:0}
+.public-site .eyebrow::after,.public-site [data-category-label]::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 35%,#ffffff00 43%,#ffffff80 50%,#ffffff00 57%,transparent 65%);transform:translateX(-140%);opacity:0}
+@media(prefers-reduced-motion:no-preference){.public-site .eyebrow,.public-site [data-category-label]{animation:category-float 2.8s ease-in-out infinite}.public-site .eyebrow::after,.public-site [data-category-label]::after{animation:category-shine 5s ease-in-out infinite;animation-delay:3s}}
+@keyframes category-float{0%,100%{translate:0 0}50%{translate:0 -2px}}
+@keyframes category-shine{0%{transform:translateX(-140%);opacity:0}2%{opacity:1}16%{transform:translateX(140%);opacity:0}100%{transform:translateX(140%);opacity:0}}
+@media(prefers-reduced-motion:reduce){.public-site .eyebrow,.public-site [data-category-label],.public-site .eyebrow::after,.public-site [data-category-label]::after{animation:none}.public-site .eyebrow::after,.public-site [data-category-label]::after{opacity:0}}
+.public-site #workflow .workflow-steps{max-width:920px;margin-inline:auto;gap:18px}
+.public-site #workflow .workflow-steps li{min-height:128px;padding:16px 10px 14px;border-radius:19px}
+.public-site #workflow .workflow-icon{width:56px;height:56px;margin-bottom:11px}
+.public-site #workflow .workflow-icon svg{width:29px;height:29px}
+.public-site #workflow .workflow-steps li>span{font-size:12px}
+@media(max-width:760px){.public-site #workflow .workflow-steps{max-width:340px;gap:10px}.public-site #workflow .workflow-steps li{min-height:112px;padding:13px 5px;border-radius:16px}.public-site #workflow .workflow-icon{width:46px;height:46px;margin-bottom:9px}.public-site #workflow .workflow-icon svg{width:25px;height:25px}.public-site #workflow .workflow-steps li>span{font-size:10px}}
+/* Lively service colours, with black pictograms and labels for clear contrast. */
+.public-site #workflow .workflow-steps li:nth-child(1){--sticker-colour:#ff852b;--sticker-tint:#fff0e2;--sticker-border:#ffc28f}
+.public-site #workflow .workflow-steps li:nth-child(2){--sticker-colour:#ffc83d;--sticker-tint:#fff8db;--sticker-border:#f5da83}
+.public-site #workflow .workflow-steps li:nth-child(3){--sticker-colour:#ff8e91;--sticker-tint:#fff0f0;--sticker-border:#ffc0c3}
+.public-site #workflow .workflow-steps li:nth-child(4){--sticker-colour:#45d0c2;--sticker-tint:#e9faf7;--sticker-border:#9de5dc}
+.public-site #workflow .workflow-steps li:nth-child(5){--sticker-colour:#8cdb74;--sticker-tint:#f0fae9;--sticker-border:#bce7a8}
+.public-site #workflow .workflow-steps li{background:linear-gradient(145deg,#fff,var(--sticker-tint));border-color:var(--sticker-border)}
+.public-site #workflow .workflow-steps li:hover{border-color:var(--sticker-colour)}
+.public-site #workflow .workflow-icon{background:radial-gradient(circle at 28% 20%,#ffffff65 0%,transparent 60%),var(--sticker-colour);border-color:var(--sticker-colour);color:#171717;box-shadow:inset 0 2px 5px #ffffff66,0 5px 14px #1717170d}
+.public-site #workflow .workflow-icon .premium-workflow-icon{color:#171717}
+.public-site #workflow .workflow-icon .premium-icon-tone{fill:#fff;opacity:.28}

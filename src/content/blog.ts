@@ -1,3 +1,6 @@
+import { ownerClusterPosts } from './blog-owner-cluster';
+import { ownerLocalPosts } from './blog-owner-local';
+import { ownerPillarPost } from './blog-owner-pillar';
 import type { Locale } from '@/config/site';
 import { blogTranslations, localizedSourceTitles } from './blog-translations';
 import { additionalBlogPosts } from './blog-additions';
@@ -22,6 +25,7 @@ export type BlogPost = {
   takeaway: string;
   published: string;
   modified: string;
+  sourcesReviewedAt?: string;
   status?: 'published' | 'draft';
   noindex?: boolean;
   note?: string;
@@ -31,6 +35,9 @@ export type BlogPost = {
 };
 
 export const blogSources: Record<string, { title: string; url: string }> = {
+  cohostPermissions:{title:'Airbnb — autorisations des co-hôtes',url:'https://www.airbnb.fr/help/article/1534'},
+  vrboCalendar:{title:'Vrbo — importer un calendrier',url:'https://help.vrbo.com/articles/How-do-I-import-my-iCal-or-Google-calendar'},
+  airbnbCalendar:{title:'Airbnb — synchroniser les calendriers',url:'https://www.airbnb.fr/help/article/99'},
   createListing: { title: 'Airbnb — créer une annonce', url: 'https://www.airbnb.fr/help/article/1336' },
   photoTour: { title: 'Airbnb — créer une visite photo du logement', url: 'https://www.airbnb.fr/help/article/477' },
   tourism: { title: 'Ministère du Tourisme — cadre juridique de l’hébergement touristique', url: 'https://mtaess.gov.ma/fr/tourisme/metiers-tourisme/hebergement-touristique/' },
@@ -201,7 +208,31 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-blogPosts.push(...additionalBlogPosts);
+blogPosts.push(...additionalBlogPosts, ownerPillarPost, ...ownerClusterPosts, ...ownerLocalPosts);
+
+// Connect the existing guides without duplicating their search intent.
+const ownerScope = {
+  id: 'perimetre-coohosty', title: 'Comment COOHOSTY vous accompagne au Maroc',
+  paragraphs: ['Nous proposons la gestion digitale des annonces, tarifs, réservations et messages dans tout le Maroc, selon la mission définie avec vous.', 'La gestion physique complète est proposée à Meknès. Dans les autres villes, le ménage, les clés et les interventions nécessitent une organisation locale définie séparément.'],
+  links: [{label:'Organiser la gestion de votre logement à distance',href:'/fr/blog/gerer-location-courte-duree-distance-maroc'}, {label:'La gestion physique à Meknès',href:'/fr/blog/conciergerie-airbnb-meknes'}],
+};
+for (const guide of blogPosts.filter(post => ![ownerPillarPost, ...ownerClusterPosts, ...ownerLocalPosts].includes(post))) {
+  guide.sourcesReviewedAt = guide.modified;
+  guide.modified = '2026-10-13';
+  guide.sections.push({...ownerScope});
+  guide.takeaway += ' COOHOSTY propose la gestion digitale dans tout le Maroc et la gestion physique complète à Meknès.';
+  guide.related = [...new Set([...guide.related, 'location-courte-duree-maroc'])];
+}
+const conciergePillar = blogPosts.find(post => post.slug === 'conciergerie-airbnb-maroc')!;
+conciergePillar.seoTitle = 'Conciergerie Airbnb Maroc : prix, services et fonctionnement';
+conciergePillar.description = 'Comprenez la conciergerie Airbnb au Maroc : missions, honoraires, organisation des séjours et différence avec le co-hosting digital pour votre logement.';
+conciergePillar.sections.splice(1, 0, {
+  id:'fonctionnement-conciergerie',title:'Comment fonctionne une conciergerie Airbnb ?',
+  paragraphs:['Le fonctionnement commence par l’étude du logement et une répartition écrite des missions. Avant l’ouverture du calendrier, le propriétaire et le prestataire définissent les accès, les conditions de séjour, les dépenses autorisées et les responsabilités pour la préparation du bien.', 'À chaque réservation, les dates et les consignes doivent parvenir aux intervenants concernés. Après le départ, les contrôles et la préparation relient un séjour au suivant. Le compte rendu rapproche ensuite les réservations, les recettes, les frais et les incidents pour permettre au propriétaire de décider.'],
+  links:[{label:'Comprendre les prix et les commissions de gestion',href:'/fr/blog/prix-conciergerie-airbnb-maroc'},{label:'Comparer co-hosting et conciergerie',href:'/fr/blog/cohosting-ou-conciergerie-airbnb-maroc'}],
+});
+conciergePillar.related = ['prix-conciergerie-airbnb-maroc','cohosting-ou-conciergerie-airbnb-maroc','gerer-location-courte-duree-distance-maroc','conciergerie-airbnb-meknes'];
+
 
 export function getBlogPosts(locale: Locale = 'fr'): BlogPost[] {
   if (locale === 'fr') return blogPosts;
@@ -210,6 +241,7 @@ export function getBlogPosts(locale: Locale = 'fr'): BlogPost[] {
     if (!translation) throw new Error(`Missing ${locale} blog translation: ${post.slug}`);
     return { ...post, ...translation, seoTitle: translation.title,
       modified: '2026-10-08',
+      related: post.related.filter(slug => !frenchOnlyBlogSlugs.includes(slug)),
       note: post.note ? (locale === 'en'
         ? 'This guide provides general information. Confirm the requirements for your property with the competent authorities and, where appropriate, a lawyer or accountant in Morocco.'
         : 'يقدم هذا الدليل معلومات عامة. أكد متطلبات عقارك مع السلطات المختصة، وعند الحاجة مع محام أو محاسب في المغرب.') : undefined,
@@ -223,7 +255,7 @@ export function getBlogPost(slug: string, locale: Locale = 'fr') {
 
 export function getBlogSources(locale: Locale = 'fr') {
   if (locale === 'fr') return blogSources;
-  return Object.fromEntries(Object.entries(blogSources).map(([id, source]) => [id, { ...source, title: localizedSourceTitles[locale][id] }]));
+  return Object.fromEntries(Object.entries(blogSources).map(([id, source]) => [id, { ...source, title: localizedSourceTitles[locale][id] ?? source.title }]));
 }
 
 export function blogReadingTime(post: BlogPost) {

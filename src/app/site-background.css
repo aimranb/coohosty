@@ -1,9 +1,7 @@
 /* One continuous landing-page grid across every public route. */
 .public-site{
   min-height:100vh;
-  background-color:#faf7f1;
-  background-image:linear-gradient(#ded7cc55 1px,transparent 1px),linear-gradient(90deg,#ded7cc55 1px,transparent 1px);
-  background-size:54px 54px;
+  background:#fff;
 }
 .public-site #main-content,
 .public-site #main-content.public-home>section,
@@ -25,3 +23,27 @@
 .public-site #main-content>section[aria-labelledby="landing-title"]{background:transparent}
 .public-site #main-content>section[aria-labelledby="landing-title"]:after{background:none}
 @media(max-width:760px){.public-site{background-size:40px 40px}}
+body{background:#fff}
+.public-site .site-header,.public-site .site-header .mobile-menu,.public-site .footer{background:#fff}
+
+.public-site .site-header,.public-site .site-header.compact{background:#f5e6ce;border-bottom:1px solid #d7ba8c;box-shadow:0 4px 20px #6d421012}
+.public-site .site-header .mobile-menu{background:#f5e6ce}
+.public-site .site-header .desktop-nav a,.public-site .site-header .language-select,.public-site .site-header .mobile-toggle,.public-site .site-header .call-link{color:#49331f}
+.public-site .site-header .desktop-nav a:hover,.public-site .site-header .mobile-menu a:hover{color:#984000}
+.public-site .site-header .header-button{background:#a44708;color:#fff;border-color:#a44708}
+.public-site .site-header .header-button:hover{background:#843600}
+.reservation-property-label{font-size:12px;font-weight:600;margin:0 0 14px;color:var(--ink)}
+.public-site .reservation-section .reservation-calendar .reservation-booking[data-channel="Airbnb"]{background:#c43c4b;color:white}
+.public-site .reservation-section .reservation-calendar .reservation-booking[data-channel="Booking.com"]{background:#003b95;color:white}
+.public-site .reservation-section .reservation-calendar .reservation-booking[data-channel="Vrbo"]{background:#3454b4;color:white}
+.reservation-booking[data-channel] .reservation-avatar{color:#222}
+.reservation-booking[data-channel] .reservation-booking-copy{display:flex;flex-direction:column;gap:1px;min-width:0}
+.reservation-booking[data-channel] .reservation-booking-platform{font-size:8px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:1}
+.reservation-channel-legend{display:flex;flex-wrap:wrap;gap:8px 16px;padding-top:13px;font-size:10px}
+.reservation-channel-legend>span{display:inline-flex;align-items:center;gap:6px}
+.reservation-channel-legend i{width:8px;height:8px;border-radius:50%;background:#c43c4b}
+.reservation-channel-legend [data-channel="Booking.com"] i{background:#003b95}
+.reservation-channel-legend [data-channel="Vrbo"] i{background:#3454b4}
+.reservation-channel[data-channel="Booking.com"]{color:#003b95;background:#edf3ff}
+.reservation-channel[data-channel="Vrbo"]{color:#3454b4;background:#eef1ff}
+.reservation-booking-mark{display:grid;place-items:center;width:22px;height:22px;border-radius:4px;background:white;color:inherit;font-size:14px}

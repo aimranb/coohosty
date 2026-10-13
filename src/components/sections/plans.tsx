@@ -8,6 +8,7 @@ import { PlanButton } from '@/components/forms/plan-button';
 import { Reveal } from '@/components/ui/reveal';
 import { MarrakechServiceLink } from '@/components/sections/marrakech-service-link';
 import { marrakechServiceContent } from '@/content/marrakech-service';
+import { ServiceAreaNote } from '@/components/ui/service-area-note';
 
 export async function Plans({ locale, market }: { locale: Locale; market?: 'marrakech' }) {
   const t = await getTranslations('plans');
@@ -15,6 +16,7 @@ export async function Plans({ locale, market }: { locale: Locale; market?: 'marr
   const seeMore = { en: 'See more', fr: 'Voir plus', ar: 'عرض المزيد' }[locale];
   return <section id="services" className="section plans-section"><div id="plans" className="container">
     <Reveal className="section-heading centered"><h2>{heading('title')}<br/><em>{heading('accent')}</em></h2><p className="packages-intro">{t('comparison')}</p></Reveal>
+    <ServiceAreaNote locale={locale}/>
     <div className="plan-services-layout"><div className="plan-grid plan-services-track">{site.planInfo.map(plan => <div key={plan.id} className="plan-services-card" data-plan-card={plan.id}><Reveal className="package-reveal"><article className={`plan-card comparison-card ${plan.featured ? 'featured' : ''}`}>
       <div className="plan-label"><span className="package-number">{t('label')} {plan.number}</span></div><h3>{plan.id}</h3>
       {market === 'marrakech' && plan.id === 'COHOST' && <p className="packages-intro"><strong>{marrakechServiceContent[locale].commission}</strong></p>}

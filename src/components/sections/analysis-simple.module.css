@@ -1,0 +1,7 @@
+.stage :global(.analysis-tool),.stage :global(.analysis-network-hub),.stage :global(.revenue-feature),.stage :global(.revenue-feature)::before{animation:none!important}
+.stage :global(.analysis-network-kicker){text-transform:none;letter-spacing:0;font-size:13px;color:#625b52;line-height:1.6}
+.stage :global(.analysis-network-center)>:global(.analysis-network-kicker){margin-bottom:0}
+@media(prefers-reduced-motion:no-preference){.stage[data-visible=true] :global(.analysis-network-targets){animation:arrive .65s ease-out both!important}}
+@keyframes arrive{from{opacity:.65;translate:0 8px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:no-preference){.stage[data-running=true] :global(.analysis-network-hub){animation:hub-focus 7.2s ease-in-out infinite!important}}
+@keyframes hub-focus{0%,18%,60%,100%{border-color:#ffb674;box-shadow:0 0 0 7px #fffaf5,0 5px 20px #ff852b12}28%,38%{border-color:#ff852b;box-shadow:0 0 0 7px #fffaf5,0 0 0 9px #ff852b18,0 0 24px #ff852b24}}

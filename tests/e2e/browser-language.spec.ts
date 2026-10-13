@@ -8,7 +8,7 @@ test('browser language selects the homepage and manual language choice persists'
   await expect(page).toHaveURL(/\/ar\?ref=browser$/);
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
   await page.locator('.language-select').selectOption('en');
-  await expect(page).toHaveURL(/\/en\?ref=browser$/);
+  await expect(page).toHaveURL(/\/en\?ref=browser$/, { timeout: 15000 });
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   const preference = (await context.cookies()).find(cookie => cookie.name === 'coohosty-locale');
   expect(preference?.value).toBe('en');

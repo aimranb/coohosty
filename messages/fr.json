@@ -1,8 +1,8 @@
 {
   "incomeIntro": {
     "eyebrow": "VOTRE BIEN, AU SERVICE DE VOS PROJETS",
-    "title": "Valorisez votre logement.",
-    "accent": "Révélez son potentiel locatif.",
+    "title": "Vos résultats,",
+    "accent": "à portée de main.",
     "lead": "Votre logement pourrait-il générer davantage de revenus ? COOHOSTY vous aide à étudier son potentiel.",
     "description": "Tarifs, réservations, échanges avec les voyageurs et ménage : nous coordonnons les détails pour vous permettre d’avancer sereinement.",
     "estimate": "Découvrir le potentiel de mon logement",
@@ -31,7 +31,7 @@
   "estimate": {
     "customerText": "Les informations de votre logement ont été reçues. Notre équipe les étudiera et vous contactera pour votre estimation de revenus.",
     "eyebrow": "VOTRE POTENTIEL AIRBNB",
-    "title": "Votre estimation de revenus gratuite",
+    "title": "Réservez votre estimation gratuite",
     "subtitle": "Parlez-nous de votre logement. Nous préparons votre analyse.",
     "progress": "Étapes de l’estimation",
     "steps": {
@@ -78,7 +78,7 @@
     },
     "select": "Choisir une option",
     "bedrooms": "{count, plural, one {# chambre} other {# chambres}}",
-    "allMorocco": "Tout le Maroc · Indiquez votre ville et votre adresse complète.",
+    "allMorocco": "Gestion digitale au Maroc. Gestion physique à Meknès.",
     "next": "Continuer",
     "back": "Étape précédente",
     "submit": "Obtenir mon estimation",
@@ -191,7 +191,7 @@
   },
   "hero": {
     "photoLabel": "GESTION AIRBNB",
-    "photoTitle": "Votre logement. Notre attention.",
+    "photoTitle": "Exemples d’appartements gérés",
     "photoDisclosure": "Photo illustrative",
     "collection": "COLLECTION COOHOSTY",
     "photoLocation": "01 — MAROC",
@@ -206,12 +206,13 @@
     "caption": "VOTRE BIEN, ENTRE DE BONNES MAINS",
     "location": "Pensé pour le Maroc.",
     "tag": "Un accompagnement. Une équipe.",
-    "scroll": "Découvrir l’approche COOHOSTY"
+    "scroll": "Découvrir l’approche COOHOSTY",
+    "description": "Retrouvez du temps pour vous. Nous gérons vos annonces, tarifs, réservations et messages partout au Maroc."
   },
   "services": {
     "eyebrow": "MOINS DE COMPLEXITÉ. PLUS DE MAÎTRISE.",
-    "title": "Tout ce dont votre bien a besoin.",
-    "accent": "Un accompagnement COOHOSTY.",
+    "title": "Votre location,",
+    "accent": "gérée à votre façon.",
     "AUDIT": "Comprendre les opportunités de votre bien.",
     "OPTIMIZE": "Améliorer les prix, le positionnement et les revenus.",
     "COHOST": "Confier la gestion de votre bien à COOHOSTY.",
@@ -219,35 +220,35 @@
   },
   "workflow": {
     "eyebrow": "LA MÉTHODE COOHOSTY",
-    "title": "Chaque détail. Connecté.",
-    "watching": "Un œil sur tout.",
+    "title": "Une gestion coordonnée, jusque dans les détails.",
+    "watching": "On garde un œil sur votre bien.",
     "listing": "Annonce",
     "pricing": "Tarifs",
     "guests": "Voyageurs",
     "calendar": "Calendrier",
     "revenue": "Revenus",
     "method": "Analyser → Optimiser → Gérer → Suivre → Améliorer",
-    "signatureTagline": "Votre bien. Notre attention. À chaque instant.",
+    "signatureTagline": "On suit votre annonce, vos voyageurs et vos réservations.",
     "pauseEyes": "Mettre en pause",
     "resumeEyes": "Relancer l’animation"
   },
   "revenue": {
     "eyebrow": "UNE STRATÉGIE DE REVENUS PLUS INTELLIGENTE",
-    "title": "De meilleures décisions.",
-    "accent": "Plus de potentiel.",
-    "sentence": "Nous utilisons des outils professionnels d’optimisation, dont PriceLabs, pour maximiser vos revenus.",
-    "dynamic": "Tarification dynamique",
-    "monitoring": "Veille concurrentielle",
-    "market": "Analyse du marché et de la demande",
-    "calendar": "Optimisation du calendrier",
-    "minimum": "Stratégie de séjour minimum",
-    "report": "Rapport de performance mensuel",
+    "title": "Des prix adaptés",
+    "accent": "à votre marché.",
+    "sentence": "Nous comparons les logements autour de vous et ajustons vos tarifs selon la demande.",
+    "dynamic": "Des prix ajustés à la demande",
+    "monitoring": "Les prix des logements voisins",
+    "market": "La demande dans votre quartier",
+    "calendar": "Vos dates disponibles",
+    "minimum": "La durée de séjour adaptée",
+    "report": "Un bilan clair chaque mois",
     "disclaimer": "Service indépendant. Les noms des plateformes et outils ne supposent aucune affiliation ni approbation."
   },
   "plans": {
     "eyebrow": "VOTRE BIEN. VOTRE NIVEAU D’ACCOMPAGNEMENT.",
-    "title": "Le bon accompagnement.",
-    "accent": "À chaque étape de votre projet.",
+    "title": "On vous aide à choisir.",
+    "accent": "Vous décidez ce qu’on prend en charge.",
     "label": "OFFRE",
     "badge": "Gestion complète",
     "AUDIT": {
@@ -320,9 +321,9 @@
     "idealFor": "Pensé pour",
     "deliverable": "Votre livrable",
     "viewScope": "Voir le détail des services",
-    "scopeNote": "Photographie, linge, produits d’accueil, maintenance et accompagnement assurance sont définis dans votre devis personnalisé. Les primes d’assurance et les interventions sur place sont facturées séparément ; les horaires d’assistance sont précisés au contrat.",
+    "scopeNote": "Présentez-nous votre logement pour étudier sa gestion digitale et ses pistes d’amélioration. Gestion physique complète à Meknès ; interventions locales à organiser séparément dans les autres villes.",
     "help": "Vous hésitez ? Parlons de votre bien.",
-    "comparison": "Tous les services, le niveau qui vous convient.",
+    "comparison": "On définit ensemble ce que vous souhaitez déléguer, puis on choisit la formule qui vous convient.",
     "included": "Inclus",
     "notIncluded": "Non inclus",
     "groups": {
@@ -475,8 +476,8 @@
     }
   },
   "footer": {
-    "description": "Co-hosting et gestion des revenus pour la location courte durée, guidés par la technologie.",
-    "contact": "Une meilleure expérience commence ici.",
+    "description": "Gestion digitale au Maroc. Gestion physique à Meknès.",
+    "contact": "Parlons de votre appartement.",
     "legal": "Mentions légales",
     "privacy": "Confidentialité",
     "rights": "Tous droits réservés.",
@@ -528,9 +529,9 @@
   },
   "destinations": {
     "eyebrow": "LE MAROC, NOTRE TERRAIN",
-    "title": "Des villes de caractère.",
-    "accent": "Un potentiel à révéler.",
-    "subtitle": "De la médina à l’océan, une approche adaptée à votre propriété.",
+    "title": "Un accompagnement adapté",
+    "accent": "à votre ville.",
+    "subtitle": "Cette gestion s’adapte à votre ville, à votre appartement et à vos voyageurs.",
     "platforms": "Vos annonces Airbnb, notre expertise",
     "independent": "Service indépendant. Aucune affiliation avec Airbnb.",
     "label": "Explorez le Maroc",
@@ -624,7 +625,7 @@
   },
   "faq": {
     "eyebrow": "TOUT SIMPLEMENT",
-    "title": "Vos questions. Nos réponses.",
+    "title": "Les réponses à vos questions.",
     "description": "Les points essentiels avant de nous confier votre bien.",
     "contact": "Parlons-en sur WhatsApp",
     "items": {
@@ -650,7 +651,7 @@
       },
       "onSite": {
         "question": "Le ménage, les photos et l’accueil sur place sont-ils inclus ?",
-        "answer": "COHOST comprend la gestion et la coordination prévues dans votre offre. Les coûts de ménage, de linge, de photographie, de maintenance et d’assurance sont distingués des honoraires de gestion dans votre proposition. AUDIT analyse l’annonce et OPTIMIZE pilote les revenus : ces deux offres ne comprennent pas automatiquement les interventions sur place."
+        "answer": "Présentez-nous votre logement pour étudier sa gestion digitale et ses pistes d’amélioration. Gestion physique complète à Meknès ; interventions locales à organiser séparément dans les autres villes."
       },
       "start": {
         "question": "Que se passe-t-il après ma demande d’estimation ?",
@@ -663,7 +664,7 @@
     }
   },
   "analysisTools": {
-    "title": "Les outils derrière notre analyse",
+    "title": "Les outils qu’on utilise pour vous",
     "pricing": "Tarification dynamique",
     "market": "Analyse du marché",
     "insights": "Tendances & concurrence",
@@ -672,7 +673,7 @@
   },
   "serviceProof": {
     "eyebrow": "LA CONFIANCE, AU CŒUR DU SERVICE",
-    "title": "L’expérience des propriétaires.",
+    "title": "On laisse nos clients vous raconter.",
     "subtitle": "Un accompagnement humain. Une attention à chaque détail.",
     "clients": "clients accompagnés",
     "source": "Voir le témoignage",

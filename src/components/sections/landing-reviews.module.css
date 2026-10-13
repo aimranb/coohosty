@@ -1,0 +1,10 @@
+.reviews{max-width:800px;margin:38px auto 0;text-align:start}
+.heading{text-align:center;font-size:14px;font-weight:600;color:#66615a;margin-bottom:16px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{margin:0;padding:24px;border-radius:20px;background:#fff;border:1px solid #e5dbcf;box-shadow:0 10px 35px #17130f05}
+.top{display:flex;justify-content:space-between;align-items:center;color:#ff852b;margin-bottom:12px}
+.stars{display:flex;gap:3px;color:#d99e42}.stars svg{fill:#ffc56c}
+.card blockquote{font-size:15px;line-height:1.7;margin:0 0 20px;color:#414141}
+.card figcaption{display:flex;align-items:center;gap:10px}.avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff0e2;color:#ff852b;font-size:13px;font-weight:600}
+.card strong{display:block;font-size:13px}.card small{display:block;font-size:12px;color:#66615a;margin-top:3px}.card a{margin-inline-start:auto;color:#ff852b}
+@media(max-width:600px){.cards{grid-template-columns:1fr}.card{padding:20px}}

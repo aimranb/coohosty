@@ -7,7 +7,7 @@ export const cohostingCities = [
 ] as const;
 export type CityMarket = typeof cohostingCities[number]['id'];
 export type CohostingCity = typeof cohostingCities[number];
-export const cityPageModified = '2026-10-10';
+export const cityPageModified = '2026-10-13';
 export function isCityMarket(value: unknown): value is CityMarket { return cohostingCities.some(city => city.id === value); }
 export function getCohostingCity(market: CityMarket) { return cohostingCities.find(city => city.id === market)!; }
 export function cityName(market: CityMarket, locale: Locale) { return getCohostingCity(market).names[locale]; }

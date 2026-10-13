@@ -1,0 +1,41 @@
+.section{padding:78px 0 72px;color:#17130f}
+.heading{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center;margin-bottom:34px}
+.eyebrow{display:block;color:#ff852b;font-size:12px;letter-spacing:.1em;font-weight:650;margin-bottom:14px}
+.heading h2{font-size:clamp(30px,3.1vw,44px);line-height:1.2;font-weight:650;letter-spacing:-1.4px;margin:0;text-wrap:balance}
+.heading h2>span{color:#ff852b}
+.summary p{font-size:18px;line-height:1.65;color:#625b52;max-width:470px;margin:0 0 17px}
+.cta{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:650;color:#17130f;text-decoration:underline;text-underline-offset:5px}
+.cta:hover{color:#ff852b}.cta:focus-visible{outline:2px solid #ff852b;outline-offset:6px;border-radius:3px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;list-style:none;padding:0;margin:0}
+.card{padding:25px 24px 20px;background:#fffdf9;border:1px solid #e5ddd2;border-radius:22px;display:flex;flex-direction:column;min-width:0;box-shadow:0 6px 22px #17130f04}
+.stepTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:19px}
+.number{display:grid;place-items:center;width:37px;height:37px;border-radius:50%;background:#ff852b15;color:#ad4906;font-weight:650;font-size:13px}
+.connector{color:#ff852b;opacity:.65}
+.card h3{font-size:21px;line-height:1.3;font-weight:650;letter-spacing:-.45px;margin:0 0 12px}
+.card>p{font-size:15px;line-height:1.7;color:#625b52;margin:0 0 24px;flex:1}
+.visual{height:184px;padding:16px 17px;background:#f6f1e9;border-radius:14px;overflow:hidden}
+.visualLabel{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#51483c;line-height:1.5}
+.visualLabel svg{color:#ff852b;flex-shrink:0}
+.bars{height:92px;display:flex;align-items:flex-end;gap:12px;border-bottom:1px solid #ded5c7;margin:12px 0 6px;padding:0 5px}
+.bars>span{flex:1;background:#e6c9ad;border-radius:5px 5px 0 0;transform-origin:bottom;min-width:0}
+.bars>span:nth-child(4){background:#ff852b}
+.caption{font-size:11px;color:#746b60}
+.priceLine{width:100%;height:90px;display:block;margin:12px 0 5px;overflow:visible}
+.gridLine{stroke:#ded5c7;stroke-width:1;fill:none}
+.trend{stroke:#ff852b;stroke-width:3;stroke-linecap:round;fill:none}
+.priceLabels{display:flex;justify-content:space-between;font-size:11px;color:#746b60}
+.tasks{display:grid;gap:11px;margin-top:14px}.tasks>div{display:flex;align-items:center;gap:10px;font-size:13px;color:#51483c}
+.taskCheck{width:25px;height:25px;border-radius:50%;background:#ff852b18;color:#ff852b;display:grid;place-items:center}
+@media(prefers-reduced-motion:no-preference){
+  :global([data-visible=true]) .bars>span{animation:grow .8s cubic-bezier(.22,1,.36,1) both}
+  :global([data-visible=true]) .trend{animation:draw 1.2s .55s ease both}
+  :global([data-visible=true]) .taskCheck{animation:check .5s ease both}
+}
+@keyframes grow{from{transform:scaleY(.12);opacity:.4}to{transform:scaleY(1);opacity:1}}
+@keyframes draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
+@keyframes check{from{transform:scale(.65);opacity:.25}to{transform:scale(1);opacity:1}}
+:global([dir=rtl]) .heading h2,:global([dir=rtl]) .card h3{letter-spacing:0;line-height:1.5}
+:global([dir=rtl]) .eyebrow{letter-spacing:0}
+:global([dir=rtl]) .connector,:global([dir=rtl]) .cta svg{transform:rotate(180deg)}
+@media(max-width:1050px){.heading{gap:32px}.card{padding:21px 18px 18px}.card h3{font-size:19px}.visual{padding:14px 12px}.bars{gap:8px}}
+@media(max-width:760px){.section{padding:48px 0}.heading{grid-template-columns:1fr;gap:18px;margin-bottom:26px}.heading h2{font-size:30px;letter-spacing:-.8px}.summary p{font-size:16px;max-width:none}.steps{display:flex;overflow-x:auto;gap:14px;scroll-snap-type:x mandatory;padding:2px 2px 16px;scroll-padding-inline:2px;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#ff852b60 #e5ddd2}.card{flex:0 0 min(85%,330px);scroll-snap-align:start;padding:22px;min-height:370px}.card h3{font-size:21px}.visual{height:184px}}

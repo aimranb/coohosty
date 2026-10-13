@@ -6,7 +6,7 @@ html,body{background:#fff}
 .analytics-bar-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .analytics-bar .analysis-tool{background:white;border:0;border-inline-end:1px solid #e9e5df;border-radius:0;padding:12px 24px 12px 0;box-shadow:none;animation:tool-presence 8s ease-in-out infinite;display:flex;flex-direction:column;gap:10px}
 .analytics-bar .analysis-tool:nth-child(2){animation-delay:2.6s}.analytics-bar .analysis-tool:nth-child(3){animation-delay:5.2s;border-inline-end:0}
-.analytics-bar .analysis-tool-brand{display:flex;align-items:center;gap:12px}.analytics-bar .analysis-tool-brand>strong{font-size:18px;color:#222}.analytics-bar .analysis-tool-brand>span{margin-inline-start:auto;color:#bc5200}
+.analytics-bar .analysis-tool-brand{display:flex;align-items:center;gap:12px}.analytics-bar .analysis-tool-brand>strong{font-size:18px;color:#222}.analytics-bar .analysis-tool-brand>span{margin-inline-start:auto;color:#ff852b}
 .analytics-bar .analysis-tool>span{font-size:13px;line-height:1.6;color:#666}.analytics-bar .analysis-tool>small{font-size:11px;color:#777}
 .analytics-bar>p{font-size:11px;line-height:1.7;color:#777;margin-top:20px;max-width:800px}
 .analytics-bar:hover .analysis-tool,.analytics-bar:focus-within .analysis-tool{animation-play-state:paused}
@@ -18,18 +18,18 @@ html,body{background:#fff}
 #faq .faq-item:first-child{border-top:0}
 #faq .faq-item summary{padding:32px 0;min-height:100px;gap:24px}
 #faq .faq-item h3{font-family:Georgia,'Times New Roman',serif;font-size:clamp(21px,2.3vw,31px);font-weight:400;line-height:1.5;letter-spacing:0;margin:0;color:#17120f}
-#faq .faq-plus,#faq .faq-item[open] .faq-plus{color:#bc5200;background:transparent;border:0;font-size:27px;font-weight:300;flex-shrink:0}
+#faq .faq-plus,#faq .faq-item[open] .faq-plus{color:#ff852b;background:transparent;border:0;font-size:27px;font-weight:300;flex-shrink:0}
 #faq .faq-answer{padding:0 50px 28px 0;max-width:900px}
 #faq .faq-answer p{font-size:15px;line-height:1.9;color:#666}
 [dir=rtl] #faq .faq-item h3{font-family:var(--font-poppins),Arial,sans-serif;font-size:24px}
 [dir=rtl] #faq .faq-answer{padding:0 0 28px 50px}
 @media(max-width:760px){.analytics-bar{margin-top:30px}.analytics-bar-track{grid-template-columns:1fr;gap:0}.analytics-bar .analysis-tool{border-inline-end:0;border-bottom:1px solid #eee;padding:18px 0;gap:7px}.analytics-bar .analysis-tool:last-child{border-bottom:0}.analytics-bar .analysis-tool-brand>strong{font-size:17px}#faq.faq-section{padding-block:50px 60px}#faq .faq-intro{margin-bottom:28px}#faq .faq-intro h2{letter-spacing:-1px}#faq .faq-item summary{padding:24px 0;min-height:84px;gap:16px}#faq .faq-item h3{font-size:22px}#faq .faq-answer{padding-inline:0;padding-bottom:24px}#faq .faq-answer p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.analytics-bar .analysis-tool{animation:none;opacity:1}}
-.analytics-tool-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid #e9e5df;border-radius:7px;font-size:10px;font-weight:600;color:#bc5200;flex-shrink:0}
+.analytics-tool-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid #e9e5df;border-radius:7px;font-size:10px;font-weight:600;color:#ff852b;flex-shrink:0}
 @media(max-width:760px){.analytics-bar-track{display:flex;overflow-x:auto;gap:20px;padding-block:6px;scroll-snap-type:x proximity}.analytics-bar .analysis-tool{flex:0 0 180px;border-bottom:0;border-inline-end:1px solid #eee;padding:12px 18px 12px 0;scroll-snap-align:start}.analytics-bar .analysis-tool:last-child{border-inline-end:0}}
 
 /* Give the two-line headings breathing room and keep navigation centered. */
-#revenue .revenue-layout h2,#services .section-heading h2{line-height:1.38}
+:is(#revenue,#market-study) .revenue-layout h2,#services .section-heading h2{line-height:1.38}
 .analytics-bar .analysis-tool-brand .analytics-tool-logo{width:36px;height:36px;object-fit:contain;flex-shrink:0;border-radius:0}
 @media(min-width:1051px){.site-header{width:calc(100% - 64px);max-width:1240px}.site-header .header-inner{padding-inline:22px;gap:18px}.site-header .desktop-nav{gap:8px}}
 

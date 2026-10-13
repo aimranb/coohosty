@@ -1,3 +1,4 @@
+import { serviceArea } from './service-area';
 import type { Locale } from '@/config/site';
 import { type CityMarket, cityName, getCohostingCity } from '@/config/cohosting-cities';
 import { marrakechMessages } from './marrakech-messages';
@@ -8,19 +9,38 @@ export const cohostingCopy = {
   ar: { eyebrow: 'COHOSTING · إدارة متكاملة', title: 'عقارك.', accent: 'اهتمامنا.', intro: 'تسلّمنا المفاتيح، ونهتم بإعلانك وضيوفك وعقارك.', discover: 'اكتشف الخدمات', start: 'لنتحدث عن عقارك', commissionEyebrow: 'عمولة واحدة. عناية متكاملة.', commissionTitle: 'الخدمة متكاملة.', commissionAccent: 'والعمولة ببساطة 20%.', rateLabel: 'عمولة عن كل حجز', rateNote: 'النسبة نفسها في مراكش والدار البيضاء وطنجة.', example: 'عمولتك بوضوح', base: 'المبلغ المعتمد للحساب', reservation: 'حجز واحد', month: 'مجموع الشهر', management: 'عمولة COOHOSTY', balance: 'الرصيد قبل المصاريف الأخرى', explanation: '20% من كل حجز أو 20% من مجموع الحجوزات: النتيجة نفسها عند اعتماد أساس الحساب نفسه.', terms: 'حساب توضيحي. يحدد عرض السعر أساس الحساب ورسوم المنصة والتنظيف والضرائب والمصاريف الإضافية.', services: 'كل ما يجعل الإقامة ناجحة.', servicesIntro: 'خدمات COHOST نفسها في المدن الثلاث، بتنظيم يناسب عقارك.', localTitle: 'العناية نفسها.', localAccent: 'باهتمام محلي.', areaLabel: 'حيّك وعقارك', localNote: 'يتم الاتفاق معك على نطاق الخدمة وكيفية التدخل قبل بدء الإدارة.', citiesTitle: 'ثلاث مدن. العناية نفسها.', cityLink: 'اكتشف إدارة العقار', faqTitle: 'إجابات واضحة.', faqRate: 'كيف تُحسب عمولة 20%؟', faqServices: 'ما الخدمات المشمولة؟', faqExpenses: 'ماذا عن التنظيف والمصاريف الأخرى؟', expenses: 'تنسيق الخدمات جزء من مرافقتنا. يوضح عرض السعر عمولة الإدارة ورسوم المنصة والتنظيف والضرائب ومصاريف الصيانة المحتملة قبل أي التزام.', faqStart: 'كيف أبدأ؟', startAnswer: 'قدّم تفاصيل عقارك في الاستمارة. ندرس خصائصه وموقعه، ثم نقترح نطاق إدارة وعرض سعر مناسبين.', formTitle: 'إقامتك القادمة تبدأ هنا.', photo: 'صورة توضيحية للعقار', home: 'الرئيسية', breadcrumb: 'إدارة العقارات', guide: 'دليل المالك', serviceScope: 'تُحدد شروط الخدمات ونطاقها في عرض السعر.' },
 } satisfies Record<Locale, Record<string, string>>;
 
+for (const locale of ['fr', 'en', 'ar'] as const) {
+  Object.assign(cohostingCopy[locale], {intro:serviceArea[locale].description, servicesIntro:serviceArea[locale].description, serviceScope:serviceArea[locale].description, localNote:serviceArea[locale].local, expenses:serviceArea[locale].description,
+    eyebrow:locale==='fr'?'COHOSTING · GESTION DIGITALE':locale==='en'?'COHOSTING · DIGITAL MANAGEMENT':'إدارة رقمية',
+    localAccent:locale==='fr'?'Votre organisation locale.':locale==='en'?'Your local arrangements.':'ترتيباتك المحلية.',
+    commissionTitle:locale==='fr'?'Votre gestion digitale.':locale==='en'?'Your digital management.':'إدارتك الرقمية.'});
+}
+
 const cityDescriptions = {
-  marrakech: { fr: 'Appartements à Guéliz ou Hivernage, riads dans la Médina, villas dans la Palmeraie : les accès, les arrivées et l’entretien se préparent selon votre bien.', en: 'Apartments in Gueliz or Hivernage, riads in the Medina, villas in the Palmeraie: access, arrivals and care are organised around your home.', ar: 'شقق جليز والحي الشتوي، ورياض المدينة القديمة وفلل النخيل: نهيئ الوصول والاستقبال والعناية وفق احتياجات عقارك.' },
-  casablanca: { fr: 'Pour un appartement à Maârif, Gauthier ou Racine, ou un logement à Aïn Diab, nous organisons les accès, le confort et le suivi entre les séjours. Les règles de la résidence et les besoins du logement guident la préparation.', en: 'For an apartment in Maarif, Gauthier or Racine, or a home in Ain Diab, we organise access, comfort and care between stays. Residence rules and the needs of the property guide preparations.', ar: 'لشقة في المعاريف أو غوتييه أو راسين، أو مسكن في عين الذياب، ننظم الوصول والراحة والمتابعة بين الإقامات وفق قواعد الإقامة واحتياجات العقار.' },
-  tanger: { fr: 'À Malabata, Iberia, Marshan ou dans le centre-ville, votre appartement ou maison demande une organisation attentive : accès, accueil et entretien des espaces. Nous préparons la gestion selon les caractéristiques de votre logement.', en: 'In Malabata, Iberia, Marshan or the city centre, your apartment or home needs thoughtful organisation: access, welcoming guests and caring for spaces. Management is planned around your property.', ar: 'في مالباطا أو إيبيريا أو مرشان أو وسط المدينة، يحتاج عقارك إلى تنظيم دقيق للوصول والاستقبال والعناية بالمساحات. نخطط للإدارة حسب خصائص مسكنك.' },
+  "marrakech": {
+    "fr": "Pour votre logement à Marrakech, nous proposons la gestion digitale des annonces, des tarifs, des réservations et des messages. Les clés, le ménage et les interventions nécessitent des prestataires locaux organisés séparément.",
+    "en": "For your property in Marrakech, we offer digital management of listings, rates, bookings and messages. Keys, cleaning and physical work require separately arranged local providers.",
+    "ar": "نقدم إدارة رقمية للإعلانات والأسعار والحجوزات والرسائل لعقارك في مراكش. يتطلب تسليم المفاتيح والتنظيف والتدخلات ترتيبات محلية منفصلة."
+  },
+  "casablanca": {
+    "fr": "Pour votre logement à Casablanca, nous proposons la gestion digitale des annonces, des tarifs, des réservations et des messages. Les clés, le ménage et les interventions nécessitent des prestataires locaux organisés séparément.",
+    "en": "For your property in Casablanca, we offer digital management of listings, rates, bookings and messages. Keys, cleaning and physical work require separately arranged local providers.",
+    "ar": "نقدم إدارة رقمية للإعلانات والأسعار والحجوزات والرسائل لعقارك في الدار البيضاء. يتطلب تسليم المفاتيح والتنظيف والتدخلات ترتيبات محلية منفصلة."
+  },
+  "tanger": {
+    "fr": "Pour votre logement à Tanger, nous proposons la gestion digitale des annonces, des tarifs, des réservations et des messages. Les clés, le ménage et les interventions nécessitent des prestataires locaux organisés séparément.",
+    "en": "For your property in Tanger, we offer digital management of listings, rates, bookings and messages. Keys, cleaning and physical work require separately arranged local providers.",
+    "ar": "نقدم إدارة رقمية للإعلانات والأسعار والحجوزات والرسائل لعقارك في طنجة. يتطلب تسليم المفاتيح والتنظيف والتدخلات ترتيبات محلية منفصلة."
+  }
 };
 export function cityDescription(market: CityMarket, locale: Locale) { return cityDescriptions[market][locale]; }
 export function citySeoTitle(market: CityMarket, locale: Locale) {
   const name = cityName(market, locale);
-  return locale === 'fr' ? `Cohosting ${name} · Conciergerie Airbnb à 20 % | COOHOSTY` : locale === 'en' ? `${name} Airbnb Cohosting · 20% Management | COOHOSTY` : `إدارة Airbnb في ${name} بعمولة 20% | COOHOSTY`;
+  return locale === 'fr' ? `Co-hosting digital à ${name} | COOHOSTY` : locale === 'en' ? `Digital co-hosting in ${name} | COOHOSTY` : `إدارة رقمية لعقارك في ${name} | COOHOSTY`;
 }
 export function citySeoDescription(market: CityMarket, locale: Locale) {
   const name = cityName(market, locale);
-  return locale === 'fr' ? `Cohosting à ${name} : gestion des annonces, voyageurs et logement. Tous les services COHOST avec une commission fixe de 20 % par réservation. Découvrez notre offre.` : locale === 'en' ? `Cohosting in ${name}: listing, guest and property management. All COHOST services with a fixed 20% commission per booking. Explore our offer.` : `إدارة عقارك في ${name}: الإعلان والضيوف والعناية بالمسكن. جميع خدمات COHOST بعمولة ثابتة 20% عن كل حجز.`;
+  return `${name} : ${serviceArea[locale].description}`;
 }
 export function getCityMessages(market: CityMarket, locale: Locale) {
   const name = cityName(market, locale);

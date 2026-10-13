@@ -7,6 +7,7 @@ import { isLocale, site } from '@/config/site';
 import comparison from '@/config/service-comparison.json';
 import { MarrakechServiceLink } from '@/components/sections/marrakech-service-link';
 import { serviceStructuredData } from '@/lib/structured-data';
+import { ServiceAreaNote } from '@/components/ui/service-area-note';
 
 type PageProps = { params: Promise<{ locale: string; plan: string }> };
 
@@ -52,6 +53,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <h1>{plan.id}</h1><OfferTerms plan={plan.id}/>
       <div className="service-detail-actions"><Link href={formUrl} className="button service-detail-form">{labels.form}<ArrowUpRight size={18}/></Link></div>
     </header>
+    <ServiceAreaNote locale={locale}/>
     <section className="service-detail-included" aria-labelledby="included-title"><h2 id="included-title">{labels.included}</h2>
       <div className="service-detail-groups">{groups.map(group => <section key={group.id} className="service-detail-group"><h3>{t(`groups.${group.id}`)}</h3><ul>{group.features.map(feature => <li key={feature}><Check size={18} aria-hidden="true"/><span>{t(`features.${feature}`)}</span></li>)}</ul></section>)}</div>
     </section>

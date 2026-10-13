@@ -1,8 +1,8 @@
 {
   "incomeIntro": {
     "eyebrow": "YOUR PROPERTY, WORKING FOR YOU",
-    "title": "Make more of your property.",
-    "accent": "Unlock its rental potential.",
+    "title": "Your results,",
+    "accent": "within easy reach.",
     "lead": "Could your property be earning more? Let COOHOSTY help you explore its potential.",
     "description": "From pricing and reservations to guest communication and housekeeping, we coordinate the details so you can focus on your plans.",
     "estimate": "Find out what your property could earn",
@@ -78,7 +78,7 @@
     },
     "select": "Select an option",
     "bedrooms": "{count, plural, one {# bedroom} other {# bedrooms}}",
-    "allMorocco": "All Morocco · Enter any city and full address.",
+    "allMorocco": "Digital management across Morocco. On-site management in Meknes.",
     "next": "Continue",
     "back": "Previous step",
     "submit": "Get my estimate",
@@ -191,7 +191,7 @@
   },
   "hero": {
     "photoLabel": "AIRBNB MANAGEMENT",
-    "photoTitle": "Your home. Our care.",
+    "photoTitle": "Examples of managed apartments",
     "photoDisclosure": "Illustrative photo",
     "collection": "COOHOSTY COLLECTION",
     "photoLocation": "01 — MOROCCO",
@@ -206,12 +206,13 @@
     "caption": "YOUR PROPERTY, IN GOOD HANDS",
     "location": "Made for Morocco.",
     "tag": "One service. One team.",
-    "scroll": "Explore the COOHOSTY approach"
+    "scroll": "Explore the COOHOSTY approach",
+    "description": "Get your time back. We manage your listings, rates, bookings and messages across Morocco."
   },
   "services": {
     "eyebrow": "LESS COMPLEXITY. MORE CONTROL.",
-    "title": "Everything your property needs.",
-    "accent": "One COOHOSTY service.",
+    "title": "Your rental,",
+    "accent": "managed your way.",
     "AUDIT": "Understand your property’s opportunities.",
     "OPTIMIZE": "Improve pricing, positioning & revenue.",
     "COHOST": "Let COOHOSTY manage the property for you.",
@@ -219,35 +220,35 @@
   },
   "workflow": {
     "eyebrow": "THE COOHOSTY METHOD",
-    "title": "Every detail. Connected.",
-    "watching": "An eye on everything.",
+    "title": "Coordinated management, down to the details.",
+    "watching": "We look after your property.",
     "listing": "Listing",
     "pricing": "Pricing",
     "guests": "Guests",
     "calendar": "Calendar",
     "revenue": "Revenue",
     "method": "Analyze → Optimize → Manage → Monitor → Improve",
-    "signatureTagline": "Your property. Our attention. Every moment.",
+    "signatureTagline": "We follow your listing, guests and bookings.",
     "pauseEyes": "Pause animation",
     "resumeEyes": "Resume animation"
   },
   "revenue": {
     "eyebrow": "A SMARTER REVENUE STRATEGY",
-    "title": "Better decisions.",
-    "accent": "Greater potential.",
-    "sentence": "We use professional optimization tools, including PriceLabs, to maximize your revenue.",
-    "dynamic": "Dynamic pricing",
-    "monitoring": "Competitor monitoring",
-    "market": "Market & demand analysis",
-    "calendar": "Calendar optimization",
-    "minimum": "Minimum-stay strategy",
-    "report": "Monthly performance report",
+    "title": "Prices adjusted",
+    "accent": "to your market.",
+    "sentence": "We compare nearby properties and adjust your rates to local demand.",
+    "dynamic": "Prices adjusted to demand",
+    "monitoring": "Prices of nearby properties",
+    "market": "Demand in your area",
+    "calendar": "Your available dates",
+    "minimum": "The right length of stay",
+    "report": "A clear monthly summary",
     "disclaimer": "Independent service. Platform and tool names do not imply affiliation or endorsement."
   },
   "plans": {
     "eyebrow": "YOUR PROPERTY. YOUR LEVEL OF SUPPORT.",
-    "title": "The right support.",
-    "accent": "At every stage of your property.",
+    "title": "We help you choose.",
+    "accent": "You decide what we handle.",
     "label": "PLAN",
     "badge": "Full management",
     "AUDIT": {
@@ -320,9 +321,9 @@
     "idealFor": "Designed for",
     "deliverable": "What you receive",
     "viewScope": "Explore the full scope",
-    "scopeNote": "Photography, linen, toiletries, maintenance and insurance support are agreed in your personalized quote. Insurance premiums and on-site costs are separate; guest support hours are specified in the agreement.",
+    "scopeNote": "Tell us about your property to review its digital management and opportunities for improvement. Full on-site management in Meknes; local interventions arranged separately in other cities.",
     "help": "Not sure which fits? Let’s discuss your property.",
-    "comparison": "Every service. Choose your level of support.",
+    "comparison": "We discuss what you want to delegate, then choose the support that suits you.",
     "included": "Included",
     "notIncluded": "Not included",
     "groups": {
@@ -475,8 +476,8 @@
     }
   },
   "footer": {
-    "description": "Technology-led co-hosting and revenue management for short-term rentals.",
-    "contact": "A better property journey starts here.",
+    "description": "Digital management across Morocco. On-site management in Meknes.",
+    "contact": "Let’s talk about your apartment.",
     "legal": "Legal notice",
     "privacy": "Privacy policy",
     "rights": "All rights reserved.",
@@ -528,9 +529,9 @@
   },
   "destinations": {
     "eyebrow": "ROOTED IN MOROCCO",
-    "title": "Remarkable cities.",
-    "accent": "Exceptional possibilities.",
-    "subtitle": "From the medina to the ocean, an approach tailored to your property.",
+    "title": "Support that fits",
+    "accent": "your city.",
+    "subtitle": "Your management is adapted to your city, your apartment and your guests.",
     "platforms": "Your Airbnb listings, our expertise",
     "independent": "Independent service. No affiliation with Airbnb.",
     "label": "Explore Morocco",
@@ -624,7 +625,7 @@
   },
   "faq": {
     "eyebrow": "KEEPING IT SIMPLE",
-    "title": "Your questions. Answered.",
+    "title": "Answers to your questions.",
     "description": "The essentials before entrusting us with your property.",
     "contact": "Talk to us on WhatsApp",
     "items": {
@@ -650,7 +651,7 @@
       },
       "onSite": {
         "question": "Are cleaning, photography and on-site check-in included?",
-        "answer": "COHOST includes the management and coordination agreed in your offer. Cleaning, linen, photography, maintenance and insurance costs are separated from management fees in your proposal. AUDIT analyses the listing and OPTIMIZE manages revenue: neither automatically includes on-site services."
+        "answer": "Tell us about your property to review its digital management and opportunities for improvement. Full on-site management in Meknes; local interventions arranged separately in other cities."
       },
       "start": {
         "question": "What happens after I request an income estimate?",
@@ -663,7 +664,7 @@
     }
   },
   "analysisTools": {
-    "title": "The tools behind our analysis",
+    "title": "The tools we use for you",
     "pricing": "Dynamic pricing",
     "market": "Market analysis",
     "insights": "Trends & competition",
@@ -672,7 +673,7 @@
   },
   "serviceProof": {
     "eyebrow": "TRUST AT THE HEART OF OUR SERVICE",
-    "title": "The owner experience.",
+    "title": "We let our clients tell you.",
     "subtitle": "Personal support. Attention to every detail.",
     "clients": "clients supported",
     "source": "View testimonial",

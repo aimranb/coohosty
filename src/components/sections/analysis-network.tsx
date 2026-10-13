@@ -2,8 +2,9 @@
 
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { Pause, Play } from 'lucide-react';
-import { Logo } from '@/components/ui/logo';
 import { useVisibleMotion } from '@/components/ui/use-visible-motion';
+import { Logo } from '@/components/ui/logo';
+import styles from './analysis-simple.module.css';
 import { motionCopy } from '@/config/motion-copy';
 import type { Locale } from '@/config/site';
 
@@ -70,11 +71,12 @@ export function AnalysisNetwork({ tools, children, locale }: { tools: ReactNode;
     return () => { disposed = true; observer.disconnect(); window.removeEventListener('resize', schedule); cancelAnimationFrame(frame); };
   }, [root]);
 
-  return <div ref={root} className="analysis-network" data-running={running} data-reduced={reduced} role="group" aria-label={copy.network}>
+  return <div ref={root} className={`analysis-network ${styles.stage}`} data-running={running} data-reduced={reduced} role="group" aria-label={copy.network}>
     <svg className="analysis-network-wires" viewBox={`0 0 ${geometry.width} ${geometry.height}`} aria-hidden="true">
+      <defs><linearGradient id="market-input-glow"><stop stopColor="#ffb674"/><stop offset="1" stopColor="#ff852b"/></linearGradient><linearGradient id="market-output-glow"><stop stopColor="#ff852b"/><stop offset="1" stopColor="#ffc58d"/></linearGradient></defs>
       {geometry.connections.map(connection => <g key={connection.id} className={`analysis-connection ${connection.kind}`} style={{ '--launch-delay': `${connection.kind === 'input' ? connection.index * .24 : 2.1 + connection.index * .28}s` } as CSSProperties}>
         <path className="analysis-wire" d={connection.path} fill="none"/>
-        <path className="analysis-beam" d={connection.path} fill="none" pathLength="100"/>
+        <path className="analysis-beam" d={connection.path} fill="none" pathLength="100" style={{stroke:`url(#market-${connection.kind}-glow)`}}/>
         <g className="analysis-projectile" style={{ offsetPath: `path("${connection.path}")` }}>
           <path className="analysis-projectile-trail" d="M-20 0 H-5"/>
           <path className="analysis-projectile-arrow" d="M-7 -4 L0 0 L-7 4"/>
@@ -82,11 +84,12 @@ export function AnalysisNetwork({ tools, children, locale }: { tools: ReactNode;
         </g>
       </g>)}
     </svg>
-    <div className="analysis-network-sources"><span className="analysis-network-kicker">{copy.sources}</span>{tools}</div>
+    <div className="analysis-network-sources"><span className="analysis-network-kicker">{locale === 'fr' ? '1. Nous étudions le marché' : locale === 'en' ? '1. We study your market' : '1. ندرس السوق'}</span>{tools}</div>
     <div className="analysis-network-center">
+      <span className="analysis-network-kicker">{locale === 'fr' ? '2. Nous analysons' : locale === 'en' ? '2. We analyse' : '2. نحلّل البيانات'}</span>
       <div className="analysis-network-hub" data-flow-hub><Logo href={`/${locale}`} centered/></div>
-      <button type="button" className="analysis-network-pause" aria-label={paused ? copy.play : copy.pause} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={13}/> : <Pause size={13}/>}</button>
+      <button type="button" className="analysis-network-pause" aria-label={paused ? copy.play : copy.pause} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play size={13} aria-hidden="true"/> : <Pause size={13} aria-hidden="true"/>}</button>
     </div>
-    <div className="analysis-network-targets"><span className="analysis-network-kicker">{copy.decisions}</span>{children}</div>
+    <div className="analysis-network-targets"><span className="analysis-network-kicker">{locale === 'fr' ? '3. Nous ajustons votre location' : locale === 'en' ? '3. We adjust your rental' : '3. نحسّن تدبير عقارك'}</span>{children}</div>
   </div>;
 }

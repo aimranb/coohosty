@@ -1,0 +1,10 @@
+.pathway{margin:35px 0;padding:25px;border:1px solid var(--brand-border);border-radius:18px;background:#fff}
+.pathway h2{font-size:23px;line-height:1.4;margin-bottom:10px;color:#171717}
+.pathway p{font-size:15px;color:#414141;line-height:1.75}
+.pathway ul{display:grid;gap:12px;margin:20px 0;padding-inline-start:20px}
+.pathway a{color:#171717;text-decoration:underline;text-underline-offset:4px;line-height:1.65}
+.pathway a:hover{color:#914210}.all{font-size:14px;font-weight:650}
+.estimate{padding:25px;margin:30px 0;border:1px solid #f0c7a3;border-radius:18px;background:#fff8f1;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.estimate h2{font-size:23px;line-height:1.35;margin:0 0 10px}.estimate p{font-size:15px;line-height:1.7;margin:0}
+.estimate>a{display:inline-flex;gap:12px;align-items:center;padding:13px 18px;border-radius:12px;background:#ff852b;color:#171717;font-weight:650;white-space:nowrap;text-decoration:none}
+@media(max-width:760px){.estimate{align-items:flex-start;flex-direction:column;padding:20px}.estimate h2,.pathway h2{font-size:21px}.pathway{padding:20px}}

@@ -95,7 +95,7 @@ export function EstimateBar({ locale, emailEnabled, completion = false, initialP
     const revenue = benchmark ? `\n${t('benchmark')}: ${money(benchmark.lower)} – ${money(benchmark.upper)} / ${t('month')} (PriceLabs)` : '';
     return `${site.whatsapp}?text=${encodeURIComponent(`${t('whatsappIntro')}\n\n${entries.map(([key, value]) => `${key}: ${value}`).join('\n')}${revenue}`)}`;
   }
-  function money(value: number) { return new Intl.NumberFormat(locale === 'ar' ? 'ar-MA' : locale === 'fr' ? 'fr-MA' : 'en-GB', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value); }
+  function money(value: number) { return new Intl.NumberFormat(locale === 'ar' ? 'ar-MA' : locale === 'fr' ? 'fr-MA' : 'en-GB', { numberingSystem:'latn',  style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value); }
   async function submit(data: EstimateData) {
     if (locked.current) return;
     locked.current = true; setError('');

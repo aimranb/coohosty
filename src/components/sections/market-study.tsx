@@ -1,0 +1,10 @@
+import { getLocale, getTranslations } from 'next-intl/server';
+import { TrendingUp, Radar, ChartNoAxesCombined, CalendarCheck, Clock3, FileChartColumn } from 'lucide-react';
+import { isLocale } from '@/config/site';
+import { Reveal } from '@/components/ui/reveal';
+import { AnalysisTools } from './analysis-tools';
+import { AnalysisNetwork } from './analysis-network';
+
+const content={fr:{label:'ÉTUDE DE VOTRE MARCHÉ',title:'Un appartement prêt. Un marché bien compris.',intro:'Avant de fixer vos tarifs, on regarde les logements similaires, la demande et les habitudes des voyageurs dans votre ville.'},en:{label:'YOUR MARKET STUDY',title:'A ready apartment. A market we understand.',intro:'Before setting your rates, we look at similar properties, demand and guest habits in your city.'},ar:{label:'دراسة سوق عقارك',title:'شقة جاهزة. وسوق نفهمه جيدًا.',intro:'قبل تحديد أسعارك، ندرس العقارات المشابهة والطلب وسلوك المسافرين في مدينتك.'}};
+const features=[{id:'dynamic',icon:TrendingUp},{id:'monitoring',icon:Radar},{id:'market',icon:ChartNoAxesCombined},{id:'calendar',icon:CalendarCheck},{id:'minimum',icon:Clock3},{id:'report',icon:FileChartColumn}];
+export async function MarketStudy(){const requested=await getLocale();const locale=isLocale(requested)?requested:'fr';const t=content[locale];const labels=await getTranslations('revenue');return <section id="market-study" className="section container market-study-section"><Reveal><header className="market-study-heading"><span className="eyebrow">{t.label}</span><h2>{t.title}</h2><p>{t.intro}</p></header></Reveal><Reveal delay={.18}><AnalysisNetwork locale={locale} tools={<AnalysisTools/>}><div className="revenue-grid">{features.map(({id,icon:Icon},index)=><div className="revenue-feature" data-flow-target={id} key={id}><span className="revenue-feature-icon"><Icon size={25} strokeWidth={1.5} aria-hidden="true"/></span><h3>{labels(id)}</h3><span className="revenue-feature-number" aria-hidden="true">{String(index+1).padStart(2,'0')}</span></div>)}</div></AnalysisNetwork></Reveal></section>}

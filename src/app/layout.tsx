@@ -37,7 +37,17 @@ import './service-detail.css';
 import './market-network.css';
 import './maintenance.css';
 import './site-background.css';
-const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-poppins', display: 'swap' });
+import './booking-identity.css';
+import './warm-identity.css';
+import './arabic-refinement.css';
+import './white-background.css';
+const inter = localFont({ src: './fonts/inter-latin-variable.woff2', weight: '100 900', variable: '--font-latin', display: 'swap' });
+const arabic = localFont({src:[
+  {path:'./fonts/noto-sans-arabic-arabic-400-normal.woff2',weight:'400',style:'normal'},
+  {path:'./fonts/noto-sans-arabic-arabic-500-normal.woff2',weight:'500',style:'normal'},
+  {path:'./fonts/noto-sans-arabic-arabic-600-normal.woff2',weight:'600',style:'normal'},
+  {path:'./fonts/noto-sans-arabic-arabic-700-normal.woff2',weight:'700',style:'normal'},
+],variable:'--font-arabic',display:'swap',preload:false});
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   icons: { icon: '/logo/favicon.svg', apple: '/logo/icon.svg' },
@@ -46,5 +56,5 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const requested = (await headers()).get('x-cohosty-locale') || 'fr';
   const locale = isLocale(requested) ? requested : 'fr';
-  return <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}><body className={inter.variable}>{children}</body></html>;
+  return <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}><body className={locale==='ar'?`${inter.variable} ${arabic.variable}`:inter.variable}>{children}</body></html>;
 }

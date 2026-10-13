@@ -1,0 +1,6 @@
+:root{--brand-page:#fff;--reference-paper:#fff;--brand-paper-grid:none}
+body,.public-site{background:#fff;background-image:none}
+.public-site .site-header,.public-site .site-header.compact,.public-site .site-header .mobile-menu,.public-site .footer{background:#fff}
+.public-site #main-content>section[aria-labelledby="landing-title"]{background:#fff;background-image:none}
+.public-site #main-content>section[aria-labelledby="landing-title"]::after{background:none}
+.service-area-note{padding:20px 24px;margin:24px 0;border:1px solid var(--brand-border);border-radius:16px;background:#fff;color:#171717}.service-area-note strong{display:block;font-size:17px;line-height:1.5;margin-bottom:8px}.service-area-note p{font-size:14px;line-height:1.9;max-width:1050px;color:#414141}

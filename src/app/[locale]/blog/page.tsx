@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { isLocale, site } from '@/config/site';
 import { getBlogPosts } from '@/content/blog';
+import { blogPathways } from '@/content/blog-pathways';
 import { BlogCard } from '@/components/blog/blog-card';
 import { BlogCta } from '@/components/blog/blog-cta';
 import { blogMetadata } from '@/lib/blog-seo';
@@ -43,7 +44,10 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       <div><span className={styles.journalEyebrow}><i/>{t.journal}</span><h1>{t.recent}</h1></div>
       <span className={styles.entryCount}>{blogPosts.length} {t.guides}</span>
     </header>
-    <div className={styles.grid}>{blogPosts.map((post, index) => <BlogCard key={post.slug} post={post} featured={index === 0} locale={locale}/>)}</div>
+    {locale === 'fr' ? <>
+      <nav className={styles.topicNav} aria-label="Choisir votre sujet">{blogPathways.map(pathway => <a key={pathway.id} href={`#${pathway.id}`}>{pathway.title}</a>)}</nav>
+      {blogPathways.map(pathway => <section key={pathway.id} id={pathway.id} className={styles.topicGroup} aria-labelledby={`${pathway.id}-title`}><h2 id={`${pathway.id}-title`}>{pathway.title}</h2><p>{pathway.description}</p><div className={styles.grid}>{pathway.slugs.flatMap(slug => blogPosts.filter(post => post.slug === slug)).map((post, index) => <BlogCard key={post.slug} post={post} featured={index === 0} locale={locale}/>)}</div></section>)}
+    </> : <div className={styles.grid}>{blogPosts.map((post, index) => <BlogCard key={post.slug} post={post} featured={index === 0} locale={locale}/>)}</div>}
     <BlogCta locale={locale}/>
   </div></main>;
 }

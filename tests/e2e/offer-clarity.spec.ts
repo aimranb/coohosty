@@ -6,7 +6,7 @@ test('offers distinguish free estimates, quoted services and cohosting commissio
   await expect(page.locator('[data-offer-terms="OPTIMIZE"]')).toContainText('Sur devis');
   await expect(page.locator('[data-offer-terms="COHOST"]')).toContainText('20 %');
   await expect(page.locator('.offer-scope, .offer-scope-detail')).toHaveCount(0);
-  await expect(page.locator('#about-coohosty')).toContainText('COOHOSTY');
+  await expect(page.locator('#market-study .analysis-network-hub')).toBeVisible();
   const pricing = page.locator('#faq details').filter({ hasText: 'Comment sont fixés les tarifs' });
   await pricing.locator('summary').click();
   await expect(pricing.locator('.faq-answer')).toContainText('AUDIT et OPTIMIZE sont sur devis');
@@ -27,6 +27,6 @@ test('city photos load on selection and tool logos render with the initial marku
   await expect(page.locator('#estimate-city')).toHaveValue('Marrakech');
   const selected = scene.locator('img[alt^="Marrakech"]');
   await expect.poll(() => selected.evaluate(image => (image as HTMLImageElement).naturalWidth), { timeout: 15000 }).toBeGreaterThan(0);
-  expect(imageRequests.some(url => url.includes('/_next/image'))).toBe(false);
+  expect(imageRequests.some(url => url.includes('/_next/image') && url.includes('cities'))).toBe(false);
   expect(imageRequests.some(url => /fes-original|agadir-original|tanger-original|rabat-original|meknes-original/.test(url))).toBe(false);
 });

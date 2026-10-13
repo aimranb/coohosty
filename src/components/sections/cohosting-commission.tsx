@@ -19,7 +19,7 @@ export function CohostingCommission({ locale }: { locale: Locale }) {
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
-  const money = (value: number) => new Intl.NumberFormat(locale === 'ar' ? 'ar-MA' : `${locale}-MA`, { style: 'currency', currency: 'MAD', maximumFractionDigits: 0 }).format(value);
+  const money = (value: number) => new Intl.NumberFormat(locale === 'ar' ? 'ar-MA' : `${locale}-MA`, { numberingSystem:'latn',  style: 'currency', currency: 'MAD', maximumFractionDigits: 0 }).format(value);
   const commission = Math.round(amount * 0.2);
   return <section ref={root} id="commission" className={styles.commission} aria-labelledby="commission-title" data-commission>
     <div className={styles.commissionHeading}><span className={styles.kicker}>{copy.commissionEyebrow}</span><h2 id="commission-title">{copy.commissionTitle}<br/><span>{copy.commissionAccent}</span></h2></div>

@@ -4,6 +4,7 @@ import { ArrowRight, FileText, KeyRound, Check } from 'lucide-react';
 import type { BlogPost } from '@/content/blog';
 import { marrakechNeighborhoods } from '@/content/marrakech-service';
 import styles from './blog-journal.module.css';
+import { seoBlogSlugs } from '@/config/blog';
 
 const conciergeCoverImages: Record<string, string> = {
   'conciergerie-airbnb-maroc': '/images/optimized/hero-interior-3-7dc2908220.webp',
@@ -14,6 +15,7 @@ const conciergeCoverImages: Record<string, string> = {
 export function BlogCover({ post, locale = 'fr' }: { post: BlogPost; locale?: Locale }) {
   const kind = post.slug;
   const neighborhood = marrakechNeighborhoods.find(area => area.slug === kind);
+  if ((seoBlogSlugs as readonly string[]).includes(kind)) return <div className={styles.cover} aria-hidden="true"><Image src={kind.includes('distance') || kind.includes('cohosting') ? '/images/design/living-natural-v1.webp' : '/images/design/bedroom-natural-v1.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/><div className={styles.coverShade}/><span className={styles.coverTag}>{post.category}</span><div className={styles.coverPhotoCaption}><strong>{post.title}</strong></div></div>;
   if (locale !== 'fr') return <div className={styles.cover} aria-hidden="true">
     <Image src={kind.includes('casablanca') || kind.includes('police') ? '/images/optimized/hero-interior-warm-98ad1d0a55.webp' : '/images/optimized/hero-interior-6-f56b18dc0f.webp'} alt="" fill sizes="(max-width: 600px) 90vw, 30vw" className={styles.coverPhoto}/>
     <div className={styles.coverShade}/><span className={styles.coverTag}>{post.category}</span>
@@ -36,11 +38,11 @@ export function BlogCover({ post, locale = 'fr' }: { post: BlogPost; locale?: Lo
     </>}
     {kind === 'fiscalite-taxes-airbnb-maroc' && <div className={styles.taxCover}>
       <svg viewBox="0 0 600 360" className={styles.coverArt}>
-        <defs><linearGradient id="blog-coins" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffbb7b"/><stop offset=".5" stopColor="#ff7415"/><stop offset="1" stopColor="#b94c00"/></linearGradient><pattern id="blog-ledger" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0 H0 V25" fill="none" stroke="#111" strokeOpacity=".035"/></pattern></defs>
+        <defs><linearGradient id="blog-coins" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#f8d984"/><stop offset=".5" stopColor="#e2ac44"/><stop offset="1" stopColor="#a9741b"/></linearGradient><pattern id="blog-ledger" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0 H0 V25" fill="none" stroke="#111" strokeOpacity=".035"/></pattern></defs>
         <rect width="600" height="360" fill="url(#blog-ledger)"/>
-        <g transform="translate(350 65) rotate(10)"><rect width="180" height="235" rx="5" fill="#d8d0c4" opacity=".3" transform="translate(7 9)"/><rect width="180" height="235" rx="5" fill="#fffdf8" stroke="#d2c6b7"/><path d="M22 45 H158 M22 76 H158 M22 107 H158 M22 138 H158 M22 169 H158 M22 200 H158 M122 24 V213" stroke="#d8cabb"/><path d="M137 73 l4 4 9-10 M137 104 l4 4 9-10 M137 135 l4 4 9-10" fill="none" stroke="#bc5200" strokeWidth="3"/></g>
-        <g fill="url(#blog-coins)" stroke="#b65112" strokeWidth="1.2"><rect x="290" y="277" width="107" height="18" rx="9"/><ellipse cx="343.5" cy="277" rx="53.5" ry="13"/><rect x="300" y="257" width="107" height="18" rx="9"/><ellipse cx="353.5" cy="257" rx="53.5" ry="13"/><rect x="288" y="237" width="107" height="18" rx="9"/><ellipse cx="341.5" cy="237" rx="53.5" ry="13"/><circle cx="449" cy="249" r="52"/><circle cx="449" cy="249" r="42" fill="none" stroke="#ffc18c" strokeWidth="2"/></g>
-        <text x="449" y="259" textAnchor="middle" fill="#fff0dc" fontSize="26" fontWeight="600">MAD</text>
+        <g transform="translate(350 65) rotate(10)"><rect width="180" height="235" rx="5" fill="#abc4e6" opacity=".3" transform="translate(7 9)"/><rect width="180" height="235" rx="5" fill="#ffffff" stroke="#b9d3f2"/><path d="M22 45 H158 M22 76 H158 M22 107 H158 M22 138 H158 M22 169 H158 M22 200 H158 M122 24 V213" stroke="#cbdaf0"/><path d="M137 73 l4 4 9-10 M137 104 l4 4 9-10 M137 135 l4 4 9-10" fill="none" stroke="#006ce4" strokeWidth="3"/></g>
+        <g fill="url(#blog-coins)" stroke="#9b7527" strokeWidth="1.2"><rect x="290" y="277" width="107" height="18" rx="9"/><ellipse cx="343.5" cy="277" rx="53.5" ry="13"/><rect x="300" y="257" width="107" height="18" rx="9"/><ellipse cx="353.5" cy="257" rx="53.5" ry="13"/><rect x="288" y="237" width="107" height="18" rx="9"/><ellipse cx="341.5" cy="237" rx="53.5" ry="13"/><circle cx="449" cy="249" r="52"/><circle cx="449" cy="249" r="42" fill="none" stroke="#fff0b3" strokeWidth="2"/></g>
+        <text x="449" y="259" textAnchor="middle" fill="#fff8de" fontSize="26" fontWeight="600">MAD</text>
       </svg>
       <div className={styles.coverEditorial}><span>LES REPÈRES DU PROPRIÉTAIRE</span><strong>Fiscalité<br/>& taxes.</strong><small>Comprendre. Anticiper.</small></div>
     </div>}
@@ -63,7 +65,7 @@ export function BlogCover({ post, locale = 'fr' }: { post: BlogPost; locale?: Lo
       <svg viewBox="0 0 600 360" className={styles.coverArt}>
         <defs><linearGradient id="blog-riad-sky" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#ffefd8"/><stop offset="1" stopColor="#f6c394"/></linearGradient></defs>
         <rect width="600" height="360" fill="#f1e9de"/><path d="M110 360 V159 Q110 30 300 8 Q490 30 490 159 V360 Z" fill="url(#blog-riad-sky)"/>
-        <circle cx="342" cy="101" r="36" fill="#ff7415"/>
+        <circle cx="342" cy="101" r="36" fill="#e2ac44"/>
         <path d="M110 249 L153 218 L194 240 L252 208 L313 232 L376 213 L490 254 V360 H110 Z" fill="#cd9f7c"/>
         <path d="M110 283 H195 V236 H268 V267 H368 V224 H435 V286 H490 V360 H110 Z" fill="#b67852"/>
         <path d="M194 360 V291 Q194 267 218 267 Q242 267 242 291 V360 M334 360 V279 Q334 253 360 253 Q386 253 386 279 V360" fill="#73462f"/>

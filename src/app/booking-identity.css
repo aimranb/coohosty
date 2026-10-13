@@ -1,0 +1,56 @@
+/* COOHOSTY identity: navy, clear blue and pale blue surfaces. */
+:root{--brand-navy:#171717;--brand-blue:#ff852b;--brand-blue-hover:#ff852b;--brand-ink:#171717;--brand-text:#414141;--brand-muted:#66615a;--brand-page:#faf7f2;--brand-surface:#fff;--brand-tint:#fff0e2;--brand-border:#e5dbcf;--brand-teal:#087e68;--brand-gold:#d7a342}
+:root{--purple:#ff852b;--lavender:#f5e9db;--ink:#171717;--muted:#66615a;--line:#e5dbcf;--gold:#ffc994;--reference-paper:#faf7f2;--reference-dark:#171717;--accent-plum:#171717;--accent-rose:#ff852b;--surface-warm:#faf7f2;--navigation-accent:#ff852b}
+body,.public-site{background:#faf7f2;color:#171717}
+::selection{background:#ff852b;color:white}
+.public-site .site-header,.public-site .site-header.compact,.public-site .site-header .mobile-menu{background:#171717;border-color:#2660ad;box-shadow:0 6px 24px #17171725}
+.public-site .site-header .logo,.public-site .site-header .desktop-nav a,.public-site .site-header .language-select,.public-site .site-header .mobile-toggle,.public-site .site-header .call-link,.public-site .site-header .navbar-language-icon,.public-site .site-header .mobile-menu a{color:#fff}
+.public-site .site-header .desktop-nav{background:transparent}
+.public-site .site-header .desktop-nav a:hover,.public-site .site-header .mobile-menu a:hover{color:#fff;background:#ffffff1c}
+.public-site .site-header .language-select option{background:white;color:#171717}
+.public-site .site-header .header-button{background:#ff852b;border-color:#f2aa72;color:white}
+.public-site .site-header .header-button:hover{background:#ff852b}
+.public-site .footer{background:#f5e9db;color:#171717;border-color:#e5dbcf}
+.public-site .eyebrow{color:#ff852b}
+.public-site .hero-copy,.public-site .estimate-main-form,.public-site .estimate-form-card,.public-site .reservation-calendar,.public-site .reservation-detail,.public-site .faq-item,.public-site .analysis-tool{background:#fff;border-color:#e5dbcf}
+.public-site .button:not(.button-outline),.public-site .package-cta,.public-site .estimate-submit,.public-site .submit-estimate{background:#ff852b;border-color:#ff852b;color:white}
+.public-site .estimate-next{background:#ff852b;border-color:#ff852b;color:white}
+.public-site .estimate-next:hover{background:#ff852b}
+.public-site .button:not(.button-outline):hover,.public-site .package-cta:hover{background:#ff852b;border-color:#ff852b}
+.public-site .plan-card.comparison-card.featured{background:#171717;border-color:#171717;color:#fff}
+.public-site .plan-card.featured .package-cta{background:#ff852b;border-color:#f2aa72;color:#fff}
+.public-site .comparison-group h4{background:#fff0e2;border-color:#e5dbcf;color:#ff852b}
+.public-site .comparison-card.featured .comparison-group h4{background:#ffffff12;color:#ffc994;border-color:#ffffff35}
+.public-site .floating-whatsapp{background:#171717;color:#fff}
+.public-site :is(a,button,select,input):focus-visible{outline-color:#ff852b}
+.public-site .site-header{background-image:linear-gradient(110deg,#171717,#25201c);box-shadow:0 8px 25px #17171724}
+.public-site .site-header .desktop-nav a{border-radius:9px;transition:background .2s,color .2s}
+.public-site .site-header .desktop-nav a[aria-current=page]{background:#ffffff20;color:#fff}
+.public-site .site-header .header-button{box-shadow:0 3px 12px #24170a24}
+.public-site .site-header .call-link:hover,.public-site .site-header .mobile-toggle:hover{background:#ffffff1c}
+.public-site .site-header .mobile-menu a{border-color:#ffffff24}
+.public-site .hero-photo-label{background:#fff;color:#171717;border:1px solid #e5dbcf;box-shadow:0 6px 18px #17171712}
+.public-site .tool-chip,.public-site .property-listing-tags>span,.public-site .comparison-badge{background:#fff0e2;color:#ff852b;border-color:#e5dbcf}
+.public-site #faq.faq-section .faq-item{background:#fff;border:1px solid #e5dbcf;box-shadow:0 3px 12px #17171705;transition:border-color .2s,background .2s}
+.public-site #faq.faq-section .faq-item:hover{border-color:#eba36e;background:#fffaf5}
+.public-site #faq.faq-section .faq-item summary h3{color:#171717}
+.public-site #faq.faq-section .faq-item .faq-plus{background:#fff0e2;color:#ff852b;border:1px solid #e5dbcf;border-radius:50%;display:grid;place-items:center;width:27px;height:27px;flex-shrink:0}
+.public-site #faq.faq-section .faq-item[open]{background:#fff8f1;border-color:#eba36e}
+.public-site #faq.faq-section .faq-item[open] .faq-plus{background:#ff852b;color:#fff;border-color:#ff852b}
+.public-site #faq.faq-section .faq-answer p{color:#56514b}
+.public-site .footer a:hover{color:#ff852b}
+.public-site .estimate-progress li.is-active{color:#ff852b}
+.public-site .estimate-progress li.is-active>span{background:#ff852b;color:#fff}
+.public-site .estimate-step-header,.public-site .estimate-form-heading{color:#171717}
+.public-site .plan-card.comparison-card:not(.featured){background:white;border-color:#e5dbcf}
+.public-site .comparison-card:not(.featured) .comparison-list li{color:#414141}
+.public-site .comparison-card.featured .comparison-price,.public-site .comparison-card.featured .comparison-list li{color:#fff}
+.public-site .comparison-card.featured .comparison-group h4{color:#ffc994}
+.public-site .package-cta:focus-visible{outline:3px solid #eba36e;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.public-site .site-header .desktop-nav a,.public-site #faq.faq-section .faq-item{transition:none}}
+
+.public-site #faq .faq-intro h2{color:#171717}
+@media(prefers-reduced-motion:no-preference){.public-site .site-header{animation:nav-arrival 1100ms cubic-bezier(.22,1,.36,1) both}}
+@keyframes nav-arrival{from{opacity:0;translate:-24px 0}to{opacity:1;translate:0 0}}
+.public-site{overflow-x:clip}
+.public-site #main-content :is(.income-intro-copy>p,.section-heading>p,.section-description,.reservation-heading>p,.destination-heading>p,.service-proof-heading>p,.audit-intro>p,.workflow-heading>p){font-family:var(--font-poppins),Arial,sans-serif;font-weight:450;letter-spacing:-.15px;color:#414141;line-height:1.8}
